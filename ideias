@@ -1,0 +1,17 @@
+ao interagir com npcs:
+- primeiro balão = resumo da história do personagem
+- segundo balão = "wstou com um problema, será que você pode me ajudar", algo assim
+- surge na tela folha com esquema para construir o código (ex.: print("something"), seta em print dizendo função para imprimir na tela, seta nas aspas para indicar abertura de texto, seta no something para indicar o texto)
+transição entre balões = espaço
+se mais de 5 tentativas incorretas, botão "mostrar solução"
+
+ao final, em vez de "import ai", usar "from future import ai"
+
+deixar a caixa de input (onde o jogador escreve o código) como se fosse o terminal de um computador antigo, fixo no canto inferior da tela
+
+cena de máquina quebrada, tela piscando vermelho + alarme --> codar para resolver
+
+COMO CONVERSAR COM O GEMINI:
+- prompt: "Estou desenvolvendo um jogo para computador em formato de site, usando código para construi-lo, no qual o jogador deve conhecer personagens importantes da História da Computação ao mesmo tempo que aprende o básico de programação e de Python. Estou enviando o código fonte como está agora, juntamente com o índice de cenas que estão montadas no código fonte, e quero que você me indique alterações para ele, conforme o que eu solicitar para você. Não altere nada do código fonte sem minha autorização explícita."
+- colar código fonte atual
+- colar índice de cenas atual

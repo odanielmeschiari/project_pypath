@@ -1,0 +1,39 @@
+ÍNDICE DE CENAS:
+1. Tela de início ["Bem vindo ao..."]
+    1.1. Espaço para pular
+2. Input inicial [print("hello world")]
+    2.1. print("hello world") + enter para pular
+3. Máquina do tempo
+    3.1. ["Você é um jovem cientista..."]
+        3.1.1. Espaço para pular
+    3.2. Tela tremendo e piscando em preto
+    3.3. ["Quando tudo volta..."]
+        3.3.1. Espaço para pular
+4. Viagem no tempo
+    4.1. ["Viajando pelo tempo..."] + [Local + ano]
+5. Conversa com Ada Lovelace
+    5.1. ["Você sai da máquina e percebe que está em um antigo escritório..."]
+        5.1.1. Espaço para pular
+    5.2. Foto Ada + balões de fala
+        5.2.1. ["Olá, sou Ada Lovelace..."]
+            5.2.1.1. Digitar nome + enter para pular
+        5.2.2. ["Prazer em te conhecer, ..."]
+            5.2.2.1. Espaço para pular
+        5.2.3. ["Sabendo disso..."]
+            5.2.3.1. Resolver problema dos algoritmos + clicar em "Concluir" para pular
+
+------------------- MINHAS IDEIAS PARA CONTINUAÇÃO ---------------------
+
+        5.2.4. Ada agradece + fala de IA
+            5.2.4.1. Espaço para pular
+    5.3. Breve história de Ada Lovelace e suas contribuições, ocupando tela toda + foto realista dela (sem animação de texto se for muito grande)
+        5.3.1. Espaço para pular
+    5.4. ["Você retorna à máquina..."]
+6. Conversa com...
+...
+X. Máquina danificada
+    X.1. Tela piscando em vermelho + alarme soando
+    X.2. Resolver problema para parar de piscar
+        X.2.1. Se problema envolver código, usar background de computador azul e futurista (que encaixa com o cenário)
+            X.2.1.1. (Talvez animar as teclas digitando ao mesmo tempo que digita no computador real?)
+...
