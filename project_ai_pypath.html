@@ -419,7 +419,7 @@
         <img id="npc-ada-photo" src="https://i.ibb.co/FLt2jgZ8/Your-paragraph-text-8.png" alt="Ada Lovelace">
         <div id="npc-name-label">Ada Lovelace</div>
     </div>
-
+    <audio id="voice-ada-intro" src="https://cdn.discordapp.com/attachments/1479834909534326804/1479834945839955999/ada_hello.mp3?ex=69ad7b31&is=69ac29b1&hm=9a67f56275d77bbe221d99add392aa93c149c9da8608061b26ba5f7b9f450d5e&"></audio>
     <script>
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
@@ -435,6 +435,34 @@
             gainNode.connect(audioCtx.destination);
             oscillator.start();
             oscillator.stop(audioCtx.currentTime + 0.05);
+        }
+
+        function playSuccessSound() {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.2);
+        }
+
+        function playErrorSound() {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+            osc.frequency.linearRampToValueAtTime(50, audioCtx.currentTime + 0.2);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.2);
         }
 
         const mainText = document.getElementById('main-text');
@@ -636,6 +664,7 @@
         inputName.addEventListener("keydown", (event) => {
             if (event.key === "Enter" && inputName.value === targetText) {
                 if (audioCtx.state === 'suspended') audioCtx.resume();
+                playSuccessSound();
                 firstChain.style.animation = "startAnimation 1s forwards";
                 setTimeout(() => {
                     firstChain.style.display = "none";
@@ -674,9 +703,11 @@
             if (isCorrect) {
                 feedbackAlgo.style.color = "lime";
                 feedbackAlgo.innerHTML = "Correto, parabéns!";
+                playSuccessSound();
             } else {
                 feedbackAlgo.style.color = "red";
                 feedbackAlgo.innerHTML = "Tente novamente.";
+                playErrorSound();
                 errorCount++;
                 if (errorCount >= 5) {
                     showSolutionBtn.style.display = "block";
@@ -713,6 +744,7 @@
                             npcContainer.style.display = "flex";
                             npcContainer.classList.add("imageFadeIn");
                             setTimeout(() => {
+                                document.getElementById("voice-ada-intro").play().catch(e => console.log(e));
                                 typeWriter(adaWelcomeText, adaDialogTextElement, 30, () => {
                                     userNameContainer.style.display = "flex";
                                     userNameInput.focus();
