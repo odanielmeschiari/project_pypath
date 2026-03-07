@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sixtyfour&display=swap" rel="stylesheet">    <style>
+
+        :root{
+            --color-text: white;
+            --ff-title: "Roboto", sans-serif;
+            --ff-p: "Pixelify Sans", sans-serif;
+            --ff-info: "Sixtyfour", sans-serif;
+            --main-color: rgb(138, 206, 191);
+        }
+
+        body{
+            background-image: linear-gradient(rgb(40, 56, 75), rgb(12, 12, 44), rgb(0, 0, 0));
+            height: 98vh;
+            width: 98%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1, h2, h3{
+            font-family: var(--ff-title);
+            color: var(--color-text);
+        }
+
+        span{
+            color: var(--main-color);
+            font-family: var(--ff-p);
+            animation-name: animation;
+            animation-duration: 3s;
+            display: flex;
+        }
+
+        #main-text, span{
+            font-size: 70px;
+        }
+
+        #firstChainTest{
+            color: rgb(101, 111, 117);
+        }
+
+        #inputName{
+            background-color: rgb(69, 76, 80);
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            padding: 10px 25px;
+            font-family: var(--ff-p);
+            font-weight: bold;
+            font-size: 30px;
+            color: white;
+            &::placeholder{
+                color: white;
+                font-weight: bold;
+                font-family: var(--ff-p);
+            }
+        }
+
+        #mainTextFirstChain{
+            font-size: 70px;
+            color: var(--main-color);
+            text-align: center;
+            font-family: var(--ff-info);
+        }
+
+        .blockBody{
+            display: none;
+            opacity: 0;
+        }
+
+        @keyframes animation {
+            0% {opacity: 0; transform: translate(0, 100px);}
+            100% {opacity: 1; transform: translateY(0, -100px);}
+        }
+
+        @keyframes startAnimation {
+            0% {opacity: 1; transform: translateY(0);display: flex;}
+            100% {opacity: 0; transform: translateY(-300px); visibility: hidden;}
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1 class="startAnimation" id="main-text">Bem vindo ao <span class="startAnimation">Pyória Computathon!</span></h1>
+
+    <div class="firstChain blockBody">
+        <h1 id="mainTextFirstChain">Comece sua Jornada!</h1>
+        <h1 id="firstChainTest">print("hello world")</h1>
+        <input id="inputName" type="text" placeholder='código aqui'>
+    </div>
+
+
+    <script>
+
+        let mainText = document.querySelector('.startAnimation')
+        let inputName = document.getElementById("inputName")
+        let firstChain = document.querySelector(".firstChain")
+
+        function changeBodyType(element, change){
+            if(change == "add"){
+                element.classList.add("currentAnimation");
+                element.classList.remove("blockBody");
+            } else {
+                element.classList.remove("currentAnimation");
+                element.classList.add("blockBody");
+            }
+        }
+
+
+
+        let targetText = 'print("hello world")';
+
+        inputName.addEventListener("input", () => {
+            const currentValue = inputName.value;
+
+            if (targetText.startsWith(currentValue)) {
+                inputName.style.color = 'rgb(153, 238, 153)';
+            } else {
+                inputName.style.color = 'rgb(255, 111, 111)';
+            }
+            
+            if (currentValue === targetText) {
+                console.log("Finished!");
+            }
+        });
+
+        let timer = 2000
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                mainText.style.animation = "startAnimation 1s";
+            }, timer);
+            setTimeout(() => {
+                changeBodyType(mainText, "remove")
+            }, timer + 500);
+            setTimeout(() => {
+                changeBodyType(firstChain, "add")
+                inputName.focus();
+            }, timer + 1000);
+        })
+
+    </script>
+</body>
+</html>
