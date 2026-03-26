@@ -57,13 +57,15 @@
 
         .flicker-animation {
             display: block !important;
-            animation: flicker 0.1s infinite;
+            animation: glitch-oscillation 0.08s steps(2) infinite !important;
+            background-color: black !important;
+            z-index: 100000 !important;
+            opacity: 1 !important;
         }
 
-        @keyframes flicker {
-            0% { opacity: 0.1; background-color: rgba(255, 255, 255, 0); }
-            50% { opacity: 1; background-color: rgba(255, 255, 255, 0.8); }
-            100% { opacity: 0.1; background-color: rgba(255, 255, 255, 0); }
+        @keyframes glitch-oscillation {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         #dialog-box {
@@ -359,6 +361,16 @@
         @keyframes fadeIn { to { opacity: 1; } }
         @keyframes animation { 0% {opacity: 0; transform: translate(0, 100px);} 100% {opacity: 1; transform: translateY(0, -100px);} }
         @keyframes startAnimation { 0% {opacity: 1; transform: translateY(0); display: flex;} 100% {opacity: 0; transform: translateY(-300px); visibility: hidden;} }
+        @keyframes flickerImage {
+            0%   { opacity: 1; }
+            25%  { opacity: 0; }
+            50%  { opacity: 1; }
+            75%  { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .flicker-image {
+            animation: flickerImage 0.4s ease-in-out infinite !important;
+        }
 
     </style>
 </head>
@@ -502,6 +514,11 @@
         const adaHelpRequest = "Sabendo disso, seria de grande valia para mim se você me ajudasse organizando pequenas instruções para realizar uma operação matemática.";
 
         const targetText = 'print("hello world")';
+        const targetCodes = [
+            'for(i = 0; i < array; i++){}', 
+            'import brainLOL',
+            'def(index, index2){}'
+        ];
         const correctSequence = ["4", "2", "3", "1", "5"];
         
         let currentTextIndex = 0;
@@ -763,9 +780,12 @@
                             canProceed = false;
                             pressToProceed.style.display = "none";
                             dialogBox.style.display = "none";
-                            blackOverlay.classList.add("flicker-animation");
+
+                            npcImage.classList.add("flicker-image");
+
                             setTimeout(() => {
-                                blackOverlay.classList.remove("flicker-animation");
+                                npcImage.classList.remove("flicker-image");
+                                npcImage.style.opacity = "1";
                                 currentTextIndex++;
                                 dialogBox.style.display = "flex";
                                 showNextDialog();
@@ -788,7 +808,140 @@
         window.onload = () => {
             inputName.value = "";
             userNameInput.value = "";
+
+            // PRÉ-CARREGAMENTO: força download de todas as imagens no início
+            const imagesToPreload = [
+                "https://i.ibb.co/FkbxgnWw/m-quina-do-tempo-fundo.png",
+                "https://i.ibb.co/MkZk8f18/ada-fundo.png",
+                "https://i.ibb.co/FLt2jgZ8/Your-paragraph-text-8.png"
+            ];
+            imagesToPreload.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
         };
+        // DEV TOOL: REMOVER ANTES DO LANÇAMENTO
+        function devReset() {
+            mainText.style.display = "none";
+            pressSpaceLabel.style.display = "none";
+            firstChain.classList.add("blockBody");
+            firstChain.classList.remove("currentAnimation");
+            imageContainer.style.display = "none";
+            npcImage.style.opacity = "1";
+            npcImage.classList.remove("flicker-image", "imageFadeIn", "sceneFadeIn", "fadeOutScene");
+            blackOverlay.className = "";
+            blackOverlay.style.display = "none";
+            blackOverlay.style.opacity = "0";
+            dialogBox.style.display = "none";
+            dialogBox.classList.remove("fadeOutScene");
+            adaDialogBox.style.display = "none";
+            adaDialogBox.classList.remove("centered-dialog");
+            pressToProceed.style.display = "none";
+            userNameContainer.style.display = "none";
+            npcContainer.style.display = "none";
+            npcContainer.classList.remove("imageFadeIn");
+            algorithmChallenge.style.display = "none";
+            travelScreen.style.display = "none";
+            canProceed = false;
+            isAtAdaScene = false;
+            adaSceneState = "intro";
+            currentTextIndex = 0;
+            errorCount = 0;
+            playerNickname = "";
+            feedbackAlgo.innerHTML = "";
+            showSolutionBtn.style.display = "none";
+            solutionHint.style.display = "none";
+        }
+
+        function devGoto(scene) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            devReset();
+            if (scene === 'inicio') {
+                mainText.style.display = "";
+                pressSpaceLabel.style.display = "";
+            } else if (scene === 'input') {
+                changeBodyType(firstChain, "add");
+                inputName.value = "";
+                inputName.focus();
+            } else if (scene === 'maquina') {
+                imageContainer.style.display = "flex";
+                npcImage.style.opacity = "1";
+                blackOverlay.classList.add("overlayFadeIn");
+                dialogBox.style.display = "flex";
+                currentTextIndex = 0;
+                showNextDialog();
+            } else if (scene === 'viagem') {
+                startTimeTravel();
+            } else if (scene === 'ada-intro') {
+                loadNewScene();
+            } else if (scene === 'ada-meeting') {
+                loadNewScene();
+                // avança automaticamente após o typewriter da intro
+                const originalLoadNewScene = loadNewScene;
+                setTimeout(() => {
+                    adaSceneState = "intro";
+                    canProceed = true;
+                    pressToProceed.style.display = "none";
+                    adaDialogBox.classList.remove("centered-dialog");
+                    npcContainer.style.display = "flex";
+                    npcContainer.classList.add("imageFadeIn");
+                    imageContainer.style.display = "flex";
+                    npcImage.src = "https://i.ibb.co/MkZk8f18/ada-fundo.png";
+                    adaDialogBox.style.display = "flex";
+                    typeWriter(adaWelcomeText, adaDialogTextElement, 30, () => {
+                        userNameContainer.style.display = "flex";
+                        userNameInput.focus();
+                    });
+                    adaSceneState = "meeting";
+                    isAtAdaScene = true;
+                }, 800);
+            } else if (scene === 'ada-name') {
+                playerNickname = "Tester";
+                isAtAdaScene = true;
+                adaSceneState = "algorithm_lesson";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/MkZk8f18/ada-fundo.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                adaDialogBox.style.display = "flex";
+                const response = `Prazer em te conhecer, ${playerNickname}! Você sabe o que são algoritmos? De forma resumida, são uma sequência clara de passos para resolver um problema. Algoritmos existem há muito tempo: matemáticos antigos já criavam sequências de passos para resolver problemas, como fazer contas ou encontrar padrões em números.`;
+                typeWriter(response, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'ada-challenge') {
+                playerNickname = "Tester";
+                isAtAdaScene = true;
+                adaSceneState = "algorithm_challenge_active";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/MkZk8f18/ada-fundo.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                adaDialogBox.style.display = "flex";
+                typeWriter(adaHelpRequest, adaDialogTextElement, 30, () => {
+                    algorithmChallenge.style.display = "flex";
+                });
+            }
+        }
+        // FIM DEV TOOL
     </script>
+    <!-- DEV TOOL: REMOVER ANTES DO LANÇAMENTO -->
+    <div id="dev-panel" style="
+        position: fixed; bottom: 10px; right: 10px;
+        background: rgba(0,0,0,0.85); border: 1px solid #8acebd;
+        padding: 10px; z-index: 99999; display: flex;
+        flex-direction: column; gap: 6px; font-family: monospace;
+    ">
+        <span style="color:#8acebd; font-size:11px; text-align:center;">⚙ DEV: pular para</span>
+        <button onclick="devGoto('inicio')"       style="font-size:11px; cursor:pointer;">1. Início</button>
+        <button onclick="devGoto('input')"        style="font-size:11px; cursor:pointer;">2. Input hello world</button>
+        <button onclick="devGoto('maquina')"      style="font-size:11px; cursor:pointer;">3.1 Máquina do tempo</button>
+        <button onclick="devGoto('viagem')"       style="font-size:11px; cursor:pointer;">4. Viagem no tempo</button>
+        <button onclick="devGoto('ada-intro')"    style="font-size:11px; cursor:pointer;">5.1 Chegada Ada</button>
+        <button onclick="devGoto('ada-meeting')"  style="font-size:11px; cursor:pointer;">5.2.1 Ada fala</button>
+        <button onclick="devGoto('ada-name')"     style="font-size:11px; cursor:pointer;">5.2.2 Nome inserido</button>
+        <button onclick="devGoto('ada-challenge')"style="font-size:11px; cursor:pointer;">5.2.3 Desafio</button>
+    </div>
+    <!-- FIM DEV TOOL -->
 </body>
 </html>
