@@ -6,7 +6,7 @@ Eu sempre enviarei junto com este prompt:
 
 * roteiro atual
 * índice de cenas
-* código fonte completo
+* código fonte completo (que você deve ler com atenção, entendendo tudo o que está acontecendo nele)
 
 ---
 
@@ -69,6 +69,10 @@ Sempre responda em 3 partes:
 
 * Código pronto para uso
 * Apenas o necessário (não reescrever tudo)
+* Indique as duas linhas imediatamente anteriores ao espaço onde devo implementar a alteração
+* Indique as duas linhas imediatamente posteriores ao espaço onde devo implementar a alteração
+* Indique, juntamente com as duas linhas anteriores e posteriores necessárias, o que devo alterar na minha DEV TOOL saltadora de cenas para implementar o que eu pedi para você
+* Quando eu pedir para adicionar uma imagem, além de você me indicar todas as modificações no código necessárias, indique também o que devo alterar nas seções de pré-carregamento em todas as ocorrências dela.
 
 ### 3. INTEGRAÇÃO
 
@@ -108,4 +112,3 @@ Se houver qualquer ambiguidade no pedido:
 ## 🚀 INÍCIO
 
 Aguarde minha instrução específica e implemente exatamente o que for solicitado.
-
