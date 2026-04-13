@@ -4,7 +4,7 @@ Grandes
 - músicas de fundo
 
 Específicas
-- criar resumo em abas ao final da interação com cada personagem, contando partes de sua história (aba contribuições, quem foi, invenções, etc(
+- criar resumo em abas ao final da interação com cada personagem, contando partes de sua história (aba contribuições, quem foi, invenções, etc)
 - roteiros:
     boole
     babbage
@@ -18,7 +18,12 @@ Específicas
     turing
     problema da máquina do tempo
     boole
+- biografias e contribuições:
+    lovelace
+    babbage
+    boole
+    neumann
+    pascal
+    turing
 - finalização IA do mal
-- implementação no jogo:
-    roteiros
-    desafios
+- implementar no jogo
