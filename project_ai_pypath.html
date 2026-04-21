@@ -6,6 +6,9 @@
     <link rel="preload" as="image" href="https://i.ibb.co/FkbxgnWw/m-quina-do-tempo-fundo.png">
     <link rel="preload" as="image" href="https://i.ibb.co/MkZk8f18/ada-fundo.png">
     <link rel="preload" as="image" href="https://i.ibb.co/FLt2jgZ8/Your-paragraph-text-8.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/397Vh80L/babbage-2.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/G4tKhw42/Your-paragraph-text.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/snTL10h/dica-babbage.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -357,6 +360,7 @@
         .imageFadeIn, .sceneFadeIn, .overlayFadeIn { animation: fadeIn 0.5s forwards; }
         .fadeOutScene { animation: fadeOutAnim 1s forwards !important; }
         .blockBody { display: none; opacity: 0; }
+        .fadeOutSlow { animation: fadeOutAnim 2s forwards !important; }
         @keyframes fadeOutAnim { from { opacity: 1; } to { opacity: 0; } }
         @keyframes fadeIn { to { opacity: 1; } }
         @keyframes animation { 0% {opacity: 0; transform: translate(0, 100px);} 100% {opacity: 1; transform: translateY(0, -100px);} }
@@ -370,6 +374,175 @@
         }
         .flicker-image {
             animation: flickerImage 0.4s ease-in-out infinite !important;
+        }
+
+        #left-image-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 50vw;
+            height: 100vh;
+            justify-content: flex-start;
+            align-items: flex-end;
+            padding: 0 0 40px 40px;
+            box-sizing: border-box;
+            z-index: 10001;
+        }
+
+        #left-image-panel img {
+            width: 426px;
+            height: auto;
+        }
+        #babbage-monitor {
+            display: none;
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+            width: 520px;
+            z-index: 10002;
+            flex-direction: column;
+            gap: 0;
+            filter: drop-shadow(0 0 18px #00ff6644);
+        }
+
+        #babbage-monitor-header {
+            background: #1a1a1a;
+            border: 2px solid #00ff66;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            padding: 6px 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #babbage-monitor-header span {
+            font-family: var(--ff-p);
+            font-size: 13px;
+            color: #00ff66;
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
+
+        .monitor-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #00ff66;
+            opacity: 0.5;
+        }
+
+        #babbage-monitor-screen {
+            background: #000;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-bottom: none;
+            padding: 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: #00ff66;
+            resize: none;
+            outline: none;
+            width: 100%;
+            height: 400px;
+            box-sizing: border-box;
+            caret-color: #00ff66;
+            line-height: 1.6;
+        }
+
+        #babbage-monitor-screen::placeholder {
+            color: #00ff6644;
+        }
+
+        #babbage-monitor-footer {
+            background: #111;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-radius: 0 0 8px 8px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #babbage-submit {
+            padding: 6px 18px;
+            font-family: var(--ff-p);
+            font-size: 16px;
+            background: #000;
+            color: #00ff66;
+            border: 1px solid #00ff66;
+            border-radius: 4px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        #babbage-submit:hover {
+            background: #00ff66;
+            color: #000;
+        }
+
+        #babbage-feedback {
+            font-family: var(--ff-p);
+            font-size: 15px;
+        }
+
+        #babbage-quiz {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.92);
+            border: 2px solid #bf9970;
+            border-radius: 8px;
+            padding: 20px 28px;
+            z-index: 10003;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 420px;
+            animation: fadeIn 0.4s forwards;
+        }
+
+        #babbage-quiz-question {
+            font-family: var(--ff-p);
+            font-size: 17px;
+            color: white;
+            line-height: 1.5;
+        }
+
+        #babbage-quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            background: #111;
+            border: 1px solid #bf9970;
+            border-radius: 4px;
+            color: white;
+            font-family: var(--ff-p);
+            font-size: 16px;
+            padding: 8px 16px;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .quiz-option:hover {
+            background: #bf9970;
+            color: #000;
+        }
+
+        #babbage-quiz-footer {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: var(--ff-p);
+            font-size: 15px;
         }
 
     </style>
@@ -406,6 +579,39 @@
             <span id="algorithm-feedback"></span>
         </div>
         <button id="show-solution-btn">Mostrar solução</button>
+    </div>
+
+    <div id="left-image-panel">
+        <div id="babbage-monitor">
+            <div id="babbage-monitor-header">
+                <div class="monitor-dot"></div>
+                <div class="monitor-dot"></div>
+                <div class="monitor-dot"></div>
+                <span>terminal_babbage.py</span>
+            </div>
+            <div id="babbage-hint" style="display:none; font-family:'Courier New',monospace; font-size:14px; color:#ffd700; padding: 6px 14px; background:#1a1a1a; border: 2px solid #00ff66; border-bottom:none; white-space:pre;">nome = "Babbage"
+ano = 1842</div>
+            <textarea id="babbage-monitor-screen" placeholder="Digite aqui..." autocomplete="off" spellcheck="false"></textarea>
+            <div id="babbage-monitor-footer">
+                <button id="babbage-submit">Concluir</button>
+                <span id="babbage-feedback"></span>
+            </div>
+        </div>
+        <img src="https://i.ibb.co/snTL10h/dica-babbage.png" alt="dica-babbage">
+    </div>
+
+    <div id="babbage-quiz">
+        <div id="babbage-quiz-question">Como podemos imprimir o conteúdo da variável <span style="color:#00ff66; font-family:'Courier New',monospace;">nome</span>? Marque a opção correta:</div>
+        <div id="babbage-quiz-options">
+            <button class="quiz-option" data-id="a">a) print(Babbage)</button>
+            <button class="quiz-option" data-id="b">b) print(nome)</button>
+            <button class="quiz-option" data-id="c">c) print(ano)</button>
+            <button class="quiz-option" data-id="d">d) print(1842)</button>
+        </div>
+        <div id="babbage-quiz-footer">
+            <span id="babbage-quiz-feedback"></span>
+            <span id="babbage-quiz-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: b) print(nome)</span>
+        </div>
     </div>
 
     <div id="travel-screen">
@@ -503,6 +709,13 @@
         const feedbackAlgo = document.getElementById("algorithm-feedback");
         const showSolutionBtn = document.getElementById("show-solution-btn");
         const solutionHint = document.getElementById("solution-hint");
+        const babbageMonitor = document.getElementById("babbage-monitor");
+        const babbageMonitorScreen = document.getElementById("babbage-monitor-screen");
+        const babbageSubmitBtn = document.getElementById("babbage-submit");
+        const babbageFeedback = document.getElementById("babbage-feedback");
+        const babbageQuiz = document.getElementById("babbage-quiz");
+        const babbageQuizFeedback = document.getElementById("babbage-quiz-feedback");
+        const babbageQuizHint = document.getElementById("babbage-quiz-hint");
 
         const texts = [
             "Você é um jovem cientista que acabou de entrar no seu laboratório. Há anos você tenta fazer sua máquina do tempo funcionar, mas nunca deu certo... Hoje parece diferente: depois de muitos testes, você finalmente acredita ter encontrado a peça que faltava. Com o coração acelerado, você encaixa a peça na máquina.",
@@ -512,6 +725,14 @@
         const adaIntroText = "Você sai da máquina e percebe que está em um antigo escritório cheio de papéis e engrenagens. Uma mulher observa anotações ao lado de um projeto de máquina. Você se aproxima e ela se apresenta...";
         const adaWelcomeText = "Olá! Sou Ada Lovelace e trabalho com ideias para uma máquina criada por Charles Babbage chamada Máquina Analítica. Qual o seu nome?";
         const adaHelpRequest = "Sabendo disso, seria de grande valia para mim se você me ajudasse organizando pequenas instruções para realizar uma operação matemática.";
+
+        const babbageIntroText = "Você entra em um galpão grande e barulhento. Ao fundo, um homem de cabelos brancos e muito focado mexe em engrenagens. É Charles Babbage. Ele nem olha para trás ao ouvir seus passos.";
+
+        const babbageWelcomeText = () => `Oh, olá você! Seu nome é ${playerNickname}, certo? Cuidado onde pisa! Estou fazendo um protótipo delicado. Deu pra ouvir Ada te ensinando lógica, mas será que você entende de armazenamento?`;
+
+        const babbageVariableText = "Minha máquina precisa de colunas para guardar números antes de processá-los. (Hoje em dia, nós chamamos isso de Variável. É como uma gaveta: você coloca um nome nela e guarda um valor dentro)";
+
+        const babbageChallengeIntroText = `Minha máquina não funciona sozinha. Para que ela comece a rodar, preciso de sua ajuda. Declare a variável "nome" e atribua a ela o texto "Babbage". Declare a variável "ano" e atribua a ela o número 1842.`;
 
         const targetText = 'print("hello world")';
         const targetCodes = [
@@ -528,6 +749,8 @@
         let isAtAdaScene = false; 
         let adaSceneState = "intro"; 
         let errorCount = 0;
+        let babbageErrorCount = 0;
+        let babbageQuizErrorCount = 0;
 
         // --- Lógica de Drag and Drop ---
         let draggedItem = null;
@@ -700,7 +923,7 @@
             if (event.key === "Enter" && userNameInput.value.trim() !== "") {
                 playerNickname = userNameInput.value;
                 userNameContainer.style.display = "none";
-                const response = `Prazer em te conhecer, ${playerNickname}! Você sabe o que são algoritmos? De forma resumida, são uma sequência clara de passos para resolver um problema. Algoritmos existem há muito tempo: matemáticos antigos já criavam sequências de passos para resolver problemas, como fazer contas ou encontrar padrões em números.`;
+                let response = `Prazer em te conhecer, ${playerNickname}! Você sabe o que são algoritmos? De forma resumida, são uma sequência clara de passos para resolver um problema. Algoritmos existem há muito tempo: matemáticos antigos já criavam sequências de passos para resolver problemas, como fazer contas ou encontrar padrões em números.`;
                 
                 typeWriter(response, adaDialogTextElement, 30, () => {
                     setTimeout(() => {
@@ -721,6 +944,20 @@
                 feedbackAlgo.style.color = "lime";
                 feedbackAlgo.innerHTML = "Correto, parabéns!";
                 playSuccessSound();
+                setTimeout(() => {
+                    algorithmChallenge.style.animation = "fadeOutAnim 0.5s forwards";
+                    setTimeout(() => {
+                        algorithmChallenge.style.display = "none";
+                        const thanksMessage = "Obrigada pela ajuda! Aliás, você está vendo aquela porta no fundo da sala? Abra ela e você vai encontrar o meu colega de trabalho em sua oficina, fale com ele! Agora você está pronto para continuar sua jornada. Espero te ver em breve!";
+                        typeWriter(thanksMessage, adaDialogTextElement, 30, () => {
+                            setTimeout(() => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "ada_farewell"; 
+                            }, 500);
+                        });
+                    }, 500);
+                }, 1500);
             } else {
                 feedbackAlgo.style.color = "red";
                 feedbackAlgo.innerHTML = "Tente novamente.";
@@ -734,6 +971,69 @@
 
         showSolutionBtn.addEventListener("click", () => {
             solutionHint.style.display = "block";
+        });
+        babbageSubmitBtn.addEventListener("click", () => {
+            const raw = babbageMonitorScreen.value;
+            const normalized = raw.replace(/\s+/g, " ").trim();
+
+            // aceita linha única ou duas linhas, com espaços flexíveis
+            const correct =
+                /nome\s*=\s*["']Babbage["']/.test(normalized) &&
+                /ano\s*=\s*1842/.test(normalized);
+
+            if (correct) {
+                babbageFeedback.style.color = "lime";
+                babbageFeedback.innerHTML = "Correto, parabéns!";
+                playSuccessSound();
+                setTimeout(() => {
+                    babbageMonitor.style.display = "none";
+                    document.getElementById("babbage-hint").style.display = "none";
+                    document.getElementById("left-image-panel").style.display = "none";
+                    adaDialogBox.style.display = "flex";
+                    const babbageVariableSuccessText = `Excelente, ${playerNickname}! Os valores agora estão na memória. Mas agora precisamos imprimir o conteúdo dessas gavetas no visor!`;
+                    typeWriter(babbageVariableSuccessText, adaDialogTextElement, 30, () => {
+                        babbageQuizErrorCount = 0;
+                        babbageQuizFeedback.innerHTML = "";
+                        babbageQuizHint.style.display = "none";
+                        babbageQuiz.style.display = "flex";
+                    });
+                }, 1500);
+            } else {
+                babbageFeedback.style.color = "red";
+                babbageFeedback.innerHTML = "Não é bem isso, tente novamente.";
+                playErrorSound();
+                babbageErrorCount++;
+                if (babbageErrorCount >= 5) {
+                    document.getElementById("babbage-hint").style.display = "block";
+                }
+            }
+        });
+        document.getElementById("babbage-quiz-options").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            const chosen = e.target.getAttribute("data-id");
+
+            if (chosen === "b") {
+                babbageQuizFeedback.style.color = "lime";
+                babbageQuizFeedback.innerHTML = "Correto, parabéns!";
+                playSuccessSound();
+                setTimeout(() => {
+                    babbageQuiz.style.display = "none";
+                    const babbageFarewellText = `Observe! O visor está mostrando meu nome. Obrigado pela ajuda, ${playerNickname}! Vou continuar trabalhando nesse projeto, ainda tenho muito pela frente, espero que consiga acabar ainda esse ano. Adeus, meu amigo!`;
+                    typeWriter(babbageFarewellText, adaDialogTextElement, 30, () => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                        adaSceneState = "babbage_farewell";
+                    });
+                }, 1500);
+            } else {
+                babbageQuizFeedback.style.color = "red";
+                babbageQuizFeedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                babbageQuizErrorCount++;
+                if (babbageQuizErrorCount >= 5) {
+                    babbageQuizHint.style.display = "inline";
+                }
+            }
         });
 
         document.addEventListener("keydown", (event) => {
@@ -775,6 +1075,89 @@
                                 adaSceneState = "algorithm_challenge_active";
                             });
                         }
+                        else if (adaSceneState === "ada_farewell") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            
+                            // Efeito de desaparecer
+                            npcImage.classList.add("fadeOutSlow");
+                            npcContainer.classList.add("fadeOutSlow");
+                            adaDialogBox.classList.add("fadeOutSlow");
+                            blackOverlay.classList.add("fadeOutSlow");
+
+                            setTimeout(() => {
+                                // Reset de estados para a nova cena
+                                isAtAdaScene = false;
+                                npcContainer.style.display = "none";
+                                npcContainer.classList.remove("fadeOutSlow", "imageFadeIn");
+                                adaDialogBox.classList.remove("fadeOutSlow");
+                                adaDialogBox.style.display = "none";
+                                
+                                // Nova Imagem e Texto
+                                npcImage.src = "https://i.ibb.co/397Vh80L/babbage-2.png";
+                                npcImage.classList.remove("fadeOutSlow", "sceneFadeIn");
+                                void npcImage.offsetWidth; // Force reflow
+                                npcImage.classList.add("sceneFadeIn");
+                                
+                                setTimeout(() => {
+                                    adaDialogBox.classList.add("centered-dialog");
+                                    adaDialogBox.style.display = "flex";
+                                    typeWriter(babbageIntroText, adaDialogTextElement, 30, () => {
+                                        setTimeout(() => {
+                                            pressToProceed.style.display = "block";
+                                            canProceed = true;
+                                            isAtAdaScene = true;
+                                            adaSceneState = "babbage_intro";
+                                        }, 500);
+                                    });
+                                }, 1000);
+                            }, 2000);
+                        }
+                        else if (adaSceneState === "babbage_intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogBox.classList.remove("centered-dialog");
+                            npcContainer.style.display = "flex";
+                            npcContainer.classList.add("imageFadeIn");
+                            document.getElementById("npc-ada-photo").src = "https://i.ibb.co/G4tKhw42/Your-paragraph-text.png";
+                            document.getElementById("npc-name-label").textContent = "Charles Babbage";
+                            setTimeout(() => {
+                                typeWriter(babbageWelcomeText(), adaDialogTextElement, 30, () => {
+                                    pressToProceed.style.display = "block";
+                                    canProceed = true;
+                                    adaSceneState = "babbage_meeting";
+                                });
+                            }, 600);
+                        }
+                        else if (adaSceneState === "babbage_meeting") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(babbageVariableText, adaDialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "babbage_variable";
+                            });
+                        }
+                        else if (adaSceneState === "babbage_variable") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(babbageChallengeIntroText, adaDialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "babbage_challenge_intro";
+                            });
+                        }
+                        else if (adaSceneState === "babbage_challenge_intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            document.getElementById("left-image-panel").style.display = "flex";
+                            babbageMonitor.style.display = "flex";
+                            babbageMonitorScreen.value = "";
+                            babbageFeedback.innerHTML = "";
+                            adaSceneState = "babbage_map";
+                            babbageErrorCount = 0;
+                            document.getElementById("babbage-hint").style.display = "none";
+                        }
                     } else {
                         if (currentTextIndex === 0) {
                             canProceed = false;
@@ -813,7 +1196,10 @@
             const imagesToPreload = [
                 "https://i.ibb.co/FkbxgnWw/m-quina-do-tempo-fundo.png",
                 "https://i.ibb.co/MkZk8f18/ada-fundo.png",
-                "https://i.ibb.co/FLt2jgZ8/Your-paragraph-text-8.png"
+                "https://i.ibb.co/FLt2jgZ8/Your-paragraph-text-8.png",
+                "https://i.ibb.co/397Vh80L/babbage-2.png",
+                "https://i.ibb.co/G4tKhw42/Your-paragraph-text.png",
+                "https://i.ibb.co/snTL10h/dica-babbage.png"
             ];
             imagesToPreload.forEach(src => {
                 const img = new Image();
@@ -851,6 +1237,14 @@
             feedbackAlgo.innerHTML = "";
             showSolutionBtn.style.display = "none";
             solutionHint.style.display = "none";
+            document.getElementById("left-image-panel").style.display = "none";
+            babbageMonitor.style.display = "none";
+            babbageMonitorScreen.value = "";
+            babbageFeedback.innerHTML = "";
+            babbageQuizErrorCount = 0;
+            babbageQuiz.style.display = "none";
+            babbageQuizFeedback.innerHTML = "";
+            babbageQuizHint.style.display = "none";
         }
 
         function devGoto(scene) {
@@ -896,7 +1290,7 @@
                     isAtAdaScene = true;
                 }, 800);
             } else if (scene === 'ada-name') {
-                playerNickname = "Tester";
+                playerNickname = "Forasteiro";
                 isAtAdaScene = true;
                 adaSceneState = "algorithm_lesson";
                 imageContainer.style.display = "flex";
@@ -910,7 +1304,7 @@
                     canProceed = true;
                 });
             } else if (scene === 'ada-challenge') {
-                playerNickname = "Tester";
+                playerNickname = "Forasteiro";
                 isAtAdaScene = true;
                 adaSceneState = "algorithm_challenge_active";
                 imageContainer.style.display = "flex";
@@ -921,8 +1315,95 @@
                 typeWriter(adaHelpRequest, adaDialogTextElement, 30, () => {
                     algorithmChallenge.style.display = "flex";
                 });
-            }
+            } else if (scene === 'ada-thanks') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "ada_farewell";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/MkZk8f18/ada-fundo.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                adaDialogBox.style.display = "flex";
+                const thanksMessage = "Obrigada pela ajuda! Aliás, você está vendo aquela porta no fundo da sala? Abra ela e você vai encontrar o meu colega de trabalho em sua oficina, fale com ele! Agora você está pronto para continuar sua jornada. Espero te ver em breve!";
+                typeWriter(thanksMessage, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'babbage-intro') {
+                isAtAdaScene = true; 
+                adaSceneState = "babbage_intro";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/397Vh80L/babbage-2.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(babbageIntroText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                    adaSceneState = "babbage_intro";  // ← adicione isto se ainda não existir
+                });
+            } else if (scene === 'babbage-meeting') {
+                isAtAdaScene = true;
+                adaSceneState = "babbage_meeting";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/397Vh80L/babbage-2.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/G4tKhw42/Your-paragraph-text.png";
+                document.getElementById("npc-name-label").textContent = "Charles Babbage";
+                adaDialogBox.style.display = "flex";
+                typeWriter(babbageWelcomeText(), adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'babbage-variable') {
+                isAtAdaScene = true;
+                adaSceneState = "babbage_variable";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/397Vh80L/babbage-2.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/G4tKhw42/Your-paragraph-text.png";
+                document.getElementById("npc-name-label").textContent = "Charles Babbage";
+                adaDialogBox.style.display = "flex";
+                typeWriter(babbageVariableText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+             } else if (scene === 'babbage-map') {
+                isAtAdaScene = true;
+                adaSceneState = "babbage_map";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/397Vh80L/babbage-2.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/G4tKhw42/Your-paragraph-text.png";
+                document.getElementById("npc-name-label").textContent = "Charles Babbage";
+                document.getElementById("left-image-panel").style.display = "flex";
+                babbageMonitor.style.display = "flex";
+                babbageMonitorScreen.value = "";
+                babbageFeedback.innerHTML = "";
+            } else if (scene === 'babbage-quiz') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "babbage_map";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/397Vh80L/babbage-2.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/G4tKhw42/Your-paragraph-text.png";
+                document.getElementById("npc-name-label").textContent = "Charles Babbage";
+                adaDialogBox.style.display = "flex";
+                babbageQuizErrorCount = 0;
+                babbageQuizFeedback.innerHTML = "";
+                babbageQuizHint.style.display = "none";
+                babbageQuiz.style.display = "flex";
         }
+    }
         // FIM DEV TOOL
     </script>
     <!-- DEV TOOL: REMOVER ANTES DO LANÇAMENTO -->
@@ -941,6 +1422,13 @@
         <button onclick="devGoto('ada-meeting')"  style="font-size:11px; cursor:pointer;">5.2.1 Ada fala</button>
         <button onclick="devGoto('ada-name')"     style="font-size:11px; cursor:pointer;">5.2.2 Nome inserido</button>
         <button onclick="devGoto('ada-challenge')"style="font-size:11px; cursor:pointer;">5.2.3 Desafio</button>
+        <button onclick="devGoto('ada-thanks')"   style="font-size:11px; cursor:pointer;">5.2.4 Agradecimento Ada</button>
+        <button onclick="devGoto('babbage-intro')"style="font-size:11px; cursor:pointer;">6.0 Chegada Babbage</button>
+        <button onclick="devGoto('babbage-meeting')"style="font-size:11px; cursor:pointer;">6.2 Babbage fala</button>
+        <button onclick="devGoto('babbage-variable')"style="font-size:11px; cursor:pointer;">6.3 Babbage variável</button>
+        <button onclick="devGoto('babbage-map')"  style="font-size:11px; cursor:pointer;">6.4 Babbage mapa</button>
+        <button onclick="devGoto('babbage-quiz')" style="font-size:11px; cursor:pointer;">6.5 Babbage quiz</button>
+
     </div>
     <!-- FIM DEV TOOL -->
 </body>
