@@ -9,6 +9,8 @@
     <link rel="preload" as="image" href="https://i.ibb.co/397Vh80L/babbage-2.png">
     <link rel="preload" as="image" href="https://i.ibb.co/G4tKhw42/Your-paragraph-text.png">
     <link rel="preload" as="image" href="https://i.ibb.co/snTL10h/dica-babbage.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/jpVV63f/turing-fundo.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/rfLCYFhK/turing-foto.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -545,6 +547,296 @@
             font-size: 15px;
         }
 
+        #turing-quiz {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.92);
+            border: 2px solid #8acebd;
+            border-radius: 8px;
+            padding: 20px 28px;
+            z-index: 10003;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 420px;
+            animation: fadeIn 0.4s forwards;
+        }
+
+        #turing-quiz-question {
+            font-family: var(--ff-p);
+            font-size: 17px;
+            color: white;
+            line-height: 1.5;
+        }
+
+        #turing-quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        #turing-input-quiz {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.92);
+            border: 2px solid #8acebd;
+            border-radius: 8px;
+            padding: 20px 28px;
+            z-index: 10003;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 420px;
+            animation: fadeIn 0.4s forwards;
+        }
+
+        #turing-input-quiz-question {
+            font-family: var(--ff-p);
+            font-size: 17px;
+            color: white;
+            line-height: 1.5;
+        }
+
+        #turing-input-quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        #turing-input-quiz-footer {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: var(--ff-p);
+            font-size: 15px;
+        }
+        #turing-print-monitor {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 520px;
+            z-index: 10002;
+            flex-direction: column;
+            filter: drop-shadow(0 0 18px #00ff6644);
+            animation: fadeIn 0.4s forwards;
+        }
+
+        #turing-print-monitor-header {
+            background: #1a1a1a;
+            border: 2px solid #00ff66;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            padding: 6px 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #turing-print-monitor-header span {
+            font-family: var(--ff-p);
+            font-size: 13px;
+            color: #00ff66;
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
+
+        #turing-print-screen {
+            background: #000;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-bottom: none;
+            padding: 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: #00ff66;
+            outline: none;
+            width: 100%;
+            box-sizing: border-box;
+            caret-color: #00ff66;
+        }
+
+        #turing-print-screen::placeholder {
+            color: #00ff6644;
+        }
+
+        #turing-print-monitor-footer {
+            background: #111;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-radius: 0 0 8px 8px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #turing-print-submit {
+            padding: 6px 18px;
+            font-family: var(--ff-p);
+            font-size: 16px;
+            background: #000;
+            color: #00ff66;
+            border: 1px solid #00ff66;
+            border-radius: 4px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        #turing-print-submit:hover {
+            background: #00ff66;
+            color: #000;
+        }
+
+        #turing-print-feedback {
+            font-family: var(--ff-p);
+            font-size: 15px;
+        }
+
+        #turing-sandbox {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 560px;
+            z-index: 10002;
+            flex-direction: column;
+            filter: drop-shadow(0 0 18px #00ff6644);
+            animation: fadeIn 0.4s forwards;
+        }
+
+        .sandbox-label {
+            font-family: var(--ff-p);
+            font-size: 12px;
+            color: #00ff66;
+            opacity: 0.7;
+            letter-spacing: 1px;
+            background: #1a1a1a;
+            border: 2px solid #00ff66;
+            border-bottom: none;
+            padding: 5px 14px;
+        }
+
+        .sandbox-label:first-of-type {
+            border-radius: 8px 8px 0 0;
+        }
+
+        #turing-sandbox-code {
+            background: #000;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-bottom: none;
+            padding: 12px 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            color: #00ff66;
+            resize: none;
+            outline: none;
+            width: 100%;
+            height: 70px;
+            box-sizing: border-box;
+            caret-color: #00ff66;
+            line-height: 1.6;
+        }
+
+        #turing-sandbox-code::placeholder { color: #00ff6644; }
+
+        #turing-sandbox-compile-row {
+            background: #111;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-bottom: none;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #turing-sandbox-result-area {
+            background: #000;
+            border: 2px solid #00ff66;
+            border-top: none;
+            padding: 10px 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            color: #00ff66;
+            min-height: 36px;
+            box-sizing: border-box;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        #turing-sandbox-input-row {
+            display: none;
+            background: #000;
+            border: 2px solid #00ff66;
+            border-top: none;
+            padding: 6px 14px;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            color: #00ff66;
+        }
+
+        #turing-sandbox-user-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #00ff66;
+            outline: none;
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            color: #00ff66;
+            caret-color: #00ff66;
+            flex: 1;
+        }
+
+        #turing-sandbox-buttons {
+            display: none;
+            background: #111;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-radius: 0 0 8px 8px;
+            padding: 8px 14px;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .sandbox-btn {
+            padding: 5px 16px;
+            font-family: var(--ff-p);
+            font-size: 15px;
+            background: #000;
+            color: #00ff66;
+            border: 1px solid #00ff66;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .sandbox-btn:hover { background: #00ff66; color: #000; }
+
+        #turing-sandbox-error {
+            font-family: var(--ff-p);
+            font-size: 14px;
+            color: red;
+            margin-left: 4px;
+        }
+
+        #turing-sandbox-error-count {
+            font-family: var(--ff-p);
+            font-size: 13px;
+            color: #ffd700;
+            margin-left: 4px;
+        }
+
     </style>
 </head>
 <body>
@@ -611,6 +903,62 @@ ano = 1842</div>
         <div id="babbage-quiz-footer">
             <span id="babbage-quiz-feedback"></span>
             <span id="babbage-quiz-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: b) print(nome)</span>
+        </div>
+    </div>
+
+    <div id="turing-quiz">
+        <div id="turing-quiz-question">O que você faz?</div>
+        <div id="turing-quiz-options">
+            <button class="quiz-option" data-id="listen">Diz: "O senhor está tentando criar uma forma da máquina ler informações de fora, como uma fita de dados?"</button>
+            <button class="quiz-option" data-id="ignore">Não faz nada</button>
+        </div>
+    </div>
+
+    <div id="turing-input-quiz">
+        <div id="turing-input-quiz-question">Como usamos o <span style="color:#00ff66; font-family:'Courier New',monospace;">input()</span> para receber o nome de usuário?</div>
+        <div id="turing-input-quiz-options">
+            <button class="quiz-option" data-id="a">a) nome = "usuário"</button>
+            <button class="quiz-option" data-id="b">b) nome = input()</button>
+            <button class="quiz-option" data-id="c">c) input(nome) = ()</button>
+            <button class="quiz-option" data-id="d">d) nome = definir_nome()</button>
+        </div>
+        <div id="turing-input-quiz-footer">
+            <span id="turing-input-quiz-feedback"></span>
+            <span id="turing-input-quiz-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: b) nome = input()</span>
+        </div>
+    </div>
+
+    <div id="turing-print-monitor">
+        <div id="turing-print-monitor-header">
+            <div class="monitor-dot"></div>
+            <div class="monitor-dot"></div>
+            <div class="monitor-dot"></div>
+            <span>terminal_turing.py</span>
+        </div>
+        <div id="turing-print-hint" style="display:none; font-family:'Courier New',monospace; font-size:14px; color:#ffd700; padding: 6px 14px; background:#1a1a1a; border: 2px solid #00ff66; border-bottom:none; white-space:pre;">print("Olá, ", nome)</div>
+        <input id="turing-print-screen" type="text" placeholder='Digite aqui...' autocomplete="off" spellcheck="false">
+        <div id="turing-print-monitor-footer">
+            <button id="turing-print-submit">Concluir</button>
+            <span id="turing-print-feedback"></span>
+        </div>
+    </div>
+
+    <div id="turing-sandbox">
+        <div class="sandbox-label">▶ Programação</div>
+        <textarea id="turing-sandbox-code" placeholder="Digite o código aqui..." autocomplete="off" spellcheck="false"></textarea>
+        <div id="turing-sandbox-compile-row">
+            <button class="sandbox-btn" id="turing-sandbox-compile">Compilar</button>
+            <span id="turing-sandbox-error"></span>
+            <span id="turing-sandbox-error-count"></span>
+        </div>
+        <div class="sandbox-label" style="border-top: 1px solid #00ff6633;">▶ Resultado</div>
+        <div id="turing-sandbox-result-area"></div>
+        <div id="turing-sandbox-input-row">
+            <span>&gt;&nbsp;</span>
+            <input id="turing-sandbox-user-input" type="text" autocomplete="off" spellcheck="false" placeholder="digite aqui...">
+        </div>
+        <div id="turing-sandbox-buttons">
+            <button class="sandbox-btn" id="turing-sandbox-exit">Sair</button>
         </div>
     </div>
 
@@ -735,6 +1083,27 @@ ano = 1842</div>
         const babbageChallengeIntroText = `Minha máquina não funciona sozinha. Para que ela comece a rodar, preciso de sua ajuda. Declare a variável "nome" e atribua a ela o texto "Babbage". Declare a variável "ano" e atribua a ela o número 1842.`;
 
         const targetText = 'print("hello world")';
+
+        const returnMachineText = "Você ficou empolgado após conversar com Ada Lovelace e Charles Babbage, e, agora, está animado para continuar. Após pensar um pouco, tem uma boa ideia...";
+        const adjustingText = "Ajustando as coordenadas temporais...";
+
+        const turingIntroText = "Dessa vez, a máquina te levou para o interior de um galpão cinzento e barulhento, cheio de fios expostos e peças espalhadas. Um homem jovem, de olhar focado e muito inquieto, está de costas para você, mexendo em um painel cheio de interruptores. Você tenta se comunicar com ele, mas ele parece não dar muita importância.";
+
+        const turingWhisperText = "(Sussurrando): ...se a configuração dos rotores mudar a cada 24 horas, o espaço de busca se torna praticamente infinito para um ser humano! Preciso de uma máquina universal. Uma máquina que não apenas calcule, mas que responda a estímulos externos…";
+
+        const turingIgnoredText1 = () => `Oh, perdão, não te vi aí. Meu nome é Alan Turing, e você é...? Ah sim, ${playerNickname}!`;
+        const turingIgnoredText2 = () => `A propósito, estou tentando criar uma forma da máquina ler informações de fora, como uma fita de entrada, sabe? Isso porque, ${playerNickname}, certos casos variáveis não servem de nada se o valor for sempre o mesmo. Elas precisam ser dinâmicas. Elas precisam de um valor "input" definido pelo usuário.`;
+
+        const turingListenedText1 = () => `Uma fita de entrada... Sim. Exatamente. Uma máquina que não é estática, mas que 'ouve' o que o usuário tem a dizer. A propósito, meu nome é Alan Turing, e você é...? Ah sim, ${playerNickname}!`;
+        const turingListenedText2 = () => `Me parece que você entende um pouco do conceito de entrada, ${playerNickname}, então deve saber que em certos casos variáveis não servem de nada se o valor for sempre o mesmo. Elas precisam ser dinâmicas. Elas precisam de um valor "input" definido pelo usuário.`;
+
+        const turingInputLessonText = `Minha máquina, a Bombe, precisa saber quem está operando os controles hoje. Vamos criar uma entrada para o seu nome e logo depois imprimir a mensagem: "Olá (nome)!"`;
+
+        const turingPrintLessonText = () => `Ótimo, ${playerNickname}! Agora que temos a variável nome=input() vamos imprimir "Olá, " seguido do nome do usuário. Como fazemos isso em apenas uma linha de código? Você já tem a variável, então apenas escreva a função para imprimir o texto.`;
+
+        const turingFarewellIntroText = () => `Está mandando bem, ${playerNickname}! Agora, vou deixar você testar o código de input() e print() que fizemos. Digite novamente o código na tela de programação e veja o resultado embaixo. Você pode testar para quaisquer entradas que colocar, e verá que funciona!`;
+        const turingFarewellText = () => `Fascinante, ${playerNickname}! Uma máquina que interage! Agora, se me der licença, tenho muito trabalho pela frente. O tempo é o nosso inimigo mais cruel. Foi bom conversar com você, agora minhas ideias estão mais claras.`;
+
         const targetCodes = [
             'for(i = 0; i < array; i++){}', 
             'import brainLOL',
@@ -751,6 +1120,10 @@ ano = 1842</div>
         let errorCount = 0;
         let babbageErrorCount = 0;
         let babbageQuizErrorCount = 0;
+        let turingChoice = ""; // "listened" ou "ignored"
+        let turingInputQuizErrorCount = 0;
+        let turingPrintErrorCount = 0;
+        let turiSandboxErrorCount = 0;
 
         // --- Lógica de Drag and Drop ---
         let draggedItem = null;
@@ -859,6 +1232,35 @@ ano = 1842</div>
             }, 100);
         }
 
+        function loadTuringScene() {
+            travelScreen.style.display = "none";
+            npcImage.src = "https://i.ibb.co/jpVV63f/turing-fundo.png";
+            npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+            void npcImage.offsetWidth;
+            npcImage.classList.add("sceneFadeIn");
+            imageContainer.style.display = "flex";
+
+            // Overlay escuro fixo por cima do fundo claro
+            blackOverlay.className = "";
+            blackOverlay.style.display = "block";
+            blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+            blackOverlay.style.opacity = "1";
+            blackOverlay.style.transition = "none";
+
+            setTimeout(() => {
+                isAtAdaScene = true;
+                adaSceneState = "turing_intro";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(turingIntroText, adaDialogTextElement, 30, () => {
+                    setTimeout(() => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                    }, 500);
+                });
+            }, 500);
+        }
+
         function startTimeTravel() {
             npcImage.classList.add("fadeOutScene");
             blackOverlay.classList.add("fadeOutScene");
@@ -888,6 +1290,52 @@ ano = 1842</div>
                     }, 3000); 
                 });
             }, 500); 
+        }
+
+        function startTimeTravel2() {
+            // Escurece tudo
+            npcImage.classList.add("fadeOutSlow");
+            npcContainer.classList.add("fadeOutSlow");
+            adaDialogBox.classList.add("fadeOutSlow");
+            blackOverlay.style.display = "block";
+            blackOverlay.style.transition = "opacity 0.5s ease";
+            setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
+
+            setTimeout(() => {
+                // Oculta todos os elementos da cena do Babbage
+                npcContainer.style.display = "none";
+                npcContainer.classList.remove("fadeOutSlow", "imageFadeIn");
+                adaDialogBox.style.display = "none";
+                adaDialogBox.classList.remove("fadeOutSlow", "centered-dialog");
+                npcImage.classList.remove("fadeOutSlow", "imageFadeIn", "sceneFadeIn");
+                npcImage.style.opacity = "1";
+                dialogBox.style.display = "none";
+                pressToProceed.style.display = "none";
+
+                // Troca para fundo da máquina do tempo
+                npcImage.src = "https://i.ibb.co/FkbxgnWw/m-quina-do-tempo-fundo.png";
+                void npcImage.offsetWidth;
+                npcImage.classList.add("sceneFadeIn");
+                imageContainer.style.display = "flex";
+
+                // Abre levemente o overlay para ver o fundo
+                blackOverlay.style.transition = "opacity 0.5s ease";
+                setTimeout(() => {
+                    blackOverlay.style.backgroundColor = "rgba(0,0,0,0.21)";
+                    blackOverlay.style.opacity = "1";
+                }, 500);
+
+                // Mostra texto no dialog-box (canto superior esquerdo)
+                setTimeout(() => {
+                    dialogBox.style.display = "flex";
+                    dialogTextElement.innerHTML = "";
+                    typeWriter(returnMachineText, dialogTextElement, 30, () => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                        adaSceneState = "return_machine_text";
+                    });
+                }, 600);
+            }, 3500);
         }
 
         inputName.addEventListener("input", () => {
@@ -1036,6 +1484,160 @@ ano = 1842</div>
             }
         });
 
+        document.getElementById("turing-quiz-options").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            const chosen = e.target.getAttribute("data-id");
+            document.getElementById("turing-quiz").style.display = "none";
+
+            if (chosen === "listen") {
+                turingChoice = "listened";
+                adaDialogTextElement.style.fontStyle = "normal";
+                typeWriter(turingListenedText1(), adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                    adaSceneState = "turing_listened_part2";
+                });
+            } else {
+                turingChoice = "ignored";
+                adaDialogTextElement.style.fontStyle = "normal";
+                typeWriter(turingIgnoredText1(), adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                    adaSceneState = "turing_ignored_part2";
+                });
+            }
+        });
+
+        document.getElementById("turing-input-quiz-options").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            const chosen = e.target.getAttribute("data-id");
+            const feedback = document.getElementById("turing-input-quiz-feedback");
+            const hint = document.getElementById("turing-input-quiz-hint");
+
+            if (chosen === "b") {
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Correto, parabéns!";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("turing-input-quiz").style.display = "none";
+                    // avança direto sem espaço
+                    canProceed = false;
+                    pressToProceed.style.display = "none";
+                    turingPrintErrorCount = 0;
+                    document.getElementById("turing-print-feedback").innerHTML = "";
+                    document.getElementById("turing-print-hint").style.display = "none";
+                    document.getElementById("turing-print-screen").value = "";
+                    typeWriter(turingPrintLessonText(), adaDialogTextElement, 30, () => {
+                        document.getElementById("turing-print-monitor").style.display = "flex";
+                        document.getElementById("turing-print-screen").focus();
+                    });
+                }, 1500);
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                turingInputQuizErrorCount++;
+                if (turingInputQuizErrorCount >= 5) {
+                    hint.style.display = "inline";
+                }
+            }
+        });
+
+        document.getElementById("turing-print-submit").addEventListener("click", () => {
+            const raw = document.getElementById("turing-print-screen").value;
+            const normalized = raw.replace(/\s+/g, "").trim();
+            const feedback = document.getElementById("turing-print-feedback");
+            const hint = document.getElementById("turing-print-hint");
+
+            // aceita variações de espaço e aspas simples ou duplas
+            const correct = /^print\(["']Olá,?\s*["'],\s*nome\)$/.test(normalized) ||
+                            /^print\(["']Olá,?\s*["']\+nome\)$/.test(normalized) ||
+                            /^print\(["']Olá,?\s*["'],nome\)$/.test(raw.replace(/\s+/g, "").trim());
+
+            if (correct) {
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Correto, parabéns!";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("turing-print-monitor").style.display = "none";
+                    // avança direto sem espaço
+                    canProceed = false;
+                    pressToProceed.style.display = "none";
+                    document.getElementById("turing-sandbox-code").value = "";
+                    document.getElementById("turing-sandbox-result-area").innerHTML = "";
+                    document.getElementById("turing-sandbox-input-row").style.display = "none";
+                    document.getElementById("turing-sandbox-buttons").style.display = "none";
+                    document.getElementById("turing-sandbox-error").innerHTML = "";
+                    document.getElementById("turing-sandbox-error-count").innerHTML = "";
+                    turiSandboxErrorCount = 0;
+                    typeWriter(turingFarewellIntroText(), adaDialogTextElement, 30, () => {
+                        document.getElementById("turing-sandbox").style.display = "flex";
+                        document.getElementById("turing-sandbox-code").focus();
+                    });
+                }, 1500);
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                turingPrintErrorCount++;
+                if (turingPrintErrorCount >= 5) {
+                    hint.style.display = "block";
+                }
+            }
+        });
+
+        document.getElementById("turing-sandbox-compile").addEventListener("click", () => {
+            const code = document.getElementById("turing-sandbox-code").value.trim();
+            const error = document.getElementById("turing-sandbox-error");
+            const errorCount = document.getElementById("turing-sandbox-error-count");
+            const resultArea = document.getElementById("turing-sandbox-result-area");
+            const inputRow = document.getElementById("turing-sandbox-input-row");
+            const userInput = document.getElementById("turing-sandbox-user-input");
+
+            const normalized = code.replace(/\s+/g, "");
+            const correct =
+                /nome\s*=\s*input\(\)/.test(code) &&
+                /print\(["']Olá,?\s*["'],\s*nome\)/.test(code);
+
+            if (correct) {
+                error.innerHTML = "";
+                errorCount.innerHTML = "";
+                turiSandboxErrorCount = 0;
+                resultArea.innerHTML = "";
+                inputRow.style.display = "flex";
+                document.getElementById("turing-sandbox-buttons").style.display = "none";
+                userInput.value = "";
+                userInput.focus();
+            } else {
+                turiSandboxErrorCount++;
+                error.innerHTML = "Código incorreto. Tente novamente.";
+                if (turiSandboxErrorCount >= 5) {
+                    errorCount.innerHTML = 'Dica: nome = input()  /  print("Olá, ", nome)';
+                }
+                playErrorSound();
+            }
+        });
+
+        document.getElementById("turing-sandbox-user-input").addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                const nome = document.getElementById("turing-sandbox-user-input").value;
+                document.getElementById("turing-sandbox-result-area").innerHTML =
+                    `<span style="color:#aaa">&gt; ${nome}</span>\nOlá,  ${nome}`;
+                document.getElementById("turing-sandbox-input-row").style.display = "none";
+                document.getElementById("turing-sandbox-buttons").style.display = "flex";
+            }
+        });
+
+        document.getElementById("turing-sandbox-exit").addEventListener("click", () => {
+            document.getElementById("turing-sandbox").style.display = "none";
+            adaSceneState = "turing_farewell";
+            typeWriter(turingFarewellText(), adaDialogTextElement, 30, () => {
+                pressToProceed.style.display = "block";
+                canProceed = true;
+            });
+        });
+
         document.addEventListener("keydown", (event) => {
             if (event.code === "Space") {
                 if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -1158,6 +1760,121 @@ ano = 1842</div>
                             babbageErrorCount = 0;
                             document.getElementById("babbage-hint").style.display = "none";
                         }
+                        else if (adaSceneState === "turing_intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogBox.classList.remove("centered-dialog");
+                            npcContainer.style.display = "flex";
+                            npcContainer.classList.add("imageFadeIn");
+                            document.getElementById("npc-ada-photo").src = "https://i.ibb.co/rfLCYFhK/turing-foto.png";
+                            document.getElementById("npc-name-label").textContent = "Alan Turing";
+                            adaDialogBox.style.display = "flex";
+                            setTimeout(() => {
+                                adaDialogTextElement.style.fontStyle = "italic";
+                                typeWriter(turingWhisperText, adaDialogTextElement, 30, () => {
+                                    document.getElementById("turing-quiz").style.display = "flex";
+                                    adaSceneState = "turing_choice";
+                                });
+                            }, 600);
+                        }
+                        else if (adaSceneState === "turing_listened_part2") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogTextElement.style.fontStyle = "normal";
+                            typeWriter(turingListenedText2(), adaDialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "turing_input_lesson";
+                            });
+                        }
+                        else if (adaSceneState === "turing_ignored_part2") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogTextElement.style.fontStyle = "normal";
+                            typeWriter(turingIgnoredText2(), adaDialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "turing_input_lesson";
+                            });
+                        }
+                        else if (adaSceneState === "turing_input_lesson") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            turingInputQuizErrorCount = 0;
+                            document.getElementById("turing-input-quiz-feedback").innerHTML = "";
+                            document.getElementById("turing-input-quiz-hint").style.display = "none";
+                            typeWriter(turingInputLessonText, adaDialogTextElement, 30, () => {
+                                document.getElementById("turing-input-quiz").style.display = "flex";
+                            });
+                        }
+                        else if (adaSceneState === "turing_input_done") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            turingPrintErrorCount = 0;
+                            document.getElementById("turing-print-feedback").innerHTML = "";
+                            document.getElementById("turing-print-hint").style.display = "none";
+                            document.getElementById("turing-print-screen").value = "";
+                            typeWriter(turingPrintLessonText(), adaDialogTextElement, 30, () => {
+                                document.getElementById("turing-print-monitor").style.display = "flex";
+                                document.getElementById("turing-print-screen").focus();
+                            });
+                        }
+                        else if (adaSceneState === "turing_farewell") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaSceneState = "turing_done";
+                            // ponto de parada — próxima cena a implementar
+                        }
+                        else if (adaSceneState === "babbage_farewell") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            startTimeTravel2();
+                        }
+                        else if (adaSceneState === "return_machine_text") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(adjustingText, dialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "return_machine_adjusting";
+                            });
+                        }
+                        else if (adaSceneState === "return_machine_adjusting") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            dialogBox.style.display = "none";
+                            imageContainer.style.display = "none";
+                            blackOverlay.style.transition = "opacity 0.5s ease";
+                            blackOverlay.style.opacity = "1";
+                            blackOverlay.style.backgroundColor = "rgba(0,0,0,1)";
+
+                            setTimeout(() => {
+                                travelScreen.style.display = "flex";
+                                blackOverlay.style.display = "none";
+                                typeWriter("Viajando pelo tempo", travelTextElement, 50, () => {
+                                    animateDots();
+                                    let duration = 1000;
+                                    let startTime = Date.now();
+                                    let shuffleInterval = setInterval(() => {
+                                        let elapsed = Date.now() - startTime;
+                                        if (elapsed < duration) {
+                                            yearDisplay.innerHTML = Math.floor(1000 + Math.random() * 9000);
+                                        } else {
+                                            clearInterval(shuffleInterval);
+                                            yearDisplay.innerHTML = "Milton Keynes, 1942";
+                                        }
+                                    }, 50);
+
+                                    setTimeout(() => {
+                                        clearInterval(dotsInterval);
+                                        travelTextElement.innerHTML = "";
+                                        yearDisplay.innerHTML = "";
+                                        setTimeout(() => { loadTuringScene(); }, 1000);
+                                    }, 3000);
+                                });
+                                adaSceneState = "travel2_done";
+                            }, 600);
+                        }
                     } else {
                         if (currentTextIndex === 0) {
                             canProceed = false;
@@ -1199,7 +1916,9 @@ ano = 1842</div>
                 "https://i.ibb.co/FLt2jgZ8/Your-paragraph-text-8.png",
                 "https://i.ibb.co/397Vh80L/babbage-2.png",
                 "https://i.ibb.co/G4tKhw42/Your-paragraph-text.png",
-                "https://i.ibb.co/snTL10h/dica-babbage.png"
+                "https://i.ibb.co/snTL10h/dica-babbage.png",
+                "https://i.ibb.co/jpVV63f/turing-fundo.png",
+                "https://i.ibb.co/rfLCYFhK/turing-foto.png",
             ];
             imagesToPreload.forEach(src => {
                 const img = new Image();
@@ -1238,6 +1957,23 @@ ano = 1842</div>
             showSolutionBtn.style.display = "none";
             solutionHint.style.display = "none";
             document.getElementById("left-image-panel").style.display = "none";
+            document.getElementById("turing-input-quiz").style.display = "none";
+            document.getElementById("turing-input-quiz-feedback").innerHTML = "";
+            document.getElementById("turing-input-quiz-hint").style.display = "none";
+            document.getElementById("turing-print-monitor").style.display = "none";
+            document.getElementById("turing-sandbox").style.display = "none";
+            document.getElementById("turing-sandbox-code").value = "";
+            document.getElementById("turing-sandbox-result-area").innerHTML = "";
+            document.getElementById("turing-sandbox-input-row").style.display = "none";
+            document.getElementById("turing-sandbox-buttons").style.display = "none";
+            document.getElementById("turing-sandbox-error").innerHTML = "";
+            document.getElementById("turing-sandbox-error-count").innerHTML = "";
+            turiSandboxErrorCount = 0;
+            document.getElementById("turing-print-screen").value = "";
+            document.getElementById("turing-print-feedback").innerHTML = "";
+            document.getElementById("turing-print-hint").style.display = "none";
+            turingPrintErrorCount = 0;
+            turingInputQuizErrorCount = 0;
             babbageMonitor.style.display = "none";
             babbageMonitorScreen.value = "";
             babbageFeedback.innerHTML = "";
@@ -1245,6 +1981,9 @@ ano = 1842</div>
             babbageQuiz.style.display = "none";
             babbageQuizFeedback.innerHTML = "";
             babbageQuizHint.style.display = "none";
+            document.getElementById("turing-quiz").style.display = "none";
+            adaDialogTextElement.style.fontStyle = "normal";
+            turingChoice = "";
         }
 
         function devGoto(scene) {
@@ -1402,6 +2141,116 @@ ano = 1842</div>
                 babbageQuizFeedback.innerHTML = "";
                 babbageQuizHint.style.display = "none";
                 babbageQuiz.style.display = "flex";
+            } else if (scene === 'return-machine') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "babbage_farewell";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/397Vh80L/babbage-2.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/G4tKhw42/Your-paragraph-text.png";
+                document.getElementById("npc-name-label").textContent = "Charles Babbage";
+                adaDialogBox.style.display = "flex";
+                const farewellPreview = `Observe! O visor está mostrando meu nome. Obrigado pela ajuda, Forasteiro! Vou continuar trabalhando nesse projeto, ainda tenho muito pela frente, espero que consiga acabar ainda esse ano. Adeus, meu amigo!`;
+                typeWriter(farewellPreview, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'turing-intro') {
+                isAtAdaScene = true;
+                adaSceneState = "turing_intro";
+                npcImage.src = "https://i.ibb.co/jpVV63f/turing-fundo.png";
+                imageContainer.style.display = "flex";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(turingIntroText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'turing-whisper') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "turing_intro";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/jpVV63f/turing-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(turingIntroText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'turing-input') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "turing_input_lesson";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/jpVV63f/turing-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/rfLCYFhK/turing-foto.png";
+                document.getElementById("npc-name-label").textContent = "Alan Turing";
+                adaDialogBox.style.display = "flex";
+                pressToProceed.style.display = "block";
+                canProceed = true;
+            } else if (scene === 'turing-print') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "turing_input_done";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/jpVV63f/turing-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/rfLCYFhK/turing-foto.png";
+                document.getElementById("npc-name-label").textContent = "Alan Turing";
+                adaDialogBox.style.display = "flex";
+                pressToProceed.style.display = "block";
+                canProceed = true;
+            } else if (scene === 'turing-sandbox') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "turing_print_done";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/jpVV63f/turing-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/rfLCYFhK/turing-foto.png";
+                document.getElementById("npc-name-label").textContent = "Alan Turing";
+                adaDialogBox.style.display = "flex";
+                document.getElementById("turing-sandbox-code").value = "";
+                document.getElementById("turing-sandbox-result-area").innerHTML = "";
+                document.getElementById("turing-sandbox-input-row").style.display = "none";
+                document.getElementById("turing-sandbox-buttons").style.display = "none";
+                document.getElementById("turing-sandbox-error").innerHTML = "";
+                document.getElementById("turing-sandbox-error-count").innerHTML = "";
+                turiSandboxErrorCount = 0;
+                typeWriter(turingFarewellIntroText(), adaDialogTextElement, 30, () => {
+                    document.getElementById("turing-sandbox").style.display = "flex";
+                    document.getElementById("turing-sandbox-code").focus();
+                });
         }
     }
         // FIM DEV TOOL
@@ -1428,6 +2277,12 @@ ano = 1842</div>
         <button onclick="devGoto('babbage-variable')"style="font-size:11px; cursor:pointer;">6.3 Babbage variável</button>
         <button onclick="devGoto('babbage-map')"  style="font-size:11px; cursor:pointer;">6.4 Babbage mapa</button>
         <button onclick="devGoto('babbage-quiz')" style="font-size:11px; cursor:pointer;">6.5 Babbage quiz</button>
+        <button onclick="devGoto('return-machine')" style="font-size:11px; cursor:pointer;">7.0 Retorno máquina</button>
+        <button onclick="devGoto('turing-intro')" style="font-size:11px; cursor:pointer;">8.0 Chegada Turing</button>
+        <button onclick="devGoto('turing-whisper')" style="font-size:11px; cursor:pointer;">8.1 Turing sussurro</button>
+        <button onclick="devGoto('turing-input')" style="font-size:11px; cursor:pointer;">8.2 Turing input quiz</button>
+        <button onclick="devGoto('turing-print')" style="font-size:11px; cursor:pointer;">8.3 Turing print</button>
+        <button onclick="devGoto('turing-sandbox')" style="font-size:11px; cursor:pointer;">8.4 Turing sandbox</button>
 
     </div>
     <!-- FIM DEV TOOL -->
