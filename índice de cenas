@@ -38,30 +38,38 @@
             6.2.4.1. Quiz "Como podemos imprimir..." + selecionar resposta certa
         6.2.5. ["Observe! O visor..."]
             6.2.5.1. Espaço para pular
-7. Conversa com Alan Turing
-    7.1. ["Dessa vez, a máquina..."]
+7. Transição: entrada na máquina do tempo
+    7.1. ["Você ficou empolgado após conversar..."]
         7.1.1. Espaço para pular
-    7.2. Foto Turing + balões  de fala
-        7.2.1. ["(Sussurrando): ..."]
-            7.2.1.1. Quiz "O que você faz?"
-                7.2.1.1.1. Se responder "Diz: "O senhor...""]:
-                    7.2.1.1.1.1. ["Uma fita de entrada..."]
-                        7.2.1.1.1.1.1. Espaço para pular
-                    7.2.1.1.1.2. ["Me parece que..."]
-                        7.2.1.1.1.2.1. Espaço para pular
-                7.2.1.1.2. Se responder "Não faz nada"
-                    7.2.1.1.2.1. ["Oh, perdão,..."]
-                        7.2.1.1.2.1.1. Espaço para pular
-                    7.2.1.1.2.2. ["A propósito,..."]
-                        7.2.1.1.2.2.1. Espaço para pular
-        7.2.2. ["Minha máquina, a Bombe,..."]
-            7.2.2.1. Quiz "Como usamos o input()..."
-        7.2.3. ["Ótimo, <nome>! Agora que temos..."]
-            7.2.3.1. Mini terminal de uma linha para escrever print("Olá,",nome)
-        7.2.4. ["Está mandando bem, ..."]
-            7.2.4.1. Terminal com programação e resultado para testar o input() junto com o print()
-        7.2.5. ["Fascinante, <nome>!..."]
-            7.2.5.1. Espaço para pular
+    7.2. ["Ajustando as coordenadas..."]
+        7.2.1. Espaço para pular
+8. Cena de viagem com os textos abaixo na mesma página
+    8.1. ["Viajando pelo tempo..."]
+    8.2. ["Milton Keynes, 1942"]
+9. Conversa com Alan Turing
+    9.1. ["Dessa vez, a máquina..."]
+        9.1.1. Espaço para pular
+    9.2. Foto Turing + balões  de fala
+        9.2.1. ["(Sussurrando): ..."]
+            9.2.1.1. Quiz "O que você faz?"
+                9.2.1.1.1. Se responder "Diz: "O senhor...""]:
+                    9.2.1.1.1.1. ["Uma fita de entrada..."]
+                        9.2.1.1.1.1.1. Espaço para pular
+                    9.2.1.1.1.2. ["Me parece que..."]
+                        9.2.1.1.1.2.1. Espaço para pular
+                9.2.1.1.2. Se responder "Não faz nada"
+                    9.2.1.1.2.1. ["Oh, perdão,..."]
+                        9.2.1.1.2.1.1. Espaço para pular
+                    9.2.1.1.2.2. ["A propósito,..."]
+                        9.2.1.1.2.2.1. Espaço para pular
+        9.2.2. ["Minha máquina, a Bombe,..."]
+            9.2.2.1. Quiz "Como usamos o input()..."
+        9.2.3. ["Ótimo, <nome>! Agora que temos..."]
+            9.2.3.1. Mini terminal de uma linha para escrever print("Olá,",nome)
+        9.2.4. ["Está mandando bem, ..."]
+            9.2.4.1. Terminal com programação e resultado para testar o input() junto com o print()
+        9.2.5. ["Fascinante, <nome>!..."]
+            9.2.5.1. Espaço para pular
 
 
 
