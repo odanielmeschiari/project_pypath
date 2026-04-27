@@ -11,7 +11,11 @@
     <link rel="preload" as="image" href="https://i.ibb.co/snTL10h/dica-babbage.png">
     <link rel="preload" as="image" href="https://i.ibb.co/jpVV63f/turing-fundo.png">
     <link rel="preload" as="image" href="https://i.ibb.co/rfLCYFhK/turing-foto.png">
-    <link rel="preload" as="image" href="https://i.ibb.co/qLj8mrq5/dica-turing.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/4RVvww05/dica-turing.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/b5rXL2gP/pascal-fundo.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/4gnzNWK0/pascal-perfil.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/qY1kYhnj/dica-pascal.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/6cp3NL5w/pascalina.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -972,7 +976,105 @@ ano = 1842</div>
         z-index: 10000;
         animation: fadeIn 0.5s forwards;
     ">
-        <img src="https://i.ibb.co/qLj8mrq5/dica-turing.png" alt="dica-turing" style="max-width: 480px; height: auto;">
+        <img src="https://i.ibb.co/4RVvww05/dica-turing.png" alt="dica-turing" style="max-width: 480px; height: auto;">
+    </div>
+
+    <div id="pascal-images" style="
+        display: none;
+        position: fixed;
+        bottom: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10000;
+        gap: 60px;
+        align-items: flex-end;
+        animation: fadeIn 0.5s forwards;
+    ">
+        <img src="https://i.ibb.co/6cp3NL5w/pascalina.png" alt="pascalina" style="max-height: 340px; width: auto;">
+        <img src="https://i.ibb.co/qY1kYhnj/dica-pascal.png" alt="pascal-dica" style="max-height: 340px; width: auto;">
+    </div>
+
+    <!-- PASCAL QUIZZES -->
+    <div id="pascal-quiz1" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #8acebd; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:420px; animation:fadeIn 0.4s forwards;">
+        <div id="pascal-quiz1-question" style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">Como podemos começar esse programa?</div>
+        <div id="pascal-quiz1-options" style="display:flex; flex-direction:column; gap:8px;">
+            <button class="quiz-option" data-id="a">a) número = número</button>
+            <button class="quiz-option" data-id="b">b) número = input()</button>
+            <button class="quiz-option" data-id="c">c) número = 10</button>
+            <button class="quiz-option" data-id="d">d) número = número * 3</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; font-family:var(--ff-p); font-size:15px;">
+            <span id="pascal-quiz1-feedback"></span>
+            <span id="pascal-quiz1-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: b) número = input()</span>
+        </div>
+    </div>
+
+    <div id="pascal-quiz2" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #8acebd; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:420px; animation:fadeIn 0.4s forwards;">
+        <div id="pascal-quiz2-question" style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">Ótimo! E agora?</div>
+        <div id="pascal-quiz2-options" style="display:flex; flex-direction:column; gap:8px;">
+            <button class="quiz-option" data-id="a">a) número = 3</button>
+            <button class="quiz-option" data-id="b">b) número = número+3</button>
+            <button class="quiz-option" data-id="c">c) número = número*3</button>
+            <button class="quiz-option" data-id="d">d) número = input()</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; font-family:var(--ff-p); font-size:15px;">
+            <span id="pascal-quiz2-feedback"></span>
+            <span id="pascal-quiz2-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: c) número = número*3</span>
+        </div>
+    </div>
+
+    <div id="pascal-quiz3" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #8acebd; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:420px; animation:fadeIn 0.4s forwards;">
+        <div id="pascal-quiz3-question" style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">Perfeito! Como podemos terminar esse código?</div>
+        <div id="pascal-quiz3-options" style="display:flex; flex-direction:column; gap:8px;">
+            <button class="quiz-option" data-id="a">a) print(número)</button>
+            <button class="quiz-option" data-id="b">b) print(número+2)</button>
+            <button class="quiz-option" data-id="c">c) print(número*3)</button>
+            <button class="quiz-option" data-id="d">d) print(número**3)</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; font-family:var(--ff-p); font-size:15px;">
+            <span id="pascal-quiz3-feedback"></span>
+            <span id="pascal-quiz3-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: a) print(número)</span>
+        </div>
+    </div>
+
+    <div id="pascal-farewell-quiz" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #8acebd; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:420px; animation:fadeIn 0.4s forwards;">
+        <div style="background:#000; border:2px solid #00ff66; border-radius:6px; padding:12px 16px; font-family:'Courier New',monospace; font-size:14px; color:#00ff66; line-height:1.8; white-space:pre;">número1 = 6
+número2 = 4
+número3 = número1*número2
+resultado = número3+1
+print(resultado)</div>
+        <div style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">O que será impresso?</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <button class="quiz-option" data-id="a">a) 24</button>
+            <button class="quiz-option" data-id="b">b) 25</button>
+            <button class="quiz-option" data-id="c">c) 6</button>
+            <button class="quiz-option" data-id="d">d) 4</button>
+            <button class="quiz-option" data-id="e">e) 11</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; font-family:var(--ff-p); font-size:15px;">
+            <span id="pascal-farewell-quiz-feedback"></span>
+            <span id="pascal-farewell-quiz-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: b) 25</span>
+        </div>
+    </div>
+
+    <!-- PASCAL SANDBOX -->
+    <div id="pascal-sandbox" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); width:560px; z-index:10002; flex-direction:column; filter:drop-shadow(0 0 18px #00ff6644); animation:fadeIn 0.4s forwards;">
+        <div class="sandbox-label">▶ Programação</div>
+        <textarea id="pascal-sandbox-code" placeholder="Digite o código aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00ff66; resize:none; outline:none; width:100%; height:90px; box-sizing:border-box; caret-color:#00ff66; line-height:1.6;"></textarea>
+        <div style="background:#111; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-bottom:none; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="sandbox-btn" id="pascal-sandbox-compile">Compilar</button>
+            <span id="pascal-sandbox-error" style="font-family:var(--ff-p); font-size:14px; color:red;"></span>
+            <span id="pascal-sandbox-error-count" style="font-family:var(--ff-p); font-size:13px; color:#ffd700;"></span>
+        </div>
+        <div class="sandbox-label" style="border-top:1px solid #00ff6633;">▶ Resultado</div>
+        <div id="pascal-sandbox-result-area" style="background:#000; border:2px solid #00ff66; border-top:none; padding:10px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00ff66; min-height:36px; box-sizing:border-box; line-height:1.6; white-space:pre-wrap;"></div>
+        <div id="pascal-sandbox-input-row" style="display:none; background:#000; border:2px solid #00ff66; border-top:none; padding:6px 14px; align-items:center; gap:8px; font-family:'Courier New',monospace; font-size:15px; color:#00ff66;">
+            <span>&gt;&nbsp;</span>
+            <input id="pascal-sandbox-user-input" type="text" autocomplete="off" spellcheck="false" placeholder="digite aqui..." style="background:transparent; border:none; border-bottom:1px solid #00ff66; outline:none; font-family:'Courier New',monospace; font-size:15px; color:#00ff66; caret-color:#00ff66; flex:1;">
+        </div>
+        <div id="pascal-sandbox-buttons" style="display:none; background:#111; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-radius:0 0 8px 8px; padding:8px 14px; gap:10px; align-items:center;">
+            <button class="sandbox-btn" id="pascal-sandbox-exit">Sair</button>
+        </div>
     </div>
 
     <div id="travel-screen">
@@ -1117,6 +1219,17 @@ ano = 1842</div>
         const turingFarewellIntroText = () => `Está mandando bem, ${playerNickname}! Agora, vou deixar você testar o código de input() e print() que fizemos. Digite novamente o código na tela de programação e veja o resultado embaixo. Você pode testar para quaisquer entradas que colocar, e verá que funciona!`;
         const turingFarewellText = () => `Fascinante, ${playerNickname}! Uma máquina que interage! Agora, se me der licença, tenho muito trabalho pela frente. O tempo é o nosso inimigo mais cruel. Foi bom conversar com você, agora minhas ideias estão mais claras.`;
 
+        const turingTransitionText = "A conversa com Turing te deixou pensativo. Você está aprendendo cada vez mais de programação. Você precisa resolver um cálculo, e para isso usou a calculadora. Enquanto usava, pensou: \"Como essa coisa foi feita?\" Daí você teve uma ideia de uma próxima visita...";
+
+        const pascalIntroText = "Você está na França, em 1642. Você vê um jovem cansado operando uma pequena caixa de madeira e metal. Curioso, você pergunta a ele do que se trata aquele mecanismo.";
+        const pascalMeetingText = () => `Bom dia, eu sou Blaise Pascal, qual é o seu nome? Prazer em te conhecer, ${playerNickname}! Ótimo dia para passear no mercado, não acha?`;
+        const pascalPascalinaText = () => `Ah, isso? Meu pai trabalha com impostos e meu cérebro já não aguenta mais tanta aritmética, foi por isso que eu criei esse aparelho: a Pascalina. Legal, né? Ela realiza soma e subtração, mas, com a repetição dessas duas operações pode realizar multiplicação e divisão também.`;
+
+        const pascalChallengeText = () => `Enfim, ${playerNickname}, gostaria que você me auxiliasse em um programa que receba um valor do usuário guardando-a na variável "número", multiplique o valor da variável por 3 e imprima este novo valor. Vamos fazer isso em 3 linhas.`;
+        const pascalSandboxIntroText = `Isso mesmo! Vamos testar seu código para ver se está funcionando. Teste com outras operações também, como somas, divisões e subtrações.`;
+        const pascalFarewellQuizText = `Perfeito, parabéns! Antes de você ir só queria pedir sua ajuda em mais uma coisa, estou com alguns resultados para analisar e preciso da sua ajuda. No código a seguir, qual será o valor impresso na tela?`;
+        const pascalFarewellText = `Magnífico! Com essas operações, você transformou uma simples caixa de guardar dados em uma verdadeira calculadora. A aritmética é a base para compreender máquinas mais complexas. Obrigado pela ajuda!`;
+
         const targetCodes = [
             'for(i = 0; i < array; i++){}', 
             'import brainLOL',
@@ -1137,6 +1250,11 @@ ano = 1842</div>
         let turingInputQuizErrorCount = 0;
         let turingPrintErrorCount = 0;
         let turiSandboxErrorCount = 0;
+        let pascalQuiz1ErrorCount = 0;
+        let pascalQuiz2ErrorCount = 0;
+        let pascalQuiz3ErrorCount = 0;
+        let pascalFarewellQuizErrorCount = 0;
+        let pascalSandboxErrorCount = 0;
 
         // --- Lógica de Drag and Drop ---
         let draggedItem = null;
@@ -1274,6 +1392,34 @@ ano = 1842</div>
             }, 500);
         }
 
+        function loadPascalScene() {
+            travelScreen.style.display = "none";
+            npcImage.src = "https://i.ibb.co/b5rXL2gP/pascal-fundo.png";
+            npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+            void npcImage.offsetWidth;
+            npcImage.classList.add("sceneFadeIn");
+            imageContainer.style.display = "flex";
+
+            blackOverlay.className = "";
+            blackOverlay.style.display = "block";
+            blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+            blackOverlay.style.opacity = "1";
+            blackOverlay.style.transition = "none";
+
+            setTimeout(() => {
+                isAtAdaScene = true;
+                adaSceneState = "pascal_intro";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(pascalIntroText, adaDialogTextElement, 30, () => {
+                    setTimeout(() => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                    }, 500);
+                });
+            }, 500);
+        }
+
         function startTimeTravel() {
             npcImage.classList.add("fadeOutScene");
             blackOverlay.classList.add("fadeOutScene");
@@ -1351,6 +1497,44 @@ ano = 1842</div>
             }, 3500);
         }
 
+        function startTimeTravel3() {
+            blackOverlay.style.display = "block";
+            blackOverlay.style.transition = "opacity 0.5s ease";
+            setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
+
+            setTimeout(() => {
+                imageContainer.style.display = "none";
+                dialogBox.style.display = "none";
+                travelScreen.style.display = "flex";
+                blackOverlay.className = "";
+                blackOverlay.style.cssText = "";
+
+                typeWriter("Viajando pelo tempo", travelTextElement, 50, () => {
+                    animateDots();
+                    let duration = 1000;
+                    let startTime = Date.now();
+                    let shuffleInterval = setInterval(() => {
+                        let elapsed = Date.now() - startTime;
+                        if (elapsed < duration) {
+                            yearDisplay.innerHTML = Math.floor(1000 + Math.random() * 9000);
+                        } else {
+                            clearInterval(shuffleInterval);
+                            yearDisplay.innerHTML = "Rouen, 1642";
+                        }
+                    }, 50);
+
+                    setTimeout(() => {
+                        clearInterval(dotsInterval);
+                        travelTextElement.innerHTML = "";
+                        yearDisplay.innerHTML = "";
+                        setTimeout(() => {
+                            loadPascalScene();
+                        }, 1000);
+                    }, 3000);
+                });
+            }, 600);
+        }
+
         inputName.addEventListener("input", () => {
             const currentValue = inputName.value;
             if (targetText.startsWith(currentValue)) {
@@ -1385,7 +1569,6 @@ ano = 1842</div>
                 playerNickname = userNameInput.value;
                 userNameContainer.style.display = "none";
                 let response = `Prazer em te conhecer, ${playerNickname}! Você sabe o que são algoritmos? De forma resumida, são uma sequência clara de passos para resolver um problema. Algoritmos existem há muito tempo: matemáticos antigos já criavam sequências de passos para resolver problemas, como fazer contas ou encontrar padrões em números.`;
-                
                 typeWriter(response, adaDialogTextElement, 30, () => {
                     setTimeout(() => {
                         pressToProceed.style.display = "block";
@@ -1428,6 +1611,244 @@ ano = 1842</div>
                     showSolutionBtn.style.display = "block";
                 }
             }
+        });
+
+        // --- Lógica dos Quizzes Pascal ---
+        document.getElementById("pascal-quiz1").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            if (e.target.dataset.id === "b") {
+                e.target.style.background = "#00cc44";
+                e.target.style.color = "#000";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("pascal-quiz1").style.display = "none";
+                    pascalQuiz2ErrorCount = 0;
+                    document.getElementById("pascal-quiz2-feedback").innerHTML = "";
+                    document.getElementById("pascal-quiz2-hint").style.display = "none";
+                    typeWriter("Ótimo! E agora?", adaDialogTextElement, 30, () => {
+                        document.getElementById("pascal-quiz2").style.display = "flex";
+                    });
+                }, 800);
+            } else {
+                playErrorSound();
+                pascalQuiz1ErrorCount++;
+                document.getElementById("pascal-quiz1-feedback").style.color = "red";
+                document.getElementById("pascal-quiz1-feedback").innerHTML = "Tente novamente.";
+                if (pascalQuiz1ErrorCount >= 5) {
+                    document.getElementById("pascal-quiz1-hint").style.display = "inline";
+                }
+            }
+        });
+
+        document.getElementById("pascal-quiz2").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            if (e.target.dataset.id === "c") {
+                e.target.style.background = "#00cc44";
+                e.target.style.color = "#000";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("pascal-quiz2").style.display = "none";
+                    pascalQuiz3ErrorCount = 0;
+                    document.getElementById("pascal-quiz3-feedback").innerHTML = "";
+                    document.getElementById("pascal-quiz3-hint").style.display = "none";
+                    typeWriter("Perfeito! Como podemos terminar esse código?", adaDialogTextElement, 30, () => {
+                        document.getElementById("pascal-quiz3").style.display = "flex";
+                    });
+                }, 800);
+            } else {
+                playErrorSound();
+                pascalQuiz2ErrorCount++;
+                document.getElementById("pascal-quiz2-feedback").style.color = "red";
+                document.getElementById("pascal-quiz2-feedback").innerHTML = "Tente novamente.";
+                if (pascalQuiz2ErrorCount >= 5) {
+                    document.getElementById("pascal-quiz2-hint").style.display = "inline";
+                }
+            }
+        });
+
+        document.getElementById("pascal-quiz3").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            if (e.target.dataset.id === "a") {
+                e.target.style.background = "#00cc44";
+                e.target.style.color = "#000";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("pascal-quiz3").style.display = "none";
+                    typeWriter(pascalSandboxIntroText, adaDialogTextElement, 30, () => {
+                        document.getElementById("pascal-sandbox-code").value = "";
+                        document.getElementById("pascal-sandbox-result-area").innerHTML = "";
+                        document.getElementById("pascal-sandbox-input-row").style.display = "none";
+                        document.getElementById("pascal-sandbox-buttons").style.display = "none";
+                        document.getElementById("pascal-sandbox-error").innerHTML = "";
+                        document.getElementById("pascal-sandbox-error-count").innerHTML = "";
+                        pascalSandboxErrorCount = 0;
+                        document.getElementById("pascal-sandbox").style.display = "flex";
+                        document.getElementById("pascal-sandbox-code").focus();
+                    });
+                }, 800);
+            } else {
+                playErrorSound();
+                pascalQuiz3ErrorCount++;
+                document.getElementById("pascal-quiz3-feedback").style.color = "red";
+                document.getElementById("pascal-quiz3-feedback").innerHTML = "Tente novamente.";
+                if (pascalQuiz3ErrorCount >= 5) {
+                    document.getElementById("pascal-quiz3-hint").style.display = "inline";
+                }
+            }
+        });
+
+        document.getElementById("pascal-farewell-quiz").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            if (e.target.dataset.id === "b") {
+                e.target.style.background = "#00cc44";
+                e.target.style.color = "#000";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("pascal-farewell-quiz").style.display = "none";
+                    typeWriter(pascalFarewellText, adaDialogTextElement, 30, () => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                        adaSceneState = "pascal_done_final";
+                    });
+                }, 800);
+            } else {
+                playErrorSound();
+                pascalFarewellQuizErrorCount++;
+                document.getElementById("pascal-farewell-quiz-feedback").style.color = "red";
+                document.getElementById("pascal-farewell-quiz-feedback").innerHTML = "Tente novamente.";
+                if (pascalFarewellQuizErrorCount >= 5) {
+                    document.getElementById("pascal-farewell-quiz-hint").style.display = "inline";
+                }
+            }
+        });
+
+        // --- Lógica do Sandbox Pascal ---
+        document.getElementById("pascal-sandbox-compile").addEventListener("click", () => {
+            const code = document.getElementById("pascal-sandbox-code").value;
+            const resultArea = document.getElementById("pascal-sandbox-result-area");
+            const inputRow = document.getElementById("pascal-sandbox-input-row");
+            const buttons = document.getElementById("pascal-sandbox-buttons");
+            const errorEl = document.getElementById("pascal-sandbox-error");
+            const errorCountEl = document.getElementById("pascal-sandbox-error-count");
+
+            resultArea.innerHTML = "";
+            inputRow.style.display = "none";
+            buttons.style.display = "none";
+            errorEl.innerHTML = "";
+
+            const hasInput = /input\s*\(/.test(code);
+            const printMatches = [...code.matchAll(/print\s*\((.+)\)/g)];
+
+            if (printMatches.length === 0 && !hasInput) {
+                pascalSandboxErrorCount++;
+                errorEl.innerHTML = "Nenhum print() encontrado.";
+                errorCountEl.innerHTML = pascalSandboxErrorCount > 1 ? `(${pascalSandboxErrorCount} erros)` : "";
+                return;
+            }
+
+            if (hasInput) {
+                resultArea.innerHTML = "<em style='color:#00ff6688'>Aguardando entrada...</em>";
+                inputRow.style.display = "flex";
+                const userInput = document.getElementById("pascal-sandbox-user-input");
+                userInput.value = "";
+                userInput.focus();
+
+                const handler = (e) => {
+                    if (e.key !== "Enter") return;
+                    const val = userInput.value;
+                    userInput.removeEventListener("keydown", handler);
+                    inputRow.style.display = "none";
+
+                    try {
+                        let output = "";
+                        const lines = code.split("\n").map(l => l.trim()).filter(l => l);
+                        const vars = {};
+                        let inputUsed = false;
+                        for (const line of lines) {
+                            if (/^\s*#/.test(line)) continue;
+                            const assignInput = line.match(/^(\w+)\s*=\s*input\s*\(/);
+                            if (assignInput) {
+                                const numVal = parseFloat(val);
+                                vars[assignInput[1]] = isNaN(numVal) ? val : numVal;
+                                inputUsed = true;
+                                continue;
+                            }
+                            const assignExpr = line.match(/^(\w+)\s*=\s*(.+)$/);
+                            if (assignExpr && !line.startsWith("print")) {
+                                try {
+                                    let expr = assignExpr[2];
+                                    for (const [k, v] of Object.entries(vars)) {
+                                        expr = expr.replace(new RegExp(`\\b${k}\\b`, 'g'), v);
+                                    }
+                                    vars[assignExpr[1]] = eval(expr);
+                                } catch(e) {}
+                                continue;
+                            }
+                            const printMatch = line.match(/^print\s*\((.+)\)$/);
+                            if (printMatch) {
+                                let expr = printMatch[1].replace(/^["']|["']$/g, "");
+                                for (const [k, v] of Object.entries(vars)) {
+                                    expr = expr.replace(new RegExp(`\\b${k}\\b`, 'g'), v);
+                                }
+                                try { output += eval(`\`${expr}\``) + "\n"; } catch(e) { output += expr + "\n"; }
+                            }
+                        }
+                        resultArea.innerHTML = output || "<em style='color:#00ff6688'>sem output</em>";
+                    } catch(err) {
+                        resultArea.innerHTML = `<span style='color:red'>Erro: ${err.message}</span>`;
+                    }
+                    buttons.style.display = "flex";
+                };
+                document.getElementById("pascal-sandbox-user-input").addEventListener("keydown", handler);
+            } else {
+                try {
+                    let output = "";
+                    const lines = code.split("\n").map(l => l.trim()).filter(l => l);
+                    const vars = {};
+                    for (const line of lines) {
+                        if (/^\s*#/.test(line)) continue;
+                        const assignExpr = line.match(/^(\w+)\s*=\s*(.+)$/);
+                        if (assignExpr && !line.startsWith("print")) {
+                            let expr = assignExpr[2];
+                            for (const [k, v] of Object.entries(vars)) {
+                                expr = expr.replace(new RegExp(`\\b${k}\\b`, 'g'), v);
+                            }
+                            try { vars[assignExpr[1]] = eval(expr); } catch(e) {}
+                            continue;
+                        }
+                        const printMatch = line.match(/^print\s*\((.+)\)$/);
+                        if (printMatch) {
+                            let expr = printMatch[1].replace(/^["']|["']$/g, "");
+                            for (const [k, v] of Object.entries(vars)) {
+                                expr = expr.replace(new RegExp(`\\b${k}\\b`, 'g'), v);
+                            }
+                            try { output += eval(`\`${expr}\``) + "\n"; } catch(e) { output += expr + "\n"; }
+                        }
+                    }
+                    resultArea.innerHTML = output || "<em style='color:#00ff6688'>sem output</em>";
+                } catch(err) {
+                    resultArea.innerHTML = `<span style='color:red'>Erro: ${err.message}</span>`;
+                }
+                buttons.style.display = "flex";
+            }
+        });
+
+        document.getElementById("pascal-sandbox-exit").addEventListener("click", () => {
+            adaSceneState = "pascal_farewell_quiz";
+            document.getElementById("pascal-sandbox").style.display = "none";
+            document.getElementById("pascal-sandbox-code").value = "";
+            document.getElementById("pascal-sandbox-result-area").innerHTML = "";
+            document.getElementById("pascal-sandbox-input-row").style.display = "none";
+            document.getElementById("pascal-sandbox-buttons").style.display = "none";
+            document.getElementById("pascal-sandbox-error").innerHTML = "";
+            document.getElementById("pascal-sandbox-error-count").innerHTML = "";
+            pascalSandboxErrorCount = 0;
+            typeWriter(pascalFarewellQuizText, adaDialogTextElement, 30, () => {
+                pascalFarewellQuizErrorCount = 0;
+                document.getElementById("pascal-farewell-quiz-feedback").innerHTML = "";
+                document.getElementById("pascal-farewell-quiz-hint").style.display = "none";
+                document.getElementById("pascal-farewell-quiz").style.display = "flex";
+            });
         });
 
         showSolutionBtn.addEventListener("click", () => {
@@ -1880,8 +2301,120 @@ ano = 1842</div>
                         else if (adaSceneState === "turing_farewell") {
                             canProceed = false;
                             pressToProceed.style.display = "none";
-                            adaSceneState = "turing_done";
-                            // ponto de parada — próxima cena a implementar
+
+                            // Escurece a tela aos poucos
+                            npcImage.classList.add("fadeOutSlow");
+                            npcContainer.classList.add("fadeOutSlow");
+                            adaDialogBox.classList.add("fadeOutSlow");
+                            blackOverlay.classList.add("fadeOutSlow");
+
+                            setTimeout(() => {
+                                // Esconde elementos da cena Turing
+                                npcContainer.style.display = "none";
+                                npcContainer.classList.remove("fadeOutSlow", "imageFadeIn");
+                                adaDialogBox.style.display = "none";
+                                adaDialogBox.classList.remove("fadeOutSlow");
+                                blackOverlay.className = "";
+                                blackOverlay.style.cssText = "";
+
+                                // Exibe fundo da máquina do tempo com fade
+                                npcImage.src = "https://i.ibb.co/FkbxgnWw/m-quina-do-tempo-fundo.png";
+                                npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn", "fadeOutSlow");
+                                void npcImage.offsetWidth;
+                                npcImage.classList.add("sceneFadeIn");
+                                imageContainer.style.display = "flex";
+                                blackOverlay.classList.add("overlayFadeIn");
+
+                                // Exibe dialogBox com texto 10.1
+                                setTimeout(() => {
+                                    dialogBox.style.display = "flex";
+                                    typeWriter(turingTransitionText, dialogTextElement, 30, () => {
+                                        pressToProceed.style.display = "block";
+                                        canProceed = true;
+                                        adaSceneState = "turing_transition_adjusting";
+                                    });
+                                }, 500);
+                            }, 2000);
+                        }
+                        else if (adaSceneState === "turing_transition_adjusting") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(adjustingText, dialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "turing_transition_done";
+                            });
+                        }
+                        else if (adaSceneState === "turing_transition_done") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            startTimeTravel3();
+                        }
+                        else if (adaSceneState === "pascal_intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogBox.classList.remove("centered-dialog");
+                            npcContainer.style.display = "flex";
+                            npcContainer.classList.add("imageFadeIn");
+                            document.getElementById("npc-ada-photo").src = "https://i.ibb.co/4gnzNWK0/pascal-perfil.png";
+                            document.getElementById("npc-name-label").textContent = "Blaise Pascal";
+                            setTimeout(() => {
+                                typeWriter(pascalMeetingText(), adaDialogTextElement, 30, () => {
+                                    pressToProceed.style.display = "block";
+                                    canProceed = true;
+                                    adaSceneState = "pascal_meeting";
+                                });
+                            }, 600);
+                        }
+                        else if (adaSceneState === "pascal_meeting") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(pascalPascalinaText(), adaDialogTextElement, 30, () => {
+                                document.getElementById("pascal-images").style.display = "flex";
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "pascal_done";
+                            });
+                        }
+                        else if (adaSceneState === "pascal_done") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            document.getElementById("pascal-images").style.display = "none";
+                            document.getElementById("pascal-quiz1").style.display = "none";
+                            document.getElementById("pascal-quiz2").style.display = "none";
+                            document.getElementById("pascal-quiz3").style.display = "none";
+                            document.getElementById("pascal-farewell-quiz").style.display = "none";
+                            document.getElementById("pascal-sandbox").style.display = "none";
+                            document.getElementById("pascal-sandbox-code").value = "";
+                            document.getElementById("pascal-sandbox-result-area").innerHTML = "";
+                            document.getElementById("pascal-sandbox-input-row").style.display = "none";
+                            document.getElementById("pascal-sandbox-buttons").style.display = "none";
+                            document.getElementById("pascal-sandbox-error").innerHTML = "";
+                            document.getElementById("pascal-sandbox-error-count").innerHTML = "";
+                            pascalQuiz1ErrorCount = 0;
+                            pascalQuiz2ErrorCount = 0;
+                            pascalQuiz3ErrorCount = 0;
+                            pascalFarewellQuizErrorCount = 0;
+                            pascalSandboxErrorCount = 0;
+                            typeWriter(pascalChallengeText(), adaDialogTextElement, 30, () => {
+                                pascalQuiz1ErrorCount = 0;
+                                document.getElementById("pascal-quiz1-feedback").innerHTML = "";
+                                document.getElementById("pascal-quiz1-hint").style.display = "none";
+                                document.getElementById("pascal-quiz1").style.display = "flex";
+                            });
+                        }
+                        else if (adaSceneState === "pascal_sandbox_intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            document.getElementById("pascal-sandbox-code").value = "";
+                            document.getElementById("pascal-sandbox-result-area").innerHTML = "";
+                            document.getElementById("pascal-sandbox-input-row").style.display = "none";
+                            document.getElementById("pascal-sandbox-buttons").style.display = "none";
+                            document.getElementById("pascal-sandbox-error").innerHTML = "";
+                            document.getElementById("pascal-sandbox-error-count").innerHTML = "";
+                            pascalSandboxErrorCount = 0;
+                            document.getElementById("pascal-sandbox").style.display = "flex";
+                            document.getElementById("pascal-sandbox-code").focus();
                         }
                         else if (adaSceneState === "babbage_farewell") {
                             canProceed = false;
@@ -1977,7 +2510,11 @@ ano = 1842</div>
                 "https://i.ibb.co/snTL10h/dica-babbage.png",
                 "https://i.ibb.co/jpVV63f/turing-fundo.png",
                 "https://i.ibb.co/rfLCYFhK/turing-foto.png",
-                "https://i.ibb.co/qLj8mrq5/dica-turing.png",
+                "https://i.ibb.co/4RVvww05/dica-turing.png",
+                "https://i.ibb.co/b5rXL2gP/pascal-fundo.png",
+                "https://i.ibb.co/4gnzNWK0/pascal-perfil.png",
+                "https://i.ibb.co/qY1kYhnj/dica-pascal.png",
+                "https://i.ibb.co/6cp3NL5w/pascalina.png",
             ];
             imagesToPreload.forEach(src => {
                 const img = new Image();
@@ -2044,6 +2581,7 @@ ano = 1842</div>
             adaDialogTextElement.style.fontStyle = "normal";
             turingChoice = "";
             document.getElementById("turing-hint-image").style.display = "none";
+            document.getElementById("pascal-images").style.display = "none";
         }
 
         function devGoto(scene) {
@@ -2315,6 +2853,122 @@ ano = 1842</div>
                     document.getElementById("turing-sandbox").style.display = "flex";
                     document.getElementById("turing-sandbox-code").focus();
                 });
+            } else if (scene === 'viagem3') {
+                startTimeTravel3();
+            } else if (scene === 'turing-transition') {
+                isAtAdaScene = true;
+                adaSceneState = "turing_done";
+                npcImage.src = "https://i.ibb.co/FkbxgnWw/m-quina-do-tempo-fundo.png";
+                imageContainer.style.display = "flex";
+                blackOverlay.classList.add("overlayFadeIn");
+                dialogBox.style.display = "flex";
+                typeWriter(turingTransitionText, dialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                    adaSceneState = "turing_transition_adjusting";
+                });
+            } else if (scene === 'pascal-intro') {
+                loadPascalScene();
+            } else if (scene === 'pascal-meeting') {
+                isAtAdaScene = true;
+                adaSceneState = "pascal_meeting";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/b5rXL2gP/pascal-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/4gnzNWK0/pascal-perfil.png";
+                document.getElementById("npc-name-label").textContent = "Blaise Pascal";
+                adaDialogBox.style.display = "flex";
+                typeWriter(pascalMeetingText(), adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'pascal-pascalina') {
+                isAtAdaScene = true;
+                adaSceneState = "pascal_done";
+                document.getElementById("pascal-images").style.display = "flex";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/b5rXL2gP/pascal-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/4gnzNWK0/pascal-perfil.png";
+                document.getElementById("npc-name-label").textContent = "Blaise Pascal";
+                adaDialogBox.style.display = "flex";
+                typeWriter(pascalPascalinaText(), adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'pascal-challenge') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "pascal_done";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/b5rXL2gP/pascal-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/4gnzNWK0/pascal-perfil.png";
+                document.getElementById("npc-name-label").textContent = "Blaise Pascal";
+                adaDialogBox.style.display = "flex";
+                typeWriter(pascalChallengeText(), adaDialogTextElement, 30, () => {
+                    pascalQuiz1ErrorCount = 0;
+                    document.getElementById("pascal-quiz1-feedback").innerHTML = "";
+                    document.getElementById("pascal-quiz1-hint").style.display = "none";
+                    document.getElementById("pascal-quiz1").style.display = "flex";
+                });
+            } else if (scene === 'pascal-sandbox') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "pascal_sandbox_intro";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/b5rXL2gP/pascal-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/4gnzNWK0/pascal-perfil.png";
+                document.getElementById("npc-name-label").textContent = "Blaise Pascal";
+                adaDialogBox.style.display = "flex";
+                typeWriter(pascalSandboxIntroText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'pascal-farewell') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "pascal_sandbox_intro";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://i.ibb.co/b5rXL2gP/pascal-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/4gnzNWK0/pascal-perfil.png";
+                document.getElementById("npc-name-label").textContent = "Blaise Pascal";
+                adaDialogBox.style.display = "flex";
+                typeWriter(pascalFarewellQuizText, adaDialogTextElement, 30, () => {
+                    pascalFarewellQuizErrorCount = 0;
+                    document.getElementById("pascal-farewell-quiz-feedback").innerHTML = "";
+                    document.getElementById("pascal-farewell-quiz-hint").style.display = "none";
+                    document.getElementById("pascal-farewell-quiz").style.display = "flex";
+                });
         }
     }
         // FIM DEV TOOL
@@ -2347,6 +3001,14 @@ ano = 1842</div>
         <button onclick="devGoto('turing-input')" style="font-size:11px; cursor:pointer;">8.2 Turing input quiz</button>
         <button onclick="devGoto('turing-print')" style="font-size:11px; cursor:pointer;">8.3 Turing print</button>
         <button onclick="devGoto('turing-sandbox')" style="font-size:11px; cursor:pointer;">8.4 Turing sandbox</button>
+        <button onclick="devGoto('turing-transition')" style="font-size:11px; cursor:pointer;">10.1 Transição Turing</button>
+        <button onclick="devGoto('viagem3')" style="font-size:11px; cursor:pointer;">11. Viagem Rouen 1642</button>
+        <button onclick="devGoto('pascal-intro')"   style="font-size:11px; cursor:pointer;">12.1 Chegada Pascal</button>
+        <button onclick="devGoto('pascal-meeting')" style="font-size:11px; cursor:pointer;">12.2 Pascal fala</button>
+        <button onclick="devGoto('pascal-pascalina')" style="font-size:11px; cursor:pointer;">12.3 Pascalina</button>
+        <button onclick="devGoto('pascal-challenge')"  style="font-size:11px; cursor:pointer;">12.4 Pascal quiz</button>
+        <button onclick="devGoto('pascal-sandbox')"    style="font-size:11px; cursor:pointer;">12.5 Pascal sandbox</button>
+        <button onclick="devGoto('pascal-farewell')"   style="font-size:11px; cursor:pointer;">12.6 Pascal despedida</button>
 
     </div>
     <!-- FIM DEV TOOL -->
