@@ -11,6 +11,7 @@
     <link rel="preload" as="image" href="https://i.ibb.co/snTL10h/dica-babbage.png">
     <link rel="preload" as="image" href="https://i.ibb.co/jpVV63f/turing-fundo.png">
     <link rel="preload" as="image" href="https://i.ibb.co/rfLCYFhK/turing-foto.png">
+    <link rel="preload" as="image" href="https://i.ibb.co/qLj8mrq5/dica-turing.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -962,6 +963,18 @@ ano = 1842</div>
         </div>
     </div>
 
+    <div id="turing-hint-image" style="
+        display: none;
+        position: fixed;
+        bottom: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10000;
+        animation: fadeIn 0.5s forwards;
+    ">
+        <img src="https://i.ibb.co/qLj8mrq5/dica-turing.png" alt="dica-turing" style="max-width: 480px; height: auto;">
+    </div>
+
     <div id="travel-screen">
         <div id="travel-text"></div>
         <div id="year-display" style="font-size: 60px; margin-top: 20px; color: var(--main-color);"></div>
@@ -1087,7 +1100,7 @@ ano = 1842</div>
         const returnMachineText = "Você ficou empolgado após conversar com Ada Lovelace e Charles Babbage, e, agora, está animado para continuar. Após pensar um pouco, tem uma boa ideia...";
         const adjustingText = "Ajustando as coordenadas temporais...";
 
-        const turingIntroText = "Dessa vez, a máquina te levou para o interior de um galpão cinzento e barulhento, cheio de fios expostos e peças espalhadas. Um homem jovem, de olhar focado e muito inquieto, está de costas para você, mexendo em um painel cheio de interruptores. Você tenta se comunicar com ele, mas ele parece não dar muita importância.";
+        const turingIntroText = "Dessa vez, a máquina te levou para o interior de um galpão cinzento e barulhento, cheio de fios expostos e peças espalhadas. O local é uma sala do centro de criptoanálise Bletchley Park. Um homem jovem, de olhar focado e muito inquieto, está de costas para você, mexendo em um painel cheio de interruptores. Você tenta se comunicar com ele, mas ele parece não dar muita importância.";
 
         const turingWhisperText = "(Sussurrando): ...se a configuração dos rotores mudar a cada 24 horas, o espaço de busca se torna praticamente infinito para um ser humano! Preciso de uma máquina universal. Uma máquina que não apenas calcule, mas que responda a estímulos externos…";
 
@@ -1594,12 +1607,19 @@ ano = 1842</div>
             const inputRow = document.getElementById("turing-sandbox-input-row");
             const userInput = document.getElementById("turing-sandbox-user-input");
 
-            const normalized = code.replace(/\s+/g, "");
-            const correct =
-                /nome\s*=\s*input\(\)/.test(code) &&
-                /print\(["']Olá,?\s*["'],\s*nome\)/.test(code);
+            // Extrai nome da variável: qualquer identificador = input()
+            const inputMatch = code.match(/([a-zA-Z_]\w*)\s*=\s*input\(\)/);
+            // Extrai conteúdo dentro do print(...)
+            const printMatch = code.match(/print\((.+)\)/);
 
-            if (correct) {
+            const varName = inputMatch ? inputMatch[1] : null;
+
+            // Valida: precisa ter variavel = input() e print(...) contendo essa variável
+            const valid = varName &&
+                          printMatch &&
+                          printMatch[1].includes(varName);
+
+            if (valid) {
                 error.innerHTML = "";
                 errorCount.innerHTML = "";
                 turiSandboxErrorCount = 0;
@@ -1608,11 +1628,14 @@ ano = 1842</div>
                 document.getElementById("turing-sandbox-buttons").style.display = "none";
                 userInput.value = "";
                 userInput.focus();
+                // Guarda os dados do código para usar na execução
+                userInput.dataset.varName = varName;
+                userInput.dataset.printContent = printMatch[1];
             } else {
                 turiSandboxErrorCount++;
                 error.innerHTML = "Código incorreto. Tente novamente.";
                 if (turiSandboxErrorCount >= 5) {
-                    errorCount.innerHTML = 'Dica: nome = input()  /  print("Olá, ", nome)';
+                    errorCount.innerHTML = 'Dica: variavel = input()  /  print("texto", variavel)';
                 }
                 playErrorSound();
             }
@@ -1621,9 +1644,41 @@ ano = 1842</div>
         document.getElementById("turing-sandbox-user-input").addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
                 e.preventDefault();
-                const nome = document.getElementById("turing-sandbox-user-input").value;
+                const userValue = document.getElementById("turing-sandbox-user-input").value;
+                const userInput = document.getElementById("turing-sandbox-user-input");
+                const varName = userInput.dataset.varName;
+                const printContent = userInput.dataset.printContent;
+
+                // Separa os argumentos do print por vírgula ou +, respeitando strings
+                function parsePrintArgs(content) {
+                    const args = [];
+                    let current = "";
+                    let inString = false;
+                    let quoteChar = "";
+                    for (let i = 0; i < content.length; i++) {
+                        const ch = content[i];
+                        if (inString) {
+                            if (ch === quoteChar) { inString = false; args.push({ type: "str", value: current }); current = ""; }
+                            else { current += ch; }
+                        } else {
+                            if (ch === '"' || ch === "'") { inString = true; quoteChar = ch; current = ""; }
+                            else if (ch === ',' || ch === '+') { if (current.trim()) args.push({ type: "var", value: current.trim() }); current = ""; }
+                            else { current += ch; }
+                        }
+                    }
+                    if (current.trim()) args.push({ type: "var", value: current.trim() });
+                    return args;
+                }
+
+                const args = parsePrintArgs(printContent);
+                const output = args.map(arg => {
+                    if (arg.type === "str") return arg.value;
+                    if (arg.value === varName) return userValue;
+                    return arg.value;
+                }).join("");
+
                 document.getElementById("turing-sandbox-result-area").innerHTML =
-                    `<span style="color:#aaa">&gt; ${nome}</span>\nOlá,  ${nome}`;
+                    `<span style="color:#aaa">&gt; ${userValue}</span>\n${output}`;
                 document.getElementById("turing-sandbox-input-row").style.display = "none";
                 document.getElementById("turing-sandbox-buttons").style.display = "flex";
             }
@@ -1782,6 +1837,7 @@ ano = 1842</div>
                             pressToProceed.style.display = "none";
                             adaDialogTextElement.style.fontStyle = "normal";
                             typeWriter(turingListenedText2(), adaDialogTextElement, 30, () => {
+                                document.getElementById("turing-hint-image").style.display = "block";
                                 pressToProceed.style.display = "block";
                                 canProceed = true;
                                 adaSceneState = "turing_input_lesson";
@@ -1792,6 +1848,7 @@ ano = 1842</div>
                             pressToProceed.style.display = "none";
                             adaDialogTextElement.style.fontStyle = "normal";
                             typeWriter(turingIgnoredText2(), adaDialogTextElement, 30, () => {
+                                document.getElementById("turing-hint-image").style.display = "block";
                                 pressToProceed.style.display = "block";
                                 canProceed = true;
                                 adaSceneState = "turing_input_lesson";
@@ -1800,6 +1857,7 @@ ano = 1842</div>
                         else if (adaSceneState === "turing_input_lesson") {
                             canProceed = false;
                             pressToProceed.style.display = "none";
+                            document.getElementById("turing-hint-image").style.display = "none";
                             turingInputQuizErrorCount = 0;
                             document.getElementById("turing-input-quiz-feedback").innerHTML = "";
                             document.getElementById("turing-input-quiz-hint").style.display = "none";
@@ -1919,6 +1977,7 @@ ano = 1842</div>
                 "https://i.ibb.co/snTL10h/dica-babbage.png",
                 "https://i.ibb.co/jpVV63f/turing-fundo.png",
                 "https://i.ibb.co/rfLCYFhK/turing-foto.png",
+                "https://i.ibb.co/qLj8mrq5/dica-turing.png",
             ];
             imagesToPreload.forEach(src => {
                 const img = new Image();
@@ -1984,6 +2043,7 @@ ano = 1842</div>
             document.getElementById("turing-quiz").style.display = "none";
             adaDialogTextElement.style.fontStyle = "normal";
             turingChoice = "";
+            document.getElementById("turing-hint-image").style.display = "none";
         }
 
         function devGoto(scene) {
@@ -2185,11 +2245,15 @@ ano = 1842</div>
                 blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
                 blackOverlay.style.opacity = "1";
                 blackOverlay.style.transition = "none";
-                adaDialogBox.classList.add("centered-dialog");
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://i.ibb.co/rfLCYFhK/turing-foto.png";
+                document.getElementById("npc-name-label").textContent = "Alan Turing";
                 adaDialogBox.style.display = "flex";
-                typeWriter(turingIntroText, adaDialogTextElement, 30, () => {
-                    pressToProceed.style.display = "block";
-                    canProceed = true;
+                adaDialogTextElement.style.fontStyle = "italic";
+                typeWriter(turingWhisperText, adaDialogTextElement, 30, () => {
+                    document.getElementById("turing-quiz").style.display = "flex";
+                    adaSceneState = "turing_choice";
                 });
             } else if (scene === 'turing-input') {
                 playerNickname = "Forasteiro";
