@@ -1,0 +1,3067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/ada_fundo.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/ada_perfil.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_fundo.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_perfil.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-babbage.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/turing_fundo.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/turing_foto.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-turing.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal_fundo.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal-perfil.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-pascal.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascalina.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sixtyfour&display=swap" rel="stylesheet">    
+    <style>
+        :root{
+            --color-text: white;
+            --ff-title: "Roboto", sans-serif;
+            --ff-p: "Pixelify Sans", sans-serif;
+            --ff-info: "Sixtyfour", sans-serif;
+            --main-color: rgb(138, 206, 191);
+            --paper-color: #e1bc95;
+        }
+
+        body{
+            background-color: black;
+            height: 98vh;
+            width: 98%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        #black-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.21); 
+            z-index: 9999;
+            display: none;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .overlayFadeIn {
+            display: block !important;
+            animation: fadeInOverlay 0.5s forwards;
+        }
+
+        @keyframes fadeInOverlay {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .flicker-animation {
+            display: block !important;
+            animation: glitch-oscillation 0.08s steps(2) infinite !important;
+            background-color: black !important;
+            z-index: 100000 !important;
+            opacity: 1 !important;
+        }
+
+        @keyframes glitch-oscillation {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        #dialog-box {
+            display: none;
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            max-width: 422px;
+            max-height: 222px;
+            background-color: white;
+            border: 1px solid #5e17eb;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            text-align: justify;
+        }
+
+        #ada-dialog-box {
+            display: none; 
+            position: fixed;
+            top: 40px;
+            left: 300px; 
+            max-width: 422px;
+            min-height: 100px;
+            background-color: white;
+            border: 2px solid #bf9970; 
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 10000; 
+            justify-content: center;
+            align-items: center;
+            text-align: justify;
+            transition: all 0.5s ease;
+        }
+
+        #ada-dialog-box.centered-dialog {
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%);
+            max-width: 600px;
+        }
+
+        #dialog-text, #ada-dialog-text {
+            font-family: var(--ff-p);
+            color: black;
+            font-size: 18px;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        #press-to-proceed {
+            display: none;
+            position: absolute;
+            bottom: 30px;
+            font-family: var(--ff-p);
+            color: var(--color-text);
+            font-size: 20px;
+            z-index: 10001;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        #user-name-container {
+            display: none;
+            position: absolute;
+            bottom: 60px;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10001;
+        }
+
+        #user-name-label {
+            font-family: var(--ff-p);
+            color: white;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #userNameInput {
+            background-color: rgb(69, 76, 80);
+            border-radius: 5px;
+            border: 2px solid var(--main-color);
+            outline: none;
+            padding: 10px 25px;
+            font-family: var(--ff-p);
+            font-size: 25px;
+            color: white;
+            text-align: center;
+        }
+
+        #travel-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            z-index: 20000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: var(--ff-p);
+            font-size: 40px;
+        }
+
+        h1, h2, h3{
+            font-family: var(--ff-title);
+            color: var(--color-text);
+        }
+
+        span.logo-span{
+            color: var(--main-color);
+            font-family: var(--ff-p);
+            animation-name: animation;
+            animation-duration: 3s;
+            display: flex;
+        }
+
+        #main-text, span.logo-span{
+            font-size: 70px;
+        }
+
+        #npc-container {
+            display: none;
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            z-index: 10000;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #npc-ada-photo {
+            max-width: 250px;
+            height: auto;
+        }
+
+        #npc-name-label {
+            font-family: var(--ff-p);
+            color: white;
+            font-size: 20px;
+            margin-top: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 5px 15px;
+            border-radius: 5px;
+            border: 1px solid #bf9970;
+        }
+
+        #press-space {
+            position: absolute;
+            bottom: 30px;
+            font-family: var(--ff-p);
+            color: var(--color-text);
+            opacity: 0;
+            font-size: 20px;
+            animation: fadeIn 1s forwards;
+            animation-delay: 3s;
+        }
+
+        #final-image-container {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        #final-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+        }
+
+        #inputName {
+            background-color: rgba(20, 20, 20, 0.8);
+            border: 3px solid var(--main-color);
+            border-radius: 8px;
+            padding: 15px 30px;
+            font-family: var(--ff-p);
+            font-size: 30px;
+            color: white;
+            outline: none;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(138, 206, 191, 0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+
+        #inputName:focus {
+            box-shadow: 0 0 25px rgba(138, 206, 191, 0.5);
+            transform: scale(1.02);
+        }
+
+        .firstChain {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* --- Estilos do Desafio de Algoritmos --- */
+        #algorithm-challenge {
+            display: none;
+            position: absolute;
+            bottom: 100px;
+            width: 90%;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10002;
+            animation: fadeIn 0.8s forwards;
+        }
+
+        #solution-hint {
+            display: none;
+            color: #ffd700;
+            font-family: var(--ff-p);
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px black;
+        }
+
+        #papers-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .paper-item {
+            background-color: var(--paper-color);
+            width: 160px;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #8b6d4d;
+            box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+            font-family: var(--ff-p);
+            color: #2e1a05;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            cursor: grab;
+            user-select: none;
+            font-size: 16px;
+        }
+
+        .paper-item:active { cursor: grabbing; }
+
+        #submit-algorithm {
+            padding: 10px 30px;
+            font-family: var(--ff-p);
+            font-size: 22px;
+            background-color: var(--main-color);
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #algorithm-feedback {
+            font-family: var(--ff-p);
+            font-size: 18px;
+            margin-left: 15px;
+            vertical-align: middle;
+        }
+
+        #show-solution-btn {
+            display: none;
+            margin-top: 10px;
+            font-family: var(--ff-p);
+            font-size: 14px;
+            background: none;
+            border: 1px solid white;
+            color: white;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        /* --- Animações --- */
+        .imageFadeIn, .sceneFadeIn, .overlayFadeIn { animation: fadeIn 0.5s forwards; }
+        .fadeOutScene { animation: fadeOutAnim 1s forwards !important; }
+        .blockBody { display: none; opacity: 0; }
+        .fadeOutSlow { animation: fadeOutAnim 2s forwards !important; }
+        @keyframes fadeOutAnim { from { opacity: 1; } to { opacity: 0; } }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes animation { 0% {opacity: 0; transform: translate(0, 100px);} 100% {opacity: 1; transform: translateY(0, -100px);} }
+        @keyframes startAnimation { 0% {opacity: 1; transform: translateY(0); display: flex;} 100% {opacity: 0; transform: translateY(-300px); visibility: hidden;} }
+        @keyframes flickerImage {
+            0%   { opacity: 1; }
+            25%  { opacity: 0; }
+            50%  { opacity: 1; }
+            75%  { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .flicker-image {
+            animation: flickerImage 0.4s ease-in-out infinite !important;
+        }
+
+        #left-image-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 50vw;
+            height: 100vh;
+            justify-content: flex-start;
+            align-items: flex-end;
+            padding: 0 0 40px 40px;
+            box-sizing: border-box;
+            z-index: 10001;
+        }
+
+        #left-image-panel img {
+            width: 426px;
+            height: auto;
+        }
+        #babbage-monitor {
+            display: none;
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+            width: 520px;
+            z-index: 10002;
+            flex-direction: column;
+            gap: 0;
+            filter: drop-shadow(0 0 18px #00ff6644);
+        }
+
+        #babbage-monitor-header {
+            background: #1a1a1a;
+            border: 2px solid #00ff66;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            padding: 6px 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #babbage-monitor-header span {
+            font-family: var(--ff-p);
+            font-size: 13px;
+            color: #00ff66;
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
+
+        .monitor-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #00ff66;
+            opacity: 0.5;
+        }
+
+        #babbage-monitor-screen {
+            background: #000;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-bottom: none;
+            padding: 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: #00ff66;
+            resize: none;
+            outline: none;
+            width: 100%;
+            height: 400px;
+            box-sizing: border-box;
+            caret-color: #00ff66;
+            line-height: 1.6;
+        }
+
+        #babbage-monitor-screen::placeholder {
+            color: #00ff6644;
+        }
+
+        #babbage-monitor-footer {
+            background: #111;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-radius: 0 0 8px 8px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #babbage-submit {
+            padding: 6px 18px;
+            font-family: var(--ff-p);
+            font-size: 16px;
+            background: #000;
+            color: #00ff66;
+            border: 1px solid #00ff66;
+            border-radius: 4px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        #babbage-submit:hover {
+            background: #00ff66;
+            color: #000;
+        }
+
+        #babbage-feedback {
+            font-family: var(--ff-p);
+            font-size: 15px;
+        }
+
+        #babbage-quiz {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.92);
+            border: 2px solid #bf9970;
+            border-radius: 8px;
+            padding: 20px 28px;
+            z-index: 10003;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 420px;
+            animation: fadeIn 0.4s forwards;
+        }
+
+        #babbage-quiz-question {
+            font-family: var(--ff-p);
+            font-size: 17px;
+            color: white;
+            line-height: 1.5;
+        }
+
+        #babbage-quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            background: #111;
+            border: 1px solid #bf9970;
+            border-radius: 4px;
+            color: white;
+            font-family: var(--ff-p);
+            font-size: 16px;
+            padding: 8px 16px;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .quiz-option:hover {
+            background: #bf9970;
+            color: #000;
+        }
+
+        #babbage-quiz-footer {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: var(--ff-p);
+            font-size: 15px;
+        }
+
+        #turing-quiz {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.92);
+            border: 2px solid #8acebd;
+            border-radius: 8px;
+            padding: 20px 28px;
+            z-index: 10003;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 420px;
+            animation: fadeIn 0.4s forwards;
+        }
+
+        #turing-quiz-question {
+            font-family: var(--ff-p);
+            font-size: 17px;
+            color: white;
+            line-height: 1.5;
+        }
+
+        #turing-quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        #turing-input-quiz {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.92);
+            border: 2px solid #8acebd;
+            border-radius: 8px;
+            padding: 20px 28px;
+            z-index: 10003;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 420px;
+            animation: fadeIn 0.4s forwards;
+        }
+
+        #turing-input-quiz-question {
+            font-family: var(--ff-p);
+            font-size: 17px;
+            color: white;
+            line-height: 1.5;
+        }
+
+        #turing-input-quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        #turing-input-quiz-footer {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: var(--ff-p);
+            font-size: 15px;
+        }
+        #turing-print-monitor {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 520px;
+            z-index: 10002;
+            flex-direction: column;
+            filter: drop-shadow(0 0 18px #00ff6644);
+            animation: fadeIn 0.4s forwards;
+        }
+
+        #turing-print-monitor-header {
+            background: #1a1a1a;
+            border: 2px solid #00ff66;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            padding: 6px 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #turing-print-monitor-header span {
+            font-family: var(--ff-p);
+            font-size: 13px;
+            color: #00ff66;
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
+
+        #turing-print-screen {
+            background: #000;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-bottom: none;
+            padding: 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: #00ff66;
+            outline: none;
+            width: 100%;
+            box-sizing: border-box;
+            caret-color: #00ff66;
+        }
+
+        #turing-print-screen::placeholder {
+            color: #00ff6644;
+        }
+
+        #turing-print-monitor-footer {
+            background: #111;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-radius: 0 0 8px 8px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #turing-print-submit {
+            padding: 6px 18px;
+            font-family: var(--ff-p);
+            font-size: 16px;
+            background: #000;
+            color: #00ff66;
+            border: 1px solid #00ff66;
+            border-radius: 4px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        #turing-print-submit:hover {
+            background: #00ff66;
+            color: #000;
+        }
+
+        #turing-print-feedback {
+            font-family: var(--ff-p);
+            font-size: 15px;
+        }
+
+        #turing-sandbox {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 560px;
+            z-index: 10002;
+            flex-direction: column;
+            filter: drop-shadow(0 0 18px #00ff6644);
+            animation: fadeIn 0.4s forwards;
+        }
+
+        .sandbox-label {
+            font-family: var(--ff-p);
+            font-size: 12px;
+            color: #00ff66;
+            opacity: 0.7;
+            letter-spacing: 1px;
+            background: #1a1a1a;
+            border: 2px solid #00ff66;
+            border-bottom: none;
+            padding: 5px 14px;
+        }
+
+        .sandbox-label:first-of-type {
+            border-radius: 8px 8px 0 0;
+        }
+
+        #turing-sandbox-code {
+            background: #000;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-bottom: none;
+            padding: 12px 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            color: #00ff66;
+            resize: none;
+            outline: none;
+            width: 100%;
+            height: 70px;
+            box-sizing: border-box;
+            caret-color: #00ff66;
+            line-height: 1.6;
+        }
+
+        #turing-sandbox-code::placeholder { color: #00ff6644; }
+
+        #turing-sandbox-compile-row {
+            background: #111;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-bottom: none;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #turing-sandbox-result-area {
+            background: #000;
+            border: 2px solid #00ff66;
+            border-top: none;
+            padding: 10px 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            color: #00ff66;
+            min-height: 36px;
+            box-sizing: border-box;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        #turing-sandbox-input-row {
+            display: none;
+            background: #000;
+            border: 2px solid #00ff66;
+            border-top: none;
+            padding: 6px 14px;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            color: #00ff66;
+        }
+
+        #turing-sandbox-user-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #00ff66;
+            outline: none;
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            color: #00ff66;
+            caret-color: #00ff66;
+            flex: 1;
+        }
+
+        #turing-sandbox-buttons {
+            display: none;
+            background: #111;
+            border: 2px solid #00ff66;
+            border-top: 1px solid #00ff6633;
+            border-radius: 0 0 8px 8px;
+            padding: 8px 14px;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .sandbox-btn {
+            padding: 5px 16px;
+            font-family: var(--ff-p);
+            font-size: 15px;
+            background: #000;
+            color: #00ff66;
+            border: 1px solid #00ff66;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .sandbox-btn:hover { background: #00ff66; color: #000; }
+
+        #turing-sandbox-error {
+            font-family: var(--ff-p);
+            font-size: 14px;
+            color: red;
+            margin-left: 4px;
+        }
+
+        #turing-sandbox-error-count {
+            font-family: var(--ff-p);
+            font-size: 13px;
+            color: #ffd700;
+            margin-left: 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="black-overlay"></div>
+
+    <div id="dialog-box">
+        <p id="dialog-text"></p>
+    </div>
+
+    <div id="ada-dialog-box">
+        <p id="ada-dialog-text"></p>
+    </div>
+
+    <div id="press-to-proceed">< aperte espaço para prosseguir ></div>
+
+    <div id="user-name-container">
+        <label id="user-name-label">Qual é o seu nome?</label>
+        <input id="userNameInput" type="text" placeholder="Digite aqui..." autocomplete="off">
+    </div>
+
+    <div id="algorithm-challenge">
+        <div id="solution-hint">Solução: 4 - 2 - 3 - 1 - 5</div>
+        <div id="papers-container">
+            <div class="paper-item" draggable="true" data-id="1">1. Anotar o resultado</div>
+            <div class="paper-item" draggable="true" data-id="2">2. Selecionar o segundo número</div>
+            <div class="paper-item" draggable="true" data-id="3">3. Somar os dois números</div>
+            <div class="paper-item" draggable="true" data-id="4">4. Selecionar o primeiro número</div>
+            <div class="paper-item" draggable="true" data-id="5">5. Mostrar o resultado</div>
+        </div>
+        <div>
+            <button id="submit-algorithm">Concluir</button>
+            <span id="algorithm-feedback"></span>
+        </div>
+        <button id="show-solution-btn">Mostrar solução</button>
+    </div>
+
+    <div id="left-image-panel">
+        <div id="babbage-monitor">
+            <div id="babbage-monitor-header">
+                <div class="monitor-dot"></div>
+                <div class="monitor-dot"></div>
+                <div class="monitor-dot"></div>
+                <span>terminal_babbage.py</span>
+            </div>
+            <div id="babbage-hint" style="display:none; font-family:'Courier New',monospace; font-size:14px; color:#ffd700; padding: 6px 14px; background:#1a1a1a; border: 2px solid #00ff66; border-bottom:none; white-space:pre;">nome = "Babbage"
+ano = 1842</div>
+            <textarea id="babbage-monitor-screen" placeholder="Digite aqui..." autocomplete="off" spellcheck="false"></textarea>
+            <div id="babbage-monitor-footer">
+                <button id="babbage-submit">Concluir</button>
+                <span id="babbage-feedback"></span>
+            </div>
+        </div>
+        <img src="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-babbage.png" alt="dica-babbage">
+    </div>
+
+    <div id="babbage-quiz">
+        <div id="babbage-quiz-question">Como podemos imprimir o conteúdo da variável <span style="color:#00ff66; font-family:'Courier New',monospace;">nome</span>? Marque a opção correta:</div>
+        <div id="babbage-quiz-options">
+            <button class="quiz-option" data-id="a">a) print(Babbage)</button>
+            <button class="quiz-option" data-id="b">b) print(nome)</button>
+            <button class="quiz-option" data-id="c">c) print(ano)</button>
+            <button class="quiz-option" data-id="d">d) print(1842)</button>
+        </div>
+        <div id="babbage-quiz-footer">
+            <span id="babbage-quiz-feedback"></span>
+            <span id="babbage-quiz-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: b) print(nome)</span>
+        </div>
+    </div>
+
+    <div id="turing-quiz">
+        <div id="turing-quiz-question">O que você faz?</div>
+        <div id="turing-quiz-options">
+            <button class="quiz-option" data-id="listen">Diz: "O senhor está tentando criar uma forma da máquina ler informações de fora, como uma fita de dados?"</button>
+            <button class="quiz-option" data-id="ignore">Não faz nada</button>
+        </div>
+    </div>
+
+    <div id="turing-input-quiz">
+        <div id="turing-input-quiz-question">Como usamos o <span style="color:#00ff66; font-family:'Courier New',monospace;">input()</span> para receber o nome de usuário?</div>
+        <div id="turing-input-quiz-options">
+            <button class="quiz-option" data-id="a">a) nome = "usuário"</button>
+            <button class="quiz-option" data-id="b">b) nome = input()</button>
+            <button class="quiz-option" data-id="c">c) input(nome) = ()</button>
+            <button class="quiz-option" data-id="d">d) nome = definir_nome()</button>
+        </div>
+        <div id="turing-input-quiz-footer">
+            <span id="turing-input-quiz-feedback"></span>
+            <span id="turing-input-quiz-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: b) nome = input()</span>
+        </div>
+    </div>
+
+    <div id="turing-print-monitor">
+        <div id="turing-print-monitor-header">
+            <div class="monitor-dot"></div>
+            <div class="monitor-dot"></div>
+            <div class="monitor-dot"></div>
+            <span>terminal_turing.py</span>
+        </div>
+        <div id="turing-print-hint" style="display:none; font-family:'Courier New',monospace; font-size:14px; color:#ffd700; padding: 6px 14px; background:#1a1a1a; border: 2px solid #00ff66; border-bottom:none; white-space:pre;">print("Olá, ", nome)</div>
+        <input id="turing-print-screen" type="text" placeholder='Digite aqui...' autocomplete="off" spellcheck="false">
+        <div id="turing-print-monitor-footer">
+            <button id="turing-print-submit">Concluir</button>
+            <span id="turing-print-feedback"></span>
+        </div>
+    </div>
+
+    <div id="turing-sandbox">
+        <div class="sandbox-label">▶ Programação</div>
+        <textarea id="turing-sandbox-code" placeholder="Digite o código aqui..." autocomplete="off" spellcheck="false"></textarea>
+        <div id="turing-sandbox-compile-row">
+            <button class="sandbox-btn" id="turing-sandbox-compile">Compilar</button>
+            <span id="turing-sandbox-error"></span>
+            <span id="turing-sandbox-error-count"></span>
+        </div>
+        <div class="sandbox-label" style="border-top: 1px solid #00ff6633;">▶ Resultado</div>
+        <div id="turing-sandbox-result-area"></div>
+        <div id="turing-sandbox-input-row">
+            <span>&gt;&nbsp;</span>
+            <input id="turing-sandbox-user-input" type="text" autocomplete="off" spellcheck="false" placeholder="digite aqui...">
+        </div>
+        <div id="turing-sandbox-buttons">
+            <button class="sandbox-btn" id="turing-sandbox-exit">Sair</button>
+        </div>
+    </div>
+
+    <div id="turing-hint-image" style="
+        display: none;
+        position: fixed;
+        bottom: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10000;
+        animation: fadeIn 0.5s forwards;
+    ">
+        <img src="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-turing.png" alt="dica-turing" style="max-width: 480px; height: auto;">
+    </div>
+
+    <div id="pascal-images" style="
+        display: none;
+        position: fixed;
+        bottom: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10000;
+        gap: 60px;
+        align-items: flex-end;
+        animation: fadeIn 0.5s forwards;
+    ">
+        <img src="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascalina.png" alt="pascalina" style="max-height: 340px; width: auto;">
+        <img src="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-pascal.png" alt="pascal-dica" style="max-height: 340px; width: auto;">
+    </div>
+
+    <!-- PASCAL QUIZZES -->
+    <div id="pascal-quiz1" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #8acebd; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:420px; animation:fadeIn 0.4s forwards;">
+        <div id="pascal-quiz1-question" style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">Como podemos começar esse programa?</div>
+        <div id="pascal-quiz1-options" style="display:flex; flex-direction:column; gap:8px;">
+            <button class="quiz-option" data-id="a">a) número = número</button>
+            <button class="quiz-option" data-id="b">b) número = input()</button>
+            <button class="quiz-option" data-id="c">c) número = 10</button>
+            <button class="quiz-option" data-id="d">d) número = número * 3</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; font-family:var(--ff-p); font-size:15px;">
+            <span id="pascal-quiz1-feedback"></span>
+            <span id="pascal-quiz1-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: b) número = input()</span>
+        </div>
+    </div>
+
+    <div id="pascal-quiz2" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #8acebd; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:420px; animation:fadeIn 0.4s forwards;">
+        <div id="pascal-quiz2-question" style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">Ótimo! E agora?</div>
+        <div id="pascal-quiz2-options" style="display:flex; flex-direction:column; gap:8px;">
+            <button class="quiz-option" data-id="a">a) número = 3</button>
+            <button class="quiz-option" data-id="b">b) número = número+3</button>
+            <button class="quiz-option" data-id="c">c) número = número*3</button>
+            <button class="quiz-option" data-id="d">d) número = input()</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; font-family:var(--ff-p); font-size:15px;">
+            <span id="pascal-quiz2-feedback"></span>
+            <span id="pascal-quiz2-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: c) número = número*3</span>
+        </div>
+    </div>
+
+    <div id="pascal-quiz3" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #8acebd; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:420px; animation:fadeIn 0.4s forwards;">
+        <div id="pascal-quiz3-question" style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">Perfeito! Como podemos terminar esse código?</div>
+        <div id="pascal-quiz3-options" style="display:flex; flex-direction:column; gap:8px;">
+            <button class="quiz-option" data-id="a">a) print(número)</button>
+            <button class="quiz-option" data-id="b">b) print(número+2)</button>
+            <button class="quiz-option" data-id="c">c) print(número*3)</button>
+            <button class="quiz-option" data-id="d">d) print(número**3)</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; font-family:var(--ff-p); font-size:15px;">
+            <span id="pascal-quiz3-feedback"></span>
+            <span id="pascal-quiz3-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: a) print(número)</span>
+        </div>
+    </div>
+
+    <div id="pascal-farewell-quiz" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #8acebd; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:420px; animation:fadeIn 0.4s forwards;">
+        <div style="background:#000; border:2px solid #00ff66; border-radius:6px; padding:12px 16px; font-family:'Courier New',monospace; font-size:14px; color:#00ff66; line-height:1.8; white-space:pre;">número1 = 6
+número2 = 4
+número3 = número1*número2
+resultado = número3+1
+print(resultado)</div>
+        <div style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">O que será impresso?</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <button class="quiz-option" data-id="a">a) 24</button>
+            <button class="quiz-option" data-id="b">b) 25</button>
+            <button class="quiz-option" data-id="c">c) 6</button>
+            <button class="quiz-option" data-id="d">d) 4</button>
+            <button class="quiz-option" data-id="e">e) 11</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; font-family:var(--ff-p); font-size:15px;">
+            <span id="pascal-farewell-quiz-feedback"></span>
+            <span id="pascal-farewell-quiz-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: b) 25</span>
+        </div>
+    </div>
+
+    <!-- PASCAL SANDBOX -->
+    <div id="pascal-sandbox" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); width:560px; z-index:10002; flex-direction:column; filter:drop-shadow(0 0 18px #00ff6644); animation:fadeIn 0.4s forwards;">
+        <div class="sandbox-label">▶ Programação</div>
+        <textarea id="pascal-sandbox-code" placeholder="Digite o código aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00ff66; resize:none; outline:none; width:100%; height:90px; box-sizing:border-box; caret-color:#00ff66; line-height:1.6;"></textarea>
+        <div style="background:#111; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-bottom:none; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="sandbox-btn" id="pascal-sandbox-compile">Compilar</button>
+            <span id="pascal-sandbox-error" style="font-family:var(--ff-p); font-size:14px; color:red;"></span>
+            <span id="pascal-sandbox-error-count" style="font-family:var(--ff-p); font-size:13px; color:#ffd700;"></span>
+        </div>
+        <div class="sandbox-label" style="border-top:1px solid #00ff6633;">▶ Resultado</div>
+        <div id="pascal-sandbox-result-area" style="background:#000; border:2px solid #00ff66; border-top:none; padding:10px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00ff66; min-height:36px; box-sizing:border-box; line-height:1.6; white-space:pre-wrap;"></div>
+        <div id="pascal-sandbox-input-row" style="display:none; background:#000; border:2px solid #00ff66; border-top:none; padding:6px 14px; align-items:center; gap:8px; font-family:'Courier New',monospace; font-size:15px; color:#00ff66;">
+            <span>&gt;&nbsp;</span>
+            <input id="pascal-sandbox-user-input" type="text" autocomplete="off" spellcheck="false" placeholder="digite aqui..." style="background:transparent; border:none; border-bottom:1px solid #00ff66; outline:none; font-family:'Courier New',monospace; font-size:15px; color:#00ff66; caret-color:#00ff66; flex:1;">
+        </div>
+        <div id="pascal-sandbox-buttons" style="display:none; background:#111; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-radius:0 0 8px 8px; padding:8px 14px; gap:10px; align-items:center;">
+            <button class="sandbox-btn" id="pascal-sandbox-exit">Sair</button>
+        </div>
+    </div>
+
+    <div id="travel-screen">
+        <div id="travel-text"></div>
+        <div id="year-display" style="font-size: 60px; margin-top: 20px; color: var(--main-color);"></div>
+    </div>
+
+    <h1 class="startAnimation" id="main-text">Bem vindo ao <span class="logo-span startAnimation">Project Pypath!</span></h1>
+
+    <div id="press-space">< aperte espaço para começar ></div>
+
+    <div class="firstChain blockBody">
+        <h1 id="mainTextFirstChain" style="font-size: 70px; color: var(--main-color); text-align: center; font-family: var(--ff-p);">Comece sua Jornada!</h1>
+        <h1 id="firstChainTest" style="color: rgb(101, 111, 117); font-family: var(--ff-p);">print("hello world")</h1>
+        <input id="inputName" type="text" placeholder='digite o código' autocomplete="off">
+    </div>
+
+    <div id="final-image-container">
+        <img id="npc-image" src="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png" alt="cenario">
+    </div>
+
+    <div id="npc-container">
+        <img id="npc-ada-photo" src="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/ada_perfil.png" alt="Ada Lovelace">
+        <div id="npc-name-label">Ada Lovelace</div>
+    </div>
+    <audio id="voice-ada-intro" src="https://cdn.discordapp.com/attachments/1479834909534326804/1479834945839955999/ada_hello.mp3?ex=69ad7b31&is=69ac29b1&hm=9a67f56275d77bbe221d99add392aa93c149c9da8608061b26ba5f7b9f450d5e&"></audio>
+    <script>
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playTypingSound() {
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.type = 'sine'; 
+            oscillator.frequency.setValueAtTime(600, audioCtx.currentTime); 
+            oscillator.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.05);
+            gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime); 
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.05);
+        }
+
+        function playSuccessSound() {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.2);
+        }
+
+        function playErrorSound() {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+            osc.frequency.linearRampToValueAtTime(50, audioCtx.currentTime + 0.2);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.2);
+        }
+
+        const mainText = document.getElementById('main-text');
+        const pressSpaceLabel = document.getElementById('press-space');
+        const inputName = document.getElementById("inputName");
+        const firstChain = document.querySelector(".firstChain");
+        const imageContainer = document.getElementById("final-image-container");
+        const npcImage = document.getElementById("npc-image");
+        const blackOverlay = document.getElementById("black-overlay");
+        const dialogBox = document.getElementById("dialog-box");
+        const dialogTextElement = document.getElementById("dialog-text");
+        const adaDialogBox = document.getElementById("ada-dialog-box");
+        const adaDialogTextElement = document.getElementById("ada-dialog-text");
+        const pressToProceed = document.getElementById("press-to-proceed");
+        const userNameContainer = document.getElementById("user-name-container");
+        const userNameInput = document.getElementById("userNameInput");
+        const travelScreen = document.getElementById("travel-screen");
+        const travelTextElement = document.getElementById("travel-text");
+        const npcContainer = document.getElementById("npc-container");
+        const yearDisplay = document.getElementById("year-display");
+
+        // Elementos do Desafio
+        const algorithmChallenge = document.getElementById("algorithm-challenge");
+        const papersContainer = document.getElementById("papers-container");
+        const submitAlgoBtn = document.getElementById("submit-algorithm");
+        const feedbackAlgo = document.getElementById("algorithm-feedback");
+        const showSolutionBtn = document.getElementById("show-solution-btn");
+        const solutionHint = document.getElementById("solution-hint");
+        const babbageMonitor = document.getElementById("babbage-monitor");
+        const babbageMonitorScreen = document.getElementById("babbage-monitor-screen");
+        const babbageSubmitBtn = document.getElementById("babbage-submit");
+        const babbageFeedback = document.getElementById("babbage-feedback");
+        const babbageQuiz = document.getElementById("babbage-quiz");
+        const babbageQuizFeedback = document.getElementById("babbage-quiz-feedback");
+        const babbageQuizHint = document.getElementById("babbage-quiz-hint");
+
+        const texts = [
+            "Você é um jovem cientista que acabou de entrar no seu laboratório. Há anos você tenta fazer sua máquina do tempo funcionar, mas nunca deu certo... Hoje parece diferente: depois de muitos testes, você finalmente acredita ter encontrado a peça que faltava. Com o coração acelerado, você encaixa a peça na máquina.",
+            "Quando tudo volta ao normal, a máquina está funcionando. Seu grande sonho se tornou realidade: agora você pode viajar no tempo para conhecer as maiores mentes da história da computação. Ajustando as coordenadas temporais..."
+        ];
+        
+        const adaIntroText = "Você sai da máquina e percebe que está em um antigo escritório cheio de papéis e engrenagens. Uma mulher observa anotações ao lado de um projeto de máquina. Você se aproxima e ela se apresenta...";
+        const adaWelcomeText = "Olá! Sou Ada Lovelace e trabalho com ideias para uma máquina criada por Charles Babbage chamada Máquina Analítica. Qual o seu nome?";
+        const adaHelpRequest = "Sabendo disso, seria de grande valia para mim se você me ajudasse organizando pequenas instruções para realizar uma operação matemática.";
+
+        const babbageIntroText = "Você entra em um galpão grande e barulhento. Ao fundo, um homem de cabelos brancos e muito focado mexe em engrenagens. É Charles Babbage. Ele nem olha para trás ao ouvir seus passos.";
+
+        const babbageWelcomeText = () => `Oh, olá você! Seu nome é ${playerNickname}, certo? Cuidado onde pisa! Estou fazendo um protótipo delicado. Deu pra ouvir Ada te ensinando lógica, mas será que você entende de armazenamento?`;
+
+        const babbageVariableText = "Minha máquina precisa de colunas para guardar números antes de processá-los. (Hoje em dia, nós chamamos isso de Variável. É como uma gaveta: você coloca um nome nela e guarda um valor dentro)";
+
+        const babbageChallengeIntroText = `Minha máquina não funciona sozinha. Para que ela comece a rodar, preciso de sua ajuda. Declare a variável "nome" e atribua a ela o texto "Babbage". Declare a variável "ano" e atribua a ela o número 1842.`;
+
+        const targetText = 'print("hello world")';
+
+        const returnMachineText = "Você ficou empolgado após conversar com Ada Lovelace e Charles Babbage, e, agora, está animado para continuar. Após pensar um pouco, tem uma boa ideia...";
+        const adjustingText = "Ajustando as coordenadas temporais...";
+
+        const turingIntroText = "Dessa vez, a máquina te levou para o interior de um galpão cinzento e barulhento, cheio de fios expostos e peças espalhadas. O local é uma sala do centro de criptoanálise Bletchley Park. Um homem jovem, de olhar focado e muito inquieto, está de costas para você, mexendo em um painel cheio de interruptores. Você tenta se comunicar com ele, mas ele parece não dar muita importância.";
+
+        const turingWhisperText = "(Sussurrando): ...se a configuração dos rotores mudar a cada 24 horas, o espaço de busca se torna praticamente infinito para um ser humano! Preciso de uma máquina universal. Uma máquina que não apenas calcule, mas que responda a estímulos externos…";
+
+        const turingIgnoredText1 = () => `Oh, perdão, não te vi aí. Meu nome é Alan Turing, e você é...? Ah sim, ${playerNickname}!`;
+        const turingIgnoredText2 = () => `A propósito, estou tentando criar uma forma da máquina ler informações de fora, como uma fita de entrada, sabe? Isso porque, ${playerNickname}, certos casos variáveis não servem de nada se o valor for sempre o mesmo. Elas precisam ser dinâmicas. Elas precisam de um valor "input" definido pelo usuário.`;
+
+        const turingListenedText1 = () => `Uma fita de entrada... Sim. Exatamente. Uma máquina que não é estática, mas que 'ouve' o que o usuário tem a dizer. A propósito, meu nome é Alan Turing, e você é...? Ah sim, ${playerNickname}!`;
+        const turingListenedText2 = () => `Me parece que você entende um pouco do conceito de entrada, ${playerNickname}, então deve saber que em certos casos variáveis não servem de nada se o valor for sempre o mesmo. Elas precisam ser dinâmicas. Elas precisam de um valor "input" definido pelo usuário.`;
+
+        const turingInputLessonText = `Minha máquina, a Bombe, precisa saber quem está operando os controles hoje. Vamos criar uma entrada para o seu nome e logo depois imprimir a mensagem: "Olá (nome)!"`;
+
+        const turingPrintLessonText = () => `Ótimo, ${playerNickname}! Agora que temos a variável nome=input() vamos imprimir "Olá, " seguido do nome do usuário. Como fazemos isso em apenas uma linha de código? Você já tem a variável, então apenas escreva a função para imprimir o texto.`;
+
+        const turingFarewellIntroText = () => `Está mandando bem, ${playerNickname}! Agora, vou deixar você testar o código de input() e print() que fizemos. Digite novamente o código na tela de programação e veja o resultado embaixo. Você pode testar para quaisquer entradas que colocar, e verá que funciona!`;
+        const turingFarewellText = () => `Fascinante, ${playerNickname}! Uma máquina que interage! Agora, se me der licença, tenho muito trabalho pela frente. O tempo é o nosso inimigo mais cruel. Foi bom conversar com você, agora minhas ideias estão mais claras.`;
+
+        const turingTransitionText = "A conversa com Turing te deixou pensativo. Você está aprendendo cada vez mais de programação. Você precisa resolver um cálculo, e para isso usou a calculadora. Enquanto usava, pensou: \"Como essa coisa foi feita?\" Daí você teve uma ideia de uma próxima visita...";
+
+        const pascalIntroText = "Você está na França, em 1642. Você vê um jovem cansado operando uma pequena caixa de madeira e metal. Curioso, você pergunta a ele do que se trata aquele mecanismo.";
+        const pascalMeetingText = () => `Bom dia, eu sou Blaise Pascal, qual é o seu nome? Prazer em te conhecer, ${playerNickname}! Ótimo dia para passear no mercado, não acha?`;
+        const pascalPascalinaText = () => `Ah, isso? Meu pai trabalha com impostos e meu cérebro já não aguenta mais tanta aritmética, foi por isso que eu criei esse aparelho: a Pascalina. Legal, né? Ela realiza soma e subtração, mas, com a repetição dessas duas operações pode realizar multiplicação e divisão também.`;
+
+        const pascalChallengeText = () => `Enfim, ${playerNickname}, gostaria que você me auxiliasse em um programa que receba um valor do usuário guardando-a na variável "número", multiplique o valor da variável por 3 e imprima este novo valor. Vamos fazer isso em 3 linhas.`;
+        const pascalSandboxIntroText = `Isso mesmo! Vamos testar seu código para ver se está funcionando. Teste com outras operações também, como somas, divisões e subtrações.`;
+        const pascalFarewellQuizText = `Perfeito, parabéns! Antes de você ir só queria pedir sua ajuda em mais uma coisa, estou com alguns resultados para analisar e preciso da sua ajuda. No código a seguir, qual será o valor impresso na tela?`;
+        const pascalFarewellText = `Magnífico! Com essas operações, você transformou uma simples caixa de guardar dados em uma verdadeira calculadora. A aritmética é a base para compreender máquinas mais complexas. Obrigado pela ajuda!`;
+
+        const targetCodes = [
+            'for(i = 0; i < array; i++){}', 
+            'import brainLOL',
+            'def(index, index2){}'
+        ];
+        const correctSequence = ["4", "2", "3", "1", "5"];
+        
+        let currentTextIndex = 0;
+        let canProceed = false;
+        let dotsInterval;
+        let playerNickname = "";
+        let isAtAdaScene = false; 
+        let adaSceneState = "intro"; 
+        let errorCount = 0;
+        let babbageErrorCount = 0;
+        let babbageQuizErrorCount = 0;
+        let turingChoice = ""; // "listened" ou "ignored"
+        let turingInputQuizErrorCount = 0;
+        let turingPrintErrorCount = 0;
+        let turiSandboxErrorCount = 0;
+        let pascalQuiz1ErrorCount = 0;
+        let pascalQuiz2ErrorCount = 0;
+        let pascalQuiz3ErrorCount = 0;
+        let pascalFarewellQuizErrorCount = 0;
+        let pascalSandboxErrorCount = 0;
+
+        // --- Lógica de Drag and Drop ---
+        let draggedItem = null;
+
+        papersContainer.addEventListener('dragstart', (e) => {
+            draggedItem = e.target;
+            e.target.style.opacity = '0.5';
+        });
+
+        papersContainer.addEventListener('dragend', (e) => {
+            e.target.style.opacity = '1';
+        });
+
+        papersContainer.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        papersContainer.addEventListener('drop', (e) => {
+            e.preventDefault();
+            if (e.target.className === 'paper-item' && e.target !== draggedItem) {
+                const items = Array.from(papersContainer.children);
+                const draggedIndex = items.indexOf(draggedItem);
+                const targetIndex = items.indexOf(e.target);
+
+                if (draggedIndex > targetIndex) {
+                    papersContainer.insertBefore(draggedItem, e.target);
+                } else {
+                    papersContainer.insertBefore(draggedItem, e.target.nextSibling);
+                }
+            }
+        });
+
+        function changeBodyType(element, change){
+            if(change === "add"){
+                element.classList.add("currentAnimation");
+                element.classList.remove("blockBody");
+            } else {
+                element.classList.remove("currentAnimation");
+                element.classList.add("blockBody");
+            }
+        }
+
+        function typeWriter(text, element, speed, callback) {
+            canProceed = false;
+            let i = 0;
+            element.innerHTML = "";
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    if (text.charAt(i) !== " ") playTypingSound();
+                    i++;
+                    setTimeout(type, speed);
+                } else if(callback) {
+                    callback();
+                }
+            }
+            type();
+        }
+
+        function animateDots() {
+            let dots = "";
+            dotsInterval = setInterval(() => {
+                dots = dots.length < 3 ? dots + "." : "";
+                travelTextElement.innerHTML = "Viajando pelo tempo" + dots;
+                if (dots !== "") playTypingSound();
+            }, 400);
+        }
+
+        function showNextDialog() {
+            pressToProceed.style.display = "none";
+            dialogTextElement.innerHTML = "";
+            typeWriter(texts[currentTextIndex], dialogTextElement, 30, () => {
+                setTimeout(() => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                }, 500);
+            });
+        }
+
+        function swapBackground(newSrc, callback) {
+            const flash = document.createElement("div");
+            flash.style.cssText = "position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000;z-index:99999;pointer-events:none;";
+            document.body.appendChild(flash);
+            setTimeout(() => {
+                npcImage.src = newSrc;
+                setTimeout(() => {
+                    document.body.removeChild(flash);
+                    if (callback) callback();
+                }, 200);
+            }, 100);
+        }
+
+        function loadNewScene() {
+            travelScreen.style.display = "none";
+            imageContainer.style.display = "none";
+            npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+            blackOverlay.classList.remove("fadeOutScene", "overlayFadeIn");
+            blackOverlay.style.display = "none";
+            blackOverlay.style.opacity = "0";
+            swapBackground(
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/ada_fundo.png",
+                () => {
+                    void npcImage.offsetWidth;
+                    npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+                    void npcImage.offsetWidth;
+                    npcImage.classList.add("sceneFadeIn");
+                    imageContainer.style.display = "flex";
+                    setTimeout(() => { blackOverlay.classList.add("overlayFadeIn"); }, 100);
+                }
+            );
+
+            setTimeout(() => {
+                isAtAdaScene = true; 
+                adaSceneState = "intro";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                
+                typeWriter(adaIntroText, adaDialogTextElement, 30, () => {
+                    setTimeout(() => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                    }, 500);
+                });
+            }, 500);
+        }
+
+        function loadTuringScene() {
+            travelScreen.style.display = "none";
+            imageContainer.style.display = "none";
+            npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+            blackOverlay.className = "";
+            blackOverlay.style.display = "block";
+            blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+            blackOverlay.style.opacity = "1";
+            blackOverlay.style.transition = "none";
+            swapBackground(
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/turing_fundo.png",
+                () => {
+                    void npcImage.offsetWidth;
+                    npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+                    void npcImage.offsetWidth;
+                    npcImage.classList.add("sceneFadeIn");
+                    imageContainer.style.display = "flex";
+                }
+            );
+
+            setTimeout(() => {
+                isAtAdaScene = true;
+                adaSceneState = "turing_intro";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(turingIntroText, adaDialogTextElement, 30, () => {
+                    setTimeout(() => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                    }, 500);
+                });
+            }, 500);
+        }
+
+        function loadPascalScene() {
+            travelScreen.style.display = "none";
+            imageContainer.style.display = "none";
+            npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+            blackOverlay.className = "";
+            blackOverlay.style.display = "block";
+            blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+            blackOverlay.style.opacity = "1";
+            blackOverlay.style.transition = "none";
+            swapBackground(
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal_fundo.png",
+                () => {
+                    void npcImage.offsetWidth;
+                    npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+                    void npcImage.offsetWidth;
+                    npcImage.classList.add("sceneFadeIn");
+                    imageContainer.style.display = "flex";
+                }
+            );
+
+            setTimeout(() => {
+                isAtAdaScene = true;
+                adaSceneState = "pascal_intro";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(pascalIntroText, adaDialogTextElement, 30, () => {
+                    setTimeout(() => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                    }, 500);
+                });
+            }, 500);
+        }
+
+        function startTimeTravel() {
+            npcImage.classList.add("fadeOutScene");
+            blackOverlay.classList.add("fadeOutScene");
+            dialogBox.classList.add("fadeOutScene");
+
+            setTimeout(() => {
+                travelScreen.style.display = "flex";
+                typeWriter("Viajando pelo tempo", travelTextElement, 50, () => {
+                    animateDots();
+                    let duration = 1000; 
+                    let startTime = Date.now();
+                    let shuffleInterval = setInterval(() => {
+                        let elapsed = Date.now() - startTime;
+                        if (elapsed < duration) {
+                            yearDisplay.innerHTML = Math.floor(1000 + Math.random() * 9000);
+                        } else {
+                            clearInterval(shuffleInterval);
+                            yearDisplay.innerHTML = "Londres, 1843"; 
+                        }
+                    }, 50);
+
+                    setTimeout(() => {
+                        clearInterval(dotsInterval);
+                        travelTextElement.innerHTML = "";
+                        yearDisplay.innerHTML = "";
+                        setTimeout(() => { loadNewScene(); }, 1000); 
+                    }, 3000); 
+                });
+            }, 500); 
+        }
+
+        function startTimeTravel2() {
+            // Escurece tudo
+            npcImage.classList.add("fadeOutSlow");
+            npcContainer.classList.add("fadeOutSlow");
+            adaDialogBox.classList.add("fadeOutSlow");
+            blackOverlay.style.display = "block";
+            blackOverlay.style.transition = "opacity 0.5s ease";
+            setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
+
+            setTimeout(() => {
+                // Oculta todos os elementos da cena do Babbage
+                npcContainer.style.display = "none";
+                npcContainer.classList.remove("fadeOutSlow", "imageFadeIn");
+                adaDialogBox.style.display = "none";
+                adaDialogBox.classList.remove("fadeOutSlow", "centered-dialog");
+                npcImage.classList.remove("fadeOutSlow", "imageFadeIn", "sceneFadeIn");
+                npcImage.style.opacity = "1";
+                dialogBox.style.display = "none";
+                pressToProceed.style.display = "none";
+                imageContainer.style.display = "none";
+
+                // Troca para fundo da máquina do tempo
+                swapBackground(
+                    "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png",
+                    () => {
+                        void npcImage.offsetWidth;
+                        npcImage.classList.remove("fadeOutSlow", "imageFadeIn", "sceneFadeIn");
+                        void npcImage.offsetWidth;
+                        npcImage.classList.add("sceneFadeIn");
+                        imageContainer.style.display = "flex";
+                    }
+                );
+
+                // Abre levemente o overlay para ver o fundo
+                blackOverlay.style.transition = "opacity 0.5s ease";
+                setTimeout(() => {
+                    blackOverlay.style.backgroundColor = "rgba(0,0,0,0.21)";
+                    blackOverlay.style.opacity = "1";
+                }, 500);
+
+                // Mostra texto no dialog-box (canto superior esquerdo)
+                setTimeout(() => {
+                    dialogBox.style.display = "flex";
+                    dialogTextElement.innerHTML = "";
+                    typeWriter(returnMachineText, dialogTextElement, 30, () => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                        adaSceneState = "return_machine_text";
+                    });
+                }, 600);
+            }, 3500);
+        }
+
+        function startTimeTravel3() {
+            blackOverlay.style.display = "block";
+            blackOverlay.style.transition = "opacity 0.5s ease";
+            setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
+
+            setTimeout(() => {
+                imageContainer.style.display = "none";
+                dialogBox.style.display = "none";
+                travelScreen.style.display = "flex";
+                blackOverlay.className = "";
+                blackOverlay.style.cssText = "";
+
+                typeWriter("Viajando pelo tempo", travelTextElement, 50, () => {
+                    animateDots();
+                    let duration = 1000;
+                    let startTime = Date.now();
+                    let shuffleInterval = setInterval(() => {
+                        let elapsed = Date.now() - startTime;
+                        if (elapsed < duration) {
+                            yearDisplay.innerHTML = Math.floor(1000 + Math.random() * 9000);
+                        } else {
+                            clearInterval(shuffleInterval);
+                            yearDisplay.innerHTML = "Rouen, 1642";
+                        }
+                    }, 50);
+
+                    setTimeout(() => {
+                        clearInterval(dotsInterval);
+                        travelTextElement.innerHTML = "";
+                        yearDisplay.innerHTML = "";
+                        setTimeout(() => {
+                            loadPascalScene();
+                        }, 1000);
+                    }, 3000);
+                });
+            }, 600);
+        }
+
+        inputName.addEventListener("input", () => {
+            const currentValue = inputName.value;
+            if (targetText.startsWith(currentValue)) {
+                inputName.style.borderColor = 'rgb(138, 206, 191)';
+                inputName.style.color = 'rgb(153, 238, 153)';
+            } else {
+                inputName.style.borderColor = 'rgb(255, 111, 111)';
+                inputName.style.color = 'rgb(255, 111, 111)';
+            }
+        });
+
+        inputName.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" && inputName.value === targetText) {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                playSuccessSound();
+                firstChain.style.animation = "startAnimation 1s forwards";
+                setTimeout(() => {
+                    firstChain.style.display = "none";
+                    imageContainer.style.display = "flex";
+                    npcImage.classList.add("imageFadeIn");
+                    blackOverlay.classList.add("overlayFadeIn");
+                    setTimeout(() => {
+                        dialogBox.style.display = "flex";
+                        showNextDialog();
+                    }, 1500); 
+                }, 1000);
+            }
+        });
+
+        userNameInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" && userNameInput.value.trim() !== "") {
+                playerNickname = userNameInput.value;
+                userNameContainer.style.display = "none";
+                let response = `Prazer em te conhecer, ${playerNickname}! Você sabe o que são algoritmos? De forma resumida, são uma sequência clara de passos para resolver um problema. Algoritmos existem há muito tempo: matemáticos antigos já criavam sequências de passos para resolver problemas, como fazer contas ou encontrar padrões em números.`;
+                typeWriter(response, adaDialogTextElement, 30, () => {
+                    setTimeout(() => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                        adaSceneState = "algorithm_lesson"; 
+                    }, 500);
+                });
+            }
+        });
+
+        // --- Lógica de Validação do Algoritmo ---
+        submitAlgoBtn.addEventListener("click", () => {
+            const currentSequence = Array.from(papersContainer.children).map(item => item.getAttribute('data-id'));
+            const isCorrect = JSON.stringify(currentSequence) === JSON.stringify(correctSequence);
+
+            if (isCorrect) {
+                feedbackAlgo.style.color = "lime";
+                feedbackAlgo.innerHTML = "Correto, parabéns!";
+                playSuccessSound();
+                setTimeout(() => {
+                    algorithmChallenge.style.animation = "fadeOutAnim 0.5s forwards";
+                    setTimeout(() => {
+                        algorithmChallenge.style.display = "none";
+                        const thanksMessage = "Obrigada pela ajuda! Aliás, você está vendo aquela porta no fundo da sala? Abra ela e você vai encontrar o meu colega de trabalho em sua oficina, fale com ele! Agora você está pronto para continuar sua jornada. Espero te ver em breve!";
+                        typeWriter(thanksMessage, adaDialogTextElement, 30, () => {
+                            setTimeout(() => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "ada_farewell"; 
+                            }, 500);
+                        });
+                    }, 500);
+                }, 1500);
+            } else {
+                feedbackAlgo.style.color = "red";
+                feedbackAlgo.innerHTML = "Tente novamente.";
+                playErrorSound();
+                errorCount++;
+                if (errorCount >= 5) {
+                    showSolutionBtn.style.display = "block";
+                }
+            }
+        });
+
+        // --- Lógica dos Quizzes Pascal ---
+        document.getElementById("pascal-quiz1").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            if (e.target.dataset.id === "b") {
+                e.target.style.background = "#00cc44";
+                e.target.style.color = "#000";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("pascal-quiz1").style.display = "none";
+                    pascalQuiz2ErrorCount = 0;
+                    document.getElementById("pascal-quiz2-feedback").innerHTML = "";
+                    document.getElementById("pascal-quiz2-hint").style.display = "none";
+                    typeWriter("Ótimo! E agora?", adaDialogTextElement, 30, () => {
+                        document.getElementById("pascal-quiz2").style.display = "flex";
+                    });
+                }, 800);
+            } else {
+                playErrorSound();
+                pascalQuiz1ErrorCount++;
+                document.getElementById("pascal-quiz1-feedback").style.color = "red";
+                document.getElementById("pascal-quiz1-feedback").innerHTML = "Tente novamente.";
+                if (pascalQuiz1ErrorCount >= 5) {
+                    document.getElementById("pascal-quiz1-hint").style.display = "inline";
+                }
+            }
+        });
+
+        document.getElementById("pascal-quiz2").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            if (e.target.dataset.id === "c") {
+                e.target.style.background = "#00cc44";
+                e.target.style.color = "#000";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("pascal-quiz2").style.display = "none";
+                    pascalQuiz3ErrorCount = 0;
+                    document.getElementById("pascal-quiz3-feedback").innerHTML = "";
+                    document.getElementById("pascal-quiz3-hint").style.display = "none";
+                    typeWriter("Perfeito! Como podemos terminar esse código?", adaDialogTextElement, 30, () => {
+                        document.getElementById("pascal-quiz3").style.display = "flex";
+                    });
+                }, 800);
+            } else {
+                playErrorSound();
+                pascalQuiz2ErrorCount++;
+                document.getElementById("pascal-quiz2-feedback").style.color = "red";
+                document.getElementById("pascal-quiz2-feedback").innerHTML = "Tente novamente.";
+                if (pascalQuiz2ErrorCount >= 5) {
+                    document.getElementById("pascal-quiz2-hint").style.display = "inline";
+                }
+            }
+        });
+
+        document.getElementById("pascal-quiz3").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            if (e.target.dataset.id === "a") {
+                e.target.style.background = "#00cc44";
+                e.target.style.color = "#000";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("pascal-quiz3").style.display = "none";
+                    typeWriter(pascalSandboxIntroText, adaDialogTextElement, 30, () => {
+                        document.getElementById("pascal-sandbox-code").value = "";
+                        document.getElementById("pascal-sandbox-result-area").innerHTML = "";
+                        document.getElementById("pascal-sandbox-input-row").style.display = "none";
+                        document.getElementById("pascal-sandbox-buttons").style.display = "none";
+                        document.getElementById("pascal-sandbox-error").innerHTML = "";
+                        document.getElementById("pascal-sandbox-error-count").innerHTML = "";
+                        pascalSandboxErrorCount = 0;
+                        document.getElementById("pascal-sandbox").style.display = "flex";
+                        document.getElementById("pascal-sandbox-code").focus();
+                    });
+                }, 800);
+            } else {
+                playErrorSound();
+                pascalQuiz3ErrorCount++;
+                document.getElementById("pascal-quiz3-feedback").style.color = "red";
+                document.getElementById("pascal-quiz3-feedback").innerHTML = "Tente novamente.";
+                if (pascalQuiz3ErrorCount >= 5) {
+                    document.getElementById("pascal-quiz3-hint").style.display = "inline";
+                }
+            }
+        });
+
+        document.getElementById("pascal-farewell-quiz").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            if (e.target.dataset.id === "b") {
+                e.target.style.background = "#00cc44";
+                e.target.style.color = "#000";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("pascal-farewell-quiz").style.display = "none";
+                    typeWriter(pascalFarewellText, adaDialogTextElement, 30, () => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                        adaSceneState = "pascal_done_final";
+                    });
+                }, 800);
+            } else {
+                playErrorSound();
+                pascalFarewellQuizErrorCount++;
+                document.getElementById("pascal-farewell-quiz-feedback").style.color = "red";
+                document.getElementById("pascal-farewell-quiz-feedback").innerHTML = "Tente novamente.";
+                if (pascalFarewellQuizErrorCount >= 5) {
+                    document.getElementById("pascal-farewell-quiz-hint").style.display = "inline";
+                }
+            }
+        });
+
+        // --- Lógica do Sandbox Pascal ---
+        document.getElementById("pascal-sandbox-compile").addEventListener("click", () => {
+            const code = document.getElementById("pascal-sandbox-code").value;
+            const resultArea = document.getElementById("pascal-sandbox-result-area");
+            const inputRow = document.getElementById("pascal-sandbox-input-row");
+            const buttons = document.getElementById("pascal-sandbox-buttons");
+            const errorEl = document.getElementById("pascal-sandbox-error");
+            const errorCountEl = document.getElementById("pascal-sandbox-error-count");
+
+            resultArea.innerHTML = "";
+            inputRow.style.display = "none";
+            buttons.style.display = "none";
+            errorEl.innerHTML = "";
+
+            const hasInput = /input\s*\(/.test(code);
+            const printMatches = [...code.matchAll(/print\s*\((.+)\)/g)];
+
+            if (printMatches.length === 0 && !hasInput) {
+                pascalSandboxErrorCount++;
+                errorEl.innerHTML = "Nenhum print() encontrado.";
+                errorCountEl.innerHTML = pascalSandboxErrorCount > 1 ? `(${pascalSandboxErrorCount} erros)` : "";
+                return;
+            }
+
+            if (hasInput) {
+                resultArea.innerHTML = "<em style='color:#00ff6688'>Aguardando entrada...</em>";
+                inputRow.style.display = "flex";
+                const userInput = document.getElementById("pascal-sandbox-user-input");
+                userInput.value = "";
+                userInput.focus();
+
+                const handler = (e) => {
+                    if (e.key !== "Enter") return;
+                    const val = userInput.value;
+                    userInput.removeEventListener("keydown", handler);
+                    inputRow.style.display = "none";
+
+                    try {
+                        let output = "";
+                        const lines = code.split("\n").map(l => l.trim()).filter(l => l);
+                        const vars = {};
+                        let inputUsed = false;
+                        for (const line of lines) {
+                            if (/^\s*#/.test(line)) continue;
+                            const assignInput = line.match(/^(\w+)\s*=\s*input\s*\(/);
+                            if (assignInput) {
+                                const numVal = parseFloat(val);
+                                vars[assignInput[1]] = isNaN(numVal) ? val : numVal;
+                                inputUsed = true;
+                                continue;
+                            }
+                            const assignExpr = line.match(/^(\w+)\s*=\s*(.+)$/);
+                            if (assignExpr && !line.startsWith("print")) {
+                                try {
+                                    let expr = assignExpr[2];
+                                    for (const [k, v] of Object.entries(vars)) {
+                                        expr = expr.replace(new RegExp(`\\b${k}\\b`, 'g'), v);
+                                    }
+                                    vars[assignExpr[1]] = eval(expr);
+                                } catch(e) {}
+                                continue;
+                            }
+                            const printMatch = line.match(/^print\s*\((.+)\)$/);
+                            if (printMatch) {
+                                let expr = printMatch[1].replace(/^["']|["']$/g, "");
+                                for (const [k, v] of Object.entries(vars)) {
+                                    expr = expr.replace(new RegExp(`\\b${k}\\b`, 'g'), v);
+                                }
+                                try { output += eval(`\`${expr}\``) + "\n"; } catch(e) { output += expr + "\n"; }
+                            }
+                        }
+                        resultArea.innerHTML = output || "<em style='color:#00ff6688'>sem output</em>";
+                    } catch(err) {
+                        resultArea.innerHTML = `<span style='color:red'>Erro: ${err.message}</span>`;
+                    }
+                    buttons.style.display = "flex";
+                };
+                document.getElementById("pascal-sandbox-user-input").addEventListener("keydown", handler);
+            } else {
+                try {
+                    let output = "";
+                    const lines = code.split("\n").map(l => l.trim()).filter(l => l);
+                    const vars = {};
+                    for (const line of lines) {
+                        if (/^\s*#/.test(line)) continue;
+                        const assignExpr = line.match(/^(\w+)\s*=\s*(.+)$/);
+                        if (assignExpr && !line.startsWith("print")) {
+                            let expr = assignExpr[2];
+                            for (const [k, v] of Object.entries(vars)) {
+                                expr = expr.replace(new RegExp(`\\b${k}\\b`, 'g'), v);
+                            }
+                            try { vars[assignExpr[1]] = eval(expr); } catch(e) {}
+                            continue;
+                        }
+                        const printMatch = line.match(/^print\s*\((.+)\)$/);
+                        if (printMatch) {
+                            let expr = printMatch[1].replace(/^["']|["']$/g, "");
+                            for (const [k, v] of Object.entries(vars)) {
+                                expr = expr.replace(new RegExp(`\\b${k}\\b`, 'g'), v);
+                            }
+                            try { output += eval(`\`${expr}\``) + "\n"; } catch(e) { output += expr + "\n"; }
+                        }
+                    }
+                    resultArea.innerHTML = output || "<em style='color:#00ff6688'>sem output</em>";
+                } catch(err) {
+                    resultArea.innerHTML = `<span style='color:red'>Erro: ${err.message}</span>`;
+                }
+                buttons.style.display = "flex";
+            }
+        });
+
+        document.getElementById("pascal-sandbox-exit").addEventListener("click", () => {
+            adaSceneState = "pascal_farewell_quiz";
+            document.getElementById("pascal-sandbox").style.display = "none";
+            document.getElementById("pascal-sandbox-code").value = "";
+            document.getElementById("pascal-sandbox-result-area").innerHTML = "";
+            document.getElementById("pascal-sandbox-input-row").style.display = "none";
+            document.getElementById("pascal-sandbox-buttons").style.display = "none";
+            document.getElementById("pascal-sandbox-error").innerHTML = "";
+            document.getElementById("pascal-sandbox-error-count").innerHTML = "";
+            pascalSandboxErrorCount = 0;
+            typeWriter(pascalFarewellQuizText, adaDialogTextElement, 30, () => {
+                pascalFarewellQuizErrorCount = 0;
+                document.getElementById("pascal-farewell-quiz-feedback").innerHTML = "";
+                document.getElementById("pascal-farewell-quiz-hint").style.display = "none";
+                document.getElementById("pascal-farewell-quiz").style.display = "flex";
+            });
+        });
+
+        showSolutionBtn.addEventListener("click", () => {
+            solutionHint.style.display = "block";
+        });
+        babbageSubmitBtn.addEventListener("click", () => {
+            const raw = babbageMonitorScreen.value;
+            const normalized = raw.replace(/\s+/g, " ").trim();
+
+            // aceita linha única ou duas linhas, com espaços flexíveis
+            const correct =
+                /nome\s*=\s*["']Babbage["']/.test(normalized) &&
+                /ano\s*=\s*1842/.test(normalized);
+
+            if (correct) {
+                babbageFeedback.style.color = "lime";
+                babbageFeedback.innerHTML = "Correto, parabéns!";
+                playSuccessSound();
+                setTimeout(() => {
+                    babbageMonitor.style.display = "none";
+                    document.getElementById("babbage-hint").style.display = "none";
+                    document.getElementById("left-image-panel").style.display = "none";
+                    adaDialogBox.style.display = "flex";
+                    const babbageVariableSuccessText = `Excelente, ${playerNickname}! Os valores agora estão na memória. Mas agora precisamos imprimir o conteúdo dessas gavetas no visor!`;
+                    typeWriter(babbageVariableSuccessText, adaDialogTextElement, 30, () => {
+                        babbageQuizErrorCount = 0;
+                        babbageQuizFeedback.innerHTML = "";
+                        babbageQuizHint.style.display = "none";
+                        babbageQuiz.style.display = "flex";
+                    });
+                }, 1500);
+            } else {
+                babbageFeedback.style.color = "red";
+                babbageFeedback.innerHTML = "Não é bem isso, tente novamente.";
+                playErrorSound();
+                babbageErrorCount++;
+                if (babbageErrorCount >= 5) {
+                    document.getElementById("babbage-hint").style.display = "block";
+                }
+            }
+        });
+        document.getElementById("babbage-quiz-options").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            const chosen = e.target.getAttribute("data-id");
+
+            if (chosen === "b") {
+                babbageQuizFeedback.style.color = "lime";
+                babbageQuizFeedback.innerHTML = "Correto, parabéns!";
+                playSuccessSound();
+                setTimeout(() => {
+                    babbageQuiz.style.display = "none";
+                    const babbageFarewellText = `Observe! O visor está mostrando meu nome. Obrigado pela ajuda, ${playerNickname}! Vou continuar trabalhando nesse projeto, ainda tenho muito pela frente, espero que consiga acabar ainda esse ano. Adeus, meu amigo!`;
+                    typeWriter(babbageFarewellText, adaDialogTextElement, 30, () => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                        adaSceneState = "babbage_farewell";
+                    });
+                }, 1500);
+            } else {
+                babbageQuizFeedback.style.color = "red";
+                babbageQuizFeedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                babbageQuizErrorCount++;
+                if (babbageQuizErrorCount >= 5) {
+                    babbageQuizHint.style.display = "inline";
+                }
+            }
+        });
+
+        document.getElementById("turing-quiz-options").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            const chosen = e.target.getAttribute("data-id");
+            document.getElementById("turing-quiz").style.display = "none";
+
+            if (chosen === "listen") {
+                turingChoice = "listened";
+                adaDialogTextElement.style.fontStyle = "normal";
+                typeWriter(turingListenedText1(), adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                    adaSceneState = "turing_listened_part2";
+                });
+            } else {
+                turingChoice = "ignored";
+                adaDialogTextElement.style.fontStyle = "normal";
+                typeWriter(turingIgnoredText1(), adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                    adaSceneState = "turing_ignored_part2";
+                });
+            }
+        });
+
+        document.getElementById("turing-input-quiz-options").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            const chosen = e.target.getAttribute("data-id");
+            const feedback = document.getElementById("turing-input-quiz-feedback");
+            const hint = document.getElementById("turing-input-quiz-hint");
+
+            if (chosen === "b") {
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Correto, parabéns!";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("turing-input-quiz").style.display = "none";
+                    // avança direto sem espaço
+                    canProceed = false;
+                    pressToProceed.style.display = "none";
+                    turingPrintErrorCount = 0;
+                    document.getElementById("turing-print-feedback").innerHTML = "";
+                    document.getElementById("turing-print-hint").style.display = "none";
+                    document.getElementById("turing-print-screen").value = "";
+                    typeWriter(turingPrintLessonText(), adaDialogTextElement, 30, () => {
+                        document.getElementById("turing-print-monitor").style.display = "flex";
+                        document.getElementById("turing-print-screen").focus();
+                    });
+                }, 1500);
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                turingInputQuizErrorCount++;
+                if (turingInputQuizErrorCount >= 5) {
+                    hint.style.display = "inline";
+                }
+            }
+        });
+
+        document.getElementById("turing-print-submit").addEventListener("click", () => {
+            const raw = document.getElementById("turing-print-screen").value;
+            const normalized = raw.replace(/\s+/g, "").trim();
+            const feedback = document.getElementById("turing-print-feedback");
+            const hint = document.getElementById("turing-print-hint");
+
+            // aceita variações de espaço e aspas simples ou duplas
+            const correct = /^print\(["']Olá,?\s*["'],\s*nome\)$/.test(normalized) ||
+                            /^print\(["']Olá,?\s*["']\+nome\)$/.test(normalized) ||
+                            /^print\(["']Olá,?\s*["'],nome\)$/.test(raw.replace(/\s+/g, "").trim());
+
+            if (correct) {
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Correto, parabéns!";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("turing-print-monitor").style.display = "none";
+                    // avança direto sem espaço
+                    canProceed = false;
+                    pressToProceed.style.display = "none";
+                    document.getElementById("turing-sandbox-code").value = "";
+                    document.getElementById("turing-sandbox-result-area").innerHTML = "";
+                    document.getElementById("turing-sandbox-input-row").style.display = "none";
+                    document.getElementById("turing-sandbox-buttons").style.display = "none";
+                    document.getElementById("turing-sandbox-error").innerHTML = "";
+                    document.getElementById("turing-sandbox-error-count").innerHTML = "";
+                    turiSandboxErrorCount = 0;
+                    typeWriter(turingFarewellIntroText(), adaDialogTextElement, 30, () => {
+                        document.getElementById("turing-sandbox").style.display = "flex";
+                        document.getElementById("turing-sandbox-code").focus();
+                    });
+                }, 1500);
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                turingPrintErrorCount++;
+                if (turingPrintErrorCount >= 5) {
+                    hint.style.display = "block";
+                }
+            }
+        });
+
+        document.getElementById("turing-sandbox-compile").addEventListener("click", () => {
+            const code = document.getElementById("turing-sandbox-code").value.trim();
+            const error = document.getElementById("turing-sandbox-error");
+            const errorCount = document.getElementById("turing-sandbox-error-count");
+            const resultArea = document.getElementById("turing-sandbox-result-area");
+            const inputRow = document.getElementById("turing-sandbox-input-row");
+            const userInput = document.getElementById("turing-sandbox-user-input");
+
+            // Extrai nome da variável: qualquer identificador = input()
+            const inputMatch = code.match(/([a-zA-Z_]\w*)\s*=\s*input\(\)/);
+            // Extrai conteúdo dentro do print(...)
+            const printMatch = code.match(/print\((.+)\)/);
+
+            const varName = inputMatch ? inputMatch[1] : null;
+
+            // Valida: precisa ter variavel = input() e print(...) contendo essa variável
+            const valid = varName &&
+                          printMatch &&
+                          printMatch[1].includes(varName);
+
+            if (valid) {
+                error.innerHTML = "";
+                errorCount.innerHTML = "";
+                turiSandboxErrorCount = 0;
+                resultArea.innerHTML = "";
+                inputRow.style.display = "flex";
+                document.getElementById("turing-sandbox-buttons").style.display = "none";
+                userInput.value = "";
+                userInput.focus();
+                // Guarda os dados do código para usar na execução
+                userInput.dataset.varName = varName;
+                userInput.dataset.printContent = printMatch[1];
+            } else {
+                turiSandboxErrorCount++;
+                error.innerHTML = "Código incorreto. Tente novamente.";
+                if (turiSandboxErrorCount >= 5) {
+                    errorCount.innerHTML = 'Dica: variavel = input()  /  print("texto", variavel)';
+                }
+                playErrorSound();
+            }
+        });
+
+        document.getElementById("turing-sandbox-user-input").addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                const userValue = document.getElementById("turing-sandbox-user-input").value;
+                const userInput = document.getElementById("turing-sandbox-user-input");
+                const varName = userInput.dataset.varName;
+                const printContent = userInput.dataset.printContent;
+
+                // Separa os argumentos do print por vírgula ou +, respeitando strings
+                function parsePrintArgs(content) {
+                    const args = [];
+                    let current = "";
+                    let inString = false;
+                    let quoteChar = "";
+                    for (let i = 0; i < content.length; i++) {
+                        const ch = content[i];
+                        if (inString) {
+                            if (ch === quoteChar) { inString = false; args.push({ type: "str", value: current }); current = ""; }
+                            else { current += ch; }
+                        } else {
+                            if (ch === '"' || ch === "'") { inString = true; quoteChar = ch; current = ""; }
+                            else if (ch === ',' || ch === '+') { if (current.trim()) args.push({ type: "var", value: current.trim() }); current = ""; }
+                            else { current += ch; }
+                        }
+                    }
+                    if (current.trim()) args.push({ type: "var", value: current.trim() });
+                    return args;
+                }
+
+                const args = parsePrintArgs(printContent);
+                const output = args.map(arg => {
+                    if (arg.type === "str") return arg.value;
+                    if (arg.value === varName) return userValue;
+                    return arg.value;
+                }).join("");
+
+                document.getElementById("turing-sandbox-result-area").innerHTML =
+                    `<span style="color:#aaa">&gt; ${userValue}</span>\n${output}`;
+                document.getElementById("turing-sandbox-input-row").style.display = "none";
+                document.getElementById("turing-sandbox-buttons").style.display = "flex";
+            }
+        });
+
+        document.getElementById("turing-sandbox-exit").addEventListener("click", () => {
+            document.getElementById("turing-sandbox").style.display = "none";
+            adaSceneState = "turing_farewell";
+            typeWriter(turingFarewellText(), adaDialogTextElement, 30, () => {
+                pressToProceed.style.display = "block";
+                canProceed = true;
+            });
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.code === "Space") {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                if (mainText.style.display !== "none") {
+                    mainText.style.animation = "startAnimation 1s forwards";
+                    pressSpaceLabel.style.animation = "startAnimation 1s forwards";
+                    setTimeout(() => {
+                        mainText.style.display = "none";
+                        pressSpaceLabel.style.display = "none";
+                        changeBodyType(firstChain, "add");
+                        inputName.value = "";
+                        inputName.focus();
+                    }, 1000);
+                } 
+                else if (canProceed) {
+                    if (isAtAdaScene) {
+                        if (adaSceneState === "intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaSceneState = "meeting";
+                            adaDialogBox.classList.remove("centered-dialog");
+                            npcContainer.style.display = "flex";
+                            npcContainer.classList.add("imageFadeIn");
+                            setTimeout(() => {
+                                document.getElementById("voice-ada-intro").play().catch(e => console.log(e));
+                                typeWriter(adaWelcomeText, adaDialogTextElement, 30, () => {
+                                    userNameContainer.style.display = "flex";
+                                    userNameInput.focus();
+                                });
+                            }, 600);
+                        } else if (adaSceneState === "algorithm_lesson") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(adaHelpRequest, adaDialogTextElement, 30, () => {
+                                algorithmChallenge.style.display = "flex";
+                                adaSceneState = "algorithm_challenge_active";
+                            });
+                        }
+                        else if (adaSceneState === "ada_farewell") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            
+                            // Efeito de desaparecer
+                            npcImage.classList.add("fadeOutSlow");
+                            npcContainer.classList.add("fadeOutSlow");
+                            adaDialogBox.classList.add("fadeOutSlow");
+                            blackOverlay.classList.add("fadeOutSlow");
+
+                            setTimeout(() => {
+                                // Reset de estados para a nova cena
+                                isAtAdaScene = false;
+                                npcContainer.style.display = "none";
+                                npcContainer.classList.remove("fadeOutSlow", "imageFadeIn");
+                                adaDialogBox.classList.remove("fadeOutSlow");
+                                adaDialogBox.style.display = "none";
+                                
+                                // Nova Imagem e Texto
+                                npcImage.classList.remove("fadeOutSlow", "sceneFadeIn");
+                                blackOverlay.className = "";
+                                blackOverlay.style.display = "block";
+                                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                                blackOverlay.style.opacity = "1";
+                                blackOverlay.style.transition = "none";
+                                swapBackground(
+                                    "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_fundo.png",
+                                    () => {
+                                        void npcImage.offsetWidth;
+                                        npcImage.classList.add("sceneFadeIn");
+                                    }
+                                );
+                                
+                                setTimeout(() => {
+                                    adaDialogBox.classList.add("centered-dialog");
+                                    adaDialogBox.style.display = "flex";
+                                    typeWriter(babbageIntroText, adaDialogTextElement, 30, () => {
+                                        setTimeout(() => {
+                                            pressToProceed.style.display = "block";
+                                            canProceed = true;
+                                            isAtAdaScene = true;
+                                            adaSceneState = "babbage_intro";
+                                        }, 500);
+                                    });
+                                }, 1000);
+                            }, 2000);
+                        }
+                        else if (adaSceneState === "babbage_intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogBox.classList.remove("centered-dialog");
+                            npcContainer.style.display = "flex";
+                            npcContainer.classList.add("imageFadeIn");
+                            document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_perfil.png";
+                            document.getElementById("npc-name-label").textContent = "Charles Babbage";
+                            setTimeout(() => {
+                                typeWriter(babbageWelcomeText(), adaDialogTextElement, 30, () => {
+                                    pressToProceed.style.display = "block";
+                                    canProceed = true;
+                                    adaSceneState = "babbage_meeting";
+                                });
+                            }, 600);
+                        }
+                        else if (adaSceneState === "babbage_meeting") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(babbageVariableText, adaDialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "babbage_variable";
+                            });
+                        }
+                        else if (adaSceneState === "babbage_variable") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(babbageChallengeIntroText, adaDialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "babbage_challenge_intro";
+                            });
+                        }
+                        else if (adaSceneState === "babbage_challenge_intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            document.getElementById("left-image-panel").style.display = "flex";
+                            babbageMonitor.style.display = "flex";
+                            babbageMonitorScreen.value = "";
+                            babbageFeedback.innerHTML = "";
+                            adaSceneState = "babbage_map";
+                            babbageErrorCount = 0;
+                            document.getElementById("babbage-hint").style.display = "none";
+                        }
+                        else if (adaSceneState === "turing_intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogBox.classList.remove("centered-dialog");
+                            npcContainer.style.display = "flex";
+                            npcContainer.classList.add("imageFadeIn");
+                            document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/turing_foto.png";
+                            document.getElementById("npc-name-label").textContent = "Alan Turing";
+                            adaDialogBox.style.display = "flex";
+                            setTimeout(() => {
+                                adaDialogTextElement.style.fontStyle = "italic";
+                                typeWriter(turingWhisperText, adaDialogTextElement, 30, () => {
+                                    document.getElementById("turing-quiz").style.display = "flex";
+                                    adaSceneState = "turing_choice";
+                                });
+                            }, 600);
+                        }
+                        else if (adaSceneState === "turing_listened_part2") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogTextElement.style.fontStyle = "normal";
+                            typeWriter(turingListenedText2(), adaDialogTextElement, 30, () => {
+                                document.getElementById("turing-hint-image").style.display = "block";
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "turing_input_lesson";
+                            });
+                        }
+                        else if (adaSceneState === "turing_ignored_part2") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogTextElement.style.fontStyle = "normal";
+                            typeWriter(turingIgnoredText2(), adaDialogTextElement, 30, () => {
+                                document.getElementById("turing-hint-image").style.display = "block";
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "turing_input_lesson";
+                            });
+                        }
+                        else if (adaSceneState === "turing_input_lesson") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            document.getElementById("turing-hint-image").style.display = "none";
+                            turingInputQuizErrorCount = 0;
+                            document.getElementById("turing-input-quiz-feedback").innerHTML = "";
+                            document.getElementById("turing-input-quiz-hint").style.display = "none";
+                            typeWriter(turingInputLessonText, adaDialogTextElement, 30, () => {
+                                document.getElementById("turing-input-quiz").style.display = "flex";
+                            });
+                        }
+                        else if (adaSceneState === "turing_input_done") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            turingPrintErrorCount = 0;
+                            document.getElementById("turing-print-feedback").innerHTML = "";
+                            document.getElementById("turing-print-hint").style.display = "none";
+                            document.getElementById("turing-print-screen").value = "";
+                            typeWriter(turingPrintLessonText(), adaDialogTextElement, 30, () => {
+                                document.getElementById("turing-print-monitor").style.display = "flex";
+                                document.getElementById("turing-print-screen").focus();
+                            });
+                        }
+                        else if (adaSceneState === "turing_farewell") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+
+                            // Escurece a tela aos poucos
+                            npcImage.classList.add("fadeOutSlow");
+                            npcContainer.classList.add("fadeOutSlow");
+                            adaDialogBox.classList.add("fadeOutSlow");
+                            blackOverlay.classList.add("fadeOutSlow");
+
+                            setTimeout(() => {
+                                // Esconde elementos da cena Turing
+                                npcContainer.style.display = "none";
+                                npcContainer.classList.remove("fadeOutSlow", "imageFadeIn");
+                                adaDialogBox.style.display = "none";
+                                adaDialogBox.classList.remove("fadeOutSlow");
+                                blackOverlay.className = "";
+                                blackOverlay.style.cssText = "";
+
+                                // Exibe fundo da máquina do tempo com fade
+                                imageContainer.style.display = "none";
+                                npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn", "fadeOutSlow");
+                                swapBackground(
+                                    "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png",
+                                    () => {
+                                        void npcImage.offsetWidth;
+                                        npcImage.classList.add("sceneFadeIn");
+                                        imageContainer.style.display = "flex";
+                                        blackOverlay.classList.add("overlayFadeIn");
+                                    }
+                                );
+
+                                // Exibe dialogBox com texto 10.1
+                                setTimeout(() => {
+                                    dialogBox.style.display = "flex";
+                                    typeWriter(turingTransitionText, dialogTextElement, 30, () => {
+                                        pressToProceed.style.display = "block";
+                                        canProceed = true;
+                                        adaSceneState = "turing_transition_adjusting";
+                                    });
+                                }, 500);
+                            }, 2000);
+                        }
+                        else if (adaSceneState === "turing_transition_adjusting") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(adjustingText, dialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "turing_transition_done";
+                            });
+                        }
+                        else if (adaSceneState === "turing_transition_done") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            startTimeTravel3();
+                        }
+                        else if (adaSceneState === "pascal_intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogBox.classList.remove("centered-dialog");
+                            npcContainer.style.display = "flex";
+                            npcContainer.classList.add("imageFadeIn");
+                            document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal-perfil.png";
+                            document.getElementById("npc-name-label").textContent = "Blaise Pascal";
+                            setTimeout(() => {
+                                typeWriter(pascalMeetingText(), adaDialogTextElement, 30, () => {
+                                    pressToProceed.style.display = "block";
+                                    canProceed = true;
+                                    adaSceneState = "pascal_meeting";
+                                });
+                            }, 600);
+                        }
+                        else if (adaSceneState === "pascal_meeting") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(pascalPascalinaText(), adaDialogTextElement, 30, () => {
+                                document.getElementById("pascal-images").style.display = "flex";
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "pascal_done";
+                            });
+                        }
+                        else if (adaSceneState === "pascal_done") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            document.getElementById("pascal-images").style.display = "none";
+                            document.getElementById("pascal-quiz1").style.display = "none";
+                            document.getElementById("pascal-quiz2").style.display = "none";
+                            document.getElementById("pascal-quiz3").style.display = "none";
+                            document.getElementById("pascal-farewell-quiz").style.display = "none";
+                            document.getElementById("pascal-sandbox").style.display = "none";
+                            document.getElementById("pascal-sandbox-code").value = "";
+                            document.getElementById("pascal-sandbox-result-area").innerHTML = "";
+                            document.getElementById("pascal-sandbox-input-row").style.display = "none";
+                            document.getElementById("pascal-sandbox-buttons").style.display = "none";
+                            document.getElementById("pascal-sandbox-error").innerHTML = "";
+                            document.getElementById("pascal-sandbox-error-count").innerHTML = "";
+                            pascalQuiz1ErrorCount = 0;
+                            pascalQuiz2ErrorCount = 0;
+                            pascalQuiz3ErrorCount = 0;
+                            pascalFarewellQuizErrorCount = 0;
+                            pascalSandboxErrorCount = 0;
+                            typeWriter(pascalChallengeText(), adaDialogTextElement, 30, () => {
+                                pascalQuiz1ErrorCount = 0;
+                                document.getElementById("pascal-quiz1-feedback").innerHTML = "";
+                                document.getElementById("pascal-quiz1-hint").style.display = "none";
+                                document.getElementById("pascal-quiz1").style.display = "flex";
+                            });
+                        }
+                        else if (adaSceneState === "pascal_sandbox_intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            document.getElementById("pascal-sandbox-code").value = "";
+                            document.getElementById("pascal-sandbox-result-area").innerHTML = "";
+                            document.getElementById("pascal-sandbox-input-row").style.display = "none";
+                            document.getElementById("pascal-sandbox-buttons").style.display = "none";
+                            document.getElementById("pascal-sandbox-error").innerHTML = "";
+                            document.getElementById("pascal-sandbox-error-count").innerHTML = "";
+                            pascalSandboxErrorCount = 0;
+                            document.getElementById("pascal-sandbox").style.display = "flex";
+                            document.getElementById("pascal-sandbox-code").focus();
+                        }
+                        else if (adaSceneState === "babbage_farewell") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            startTimeTravel2();
+                        }
+                        else if (adaSceneState === "return_machine_text") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(adjustingText, dialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "return_machine_adjusting";
+                            });
+                        }
+                        else if (adaSceneState === "return_machine_adjusting") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            dialogBox.style.display = "none";
+                            imageContainer.style.display = "none";
+                            blackOverlay.style.transition = "opacity 0.5s ease";
+                            blackOverlay.style.opacity = "1";
+                            blackOverlay.style.backgroundColor = "rgba(0,0,0,1)";
+
+                            setTimeout(() => {
+                                travelScreen.style.display = "flex";
+                                blackOverlay.style.display = "none";
+                                typeWriter("Viajando pelo tempo", travelTextElement, 50, () => {
+                                    animateDots();
+                                    let duration = 1000;
+                                    let startTime = Date.now();
+                                    let shuffleInterval = setInterval(() => {
+                                        let elapsed = Date.now() - startTime;
+                                        if (elapsed < duration) {
+                                            yearDisplay.innerHTML = Math.floor(1000 + Math.random() * 9000);
+                                        } else {
+                                            clearInterval(shuffleInterval);
+                                            yearDisplay.innerHTML = "Milton Keynes, 1942";
+                                        }
+                                    }, 50);
+
+                                    setTimeout(() => {
+                                        clearInterval(dotsInterval);
+                                        travelTextElement.innerHTML = "";
+                                        yearDisplay.innerHTML = "";
+                                        setTimeout(() => { loadTuringScene(); }, 1000);
+                                    }, 3000);
+                                });
+                                adaSceneState = "travel2_done";
+                            }, 600);
+                        }
+                    } else {
+                        if (currentTextIndex === 0) {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            dialogBox.style.display = "none";
+
+                            npcImage.classList.add("flicker-image");
+
+                            setTimeout(() => {
+                                npcImage.classList.remove("flicker-image");
+                                npcImage.style.opacity = "1";
+                                currentTextIndex++;
+                                dialogBox.style.display = "flex";
+                                showNextDialog();
+                            }, 3000);
+                        } else {
+                            currentTextIndex++;
+                            if (currentTextIndex < texts.length) {
+                                showNextDialog();
+                            } else {
+                                canProceed = false;
+                                pressToProceed.style.display = "none";
+                                startTimeTravel();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        window.onload = () => {
+            inputName.value = "";
+            userNameInput.value = "";
+
+            // PRÉ-CARREGAMENTO: força download de todas as imagens no início
+            const imagesToPreload = [
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/ada_fundo.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/ada_perfil.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_fundo.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_perfil.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-babbage.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/turing_fundo.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/turing_foto.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-turing.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal_fundo.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal-perfil.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-pascal.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascalina.png",
+            ];
+            imagesToPreload.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        };
+        // DEV TOOL: REMOVER ANTES DO LANÇAMENTO
+        function devReset() {
+            mainText.style.display = "none";
+            pressSpaceLabel.style.display = "none";
+            firstChain.classList.add("blockBody");
+            firstChain.classList.remove("currentAnimation");
+            imageContainer.style.display = "none";
+            npcImage.style.opacity = "1";
+            npcImage.classList.remove("flicker-image", "imageFadeIn", "sceneFadeIn", "fadeOutScene");
+            blackOverlay.className = "";
+            blackOverlay.style.display = "none";
+            blackOverlay.style.opacity = "0";
+            dialogBox.style.display = "none";
+            dialogBox.classList.remove("fadeOutScene");
+            adaDialogBox.style.display = "none";
+            adaDialogBox.classList.remove("centered-dialog");
+            pressToProceed.style.display = "none";
+            userNameContainer.style.display = "none";
+            npcContainer.style.display = "none";
+            npcContainer.classList.remove("imageFadeIn");
+            algorithmChallenge.style.display = "none";
+            travelScreen.style.display = "none";
+            canProceed = false;
+            isAtAdaScene = false;
+            adaSceneState = "intro";
+            currentTextIndex = 0;
+            errorCount = 0;
+            playerNickname = "";
+            feedbackAlgo.innerHTML = "";
+            showSolutionBtn.style.display = "none";
+            solutionHint.style.display = "none";
+            document.getElementById("left-image-panel").style.display = "none";
+            document.getElementById("turing-input-quiz").style.display = "none";
+            document.getElementById("turing-input-quiz-feedback").innerHTML = "";
+            document.getElementById("turing-input-quiz-hint").style.display = "none";
+            document.getElementById("turing-print-monitor").style.display = "none";
+            document.getElementById("turing-sandbox").style.display = "none";
+            document.getElementById("turing-sandbox-code").value = "";
+            document.getElementById("turing-sandbox-result-area").innerHTML = "";
+            document.getElementById("turing-sandbox-input-row").style.display = "none";
+            document.getElementById("turing-sandbox-buttons").style.display = "none";
+            document.getElementById("turing-sandbox-error").innerHTML = "";
+            document.getElementById("turing-sandbox-error-count").innerHTML = "";
+            turiSandboxErrorCount = 0;
+            document.getElementById("turing-print-screen").value = "";
+            document.getElementById("turing-print-feedback").innerHTML = "";
+            document.getElementById("turing-print-hint").style.display = "none";
+            turingPrintErrorCount = 0;
+            turingInputQuizErrorCount = 0;
+            babbageMonitor.style.display = "none";
+            babbageMonitorScreen.value = "";
+            babbageFeedback.innerHTML = "";
+            babbageQuizErrorCount = 0;
+            babbageQuiz.style.display = "none";
+            babbageQuizFeedback.innerHTML = "";
+            babbageQuizHint.style.display = "none";
+            document.getElementById("turing-quiz").style.display = "none";
+            adaDialogTextElement.style.fontStyle = "normal";
+            turingChoice = "";
+            document.getElementById("turing-hint-image").style.display = "none";
+            document.getElementById("pascal-images").style.display = "none";
+        }
+
+        function devGoto(scene) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            devReset();
+            if (scene === 'inicio') {
+                mainText.style.display = "";
+                pressSpaceLabel.style.display = "";
+            } else if (scene === 'input') {
+                changeBodyType(firstChain, "add");
+                inputName.value = "";
+                inputName.focus();
+            } else if (scene === 'maquina') {
+                imageContainer.style.display = "flex";
+                npcImage.style.opacity = "1";
+                blackOverlay.classList.add("overlayFadeIn");
+                dialogBox.style.display = "flex";
+                currentTextIndex = 0;
+                showNextDialog();
+            } else if (scene === 'viagem') {
+                startTimeTravel();
+            } else if (scene === 'ada-intro') {
+                loadNewScene();
+            } else if (scene === 'ada-meeting') {
+                loadNewScene();
+                // avança automaticamente após o typewriter da intro
+                const originalLoadNewScene = loadNewScene;
+                setTimeout(() => {
+                    adaSceneState = "intro";
+                    canProceed = true;
+                    pressToProceed.style.display = "none";
+                    adaDialogBox.classList.remove("centered-dialog");
+                    npcContainer.style.display = "flex";
+                    npcContainer.classList.add("imageFadeIn");
+                    imageContainer.style.display = "flex";
+                    npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/ada_fundo.png";
+                    adaDialogBox.style.display = "flex";
+                    typeWriter(adaWelcomeText, adaDialogTextElement, 30, () => {
+                        userNameContainer.style.display = "flex";
+                        userNameInput.focus();
+                    });
+                    adaSceneState = "meeting";
+                    isAtAdaScene = true;
+                }, 800);
+            } else if (scene === 'ada-name') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "algorithm_lesson";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/ada_fundo.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                adaDialogBox.style.display = "flex";
+                const response = `Prazer em te conhecer, ${playerNickname}! Você sabe o que são algoritmos? De forma resumida, são uma sequência clara de passos para resolver um problema. Algoritmos existem há muito tempo: matemáticos antigos já criavam sequências de passos para resolver problemas, como fazer contas ou encontrar padrões em números.`;
+                typeWriter(response, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'ada-challenge') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "algorithm_challenge_active";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/ada_fundo.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                adaDialogBox.style.display = "flex";
+                typeWriter(adaHelpRequest, adaDialogTextElement, 30, () => {
+                    algorithmChallenge.style.display = "flex";
+                });
+            } else if (scene === 'ada-thanks') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "ada_farewell";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/ada_fundo.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                adaDialogBox.style.display = "flex";
+                const thanksMessage = "Obrigada pela ajuda! Aliás, você está vendo aquela porta no fundo da sala? Abra ela e você vai encontrar o meu colega de trabalho em sua oficina, fale com ele! Agora você está pronto para continuar sua jornada. Espero te ver em breve!";
+                typeWriter(thanksMessage, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'babbage-intro') {
+                isAtAdaScene = true; 
+                adaSceneState = "babbage_intro";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_fundo.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(babbageIntroText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                    adaSceneState = "babbage_intro";  // ← adicione isto se ainda não existir
+                });
+            } else if (scene === 'babbage-meeting') {
+                isAtAdaScene = true;
+                adaSceneState = "babbage_meeting";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_fundo.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_perfil.png";
+                document.getElementById("npc-name-label").textContent = "Charles Babbage";
+                adaDialogBox.style.display = "flex";
+                typeWriter(babbageWelcomeText(), adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'babbage-variable') {
+                isAtAdaScene = true;
+                adaSceneState = "babbage_variable";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_fundo.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_perfil.png";
+                document.getElementById("npc-name-label").textContent = "Charles Babbage";
+                adaDialogBox.style.display = "flex";
+                typeWriter(babbageVariableText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+             } else if (scene === 'babbage-map') {
+                isAtAdaScene = true;
+                adaSceneState = "babbage_map";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_fundo.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_perfil.png";
+                document.getElementById("npc-name-label").textContent = "Charles Babbage";
+                document.getElementById("left-image-panel").style.display = "flex";
+                babbageMonitor.style.display = "flex";
+                babbageMonitorScreen.value = "";
+                babbageFeedback.innerHTML = "";
+            } else if (scene === 'babbage-quiz') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "babbage_map";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_fundo.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_perfil.png";
+                document.getElementById("npc-name-label").textContent = "Charles Babbage";
+                adaDialogBox.style.display = "flex";
+                babbageQuizErrorCount = 0;
+                babbageQuizFeedback.innerHTML = "";
+                babbageQuizHint.style.display = "none";
+                babbageQuiz.style.display = "flex";
+            } else if (scene === 'return-machine') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "babbage_farewell";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_fundo.png";
+                blackOverlay.classList.add("overlayFadeIn");
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_perfil.png";
+                document.getElementById("npc-name-label").textContent = "Charles Babbage";
+                adaDialogBox.style.display = "flex";
+                const farewellPreview = `Observe! O visor está mostrando meu nome. Obrigado pela ajuda, Forasteiro! Vou continuar trabalhando nesse projeto, ainda tenho muito pela frente, espero que consiga acabar ainda esse ano. Adeus, meu amigo!`;
+                typeWriter(farewellPreview, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'turing-intro') {
+                isAtAdaScene = true;
+                adaSceneState = "turing_intro";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/turing_fundo.png";
+                imageContainer.style.display = "flex";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(turingIntroText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'turing-whisper') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "turing_intro";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/turing_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/turing_foto.png";
+                document.getElementById("npc-name-label").textContent = "Alan Turing";
+                adaDialogBox.style.display = "flex";
+                adaDialogTextElement.style.fontStyle = "italic";
+                typeWriter(turingWhisperText, adaDialogTextElement, 30, () => {
+                    document.getElementById("turing-quiz").style.display = "flex";
+                    adaSceneState = "turing_choice";
+                });
+            } else if (scene === 'turing-input') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "turing_input_lesson";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/turing_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/turing_foto.png";
+                document.getElementById("npc-name-label").textContent = "Alan Turing";
+                adaDialogBox.style.display = "flex";
+                pressToProceed.style.display = "block";
+                canProceed = true;
+            } else if (scene === 'turing-print') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "turing_input_done";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/turing_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/turing_foto.png";
+                document.getElementById("npc-name-label").textContent = "Alan Turing";
+                adaDialogBox.style.display = "flex";
+                pressToProceed.style.display = "block";
+                canProceed = true;
+            } else if (scene === 'turing-sandbox') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "turing_print_done";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/turing_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/turing_foto.png";
+                document.getElementById("npc-name-label").textContent = "Alan Turing";
+                adaDialogBox.style.display = "flex";
+                document.getElementById("turing-sandbox-code").value = "";
+                document.getElementById("turing-sandbox-result-area").innerHTML = "";
+                document.getElementById("turing-sandbox-input-row").style.display = "none";
+                document.getElementById("turing-sandbox-buttons").style.display = "none";
+                document.getElementById("turing-sandbox-error").innerHTML = "";
+                document.getElementById("turing-sandbox-error-count").innerHTML = "";
+                turiSandboxErrorCount = 0;
+                typeWriter(turingFarewellIntroText(), adaDialogTextElement, 30, () => {
+                    document.getElementById("turing-sandbox").style.display = "flex";
+                    document.getElementById("turing-sandbox-code").focus();
+                });
+            } else if (scene === 'viagem3') {
+                startTimeTravel3();
+            } else if (scene === 'turing-transition') {
+                isAtAdaScene = true;
+                adaSceneState = "turing_done";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png";
+                imageContainer.style.display = "flex";
+                blackOverlay.classList.add("overlayFadeIn");
+                dialogBox.style.display = "flex";
+                typeWriter(turingTransitionText, dialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                    adaSceneState = "turing_transition_adjusting";
+                });
+            } else if (scene === 'pascal-intro') {
+                loadPascalScene();
+            } else if (scene === 'pascal-meeting') {
+                isAtAdaScene = true;
+                adaSceneState = "pascal_meeting";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal-perfil.png";
+                document.getElementById("npc-name-label").textContent = "Blaise Pascal";
+                adaDialogBox.style.display = "flex";
+                typeWriter(pascalMeetingText(), adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'pascal-pascalina') {
+                isAtAdaScene = true;
+                adaSceneState = "pascal_done";
+                document.getElementById("pascal-images").style.display = "flex";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                npcContainer.classList.add("imageFadeIn");
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal-perfil.png";
+                document.getElementById("npc-name-label").textContent = "Blaise Pascal";
+                adaDialogBox.style.display = "flex";
+                typeWriter(pascalPascalinaText(), adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'pascal-challenge') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "pascal_done";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal-perfil.png";
+                document.getElementById("npc-name-label").textContent = "Blaise Pascal";
+                adaDialogBox.style.display = "flex";
+                typeWriter(pascalChallengeText(), adaDialogTextElement, 30, () => {
+                    pascalQuiz1ErrorCount = 0;
+                    document.getElementById("pascal-quiz1-feedback").innerHTML = "";
+                    document.getElementById("pascal-quiz1-hint").style.display = "none";
+                    document.getElementById("pascal-quiz1").style.display = "flex";
+                });
+            } else if (scene === 'pascal-sandbox') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "pascal_sandbox_intro";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal-perfil.png";
+                document.getElementById("npc-name-label").textContent = "Blaise Pascal";
+                adaDialogBox.style.display = "flex";
+                typeWriter(pascalSandboxIntroText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'pascal-farewell') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "pascal_sandbox_intro";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal-perfil.png";
+                document.getElementById("npc-name-label").textContent = "Blaise Pascal";
+                adaDialogBox.style.display = "flex";
+                typeWriter(pascalFarewellQuizText, adaDialogTextElement, 30, () => {
+                    pascalFarewellQuizErrorCount = 0;
+                    document.getElementById("pascal-farewell-quiz-feedback").innerHTML = "";
+                    document.getElementById("pascal-farewell-quiz-hint").style.display = "none";
+                    document.getElementById("pascal-farewell-quiz").style.display = "flex";
+                });
+        }
+    }
+        // FIM DEV TOOL
+    </script>
+    <!-- DEV TOOL: REMOVER ANTES DO LANÇAMENTO -->
+    <div id="dev-panel" style="
+        position: fixed; bottom: 10px; right: 10px;
+        background: rgba(0,0,0,0.85); border: 1px solid #8acebd;
+        padding: 10px; z-index: 99999; display: flex;
+        flex-direction: column; gap: 6px; font-family: monospace;
+    ">
+        <span style="color:#8acebd; font-size:11px; text-align:center;">⚙ DEV: pular para</span>
+        <button onclick="devGoto('inicio')"       style="font-size:11px; cursor:pointer;">1. Início</button>
+        <button onclick="devGoto('input')"        style="font-size:11px; cursor:pointer;">2. Input hello world</button>
+        <button onclick="devGoto('maquina')"      style="font-size:11px; cursor:pointer;">3.1 Máquina do tempo</button>
+        <button onclick="devGoto('viagem')"       style="font-size:11px; cursor:pointer;">4. Viagem no tempo</button>
+        <button onclick="devGoto('ada-intro')"    style="font-size:11px; cursor:pointer;">5.1 Chegada Ada</button>
+        <button onclick="devGoto('ada-meeting')"  style="font-size:11px; cursor:pointer;">5.2.1 Ada fala</button>
+        <button onclick="devGoto('ada-name')"     style="font-size:11px; cursor:pointer;">5.2.2 Nome inserido</button>
+        <button onclick="devGoto('ada-challenge')"style="font-size:11px; cursor:pointer;">5.2.3 Desafio</button>
+        <button onclick="devGoto('ada-thanks')"   style="font-size:11px; cursor:pointer;">5.2.4 Agradecimento Ada</button>
+        <button onclick="devGoto('babbage-intro')"style="font-size:11px; cursor:pointer;">6.0 Chegada Babbage</button>
+        <button onclick="devGoto('babbage-meeting')"style="font-size:11px; cursor:pointer;">6.2 Babbage fala</button>
+        <button onclick="devGoto('babbage-variable')"style="font-size:11px; cursor:pointer;">6.3 Babbage variável</button>
+        <button onclick="devGoto('babbage-map')"  style="font-size:11px; cursor:pointer;">6.4 Babbage mapa</button>
+        <button onclick="devGoto('babbage-quiz')" style="font-size:11px; cursor:pointer;">6.5 Babbage quiz</button>
+        <button onclick="devGoto('return-machine')" style="font-size:11px; cursor:pointer;">7.0 Retorno máquina</button>
+        <button onclick="devGoto('turing-intro')" style="font-size:11px; cursor:pointer;">8.0 Chegada Turing</button>
+        <button onclick="devGoto('turing-whisper')" style="font-size:11px; cursor:pointer;">8.1 Turing sussurro</button>
+        <button onclick="devGoto('turing-input')" style="font-size:11px; cursor:pointer;">8.2 Turing input quiz</button>
+        <button onclick="devGoto('turing-print')" style="font-size:11px; cursor:pointer;">8.3 Turing print</button>
+        <button onclick="devGoto('turing-sandbox')" style="font-size:11px; cursor:pointer;">8.4 Turing sandbox</button>
+        <button onclick="devGoto('turing-transition')" style="font-size:11px; cursor:pointer;">10.1 Transição Turing</button>
+        <button onclick="devGoto('viagem3')" style="font-size:11px; cursor:pointer;">11. Viagem Rouen 1642</button>
+        <button onclick="devGoto('pascal-intro')"   style="font-size:11px; cursor:pointer;">12.1 Chegada Pascal</button>
+        <button onclick="devGoto('pascal-meeting')" style="font-size:11px; cursor:pointer;">12.2 Pascal fala</button>
+        <button onclick="devGoto('pascal-pascalina')" style="font-size:11px; cursor:pointer;">12.3 Pascalina</button>
+        <button onclick="devGoto('pascal-challenge')"  style="font-size:11px; cursor:pointer;">12.4 Pascal quiz</button>
+        <button onclick="devGoto('pascal-sandbox')"    style="font-size:11px; cursor:pointer;">12.5 Pascal sandbox</button>
+        <button onclick="devGoto('pascal-farewell')"   style="font-size:11px; cursor:pointer;">12.6 Pascal despedida</button>
+
+    </div>
+    <!-- FIM DEV TOOL -->
+</body>
+</html>
