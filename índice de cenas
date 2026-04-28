@@ -95,21 +95,30 @@
         12.6.1. Quiz qual o resultado?
     12.7. ["Magnífico! Com essas operações..."]
         12.7.1. Espaço para pular
+13. Máquina quebrada: escurecer tela, adicionar imagem de fundo da máquina do tempo
+    13.1. ["Você ficou impressionado com a criatividade..."]
+        13.1.1. Espaço para pular
+    13.2. ["Ajustando as coordenadas temporais..."]
+        13.2.1. Espaço para pular
+    13.3. Tela escurece
+    13.4. Volta tela da máquina do tempo, mas com um alarme e uma camada de vermelho que aumenta e diminui a transparência várias vezes de modo gradual (alerta vermelho)
+    13.5. ["(Em itálico) FATAL ERROR: STARTING..."]
+        13.6. Duas opções (fundo azul, botões futuristas):
+            13.6.1. a) Abrir manual da máquina
+                13.6.1.1. Entrega os erros e registra-os
+            13.6.2. b) Abrir código fonte
+                13.6.2.1. Opções de sistemas da máquina
+                    13.6.2.1.1. Digitar código correto e consertar (ao acertar, remover código do erro correspondente tanto da mensagem de erro quanto dos erros registrados)
+            13.6.3. ["Ufa, essa foi por pouco..."]
+                13.6.3.1. Espaço para pular
+                ...
+            
 
 
 
 ------------------- MINHAS IDEIAS PARA CONTINUAÇÃO ---------------------
-
-        5.2.4. Ada agradece + fala de IA
-            5.2.4.1. Espaço para pular
-    5.3. Breve história de Ada Lovelace e suas contribuições, ocupando tela toda + foto realista dela (sem animação de texto se for muito grande)
-        5.3.1. Espaço para pular
-    5.4. ["Você retorna à máquina..."]
-6. Conversa com...
-...
 X. Máquina danificada
     X.1. Tela piscando em vermelho + alarme soando
     X.2. Resolver problema para parar de piscar
         X.2.1. Se problema envolver código, usar background de computador azul e futurista (que encaixa com o cenário)
             X.2.1.1. (Talvez animar as teclas digitando ao mesmo tempo que digita no computador real?)
-...
