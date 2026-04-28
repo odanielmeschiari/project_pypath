@@ -123,6 +123,7 @@
         #dialog-text, #ada-dialog-text {
             font-family: var(--ff-p);
             color: black;
+            white-space: pre-line;
             font-size: 18px;
             margin: 0;
             line-height: 1.4;
@@ -843,10 +844,309 @@
             margin-left: 4px;
         }
 
+        /* --- Alerta Vermelho (cena 13) --- */
+        #red-alert-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-color: rgba(180, 0, 0, 0);
+            z-index: 9998;
+            pointer-events: none;
+        }
+
+        .red-alert-pulse {
+            display: block !important;
+            animation: redPulse 1.8s ease-in-out infinite !important;
+        }
+
+        @keyframes redPulse {
+            0%   { background-color: rgba(180, 0, 0, 0.15); }
+            50%  { background-color: rgba(180, 0, 0, 0.42); }
+            100% { background-color: rgba(180, 0, 0, 0.15); }
+        }
+
+        /* Balão de erro vermelho (cena 13.5) */
+        #ada-dialog-box.error-dialog {
+            background-color: #f5aaaa !important;
+            border: 4px solid #8b0000 !important;
+        }
+
+        #ada-dialog-box.error-dialog #ada-dialog-text {
+            color: black !important;
+            font-style: italic !important;
+        }
+
+        /* Reposicionamento do balão de erro ao abrir o manual (cena 13) */
+        #ada-dialog-box.error-dialog-raised {
+            top: 20px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            max-width: 480px !important;
+        }
+
+        /* Botões futuristas (cena 13.6) */
+        #broken-machine-options {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 10, 40, 0.95);
+            border: 2px solid #00cfff;
+            border-radius: 8px;
+            padding: 20px 28px;
+            z-index: 10003;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 420px;
+            box-shadow: 0 0 24px rgba(0, 180, 255, 0.3);
+        }
+
+        .broken-option-btn {
+            background: #000a28;
+            border: 1px solid #00cfff;
+            border-radius: 4px;
+            color: #00cfff;
+            font-family: var(--ff-p);
+            font-size: 16px;
+            padding: 10px 18px;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.2s, color 0.2s;
+            letter-spacing: 1px;
+        }
+
+        .broken-option-btn:hover {
+            background: #00cfff;
+            color: #000a28;
+        }
+
+        /* Terminal lateral de erros registrados (cena 13) */
+        #error-log-terminal {
+            display: none;
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            width: 340px;
+            max-height: 70vh;
+            background: #0a0f2e;
+            border: 2px solid #00cfff;
+            border-radius: 8px;
+            padding: 14px 16px;
+            z-index: 10004;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+            box-shadow: 0 0 18px rgba(0, 180, 255, 0.2);
+        }
+
+        #error-log-terminal .error-log-title {
+            font-family: var(--ff-p);
+            font-size: 12px;
+            color: #00cfff;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            border-bottom: 1px solid #00cfff44;
+            padding-bottom: 6px;
+            margin-bottom: 4px;
+        }
+
+        .error-log-entry {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: white;
+            line-height: 1.5;
+            border-left: 2px solid #00cfff66;
+            padding-left: 8px;
+        }
+
+        /* Índice de erros emergenciais (cena 13) */
+        #error-index-panel {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 10, 40, 0.95);
+            border: 2px solid #00cfff;
+            border-radius: 8px;
+            padding: 20px 28px;
+            z-index: 10003;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 420px;
+            box-shadow: 0 0 24px rgba(0, 180, 255, 0.3);
+        }
+
+        #error-index-title {
+            font-family: var(--ff-p);
+            font-size: 20px;
+            color: #00cfff;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .error-index-btn {
+            background: #000a28;
+            border: 1px solid #00cfff;
+            border-radius: 4px;
+            color: #00cfff;
+            font-family: var(--ff-p);
+            font-size: 15px;
+            padding: 8px 16px;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.2s, color 0.2s;
+            letter-spacing: 1px;
+        }
+
+        .error-index-btn:hover {
+            background: #00cfff;
+            color: #000a28;
+        }
+
+        /* Painel de descrição de erro individual (cena 13) */
+        #error-detail-panel {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 10, 40, 0.95);
+            border: 2px solid #00cfff;
+            border-radius: 8px;
+            padding: 20px 28px;
+            z-index: 10003;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 420px;
+            max-width: 520px;
+            box-shadow: 0 0 24px rgba(0, 180, 255, 0.3);
+        }
+
+        #error-detail-text {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: white;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
     </style>
 </head>
 <body>
     <div id="black-overlay"></div>
+
+    <div id="red-alert-overlay"></div>
+
+    <!-- Terminal lateral de erros registrados (cena 13) -->
+    <div id="error-log-terminal">
+        <div class="error-log-title">▶ ERROS REGISTRADOS</div>
+    </div>
+
+    <!-- Índice de erros emergenciais (cena 13) -->
+    <div id="error-index-panel">
+        <div id="error-index-title">ÍNDICE DE ERROS EMERGENCIAIS</div>
+        <button class="error-index-btn" data-error="1">1. 2943421BD</button>
+        <button class="error-index-btn" data-error="2">2. 1389484AC</button>
+        <button class="error-index-btn" data-error="3">3. 8498942JK</button>
+        <button class="error-index-btn" data-error="4">4. 5553507EA</button>
+        <button class="error-index-btn" data-error="5">5. 1391033OP</button>
+        <button class="error-index-btn" data-error="6">6. 1489249ZO</button>
+        <button class="error-index-btn" data-error="back-main">← Voltar</button>
+    </div>
+
+    <!-- Painel de descrição individual de erro (cena 13) -->
+    <div id="error-detail-panel">
+        <div id="error-detail-text"></div>
+        <button class="error-index-btn" id="error-detail-back">← Voltar</button>
+    </div>
+
+    <div id="broken-machine-options">
+        <button class="broken-option-btn" data-id="nothing">a) Abrir manual da máquina</button>
+        <button class="broken-option-btn" data-id="source">b) Abrir código fonte</button>
+    </div>
+
+    <!-- 13.6.2.1 — Seletor de sistemas -->
+    <div id="system-selector" style="
+        display: none; position: fixed; bottom: 40px; left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,10,40,0.95); border: 2px solid #00cfff;
+        border-radius: 8px; padding: 20px 28px; z-index: 10003;
+        flex-direction: column; gap: 14px; min-width: 420px;
+        box-shadow: 0 0 24px rgba(0,180,255,0.3);
+    ">
+        <div style="font-family:var(--ff-p); font-size:14px; color:#00cfff; letter-spacing:1px; text-align:center; margin-bottom:4px;">SISTEMAS DA MÁQUINA</div>
+        <button class="broken-option-btn" data-sys="refrigeracao">A. Sistema de refrigeração</button>
+        <button class="broken-option-btn" data-sys="seletor">B. Seletor temporal</button>
+        <button class="broken-option-btn" data-sys="configuracoes">C. Tela de configurações</button>
+        <button class="broken-option-btn" data-sys="back">← Voltar</button>
+    </div>
+
+    <!-- Sistema A: Refrigeração -->
+    <div id="sys-refrigeracao" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); width:560px; z-index:10003; flex-direction:column; filter:drop-shadow(0 0 18px #00ff6644); animation:fadeIn 0.4s forwards;">
+        <div style="background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px; display:flex; align-items:center; gap:8px;">
+            <span style="font-family:var(--ff-p); font-size:13px; color:#00cfff; opacity:0.7; letter-spacing:1px;">sistema_refrigeracao.py</span>
+        </div>
+        <div id="sys-refrig-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; white-space:pre;">temperatura_atual = input()
+temperatura_desejada = input()
+temperatura_mudanca = temperatura_atual-temperatura_desejada
+print(temperatura_mudanca)</div>
+        <textarea id="sys-refrig-code" placeholder="Digite o código aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00cfff; resize:none; outline:none; width:100%; height:130px; box-sizing:border-box; caret-color:#00cfff; line-height:1.6;"></textarea>
+        <div style="background:#111; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; border-radius:0 0 8px 8px; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="broken-option-btn" id="sys-refrig-submit" style="padding:5px 16px; font-size:14px;">Concluir</button>
+            <span id="sys-refrig-feedback" style="font-family:var(--ff-p); font-size:14px;"></span>
+            <button class="broken-option-btn" id="sys-refrig-back" style="padding:5px 12px; font-size:13px; margin-left:auto;">← Voltar</button>
+        </div>
+    </div>
+
+    <!-- Sistema B: Seletor temporal -->
+    <div id="sys-seletor" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); width:560px; z-index:10003; flex-direction:column; filter:drop-shadow(0 0 18px #00ff6644); animation:fadeIn 0.4s forwards;">
+        <div style="background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px;">
+            <span style="font-family:var(--ff-p); font-size:13px; color:#00cfff; opacity:0.7; letter-spacing:1px;">seletor_temporal.py</span>
+        </div>
+        <div id="sys-seletor-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; white-space:pre;">ano = input()
+print("Viajando para o ano", ano)</div>
+        <textarea id="sys-seletor-code" placeholder="Digite o código aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00cfff; resize:none; outline:none; width:100%; height:130px; box-sizing:border-box; caret-color:#00cfff; line-height:1.6;"></textarea>
+        <div style="background:#111; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; border-radius:0 0 8px 8px; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="broken-option-btn" id="sys-seletor-submit" style="padding:5px 16px; font-size:14px;">Concluir</button>
+            <span id="sys-seletor-feedback" style="font-family:var(--ff-p); font-size:14px;"></span>
+            <button class="broken-option-btn" id="sys-seletor-back" style="padding:5px 12px; font-size:13px; margin-left:auto;">← Voltar</button>
+        </div>
+    </div>
+
+    <!-- Sistema C: Tela de configurações -->
+    <div id="sys-configuracoes" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); width:580px; z-index:10003; flex-direction:column; filter:drop-shadow(0 0 18px #00ff6644); animation:fadeIn 0.4s forwards;">
+        <div style="background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px;">
+            <span style="font-family:var(--ff-p); font-size:13px; color:#00cfff; opacity:0.7; letter-spacing:1px;">tela_configuracoes.py</span>
+        </div>
+        <!-- Código original exibido -->
+        <div style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:14px; color:#00cfff; line-height:1.8; white-space:pre;">cliques = input()
+cliques = cliques+cliques+cliques+cliques
+print(cliques)</div>
+        <!-- Quiz: selecionar linha -->
+        <div id="sys-config-quiz-line" style="background:#111; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:10px 14px; display:flex; flex-direction:column; gap:8px;">
+            <span style="font-family:var(--ff-p); font-size:14px; color:#00cfff;">Selecione a linha a corrigir:</span>
+            <div style="display:flex; gap:8px;">
+                <button class="broken-option-btn" data-line="1" id="cfg-line-1" style="padding:5px 14px; font-size:14px;">1</button>
+                <button class="broken-option-btn" data-line="2" id="cfg-line-2" style="padding:5px 14px; font-size:14px;">2</button>
+                <button class="broken-option-btn" data-line="3" id="cfg-line-3" style="padding:5px 14px; font-size:14px;">3</button>
+                <span id="sys-config-line-feedback" style="font-family:var(--ff-p); font-size:13px; margin-left:8px; align-self:center;"></span>
+            </div>
+        </div>
+        <!-- Input para reescrever a linha (oculto até selecionar linha correta) -->
+        <div id="sys-config-edit-row" style="display:none; background:#000; border:2px solid #00cfff; border-top:none; border-bottom:none; padding:8px 14px; flex-direction:column; gap:6px;">
+            <span id="sys-config-line-display" style="font-family:'Courier New',monospace; font-size:13px; color:#00cfff88;"></span>
+            <input id="sys-config-input" type="text" placeholder="Reescreva a linha corrigida..." autocomplete="off" spellcheck="false" style="background:transparent; border:none; border-bottom:1px solid #00cfff; outline:none; font-family:'Courier New',monospace; font-size:15px; color:#00cfff; caret-color:#00cfff; width:100%; padding:4px 0;">
+        </div>
+        <div style="background:#111; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-radius:0 0 8px 8px; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="broken-option-btn" id="sys-config-submit" style="padding:5px 16px; font-size:14px; display:none;">Concluir</button>
+            <span id="sys-config-feedback" style="font-family:var(--ff-p); font-size:14px;"></span>
+            <button class="broken-option-btn" id="sys-config-back" style="padding:5px 12px; font-size:13px; margin-left:auto;">← Voltar</button>
+        </div>
+    </div>
 
     <div id="dialog-box">
         <p id="dialog-text"></p>
@@ -1180,6 +1480,7 @@ print(resultado)</div>
         const babbageQuiz = document.getElementById("babbage-quiz");
         const babbageQuizFeedback = document.getElementById("babbage-quiz-feedback");
         const babbageQuizHint = document.getElementById("babbage-quiz-hint");
+        const redAlertOverlay = document.getElementById("red-alert-overlay");
 
         const texts = [
             "Você é um jovem cientista que acabou de entrar no seu laboratório. Há anos você tenta fazer sua máquina do tempo funcionar, mas nunca deu certo... Hoje parece diferente: depois de muitos testes, você finalmente acredita ter encontrado a peça que faltava. Com o coração acelerado, você encaixa a peça na máquina.",
@@ -1228,7 +1529,7 @@ print(resultado)</div>
 
         const pascalChallengeText = () => `Enfim, ${playerNickname}, gostaria que você me auxiliasse em um programa que receba um valor do usuário guardando-a na variável "número", multiplique o valor da variável por 3 e imprima este novo valor. Vamos fazer isso em 3 linhas.`;
         const pascalSandboxIntroText = `Isso mesmo! Vamos testar seu código para ver se está funcionando. Teste com outras operações também, como somas, divisões e subtrações.`;
-        const pascalFarewellQuizText = `Perfeito, parabéns! Antes de você ir só queria pedir sua ajuda em mais uma coisa, estou com alguns resultados para analisar e preciso da sua ajuda. No código a seguir, qual será o valor impresso na tela?`;
+        const pascalFarewellQuizText = `Perfeito, parabéns! Antes de você ir, só queria pedir um favor em mais uma coisa: estou com alguns resultados para analisar e preciso da sua ajuda. No código a seguir, qual será o valor impresso na tela?`;
         const pascalFarewellText = `Magnífico! Com essas operações, você transformou uma simples caixa de guardar dados em uma verdadeira calculadora. A aritmética é a base para compreender máquinas mais complexas. Obrigado pela ajuda!`;
 
         const targetCodes = [
@@ -1256,6 +1557,15 @@ print(resultado)</div>
         let pascalQuiz3ErrorCount = 0;
         let pascalFarewellQuizErrorCount = 0;
         let pascalSandboxErrorCount = 0;
+        let brokenMachineState = ""; // controle interno da cena 13
+        // Erros resolvidos na cena 13
+        const solvedErrors = new Set(); // valores: "refrigeracao", "seletor", "configuracoes"
+        // Mapa: sistema → código do erro na mensagem FATAL ERROR e no terminal
+        const errorCodeMap = {
+            refrigeracao: { fatalCode: "5553507EA", logId: "4" },
+            seletor:      { fatalCode: "1389484AC", logId: "2" },
+            configuracoes:{ fatalCode: "1489249ZO", logId: "6" }
+        };
 
         // --- Lógica de Drag and Drop ---
         let draggedItem = null;
@@ -1573,6 +1883,51 @@ print(resultado)</div>
             }, 600);
         }
 
+        function startBrokenMachineScene() {
+            // 13.3 — tela escurece
+            blackOverlay.style.display = "block";
+            blackOverlay.style.transition = "opacity 0.8s ease";
+            setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
+
+            setTimeout(() => {
+                // limpa estado anterior
+                dialogBox.style.display = "none";
+                imageContainer.style.display = "none";
+
+                // carrega fundo da máquina do tempo
+                swapBackground(
+                    "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png",
+                    () => {
+                        void npcImage.offsetWidth;
+                        npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn", "fadeOutSlow");
+                        void npcImage.offsetWidth;
+                        npcImage.classList.add("sceneFadeIn");
+                        imageContainer.style.display = "flex";
+
+                        // 13.4 — overlay vermelho pulsante (por cima do fundo, abaixo do dialog)
+                        blackOverlay.className = "";
+                        blackOverlay.style.cssText = "";
+                        redAlertOverlay.className = "";
+                        redAlertOverlay.classList.add("red-alert-pulse");
+
+                        // 13.5 — balão vermelho com FATAL ERROR
+                        setTimeout(() => {
+                            isAtAdaScene = true;
+                            adaSceneState = "broken_machine_alert";
+                            adaDialogBox.classList.remove("centered-dialog");
+                            adaDialogBox.classList.add("centered-dialog");
+                            adaDialogBox.classList.add("error-dialog");
+                            adaDialogBox.style.display = "flex";
+                            adaDialogTextElement.style.fontStyle = "italic";
+                            typeWriter("FATAL ERROR:\n5553507EA\n1389484AC\n1489249ZO", adaDialogTextElement, 30, () => {
+                                document.getElementById("broken-machine-options").style.display = "flex";
+                            });
+                        }, 600);
+                    }
+                );
+            }, 1000);
+        }
+
         inputName.addEventListener("input", () => {
             const currentValue = inputName.value;
             if (targetText.startsWith(currentValue)) {
@@ -1888,6 +2243,369 @@ print(resultado)</div>
                 document.getElementById("pascal-farewell-quiz").style.display = "flex";
             });
         });
+
+        const errorDescriptions = {
+            "1": { code: "2943421BD", text: "Tudo certo por aqui.", hasChallenge: false },
+            "2": { code: "1389484AC", text: 'Seletor temporal quebrado: escrever um código em que a variável "ano" receba um valor do usuário. Então imprimir a mensagem: "Viajando para o ano (ano inserido pelo usuário)"\n\nVolte para o código fonte.', hasChallenge: true },
+            "3": { code: "8498942JK", text: "Tudo certo por aqui.", hasChallenge: false },
+            "4": { code: "5553507EA", text: 'Sistema de refrigeração quebrado: criar as variáveis "temperatura_atual", "temperatura_desejada" e "temperatura_mudanca". O usuário deve inserir o valor de cada uma das variáveis e o programa deve imprimir quantos graus a máquina deve esfriar para ir da temperatura atual para a temperatura desejada.\n\nVolte para o código fonte.', hasChallenge: true },
+            "5": { code: "1391033OP", text: "Tudo certo por aqui.", hasChallenge: false },
+            "6": { code: "1489249ZO", text: 'Tela de configurações mal otimizada: simplificar o código abaixo:\n\ncliques = input()\ncliques = cliques+cliques+cliques+cliques\nprint(cliques)\n\nVolte para o código fonte.', hasChallenge: true },
+        };
+
+        function showErrorIndex() {
+            document.getElementById("error-detail-panel").style.display = "none";
+            document.getElementById("broken-machine-options").style.display = "none";
+            document.getElementById("error-index-panel").style.display = "flex";
+        }
+
+        function showErrorDetail(id) {
+            const entry = errorDescriptions[id];
+            if (!entry) return;
+
+            // Registra no terminal lateral se tiver desafio (e ainda não registrado)
+            if (entry.hasChallenge) {
+                const log = document.getElementById("error-log-terminal");
+                // verifica se já existe
+                const already = Array.from(log.querySelectorAll(".error-log-entry"))
+                    .some(el => el.dataset.errorId === id);
+                if (!already) {
+                    const div = document.createElement("div");
+                    div.className = "error-log-entry";
+                    div.dataset.errorId = id;
+                    div.textContent = `[${entry.code}]\n${entry.text}`;
+                    log.appendChild(div);
+                    log.style.display = "flex";
+                }
+            }
+
+            document.getElementById("error-index-panel").style.display = "none";
+            document.getElementById("error-detail-text").textContent = entry.text;
+            document.getElementById("error-detail-panel").style.display = "flex";
+        }
+
+        document.getElementById("broken-machine-options").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("broken-option-btn")) return;
+            if (e.target.dataset.id === "nothing") {
+                document.getElementById("broken-machine-options").style.display = "none";
+                lowerErrorDialog();
+                showErrorIndex();
+            } else if (e.target.dataset.id === "source") {
+                document.getElementById("broken-machine-options").style.display = "none";
+                showSystemSelector();
+            }
+        });
+
+        document.getElementById("error-index-panel").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("error-index-btn")) return;
+            const id = e.target.dataset.error;
+            if (id === "back-main") {
+                document.getElementById("error-index-panel").style.display = "none";
+                document.getElementById("broken-machine-options").style.display = "flex";
+            } else {
+                showErrorDetail(id);
+            }
+        });
+
+        document.getElementById("error-detail-back").addEventListener("click", () => {
+            showErrorIndex();
+        });
+
+        // ---- Helpers cena 13 ----
+        function hideAllSystemPanels() {
+            document.getElementById("sys-refrigeracao").style.display = "none";
+            document.getElementById("sys-seletor").style.display = "none";
+            document.getElementById("sys-configuracoes").style.display = "none";
+            document.getElementById("system-selector").style.display = "none";
+        }
+
+        function lowerErrorDialog() {
+            // Move o balão de erro para cima ao abrir manual/código
+            adaDialogBox.classList.add("error-dialog-raised");
+        }
+        function restoreErrorDialog() {
+            adaDialogBox.classList.remove("error-dialog-raised");
+        }
+
+        function updateFatalErrorMessage() {
+            // Reconstrói o texto do FATAL ERROR removendo erros já resolvidos
+            const allErrors = ["5553507EA", "1389484AC", "1489249ZO"];
+            const solved = [
+                errorCodeMap.refrigeracao.fatalCode,
+                errorCodeMap.seletor.fatalCode,
+                errorCodeMap.configuracoes.fatalCode,
+            ].filter((code, i) => {
+                const key = ["refrigeracao","seletor","configuracoes"][i];
+                return solvedErrors.has(key);
+            });
+            const remaining = allErrors.filter(c => !solved.includes(c));
+            if (remaining.length === 0) {
+                adaDialogTextElement.innerHTML = "FATAL ERROR:\n[TODOS OS ERROS RESOLVIDOS]";
+            } else {
+                adaDialogTextElement.innerHTML = "FATAL ERROR:\n" + remaining.join("\n");
+            }
+        }
+
+        function markErrorSolved(systemKey) {
+            solvedErrors.add(systemKey);
+            const map = errorCodeMap[systemKey];
+
+            // Remove do terminal de erros registrados
+            const log = document.getElementById("error-log-terminal");
+            const entry = log.querySelector(`.error-log-entry[data-error-id="${map.logId}"]`);
+            if (entry) entry.remove();
+            // Se terminal ficou vazio (só o título), esconde
+            if (log.querySelectorAll(".error-log-entry").length === 0) {
+                log.style.display = "none";
+            }
+
+            // Atualiza a mensagem de erro
+            updateFatalErrorMessage();
+        }
+
+        function checkAllSolved() {
+            return solvedErrors.has("refrigeracao") &&
+                   solvedErrors.has("seletor") &&
+                   solvedErrors.has("configuracoes");
+        }
+
+        function showSystemSelector() {
+            hideAllSystemPanels();
+            document.getElementById("system-selector").style.display = "flex";
+            lowerErrorDialog();
+        }
+
+        // --- Validação sistema A: Refrigeração ---
+        // Aceita: temperatura_atual = input() / temperatura_desejada = input() / temperatura_mudanca = temperatura_atual - temperatura_desejada / print(temperatura_mudanca)
+        function validateRefrig(code) {
+            const lines = code.trim().split("\n").map(l => l.trim()).filter(l => l);
+            if (lines.length < 4) return false;
+            // linha 1: var1 = input()
+            const m1 = lines[0].match(/^([a-zA-Z_]\w*)\s*=\s*input\(\)$/);
+            if (!m1) return false;
+            const v1 = m1[1];
+            // linha 2: var2 = input()
+            const m2 = lines[1].match(/^([a-zA-Z_]\w*)\s*=\s*input\(\)$/);
+            if (!m2) return false;
+            const v2 = m2[1];
+            // linha 3: var3 = v1 - v2
+            const m3 = lines[2].match(/^([a-zA-Z_]\w*)\s*=\s*([a-zA-Z_]\w*)\s*-\s*([a-zA-Z_]\w*)$/);
+            if (!m3) return false;
+            if (m3[2] !== v1 || m3[3] !== v2) return false;
+            const v3 = m3[1];
+            // linha 4: print(var3)
+            const m4 = lines[3].match(/^print\s*\(\s*([a-zA-Z_]\w*)\s*\)$/);
+            if (!m4 || m4[1] !== v3) return false;
+            return true;
+        }
+
+        // --- Validação sistema B: Seletor temporal ---
+        // Aceita: qualquer_var = input() / print("Viajando para o ano", qualquer_var)
+        function validateSeletor(code) {
+            const lines = code.trim().split("\n").map(l => l.trim()).filter(l => l);
+            if (lines.length < 2) return false;
+            const inputLine = lines.find(l => /^[a-zA-Z_]\w*\s*=\s*input\(\)/.test(l));
+            if (!inputLine) return false;
+            const varName = inputLine.match(/^([a-zA-Z_]\w*)/)[1];
+            const printLine = lines.find(l =>
+                new RegExp(`print\\s*\\(\\s*["']Viajando para o ano["']\\s*,\\s*${varName}\\s*\\)`).test(l)
+            );
+            return !!printLine;
+        }
+
+        // --- Lógica configurações: seleção de linha ---
+        let configSelectedLine = null;
+        const configLines = [
+            "cliques = input()",
+            "cliques = cliques+cliques+cliques+cliques",
+            "print(cliques)"
+        ];
+
+        document.getElementById("sys-config-quiz-line").addEventListener("click", (e) => {
+            const btn = e.target.closest("[data-line]");
+            if (!btn) return;
+            const line = parseInt(btn.dataset.line);
+            const feedback = document.getElementById("sys-config-line-feedback");
+
+            if (line === 2) {
+                configSelectedLine = 2;
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Correto!";
+                playSuccessSound();
+                const display = document.getElementById("sys-config-line-display");
+                display.textContent = configLines[1]; // linha 2 (index 1)
+                document.getElementById("sys-config-edit-row").style.display = "flex";
+                document.getElementById("sys-config-input").value = "";
+                document.getElementById("sys-config-input").focus();
+                document.getElementById("sys-config-submit").style.display = "inline-block";
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é essa linha. Tente novamente.";
+                playErrorSound();
+            }
+        });
+
+        // Validação configurações: cliques = cliques*4 (aceita espaços e ordem)
+        function validateConfig(input) {
+            const norm = input.replace(/\s+/g, "");
+            return norm === "cliques=cliques*4" || norm === "cliques=4*cliques";
+        }
+
+        document.getElementById("sys-config-submit").addEventListener("click", () => {
+            const val = document.getElementById("sys-config-input").value;
+            const feedback = document.getElementById("sys-config-feedback");
+            if (validateConfig(val)) {
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Sistema corrigido!";
+                playSuccessSound();
+                setTimeout(() => {
+                    markErrorSolved("configuracoes");
+                    hideAllSystemPanels();
+                    restoreErrorDialog();
+                    if (checkAllSolved()) showBrokenMachineFarewell();
+                    else showSystemSelector();
+                }, 1200);
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+            }
+        });
+
+        document.getElementById("sys-refrig-submit").addEventListener("click", () => {
+            const code = document.getElementById("sys-refrig-code").value;
+            const feedback = document.getElementById("sys-refrig-feedback");
+            if (validateRefrig(code)) {
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Sistema corrigido!";
+                playSuccessSound();
+                setTimeout(() => {
+                    markErrorSolved("refrigeracao");
+                    document.getElementById("sys-refrigeracao").style.display = "none";
+                    restoreErrorDialog();
+                    if (checkAllSolved()) showBrokenMachineFarewell();
+                    else showSystemSelector();
+                }, 1200);
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                const errCount = (document.getElementById("sys-refrig-code").dataset.errCount | 0) + 1;
+                document.getElementById("sys-refrig-code").dataset.errCount = errCount;
+                if (errCount >= 5) document.getElementById("sys-refrig-hint").style.display = "block";
+            }
+        });
+
+        document.getElementById("sys-seletor-submit").addEventListener("click", () => {
+            const code = document.getElementById("sys-seletor-code").value;
+            const feedback = document.getElementById("sys-seletor-feedback");
+            if (validateSeletor(code)) {
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Sistema corrigido!";
+                playSuccessSound();
+                setTimeout(() => {
+                    markErrorSolved("seletor");
+                    document.getElementById("sys-seletor").style.display = "none";
+                    restoreErrorDialog();
+                    if (checkAllSolved()) showBrokenMachineFarewell();
+                    else showSystemSelector();
+                }, 1200);
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                const errCount = (document.getElementById("sys-seletor-code").dataset.errCount | 0) + 1;
+                document.getElementById("sys-seletor-code").dataset.errCount = errCount;
+                if (errCount >= 5) document.getElementById("sys-seletor-hint").style.display = "block";
+            }
+        });
+
+        // Botões "voltar" dos sistemas
+        document.getElementById("sys-refrig-back").addEventListener("click", () => {
+            document.getElementById("sys-refrigeracao").style.display = "none";
+            restoreErrorDialog();
+            showSystemSelector();
+        });
+        document.getElementById("sys-seletor-back").addEventListener("click", () => {
+            document.getElementById("sys-seletor").style.display = "none";
+            restoreErrorDialog();
+            showSystemSelector();
+        });
+        document.getElementById("sys-config-back").addEventListener("click", () => {
+            document.getElementById("sys-configuracoes").style.display = "none";
+            restoreErrorDialog();
+            showSystemSelector();
+        });
+
+        // Seletor de sistemas
+        document.getElementById("system-selector").addEventListener("click", (e) => {
+            const btn = e.target.closest("[data-sys]");
+            if (!btn) return;
+            const sys = btn.dataset.sys;
+            if (sys === "back") {
+                hideAllSystemPanels();
+                restoreErrorDialog();
+                document.getElementById("broken-machine-options").style.display = "flex";
+                lowerErrorDialog(); // o manual ainda mantém o erro levantado
+                // Na volta ao menu principal, restaura posição normal
+                restoreErrorDialog();
+            } else if (sys === "refrigeracao" && !solvedErrors.has("refrigeracao")) {
+                document.getElementById("system-selector").style.display = "none";
+                document.getElementById("sys-refrig-code").value = "";
+                document.getElementById("sys-refrig-feedback").innerHTML = "";
+                document.getElementById("sys-refrig-hint").style.display = "none";
+                document.getElementById("sys-refrig-code").dataset.errCount = 0;
+                document.getElementById("sys-refrigeracao").style.display = "flex";
+            } else if (sys === "seletor" && !solvedErrors.has("seletor")) {
+                document.getElementById("system-selector").style.display = "none";
+                document.getElementById("sys-seletor-code").value = "";
+                document.getElementById("sys-seletor-feedback").innerHTML = "";
+                document.getElementById("sys-seletor-hint").style.display = "none";
+                document.getElementById("sys-seletor-code").dataset.errCount = 0;
+                document.getElementById("sys-seletor").style.display = "flex";
+            } else if (sys === "configuracoes" && !solvedErrors.has("configuracoes")) {
+                document.getElementById("system-selector").style.display = "none";
+                configSelectedLine = null;
+                document.getElementById("sys-config-line-feedback").innerHTML = "";
+                document.getElementById("sys-config-edit-row").style.display = "none";
+                document.getElementById("sys-config-input").value = "";
+                document.getElementById("sys-config-feedback").innerHTML = "";
+                document.getElementById("sys-config-submit").style.display = "none";
+                document.getElementById("sys-configuracoes").style.display = "flex";
+            } else if (solvedErrors.has(sys)) {
+                // sistema já resolvido, não faz nada (ou poderia dar feedback)
+            }
+        });
+
+        // 13.6.3 — despedida
+        function showBrokenMachineFarewell() {
+            hideAllSystemPanels();
+            document.getElementById("broken-machine-options").style.display = "none";
+            document.getElementById("error-index-panel").style.display = "none";
+            document.getElementById("error-detail-panel").style.display = "none";
+            // Remove o estilo de erro do balão e restaura posição
+            adaDialogBox.classList.remove("error-dialog", "error-dialog-raised", "centered-dialog");
+            adaDialogBox.classList.add("centered-dialog");
+            adaDialogTextElement.style.fontStyle = "normal";
+            adaDialogBox.style.display = "flex";
+            redAlertOverlay.classList.remove("red-alert-pulse");
+            adaDialogBox.classList.remove("centered-dialog");
+            adaDialogBox.style.display = "flex";
+            adaDialogBox.style.left = "40px";
+            adaDialogBox.style.top = "40px";
+            adaDialogBox.style.maxWidth = "422px";
+            adaDialogBox.style.border = "1px solid #5e17eb";
+            typeWriter(
+                "Ufa, essa foi por pouco! Por sorte, você aprendeu o suficiente de Python para consertar a máquina. Os robôs que a construíram deviam estar danificados... De qualquer modo, está na hora de continuar. Ajustando as coordenadas temporais...",
+                adaDialogTextElement, 30,
+                () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                    adaSceneState = "broken_machine_farewell";
+                }
+            );
+
+        }
 
         showSolutionBtn.addEventListener("click", () => {
             solutionHint.style.display = "block";
@@ -2456,6 +3174,91 @@ print(resultado)</div>
                                 document.getElementById("pascal-quiz1").style.display = "flex";
                             });
                         }
+                        else if (adaSceneState === "pascal_done_final") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+
+                            // Fase 1: fade out de tudo (1s)
+                            npcContainer.style.transition = "opacity 1s ease";
+                            npcContainer.style.opacity = "0";
+                            adaDialogBox.style.transition = "opacity 1s ease";
+                            adaDialogBox.style.opacity = "0";
+                            blackOverlay.className = "";
+                            blackOverlay.style.display = "block";
+                            blackOverlay.style.backgroundColor = "rgba(0,0,0,1)";
+                            blackOverlay.style.opacity = "0";
+                            blackOverlay.style.transition = "opacity 1s ease";
+                            setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
+
+                            setTimeout(() => {
+                                // Limpa elementos Pascal
+                                npcContainer.style.display = "none";
+                                npcContainer.style.opacity = "";
+                                npcContainer.style.transition = "";
+                                npcContainer.classList.remove("imageFadeIn", "fadeOutSlow");
+                                adaDialogBox.style.display = "none";
+                                adaDialogBox.style.opacity = "";
+                                adaDialogBox.style.transition = "";
+                                adaDialogBox.classList.remove("centered-dialog", "error-dialog");
+                                adaDialogTextElement.style.fontStyle = "normal";
+                                imageContainer.style.display = "none";
+
+                                // Fase 2: 1s em tela preta (já está preta)
+                                setTimeout(() => {
+                                    // Fase 3: troca fundo e fade in (1s)
+                                    npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png";
+                                    imageContainer.style.display = "flex";
+                                    blackOverlay.style.transition = "opacity 1s ease";
+                                    setTimeout(() => {
+                                        blackOverlay.style.backgroundColor = "rgba(0,0,0,0.21)";
+                                        blackOverlay.style.opacity = "1";
+                                    }, 50);
+
+                                    setTimeout(() => {
+                                        dialogBox.style.display = "flex";
+                                        typeWriter("Você ficou impressionado com a criatividade com que Blaise Pascal resolveu o problema do cálculo do imposto, e resolveu ler alguns livros sobre esse assunto antes de prosseguir...", dialogTextElement, 30, () => {
+                                            pressToProceed.style.display = "block";
+                                            canProceed = true;
+                                            adaSceneState = "broken_machine_1";
+                                        });
+                                    }, 1000);
+                                }, 1000);
+                            }, 1100);
+                        }
+                        else if (adaSceneState === "broken_machine_1") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            // 13.2
+                            typeWriter("Pesquisando, descobriu que um livro muito importante sobre lógica matemática não está na sua biblioteca, e deve buscá-lo. Mas você lembrou que tem uma máquina do tempo e decidiu conversar com o próprio autor. Ajustando as coordenadas temporais...", dialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "broken_machine_2";
+                            });
+                        }
+                        else if (adaSceneState === "broken_machine_2") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            dialogBox.style.display = "none";
+                            dialogBox.classList.remove("fadeOutScene");
+
+                            // escurece gradualmente antes de iniciar cena 13
+                            blackOverlay.className = "";
+                            blackOverlay.style.display = "block";
+                            blackOverlay.style.backgroundColor = "rgba(0,0,0,1)";
+                            blackOverlay.style.opacity = "0";
+                            blackOverlay.style.transition = "opacity 1s ease";
+                            setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
+
+                            setTimeout(() => {
+                                blackOverlay.style.cssText = "";
+                                startBrokenMachineScene();
+                            }, 1200);
+                        }
+                        else if (adaSceneState === "broken_machine_farewell") {
+                            // 13.6.3.1 — não faz nada ao pressionar espaço
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                        }
                         else if (adaSceneState === "pascal_sandbox_intro") {
                             canProceed = false;
                             pressToProceed.style.display = "none";
@@ -2635,6 +3438,17 @@ print(resultado)</div>
             turingChoice = "";
             document.getElementById("turing-hint-image").style.display = "none";
             document.getElementById("pascal-images").style.display = "none";
+            redAlertOverlay.className = "";
+            document.getElementById("broken-machine-options").style.display = "none";
+            hideAllSystemPanels();
+            document.getElementById("error-log-terminal").style.display = "none";
+            document.getElementById("error-log-terminal").querySelectorAll(".error-log-entry").forEach(e => e.remove());
+            document.getElementById("error-index-panel").style.display = "none";
+            document.getElementById("error-detail-panel").style.display = "none";
+            solvedErrors.clear();
+            adaDialogBox.classList.remove("error-dialog-raised");
+            adaDialogBox.classList.remove("error-dialog");
+            adaDialogTextElement.style.fontStyle = "normal";
         }
 
         function devGoto(scene) {
@@ -3022,6 +3836,21 @@ print(resultado)</div>
                     document.getElementById("pascal-farewell-quiz-hint").style.display = "none";
                     document.getElementById("pascal-farewell-quiz").style.display = "flex";
                 });
+            } else if (scene === 'broken-machine') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "broken_machine_alert";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.cssText = "";
+                redAlertOverlay.classList.add("red-alert-pulse");
+                adaDialogBox.classList.add("centered-dialog", "error-dialog");
+                adaDialogBox.style.display = "flex";
+                adaDialogTextElement.style.fontStyle = "italic";
+                typeWriter("FATAL ERROR:\n5553507EA\n1389484AC\n1489249ZO", adaDialogTextElement, 30, () => {
+                    document.getElementById("broken-machine-options").style.display = "flex";
+                });
         }
     }
         // FIM DEV TOOL
@@ -3062,6 +3891,7 @@ print(resultado)</div>
         <button onclick="devGoto('pascal-challenge')"  style="font-size:11px; cursor:pointer;">12.4 Pascal quiz</button>
         <button onclick="devGoto('pascal-sandbox')"    style="font-size:11px; cursor:pointer;">12.5 Pascal sandbox</button>
         <button onclick="devGoto('pascal-farewell')"   style="font-size:11px; cursor:pointer;">12.6 Pascal despedida</button>
+        <button onclick="devGoto('broken-machine')" style="font-size:11px; cursor:pointer;">13. Máquina quebrada</button>
 
     </div>
     
