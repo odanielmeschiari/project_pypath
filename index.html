@@ -16,6 +16,10 @@
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal-perfil.png">
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-pascal.png">
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascalina.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/boole-fundo.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica1-boole.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica2-boole.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/boole-perfil.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1378,12 +1382,100 @@ print(resultado)</div>
         </div>
     </div>
 
+    <!-- BOOLE: Imagem dica 14.4.1 -->
+    <div id="boole-hint1" style="display:none; position:fixed; bottom:70px; left:50%; transform:translateX(-50%); z-index:10000; animation:fadeIn 0.5s forwards;">
+        <img src="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica1-boole.png" alt="dica-boole-1" style="max-width:480px; height:auto;">
+    </div>
+
+    <!-- BOOLE: Imagem dica 14.5.1 -->
+    <div id="boole-hint2" style="display:none; position:fixed; bottom:70px; left:50%; transform:translateX(-50%); z-index:10000; animation:fadeIn 0.5s forwards;">
+        <img src="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica2-boole.png" alt="dica-boole-2" style="max-width:480px; height:auto;">
+    </div>
+
+    <!-- BOOLE: Quiz 14.3.1 -->
+    <div id="boole-quiz" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #8acebd; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:420px; animation:fadeIn 0.4s forwards;">
+        <div style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">O que você responde?</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <button class="quiz-option" data-id="a">A. "Como assim comparar?"</button>
+            <button class="quiz-option" data-id="b">B. "O que quer dizer com 'comparar'?"</button>
+        </div>
+    </div>
+
+    <!-- BOOLE: Terminal 14.6.1 — corrigir indentação -->
+    <div id="boole-fix-monitor" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); width:540px; z-index:10002; flex-direction:column; filter:drop-shadow(0 0 18px #00ff6644); animation:fadeIn 0.4s forwards;">
+        <div style="background:#1a1a1a; border:2px solid #00ff66; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px; display:flex; align-items:center; gap:8px;">
+            <span style="font-family:var(--ff-p); font-size:13px; color:#00ff66; opacity:0.7; letter-spacing:1px;">boole_idade.py</span>
+        </div>
+        <div id="boole-fix-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #00ff66; border-bottom:none; white-space:pre;">idade = int(input())
+if idade &lt; 18:
+    print("Menor de idade")</div>
+        <div style="background:#1a1a1a; border:2px solid #00ff66; border-bottom:none; padding:6px 14px; font-family:'Courier New',monospace; font-size:12px; color:#aaa; white-space:pre-wrap; line-height:1.5;">Nota: usamos int(input()) pois quisemos explicitar que a variável "idade" é um inteiro. Do contrário, não funcionaria. Existem também outros identificadores, como o float(). Por padrão, em Python, o input() é igual a str(input()), que é um texto (string).</div>
+        <div style="background:#000; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-bottom:none; padding:10px 14px; font-family:'Courier New',monospace; font-size:14px; color:#00ff6688; line-height:1.8; white-space:pre;">idade = int(input())
+if idade &lt; 18:
+print("Menor de idade")</div>
+        <textarea id="boole-fix-code" placeholder="Digite o código corrigido aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00ff66; resize:none; outline:none; width:100%; height:220px; box-sizing:border-box; caret-color:#00ff66; line-height:1.6;"></textarea>
+        <div style="background:#111; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-radius:0 0 8px 8px; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="sandbox-btn" id="boole-fix-submit">Concluir</button>
+            <span id="boole-fix-feedback" style="font-family:var(--ff-p); font-size:15px;"></span>
+            <span id="boole-fix-hint-btn" style="display:none; color:#ffd700; font-family:'Courier New',monospace; font-size:13px;">Ver dica ↑</span>
+        </div>
+    </div>
+
+    <!-- BOOLE: Terminal 14.7.1 — adicionar else -->
+    <div id="boole-else-monitor" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); width:540px; z-index:10002; flex-direction:column; filter:drop-shadow(0 0 18px #00ff6644); animation:fadeIn 0.4s forwards;">
+        <div style="background:#1a1a1a; border:2px solid #00ff66; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px; display:flex; align-items:center; gap:8px;">
+            <span style="font-family:var(--ff-p); font-size:13px; color:#00ff66; opacity:0.7; letter-spacing:1px;">boole_idade.py</span>
+        </div>
+        <div style="background:#000; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-bottom:none; padding:10px 14px; font-family:'Courier New',monospace; font-size:14px; color:#00ff6688; line-height:1.8; white-space:pre;">idade = int(input())
+if idade &lt; 18:
+    print("Menor de idade")</div>
+        <textarea id="boole-else-code" placeholder="Continue o código aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00ff66; border-top:none; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00ff66; resize:none; outline:none; width:100%; height:140px; box-sizing:border-box; caret-color:#00ff66; line-height:1.6;"></textarea>
+        <div style="background:#111; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-radius:0 0 8px 8px; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="sandbox-btn" id="boole-else-submit">Concluir</button>
+            <span id="boole-else-feedback" style="font-family:var(--ff-p); font-size:15px;"></span>
+            <span id="boole-else-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace; font-size:13px;">else:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Maior de idade")</span>
+        </div>
+    </div>
+
+    <!-- BOOLE: Terminal 14.8.1 — desafio cor -->
+    <div id="boole-challenge-monitor" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); width:540px; z-index:10002; flex-direction:column; filter:drop-shadow(0 0 18px #00ff6644); animation:fadeIn 0.4s forwards;">
+        <div style="background:#1a1a1a; border:2px solid #00ff66; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px; display:flex; align-items:center; gap:8px;">
+            <span style="font-family:var(--ff-p); font-size:13px; color:#00ff66; opacity:0.7; letter-spacing:1px;">boole_cor.py</span>
+        </div>
+        <textarea id="boole-challenge-code" placeholder="Digite o código aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00ff66; resize:none; outline:none; width:100%; height:220px; box-sizing:border-box; caret-color:#00ff66; line-height:1.6;"></textarea>
+        <div style="background:#111; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-radius:0 0 8px 8px; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="sandbox-btn" id="boole-challenge-submit">Concluir</button>
+            <span id="boole-challenge-feedback" style="font-family:var(--ff-p); font-size:15px;"></span>
+            <span id="boole-challenge-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace; font-size:13px; white-space:pre;">cor = input()
+if cor == "azul":
+    print("Essa é minha cor favorita!")</span>
+        </div>
+    </div>
+
+    <!-- BOOLE: Terminal 14.9.1 — desafio final num1+num2 -->
+    <div id="boole-final-monitor" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); width:540px; z-index:10002; flex-direction:column; filter:drop-shadow(0 0 18px #00ff6644); animation:fadeIn 0.4s forwards;">
+        <div style="background:#1a1a1a; border:2px solid #00ff66; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px; display:flex; align-items:center; gap:8px;">
+            <span style="font-family:var(--ff-p); font-size:13px; color:#00ff66; opacity:0.7; letter-spacing:1px;">boole_soma.py</span>
+        </div>
+        <textarea id="boole-final-code" placeholder="Digite o código aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00ff66; resize:none; outline:none; width:100%; height:260px; box-sizing:border-box; caret-color:#00ff66; line-height:1.6;"></textarea>
+        <div style="background:#111; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-radius:0 0 8px 8px; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="sandbox-btn" id="boole-final-submit">Concluir</button>
+            <span id="boole-final-feedback" style="font-family:var(--ff-p); font-size:15px;"></span>
+            <span id="boole-final-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace; font-size:13px; white-space:pre;">num1 = int(input())
+num2 = int(input())
+if (num1+num2)==10:
+    print("A soma é 10")
+else:
+    print("A soma de", num1, "e", num2, "não é 10")</span>
+        </div>
+    </div>
+
     <div id="travel-screen">
         <div id="travel-text"></div>
         <div id="year-display" style="font-size: 60px; margin-top: 20px; color: var(--main-color);"></div>
     </div>
 
-    <h1 class="startAnimation" id="main-text">Bem vindo ao <span class="logo-span startAnimation">Project Pypath!</span></h1>
+    <h1 class="startAnimation" id="main-text">Bem vindo(a) ao <span class="logo-span startAnimation">Project Pypath!</span></h1>
 
     <div id="press-space">< aperte espaço para começar ></div>
 
@@ -1532,6 +1624,17 @@ print(resultado)</div>
         const pascalFarewellQuizText = `Perfeito, parabéns! Antes de você ir, só queria pedir um favor em mais uma coisa: estou com alguns resultados para analisar e preciso da sua ajuda. No código a seguir, qual será o valor impresso na tela?`;
         const pascalFarewellText = `Magnífico! Com essas operações, você transformou uma simples caixa de guardar dados em uma verdadeira calculadora. A aritmética é a base para compreender máquinas mais complexas. Obrigado pela ajuda!`;
 
+        const booleIntroText = "Você está em um campo aberto e ao fundo observa uma faculdade: é a Queen's College Cork. O clima está bom, o céu está limpo e você avista um homem caminhando ao ar livre calmamente pela grama. Você se aproxima dele e diz que o dia está bonito.";
+        const booleMeetingText = "Sim! Hoje o dia está maravilhoso. É incrível observar a lógica aplicada na natureza.";
+        const booleNameText = () => `Aliás, qual o seu nome? ${playerNickname}? Eu sou George Boole, professor da Queen's, prazer em te conhecer. A propósito, você entende de lógica? Se você quer que as máquinas pensem, você deve ensiná-las a comparar.`;
+        const booleComparatorsText = () => `Elas precisam ter o poder de decisão em diferentes situações, ${playerNickname}. Sempre que você estiver comparando, o resultado será verdadeiro ou falso. Quer um exemplo? Dois ser maior que três é uma afirmação falsa. Agora estamos na Irlanda, e isso é uma afirmação verdadeira.`;
+        const booleIfElseText = "É possível expandir isso para avaliar se uma ação deve ser executada ou não. Por exemplo: \"Se a temperatura estiver acima de 25 graus, abrir a janela.\" Isso quer dizer que se a temperatura estiver menor que 25 graus, não abrimos a janela. Simples e direto.";
+        const booleFixText = "Agora, usando a lógica, será que você consegue corrigir este código? O que está faltando nele?";
+        const booleElseText = () => `Ótimo, ${playerNickname}! Agora, adicione também uma alternativa à condição que este código estipula, isto é, uma forma de imprimir "Maior de idade".`;
+        const booleChallengeText = "Excelente! Agora quero te propor um desafio maior: faça um código que receba a variável \"cor\" do usuário. Se a cor for azul, então imprima \"Essa é minha cor favorita!\"";
+        const booleFinalChallengeText = () => `Impressionante, ${playerNickname}! Você aprendeu rápido. Como você já está bom nisso, pode me ajudar com esse sistema lógico? Ele deve receber dois inteiros "num1" e "num2" do usuário. Se a soma for 10, deve retornar "A soma é 10". Caso contrário, deve retornar "A soma de (num1) e (num2) não é 10."`;
+        const booleFarewellText = () => `Isso mesmo! Muito obrigado pela ajuda, ${playerNickname}! Bons estudos!`;
+
         const targetCodes = [
             'for(i = 0; i < array; i++){}', 
             'import brainLOL',
@@ -1557,6 +1660,10 @@ print(resultado)</div>
         let pascalQuiz3ErrorCount = 0;
         let pascalFarewellQuizErrorCount = 0;
         let pascalSandboxErrorCount = 0;
+        let booleFixErrorCount = 0;
+        let booleElseErrorCount = 0;
+        let booleChallengeErrorCount = 0;
+        let booleFinalErrorCount = 0;
         let brokenMachineState = ""; // controle interno da cena 13
         // Erros resolvidos na cena 13
         const solvedErrors = new Set(); // valores: "refrigeracao", "seletor", "configuracoes"
@@ -1928,6 +2035,72 @@ print(resultado)</div>
             }, 1000);
         }
 
+        function loadBooleScene() {
+            travelScreen.style.display = "none";
+            imageContainer.style.display = "none";
+            npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+            blackOverlay.className = "";
+            blackOverlay.style.display = "block";
+            blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+            blackOverlay.style.opacity = "1";
+            blackOverlay.style.transition = "none";
+            swapBackground(
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/boole-fundo.png",
+                () => {
+                    void npcImage.offsetWidth;
+                    npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+                    void npcImage.offsetWidth;
+                    npcImage.classList.add("sceneFadeIn");
+                    imageContainer.style.display = "flex";
+                }
+            );
+            setTimeout(() => {
+                isAtAdaScene = true;
+                adaSceneState = "boole_intro";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(booleIntroText, adaDialogTextElement, 30, () => {
+                    setTimeout(() => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                    }, 500);
+                });
+            }, 500);
+        }
+
+        function startTimeTravel4() {
+            blackOverlay.style.display = "block";
+            blackOverlay.style.transition = "opacity 0.5s ease";
+            setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
+            setTimeout(() => {
+                dialogBox.style.display = "none";
+                adaDialogBox.style.display = "none";
+                travelScreen.style.display = "flex";
+                blackOverlay.className = "";
+                blackOverlay.style.cssText = "";
+                typeWriter("Viajando pelo tempo", travelTextElement, 50, () => {
+                    animateDots();
+                    let duration = 1000;
+                    let startTime = Date.now();
+                    let shuffleInterval = setInterval(() => {
+                        let elapsed = Date.now() - startTime;
+                        if (elapsed < duration) {
+                            yearDisplay.innerHTML = Math.floor(1000 + Math.random() * 9000);
+                        } else {
+                            clearInterval(shuffleInterval);
+                            yearDisplay.innerHTML = "Cork, 1854";
+                        }
+                    }, 50);
+                    setTimeout(() => {
+                        clearInterval(dotsInterval);
+                        travelTextElement.innerHTML = "";
+                        yearDisplay.innerHTML = "";
+                        setTimeout(() => { loadBooleScene(); }, 1000);
+                    }, 3000);
+                });
+            }, 600);
+        }
+
         inputName.addEventListener("input", () => {
             const currentValue = inputName.value;
             if (targetText.startsWith(currentValue)) {
@@ -2242,6 +2415,225 @@ print(resultado)</div>
                 document.getElementById("pascal-farewell-quiz-hint").style.display = "none";
                 document.getElementById("pascal-farewell-quiz").style.display = "flex";
             });
+        });
+
+        // --- Interceptar Tab nos terminais Boole (indentação real) ---
+        ["boole-fix-code", "boole-else-code", "boole-challenge-code", "boole-final-code"].forEach(id => {
+            document.getElementById(id).addEventListener("keydown", (e) => {
+                if (e.key !== "Tab") return;
+                e.preventDefault();
+                const el = e.target;
+                const start = el.selectionStart;
+                const end = el.selectionEnd;
+                el.value = el.value.substring(0, start) + "\t" + el.value.substring(end);
+                el.selectionStart = el.selectionEnd = start + 1;
+            });
+        });
+
+        // --- Boole Quiz 14.3.1 ---
+        document.getElementById("boole-quiz").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            // Ambas as opções levam para 14.4
+            document.getElementById("boole-quiz").style.display = "none";
+            typeWriter(booleComparatorsText(), adaDialogTextElement, 30, () => {
+                document.getElementById("boole-hint1").style.display = "block";
+                pressToProceed.style.display = "block";
+                canProceed = true;
+                adaSceneState = "boole_comparators";
+            });
+        });
+
+        // --- Boole Fix 14.6.1 — corrigir indentação ---
+        function validateBooleFix(code) {
+            const lines = code.split("\n").map(l => l.replace(/\r/, ""));
+            // Precisa de pelo menos 3 linhas não-vazias
+            const nonEmpty = lines.filter(l => l.trim());
+            if (nonEmpty.length < 3) return false;
+            // linha 1: <var> = int(input()) — aceita qualquer nome de variável
+            const m1 = nonEmpty[0].match(/^([a-zA-Z_\u00C0-\u024F]\w*)\s*=\s*int\s*\(\s*input\s*\(\s*\)\s*\)\s*$/);
+            if (!m1) return false;
+            const v1 = m1[1];
+            // linha 2: if <v1> <op> <num>: — operador e número flexíveis
+            const m2 = nonEmpty[1].match(/^if\s+[a-zA-Z_\u00C0-\u024F]\w*\s*[<>=!]+\s*.+:\s*$/);
+            if (!m2) return false;
+            // linha 3: indentada com print(...)
+            const m3 = nonEmpty[2].match(/^(\s+)print\s*\(.+\)\s*$/);
+            if (!m3 || m3[1].length === 0) return false;
+            return true;
+        }
+
+        document.getElementById("boole-fix-submit").addEventListener("click", () => {
+            const code = document.getElementById("boole-fix-code").value;
+            const feedback = document.getElementById("boole-fix-feedback");
+            if (validateBooleFix(code)) {
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Correto!";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("boole-fix-monitor").style.display = "none";
+                    typeWriter(booleElseText(), adaDialogTextElement, 30, () => {
+                        document.getElementById("boole-else-code").value = "";
+                        document.getElementById("boole-else-feedback").innerHTML = "";
+                        document.getElementById("boole-else-hint").style.display = "none";
+                        booleElseErrorCount = 0;
+                        document.getElementById("boole-else-monitor").style.display = "flex";
+                        document.getElementById("boole-else-code").focus();
+                        adaSceneState = "boole_else";
+                    });
+                }, 1000);
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                booleFixErrorCount++;
+                if (booleFixErrorCount >= 5) {
+                    document.getElementById("boole-fix-hint").style.display = "block";
+                    document.getElementById("boole-fix-hint-btn").style.display = "inline";
+                }
+            }
+        });
+
+        // --- Boole Else 14.7.1 ---
+        function validateBooleElse(code) {
+            const norm = code.replace(/\r/g, "").trim();
+            // Aceita: else: + linha indentada com print(algo relacionado a "maior")
+            const m = norm.match(/^else\s*:\s*\n(\s+)print\s*\((.+)\)\s*$/i);
+            if (!m || m[1].length === 0) return false;
+            // conteúdo do print deve mencionar "maior" (case-insensitive)
+            return m[2].toLowerCase().includes("maior");
+        }
+
+        document.getElementById("boole-else-submit").addEventListener("click", () => {
+            const code = document.getElementById("boole-else-code").value;
+            const feedback = document.getElementById("boole-else-feedback");
+            if (validateBooleElse(code)) {
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Correto!";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("boole-else-monitor").style.display = "none";
+                    typeWriter(booleChallengeText, adaDialogTextElement, 30, () => {
+                        document.getElementById("boole-challenge-code").value = "";
+                        document.getElementById("boole-challenge-feedback").innerHTML = "";
+                        document.getElementById("boole-challenge-hint").style.display = "none";
+                        booleChallengeErrorCount = 0;
+                        document.getElementById("boole-challenge-monitor").style.display = "flex";
+                        document.getElementById("boole-challenge-code").focus();
+                        adaSceneState = "boole_challenge";
+                    });
+                }, 1000);
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                booleElseErrorCount++;
+                if (booleElseErrorCount >= 5) {
+                    document.getElementById("boole-else-hint").style.display = "inline";
+                }
+            }
+        });
+
+        // --- Boole Challenge 14.8.1 ---
+        function validateBooleChallenge(code) {
+            const lines = code.split("\n").map(l => l.replace(/\r/, "")).filter(l => l.trim());
+            if (lines.length < 3) return false;
+            // linha 1: <var> = input()
+            const m1 = lines[0].match(/^([a-zA-Z_\u00C0-\u024F]\w*)\s*=\s*input\s*\(\s*\)\s*$/);
+            if (!m1) return false;
+            const v1 = m1[1];
+            // linha 2: if <v1> == "azul" (ou 'azul'):
+            const m2 = lines[1].match(new RegExp(`^if\\s+${v1}\\s*==\\s*["']azul["']\\s*:\\s*$`));
+            if (!m2) return false;
+            // linha 3: indentada com print contendo algo
+            const m3 = lines[2].match(/^(\s+)print\s*\(.+\)\s*$/);
+            if (!m3 || m3[1].length === 0) return false;
+            return true;
+        }
+
+        document.getElementById("boole-challenge-submit").addEventListener("click", () => {
+            const code = document.getElementById("boole-challenge-code").value;
+            const feedback = document.getElementById("boole-challenge-feedback");
+            if (validateBooleChallenge(code)) {
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Correto!";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("boole-challenge-monitor").style.display = "none";
+                    typeWriter(booleFinalChallengeText(), adaDialogTextElement, 30, () => {
+                        document.getElementById("boole-final-code").value = "";
+                        document.getElementById("boole-final-feedback").innerHTML = "";
+                        document.getElementById("boole-final-hint").style.display = "none";
+                        booleFinalErrorCount = 0;
+                        document.getElementById("boole-final-monitor").style.display = "flex";
+                        document.getElementById("boole-final-code").focus();
+                        adaSceneState = "boole_final_challenge";
+                    });
+                }, 1000);
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                booleChallengeErrorCount++;
+                if (booleChallengeErrorCount >= 5) {
+                    document.getElementById("boole-challenge-hint").style.display = "block";
+                }
+            }
+        });
+
+        // --- Boole Final 14.9.1 ---
+        function validateBooleFinal(code) {
+            const lines = code.split("\n").map(l => l.replace(/\r/, "")).filter(l => l.trim());
+            if (lines.length < 5) return false;
+            // linha 1: var1 = int(input())
+            const m1 = lines[0].match(/^([a-zA-Z_\u00C0-\u024F]\w*)\s*=\s*int\s*\(\s*input\s*\(\s*\)\s*\)\s*$/);
+            if (!m1) return false;
+            const v1 = m1[1];
+            // linha 2: var2 = int(input())
+            const m2 = lines[1].match(/^([a-zA-Z_\u00C0-\u024F]\w*)\s*=\s*int\s*\(\s*input\s*\(\s*\)\s*\)\s*$/);
+            if (!m2) return false;
+            const v2 = m2[1];
+            // linha 3: if <expr envolvendo v1 e v2 e 10>:
+            const m3 = lines[2].match(/^if\s+.+:\s*$/);
+            if (!m3) return false;
+            // linha 3 deve mencionar v1, v2 e 10
+            if (!lines[2].includes(v1) || !lines[2].includes(v2) || !lines[2].includes("10")) return false;
+            // linha 4: indentada com print (caso soma == 10)
+            const m4 = lines[3].match(/^(\s+)print\s*\(.+\)\s*$/);
+            if (!m4 || m4[1].length === 0) return false;
+            // linha 5: else:
+            const m5 = lines[4].match(/^else\s*:\s*$/);
+            if (!m5) return false;
+            // linha 6: indentada com print
+            if (lines.length < 6) return false;
+            const m6 = lines[5].match(/^(\s+)print\s*\(.+\)\s*$/);
+            if (!m6 || m6[1].length === 0) return false;
+            return true;
+        }
+
+        document.getElementById("boole-final-submit").addEventListener("click", () => {
+            const code = document.getElementById("boole-final-code").value;
+            const feedback = document.getElementById("boole-final-feedback");
+            if (validateBooleFinal(code)) {
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Correto!";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("boole-final-monitor").style.display = "none";
+                    typeWriter(booleFarewellText(), adaDialogTextElement, 30, () => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                        adaSceneState = "boole_farewell";
+                    });
+                }, 1000);
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                booleFinalErrorCount++;
+                if (booleFinalErrorCount >= 5) {
+                    document.getElementById("boole-final-hint").style.display = "block";
+                }
+            }
         });
 
         const errorDescriptions = {
@@ -3255,9 +3647,71 @@ print(resultado)</div>
                             }, 1200);
                         }
                         else if (adaSceneState === "broken_machine_farewell") {
-                            // 13.6.3.1 — não faz nada ao pressionar espaço
                             canProceed = false;
                             pressToProceed.style.display = "none";
+                            startTimeTravel4();
+                        }
+                        else if (adaSceneState === "boole_intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogBox.classList.remove("centered-dialog");
+                            document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/boole-perfil.png";
+                            document.getElementById("npc-ada-photo").alt = "George Boole";
+                            document.getElementById("npc-name-label").textContent = "George Boole";
+                            npcContainer.style.display = "flex";
+                            npcContainer.classList.add("imageFadeIn");
+                            setTimeout(() => {
+                                typeWriter(booleMeetingText, adaDialogTextElement, 30, () => {
+                                    pressToProceed.style.display = "block";
+                                    canProceed = true;
+                                    adaSceneState = "boole_meeting";
+                                });
+                            }, 600);
+                        }
+                        else if (adaSceneState === "boole_meeting") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            setTimeout(() => {
+                                typeWriter(booleNameText(), adaDialogTextElement, 30, () => {
+                                    document.getElementById("boole-quiz").style.display = "flex";
+                                    adaSceneState = "boole_name";
+                                });
+                            }, 600);
+                        }
+                        else if (adaSceneState === "boole_comparators") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            document.getElementById("boole-hint1").style.display = "none";
+                            typeWriter(booleIfElseText, adaDialogTextElement, 30, () => {
+                                document.getElementById("boole-hint2").style.display = "block";
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "boole_ifelse";
+                            });
+                        }
+                        else if (adaSceneState === "boole_ifelse") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            document.getElementById("boole-hint2").style.display = "none";
+                            typeWriter(booleFixText, adaDialogTextElement, 30, () => {
+                                document.getElementById("boole-fix-code").value = "";
+                                document.getElementById("boole-fix-feedback").innerHTML = "";
+                                document.getElementById("boole-fix-hint").style.display = "none";
+                                document.getElementById("boole-fix-hint-btn").style.display = "none";
+                                booleFixErrorCount = 0;
+                                document.getElementById("boole-fix-monitor").style.display = "flex";
+                                document.getElementById("boole-fix-code").focus();
+                                adaSceneState = "boole_fix";
+                            });
+                        }
+                        else if (adaSceneState === "boole_farewell") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            // Fade out — fim da cena 14 (sem próxima cena ainda)
+                            npcImage.classList.add("fadeOutSlow");
+                            npcContainer.classList.add("fadeOutSlow");
+                            adaDialogBox.classList.add("fadeOutSlow");
+                            blackOverlay.classList.add("fadeOutSlow");
                         }
                         else if (adaSceneState === "pascal_sandbox_intro") {
                             canProceed = false;
@@ -3371,6 +3825,10 @@ print(resultado)</div>
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascal-perfil.png",
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-pascal.png",
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/pascalina.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/boole-fundo.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica1-boole.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica2-boole.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/boole-perfil.png",
             ];
             imagesToPreload.forEach(src => {
                 const img = new Image();
@@ -3449,7 +3907,22 @@ print(resultado)</div>
             adaDialogBox.classList.remove("error-dialog-raised");
             adaDialogBox.classList.remove("error-dialog");
             adaDialogTextElement.style.fontStyle = "normal";
+            document.getElementById("boole-quiz").style.display = "none";
+            document.getElementById("boole-hint1").style.display = "none";
+            document.getElementById("boole-hint2").style.display = "none";
+            document.getElementById("boole-fix-monitor").style.display = "none";
+            document.getElementById("boole-else-monitor").style.display = "none";
+            document.getElementById("boole-challenge-monitor").style.display = "none";
+            document.getElementById("boole-final-monitor").style.display = "none";
+            booleFixErrorCount = 0;
+            booleElseErrorCount = 0;
+            booleChallengeErrorCount = 0;
+            booleFinalErrorCount = 0;
+            document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/ada_perfil.png";
+            document.getElementById("npc-ada-photo").alt = "Ada Lovelace";
+            document.getElementById("npc-name-label").textContent = "Ada Lovelace";
         }
+        
 
         function devGoto(scene) {
             if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -3851,11 +4324,114 @@ print(resultado)</div>
                 typeWriter("FATAL ERROR:\n5553507EA\n1389484AC\n1489249ZO", adaDialogTextElement, 30, () => {
                     document.getElementById("broken-machine-options").style.display = "flex";
                 });
+            } else if (scene === 'boole-intro') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "boole_intro";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/boole-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(booleIntroText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'boole-meeting') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "boole_meeting";
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/boole-perfil.png";
+                document.getElementById("npc-ada-photo").alt = "George Boole";
+                document.getElementById("npc-name-label").textContent = "George Boole";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/boole-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                adaDialogBox.style.display = "flex";
+                typeWriter(booleMeetingText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'boole-fix') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "boole_fix";
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/boole-perfil.png";
+                document.getElementById("npc-ada-photo").alt = "George Boole";
+                document.getElementById("npc-name-label").textContent = "George Boole";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/boole-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                adaDialogBox.style.display = "flex";
+                typeWriter(booleFixText, adaDialogTextElement, 30, () => {
+                    document.getElementById("boole-fix-code").value = "";
+                    document.getElementById("boole-fix-feedback").innerHTML = "";
+                    document.getElementById("boole-fix-hint").style.display = "none";
+                    document.getElementById("boole-fix-hint-btn").style.display = "none";
+                    booleFixErrorCount = 0;
+                    document.getElementById("boole-fix-monitor").style.display = "flex";
+                });
+            } else if (scene === 'boole-challenge') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "boole_challenge";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/boole-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                adaDialogBox.style.display = "flex";
+                typeWriter(booleChallengeText, adaDialogTextElement, 30, () => {
+                    document.getElementById("boole-challenge-code").value = "";
+                    document.getElementById("boole-challenge-feedback").innerHTML = "";
+                    document.getElementById("boole-challenge-hint").style.display = "none";
+                    booleChallengeErrorCount = 0;
+                    document.getElementById("boole-challenge-monitor").style.display = "flex";
+                });
+            } else if (scene === 'boole-final') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "boole_final_challenge";
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/boole-perfil.png";
+                document.getElementById("npc-ada-photo").alt = "George Boole";
+                document.getElementById("npc-name-label").textContent = "George Boole";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/boole-fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                adaDialogBox.style.display = "flex";
+                typeWriter(booleFinalChallengeText(), adaDialogTextElement, 30, () => {
+                    document.getElementById("boole-final-code").value = "";
+                    document.getElementById("boole-final-feedback").innerHTML = "";
+                    document.getElementById("boole-final-hint").style.display = "none";
+                    booleFinalErrorCount = 0;
+                    document.getElementById("boole-final-monitor").style.display = "flex";
+                });
         }
     }
         // FIM DEV TOOL
     </script>
-    <!-- DEV TOOL: REMOVER ANTES DO LANÇAMENTO
+    <!-- DEV TOOL: REMOVER ANTES DO LANÇAMENTO -->
     <div id="dev-panel" style="
         position: fixed; bottom: 10px; right: 10px;
         background: rgba(0,0,0,0.85); border: 1px solid #8acebd;
@@ -3892,9 +4468,14 @@ print(resultado)</div>
         <button onclick="devGoto('pascal-sandbox')"    style="font-size:11px; cursor:pointer;">12.5 Pascal sandbox</button>
         <button onclick="devGoto('pascal-farewell')"   style="font-size:11px; cursor:pointer;">12.6 Pascal despedida</button>
         <button onclick="devGoto('broken-machine')" style="font-size:11px; cursor:pointer;">13. Máquina quebrada</button>
+        <button onclick="devGoto('boole-intro')"     style="font-size:11px; cursor:pointer;">14.1 Chegada Boole</button>
+        <button onclick="devGoto('boole-meeting')"   style="font-size:11px; cursor:pointer;">14.2 Boole fala</button>
+        <button onclick="devGoto('boole-fix')"       style="font-size:11px; cursor:pointer;">14.6 Boole fix</button>
+        <button onclick="devGoto('boole-challenge')" style="font-size:11px; cursor:pointer;">14.8 Boole desafio</button>
+        <button onclick="devGoto('boole-final')"     style="font-size:11px; cursor:pointer;">14.9 Boole final</button>
 
     </div>
-    -->
+    
     <!-- FIM DEV TOOL -->
 </body>
 </html>
