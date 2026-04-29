@@ -2057,6 +2057,13 @@ else:
             setTimeout(() => {
                 isAtAdaScene = true;
                 adaSceneState = "boole_intro";
+                // Limpa classes e estilos inline residuais da cena 13
+                adaDialogBox.classList.remove("error-dialog", "error-dialog-raised");
+                adaDialogBox.style.left = "";
+                adaDialogBox.style.top = "";
+                adaDialogBox.style.maxWidth = "";
+                adaDialogBox.style.border = "";
+                adaDialogTextElement.style.fontStyle = "normal";
                 adaDialogBox.classList.add("centered-dialog");
                 adaDialogBox.style.display = "flex";
                 typeWriter(booleIntroText, adaDialogTextElement, 30, () => {
