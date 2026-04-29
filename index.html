@@ -1094,8 +1094,8 @@
         <div style="background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px; display:flex; align-items:center; gap:8px;">
             <span style="font-family:var(--ff-p); font-size:13px; color:#00cfff; opacity:0.7; letter-spacing:1px;">sistema_refrigeracao.py</span>
         </div>
-        <div id="sys-refrig-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; white-space:pre;">temperatura_atual = input()
-temperatura_desejada = input()
+        <div id="sys-refrig-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; white-space:pre;">temperatura_atual = int(input())
+temperatura_desejada = int(input())
 temperatura_mudanca = temperatura_atual-temperatura_desejada
 print(temperatura_mudanca)</div>
         <textarea id="sys-refrig-code" placeholder="Digite o código aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00cfff; resize:none; outline:none; width:100%; height:130px; box-sizing:border-box; caret-color:#00cfff; line-height:1.6;"></textarea>
@@ -1111,7 +1111,7 @@ print(temperatura_mudanca)</div>
         <div style="background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px;">
             <span style="font-family:var(--ff-p); font-size:13px; color:#00cfff; opacity:0.7; letter-spacing:1px;">seletor_temporal.py</span>
         </div>
-        <div id="sys-seletor-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; white-space:pre;">ano = input()
+        <div id="sys-seletor-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; white-space:pre;">ano = int(input())
 print("Viajando para o ano", ano)</div>
         <textarea id="sys-seletor-code" placeholder="Digite o código aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00cfff; resize:none; outline:none; width:100%; height:130px; box-sizing:border-box; caret-color:#00cfff; line-height:1.6;"></textarea>
         <div style="background:#111; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; border-radius:0 0 8px 8px; padding:8px 14px; display:flex; align-items:center; gap:12px;">
@@ -1127,7 +1127,7 @@ print("Viajando para o ano", ano)</div>
             <span style="font-family:var(--ff-p); font-size:13px; color:#00cfff; opacity:0.7; letter-spacing:1px;">tela_configuracoes.py</span>
         </div>
         <!-- Código original exibido -->
-        <div style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:14px; color:#00cfff; line-height:1.8; white-space:pre;">cliques = input()
+        <div style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:14px; color:#00cfff; line-height:1.8; white-space:pre;">cliques = int(input())
 cliques = cliques+cliques+cliques+cliques
 print(cliques)</div>
         <!-- Quiz: selecionar linha -->
@@ -1303,14 +1303,14 @@ ano = 1842</div>
     <div id="pascal-quiz1" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #8acebd; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:420px; animation:fadeIn 0.4s forwards;">
         <div id="pascal-quiz1-question" style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">Como podemos começar esse programa?</div>
         <div id="pascal-quiz1-options" style="display:flex; flex-direction:column; gap:8px;">
-            <button class="quiz-option" data-id="a">a) número = número</button>
-            <button class="quiz-option" data-id="b">b) número = input()</button>
+            <button class="quiz-option" data-id="a">a) número = input()</button>
+            <button class="quiz-option" data-id="b">b) número = int(input())</button>
             <button class="quiz-option" data-id="c">c) número = 10</button>
             <button class="quiz-option" data-id="d">d) número = número * 3</button>
         </div>
         <div style="display:flex; align-items:center; gap:14px; font-family:var(--ff-p); font-size:15px;">
             <span id="pascal-quiz1-feedback"></span>
-            <span id="pascal-quiz1-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: b) número = input()</span>
+            <span id="pascal-quiz1-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: b) número = int(input())</span>
         </div>
     </div>
 
@@ -1409,7 +1409,7 @@ print(resultado)</div>
         <div id="boole-fix-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #00ff66; border-bottom:none; white-space:pre;">idade = int(input())
 if idade &lt; 18:
     print("Menor de idade")</div>
-        <div style="background:#1a1a1a; border:2px solid #00ff66; border-bottom:none; padding:6px 14px; font-family:'Courier New',monospace; font-size:12px; color:#aaa; white-space:pre-wrap; line-height:1.5;">Nota: usamos int(input()) pois quisemos explicitar que a variável "idade" é um inteiro. Do contrário, não funcionaria. Existem também outros identificadores, como o float(). Por padrão, em Python, o input() é igual a str(input()), que é um texto (string).</div>
+        
         <div style="background:#000; border:2px solid #00ff66; border-top:1px solid #00ff6633; border-bottom:none; padding:10px 14px; font-family:'Courier New',monospace; font-size:14px; color:#00ff6688; line-height:1.8; white-space:pre;">idade = int(input())
 if idade &lt; 18:
 print("Menor de idade")</div>
@@ -2309,12 +2309,21 @@ else:
             buttons.style.display = "none";
             errorEl.innerHTML = "";
 
-            const hasInput = /input\s*\(/.test(code);
+            // Só reconhece int(input()) como forma válida de leitura
+            const hasInput = /int\s*\(\s*input\s*\(\s*\)\s*\)/.test(code);
+            const hasBareInput = /(?<!int\s*\(\s*)input\s*\(\s*\)/.test(code);
             const printMatches = [...code.matchAll(/print\s*\((.+)\)/g)];
 
             if (printMatches.length === 0 && !hasInput) {
                 pascalSandboxErrorCount++;
                 errorEl.innerHTML = "Nenhum print() encontrado.";
+                errorCountEl.innerHTML = pascalSandboxErrorCount > 1 ? `(${pascalSandboxErrorCount} erros)` : "";
+                return;
+            }
+
+            if (hasBareInput) {
+                pascalSandboxErrorCount++;
+                errorEl.innerHTML = "Use int(input()) para ler números inteiros.";
                 errorCountEl.innerHTML = pascalSandboxErrorCount > 1 ? `(${pascalSandboxErrorCount} erros)` : "";
                 return;
             }
@@ -2339,10 +2348,10 @@ else:
                         let inputUsed = false;
                         for (const line of lines) {
                             if (/^\s*#/.test(line)) continue;
-                            const assignInput = line.match(/^(\w+)\s*=\s*input\s*\(/);
+                            const assignInput = line.match(/^(\w+)\s*=\s*int\s*\(\s*input\s*\(\s*\)\s*\)/);
                             if (assignInput) {
-                                const numVal = parseFloat(val);
-                                vars[assignInput[1]] = isNaN(numVal) ? val : numVal;
+                                const numVal = parseInt(val, 10);
+                                vars[assignInput[1]] = isNaN(numVal) ? 0 : numVal;
                                 inputUsed = true;
                                 continue;
                             }
@@ -2647,9 +2656,9 @@ else:
             "1": { code: "2943421BD", text: "Tudo certo por aqui.", hasChallenge: false },
             "2": { code: "1389484AC", text: 'Seletor temporal quebrado: escrever um código em que a variável "ano" receba um valor do usuário. Então imprimir a mensagem: "Viajando para o ano (ano inserido pelo usuário)"\n\nVolte para o código fonte.', hasChallenge: true },
             "3": { code: "8498942JK", text: "Tudo certo por aqui.", hasChallenge: false },
-            "4": { code: "5553507EA", text: 'Sistema de refrigeração quebrado: criar as variáveis "temperatura_atual", "temperatura_desejada" e "temperatura_mudanca". O usuário deve inserir o valor de cada uma das variáveis e o programa deve imprimir quantos graus a máquina deve esfriar para ir da temperatura atual para a temperatura desejada.\n\nVolte para o código fonte.', hasChallenge: true },
+            "4": { code: "5553507EA", text: 'Sistema de refrigeração quebrado: criar as variáveis inteiras "temperatura_atual", "temperatura_desejada" e "temperatura_mudanca". O usuário deve inserir o valor de cada uma das variáveis e o programa deve imprimir quantos graus a máquina deve esfriar para ir da temperatura atual para a temperatura desejada.\n\nVolte para o código fonte.', hasChallenge: true },
             "5": { code: "1391033OP", text: "Tudo certo por aqui.", hasChallenge: false },
-            "6": { code: "1489249ZO", text: 'Tela de configurações mal otimizada: simplificar o código abaixo:\n\ncliques = input()\ncliques = cliques+cliques+cliques+cliques\nprint(cliques)\n\nVolte para o código fonte.', hasChallenge: true },
+            "6": { code: "1489249ZO", text: 'Tela de configurações mal otimizada: simplificar o código abaixo:\n\ncliques = int(input())\ncliques = cliques+cliques+cliques+cliques\nprint(cliques)\n\nVolte para o código fonte.', hasChallenge: true },
         };
 
         function showErrorIndex() {
@@ -2775,16 +2784,16 @@ else:
         }
 
         // --- Validação sistema A: Refrigeração ---
-        // Aceita: temperatura_atual = input() / temperatura_desejada = input() / temperatura_mudanca = temperatura_atual - temperatura_desejada / print(temperatura_mudanca)
+        // Exige: var = int(input()) nas 2 primeiras linhas
         function validateRefrig(code) {
             const lines = code.trim().split("\n").map(l => l.trim()).filter(l => l);
             if (lines.length < 4) return false;
-            // linha 1: var1 = input()
-            const m1 = lines[0].match(/^([a-zA-Z_]\w*)\s*=\s*input\(\)$/);
+            // linha 1: var1 = int(input())
+            const m1 = lines[0].match(/^([a-zA-Z_]\w*)\s*=\s*int\s*\(\s*input\s*\(\s*\)\s*\)$/);
             if (!m1) return false;
             const v1 = m1[1];
-            // linha 2: var2 = input()
-            const m2 = lines[1].match(/^([a-zA-Z_]\w*)\s*=\s*input\(\)$/);
+            // linha 2: var2 = int(input())
+            const m2 = lines[1].match(/^([a-zA-Z_]\w*)\s*=\s*int\s*\(\s*input\s*\(\s*\)\s*\)$/);
             if (!m2) return false;
             const v2 = m2[1];
             // linha 3: var3 = v1 - v2
@@ -2799,11 +2808,11 @@ else:
         }
 
         // --- Validação sistema B: Seletor temporal ---
-        // Aceita: qualquer_var = input() / print("Viajando para o ano", qualquer_var)
+        // Exige: var = int(input()) / print("Viajando para o ano", var)
         function validateSeletor(code) {
             const lines = code.trim().split("\n").map(l => l.trim()).filter(l => l);
             if (lines.length < 2) return false;
-            const inputLine = lines.find(l => /^[a-zA-Z_]\w*\s*=\s*input\(\)/.test(l));
+            const inputLine = lines.find(l => /^[a-zA-Z_]\w*\s*=\s*int\s*\(\s*input\s*\(\s*\)\s*\)/.test(l));
             if (!inputLine) return false;
             const varName = inputLine.match(/^([a-zA-Z_]\w*)/)[1];
             const printLine = lines.find(l =>
