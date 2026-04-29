@@ -111,8 +111,33 @@
                     13.6.2.1.1. Digitar código correto e consertar (ao acertar, remover código do erro correspondente tanto da mensagem de erro quanto dos erros registrados)
             13.6.3. ["Ufa, essa foi por pouco..."]
                 13.6.3.1. Espaço para pular
-                ...
-            
+    13.6. Cena escurece
+    13.7. Viajando pelo tempo...
+14. Conversa com George Boole (após escurecer tela e fazer transição para novo fundo)
+    14.1. ["Você está em um campo aberto..."]
+        14.1.1. Espaço para pular
+    14.2. ["Sim! Hoje o dia está maravilhoso..."]
+        14.2.1. Espaço para pular
+    14.3. ["Aliás, qual o seu nome? <nome>? Eu sou..."]
+        14.3.1. Quiz para perguntar:
+            14.3.1.1. A. "Como assim comparar?"
+            14.3.1.2. B. "O que quer dizer com "comparar"?"
+    14.4. ["Elas precisam ter o poder..."]
+        14.4.1. Imagem explicando comparadores
+        14.4.2. Espaço para pular
+    14.5. ["É possível expandir isso para..."]
+        14.5.1. Imagem explicando if else
+        14.5.2. Espaço para pular
+    14.6. ["Usando a lógica, será que você consegue corrigir..."]
+        14.6.1. Código sem indentação para corrigir
+    14.7. ["Ótimo, <nome>! Agora complete com o else ..."]
+        14.7.1. Mesmo código anterior, mas colocar else com o oposto do if
+    14.8. ["Excelente! Agora quero te propor..."]
+        14.8.1. Deve digitar código que recebe variável cor e verifica se é azul
+    14.9. ["Impressionante, <nome>! Como você já está..."]
+        14.9.1. Código novo que o usuário deve digitar dois inteiros num1 e num2...
+    14.10. ["Isso mesmo! Muito obrigado pela ajuda..."]
+...
 
 
 
