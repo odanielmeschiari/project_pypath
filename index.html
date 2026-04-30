@@ -1038,12 +1038,244 @@
             white-space: pre-wrap;
         }
 
+        /* === SISTEMA DE PERGAMINHOS === */
+
+        /* Overlay de apresentação do pergaminho (cena isolada) */
+        #scroll-display {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.82);
+            z-index: 20001;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        #scroll-display img {
+            max-height: 70vh;
+            max-width: 80vw;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+            animation: fadeIn 0.5s forwards;
+        }
+
+        #scroll-display-label {
+            font-family: var(--ff-p);
+            font-size: 22px;
+            color: #e1bc95;
+            text-shadow: 1px 1px 4px #000;
+        }
+
+        #scroll-save-btn {
+            font-family: var(--ff-p);
+            font-size: 20px;
+            background: #e1bc95;
+            color: #2e1a05;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 36px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        #scroll-save-btn:hover {
+            background: #c9a47a;
+            transform: scale(1.04);
+        }
+
+        /* Botão do livreto (fixo, canto inferior esquerdo) */
+        #book-btn {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 52px;
+            height: 52px;
+            background: #e1bc95;
+            border: 2px solid #8b6d4d;
+            border-radius: 50%;
+            font-size: 26px;
+            cursor: pointer;
+            z-index: 19999;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            transition: transform 0.15s;
+        }
+
+        #book-btn:hover { transform: scale(1.1); }
+
+        /* Spotlight da primeira vez */
+        #book-spotlight {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle 80px at 50px calc(100vh - 50px), transparent 60px, rgba(0,0,0,0.85) 80px);
+            z-index: 19998;
+            pointer-events: none;
+        }
+
+        #book-spotlight-label {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            left: 14px;
+            font-family: var(--ff-p);
+            font-size: 15px;
+            color: #e1bc95;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 14px;
+            border-radius: 6px;
+            z-index: 20000;
+            max-width: 200px;
+            line-height: 1.4;
+            pointer-events: none;
+        }
+
+        /* Modal do livreto */
+        #book-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.88);
+            z-index: 20002;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        #book-modal-header {
+            font-family: var(--ff-p);
+            font-size: 22px;
+            color: #e1bc95;
+            letter-spacing: 2px;
+        }
+
+        #book-modal-pages {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .book-page {
+            max-height: 60vh;
+            max-width: 38vw;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.7);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .book-page.visible { opacity: 1; }
+
+        #book-modal-nav {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .book-nav-btn {
+            font-family: var(--ff-p);
+            font-size: 20px;
+            background: #e1bc95;
+            color: #2e1a05;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 24px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .book-nav-btn:hover { background: #c9a47a; }
+        .book-nav-btn:disabled { opacity: 0.35; cursor: default; }
+
+        #book-page-indicator {
+            font-family: var(--ff-p);
+            font-size: 15px;
+            color: #e1bc95;
+        }
+
+        #book-close-btn {
+            font-family: var(--ff-p);
+            font-size: 16px;
+            background: none;
+            border: 1px solid #e1bc95;
+            color: #e1bc95;
+            padding: 6px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        #book-close-btn:hover { background: #e1bc95; color: #2e1a05; }
+
+        /* Dica inline do pascal sandbox */
+        #pascal-sandbox-hint {
+            display: none;
+            font-family: var(--ff-p);
+            font-size: 13px;
+            color: #ffd700;
+            margin-left: 4px;
+        }
+
+        /* Dica inline do sys-configuracoes */
+        #sys-config-line-hint {
+            display: none;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #ffd700;
+            padding: 6px 14px;
+            background: #1a1a1a;
+            border: 2px solid #00cfff;
+            border-bottom: none;
+            white-space: pre;
+        }
+
     </style>
 </head>
 <body>
     <div id="black-overlay"></div>
 
     <div id="red-alert-overlay"></div>
+
+    <!-- SISTEMA DE PERGAMINHOS -->
+    <div id="scroll-display">
+        <div id="scroll-display-label">Você obteve um pergaminho!</div>
+        <img id="scroll-display-img" src="" alt="pergaminho">
+        <button id="scroll-save-btn">Guardar</button>
+    </div>
+
+    <!-- Botão do livreto -->
+    <button id="book-btn">📜</button>
+
+    <!-- Spotlight (primeira vez) -->
+    <div id="book-spotlight"></div>
+    <div id="book-spotlight-label">Acesse aqui todos os seus pergaminhos</div>
+
+    <!-- Modal do livreto -->
+    <div id="book-modal">
+        <div id="book-modal-header">📖 LIVRETO DE PERGAMINHOS</div>
+        <div id="book-modal-pages">
+            <img class="book-page" id="book-page-left" src="" alt="">
+            <img class="book-page" id="book-page-right" src="" alt="">
+        </div>
+        <div id="book-modal-nav">
+            <button class="book-nav-btn" id="book-prev">◀ Anterior</button>
+            <span id="book-page-indicator"></span>
+            <button class="book-nav-btn" id="book-next">Próximo ▶</button>
+        </div>
+        <button id="book-close-btn">✕ Fechar</button>
+    </div>
 
     <!-- Terminal lateral de erros registrados (cena 13) -->
     <div id="error-log-terminal">
@@ -1130,6 +1362,8 @@ print("Viajando para o ano", ano)</div>
         <div style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:14px; color:#00cfff; line-height:1.8; white-space:pre;">cliques = int(input())
 cliques = cliques+cliques+cliques+cliques
 print(cliques)</div>
+        <div id="sys-config-line-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; white-space:pre;">Dica: cliques = cliques * 4</div>
+
         <!-- Quiz: selecionar linha -->
         <div id="sys-config-quiz-line" style="background:#111; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:10px 14px; display:flex; flex-direction:column; gap:8px;">
             <span style="font-family:var(--ff-p); font-size:14px; color:#00cfff;">Selecione a linha a corrigir:</span>
@@ -1370,6 +1604,7 @@ print(resultado)</div>
             <button class="sandbox-btn" id="pascal-sandbox-compile">Compilar</button>
             <span id="pascal-sandbox-error" style="font-family:var(--ff-p); font-size:14px; color:red;"></span>
             <span id="pascal-sandbox-error-count" style="font-family:var(--ff-p); font-size:13px; color:#ffd700;"></span>
+            <span id="pascal-sandbox-hint" style="font-family:var(--ff-p); font-size:13px; color:#ffd700; margin-left:4px;">Dica: numero = int(input()) / numero = numero*3 / print(numero)</span>
         </div>
         <div class="sandbox-label" style="border-top:1px solid #00ff6633;">▶ Resultado</div>
         <div id="pascal-sandbox-result-area" style="background:#000; border:2px solid #00ff66; border-top:none; padding:10px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00ff66; min-height:36px; box-sizing:border-box; line-height:1.6; white-space:pre-wrap;"></div>
@@ -1664,6 +1899,128 @@ else:
         let booleElseErrorCount = 0;
         let booleChallengeErrorCount = 0;
         let booleFinalErrorCount = 0;
+        // --- Sistema de Pergaminhos ---
+        const SCROLLS = {
+            babbage: "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-babbage.png",
+            turing:  "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-turing.png",
+            pascal:  "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-pascal.png",
+            boole1:  "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica1-boole.png",
+            boole2:  "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica2-boole.png",
+        };
+        let collectedScrolls = []; // URLs dos pergaminhos guardados
+        let bookFirstTime = true;  // para o spotlight
+        let bookPage = 0;          // índice do par atual (0 = páginas 1-2, 1 = páginas 3-4...)
+        let scrollPendingCallback = null; // função a chamar após "Guardar"
+
+        function showScroll(scrollKey, callback) {
+            scrollPendingCallback = callback;
+            const img = document.getElementById("scroll-display-img");
+            img.src = SCROLLS[scrollKey];
+            document.getElementById("scroll-display").style.display = "flex";
+        }
+
+        function saveScroll(scrollKey) {
+            if (!collectedScrolls.includes(SCROLLS[scrollKey])) {
+                collectedScrolls.push(SCROLLS[scrollKey]);
+            }
+            document.getElementById("scroll-display").style.display = "none";
+
+            // Mostra botão do livreto
+            const bookBtn = document.getElementById("book-btn");
+            bookBtn.style.display = "flex";
+
+            // Primeira vez: spotlight
+            if (bookFirstTime) {
+                bookFirstTime = false;
+                document.getElementById("book-spotlight").style.display = "block";
+                document.getElementById("book-spotlight-label").style.display = "block";
+                // Some ao clicar no botão do livreto (tratado no listener do book-btn)
+            }
+
+            if (scrollPendingCallback) {
+                scrollPendingCallback();
+                scrollPendingCallback = null;
+            }
+        }
+
+        function openBook() {
+            // Esconde spotlight se visível
+            document.getElementById("book-spotlight").style.display = "none";
+            document.getElementById("book-spotlight-label").style.display = "none";
+
+            if (collectedScrolls.length === 0) return;
+            bookPage = 0;
+            renderBookPages();
+            document.getElementById("book-modal").style.display = "flex";
+        }
+
+        function renderBookPages() {
+            const left  = document.getElementById("book-page-left");
+            const right = document.getElementById("book-page-right");
+            const indicator = document.getElementById("book-page-indicator");
+            const prevBtn = document.getElementById("book-prev");
+            const nextBtn = document.getElementById("book-next");
+
+            const i = bookPage * 2;
+            const total = collectedScrolls.length;
+            const totalPairs = Math.ceil(total / 2);
+
+            // Animação: fade out → troca → fade in
+            left.classList.remove("visible");
+            right.classList.remove("visible");
+
+            setTimeout(() => {
+                if (collectedScrolls[i]) {
+                    left.src = collectedScrolls[i];
+                    left.style.display = "block";
+                } else {
+                    left.src = "";
+                    left.style.display = "none";
+                }
+                if (collectedScrolls[i + 1]) {
+                    right.src = collectedScrolls[i + 1];
+                    right.style.display = "block";
+                } else {
+                    right.src = "";
+                    right.style.display = "none";
+                }
+                void left.offsetWidth;
+                left.classList.add("visible");
+                right.classList.add("visible");
+            }, 350);
+
+            indicator.textContent = `${bookPage + 1} / ${totalPairs}`;
+            prevBtn.disabled = bookPage === 0;
+            nextBtn.disabled = bookPage >= totalPairs - 1;
+        }
+
+        document.getElementById("book-btn").addEventListener("click", () => {
+            if (document.getElementById("book-modal").style.display === "flex") {
+                document.getElementById("book-modal").style.display = "none";
+            } else {
+                openBook();
+            }
+        });
+
+        document.getElementById("book-close-btn").addEventListener("click", () => {
+            document.getElementById("book-modal").style.display = "none";
+        });
+
+        document.getElementById("book-prev").addEventListener("click", () => {
+            if (bookPage > 0) { bookPage--; renderBookPages(); }
+        });
+
+        document.getElementById("book-next").addEventListener("click", () => {
+            const totalPairs = Math.ceil(collectedScrolls.length / 2);
+            if (bookPage < totalPairs - 1) { bookPage++; renderBookPages(); }
+        });
+
+        document.getElementById("scroll-save-btn").addEventListener("click", () => {
+            // Descobre qual scroll está sendo exibido
+            const src = document.getElementById("scroll-display-img").src;
+            const key = Object.keys(SCROLLS).find(k => SCROLLS[k] === src || src.endsWith(decodeURIComponent(SCROLLS[k].split("/").pop())));
+            saveScroll(key || Object.keys(SCROLLS)[0]);
+        });
         // --- Sistema de música de cena ---
         let sceneAudio = null;
         let sceneFadeInterval = null;
@@ -2395,6 +2752,9 @@ else:
                 pascalSandboxErrorCount++;
                 errorEl.innerHTML = "Nenhum print() encontrado.";
                 errorCountEl.innerHTML = pascalSandboxErrorCount > 1 ? `(${pascalSandboxErrorCount} erros)` : "";
+                if (pascalSandboxErrorCount >= 5) {
+                    document.getElementById("pascal-sandbox-hint").style.display = "inline";
+                }
                 return;
             }
 
@@ -2402,6 +2762,9 @@ else:
                 pascalSandboxErrorCount++;
                 errorEl.innerHTML = "Use int(input()) para ler números inteiros.";
                 errorCountEl.innerHTML = pascalSandboxErrorCount > 1 ? `(${pascalSandboxErrorCount} erros)` : "";
+                if (pascalSandboxErrorCount >= 5) {
+                    document.getElementById("pascal-sandbox-hint").style.display = "inline";
+                }
                 return;
             }
 
@@ -2529,10 +2892,11 @@ else:
             // Ambas as opções levam para 14.4
             document.getElementById("boole-quiz").style.display = "none";
             typeWriter(booleComparatorsText(), adaDialogTextElement, 30, () => {
-                document.getElementById("boole-hint1").style.display = "block";
-                pressToProceed.style.display = "block";
-                canProceed = true;
-                adaSceneState = "boole_comparators";
+                showScroll("boole1", () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                    adaSceneState = "boole_comparators";
+                });
             });
         });
 
@@ -2954,6 +3318,11 @@ else:
                 feedback.style.color = "red";
                 feedback.innerHTML = "Não é bem isso. Tente novamente.";
                 playErrorSound();
+                const cfgErr = (document.getElementById("sys-config-submit").dataset.errCount | 0) + 1;
+                document.getElementById("sys-config-submit").dataset.errCount = cfgErr;
+                if (cfgErr >= 5) {
+                    document.getElementById("sys-config-line-hint").style.display = "block";
+                }
             }
         });
 
@@ -3480,13 +3849,17 @@ else:
                         else if (adaSceneState === "babbage_challenge_intro") {
                             canProceed = false;
                             pressToProceed.style.display = "none";
-                            document.getElementById("left-image-panel").style.display = "flex";
-                            babbageMonitor.style.display = "flex";
-                            babbageMonitorScreen.value = "";
-                            babbageFeedback.innerHTML = "";
-                            adaSceneState = "babbage_map";
                             babbageErrorCount = 0;
                             document.getElementById("babbage-hint").style.display = "none";
+                            // Mostra pergaminho primeiro
+                            showScroll("babbage", () => {
+                                // Após "Guardar", abre o terminal
+                                document.getElementById("left-image-panel").style.display = "flex";
+                                babbageMonitor.style.display = "flex";
+                                babbageMonitorScreen.value = "";
+                                babbageFeedback.innerHTML = "";
+                                adaSceneState = "babbage_map";
+                            });
                         }
                         else if (adaSceneState === "turing_intro") {
                             canProceed = false;
@@ -3510,10 +3883,11 @@ else:
                             pressToProceed.style.display = "none";
                             adaDialogTextElement.style.fontStyle = "normal";
                             typeWriter(turingListenedText2(), adaDialogTextElement, 30, () => {
-                                document.getElementById("turing-hint-image").style.display = "block";
-                                pressToProceed.style.display = "block";
-                                canProceed = true;
-                                adaSceneState = "turing_input_lesson";
+                                showScroll("turing", () => {
+                                    pressToProceed.style.display = "block";
+                                    canProceed = true;
+                                    adaSceneState = "turing_input_lesson";
+                                });
                             });
                         }
                         else if (adaSceneState === "turing_ignored_part2") {
@@ -3521,10 +3895,11 @@ else:
                             pressToProceed.style.display = "none";
                             adaDialogTextElement.style.fontStyle = "normal";
                             typeWriter(turingIgnoredText2(), adaDialogTextElement, 30, () => {
-                                document.getElementById("turing-hint-image").style.display = "block";
-                                pressToProceed.style.display = "block";
-                                canProceed = true;
-                                adaSceneState = "turing_input_lesson";
+                                showScroll("turing", () => {
+                                    pressToProceed.style.display = "block";
+                                    canProceed = true;
+                                    adaSceneState = "turing_input_lesson";
+                                });
                             });
                         }
                         else if (adaSceneState === "turing_input_lesson") {
@@ -3629,7 +4004,23 @@ else:
                             canProceed = false;
                             pressToProceed.style.display = "none";
                             typeWriter(pascalPascalinaText(), adaDialogTextElement, 30, () => {
-                                document.getElementById("pascal-images").style.display = "flex";
+                                // Mostra só a pascalina (sem dica-pascal)
+                                const pascImages = document.getElementById("pascal-images");
+                                // Esconde a imagem dica-pascal temporariamente
+                                const dicaImg = pascImages.querySelector('img[alt="pascal-dica"]');
+                                if (dicaImg) dicaImg.style.display = "none";
+                                pascImages.style.display = "flex";
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "pascal_pergaminho";
+                            });
+                        }
+                        else if (adaSceneState === "pascal_pergaminho") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            document.getElementById("pascal-images").style.display = "none";
+                            // Mostra o pergaminho pascal
+                            showScroll("pascal", () => {
                                 pressToProceed.style.display = "block";
                                 canProceed = true;
                                 adaSceneState = "pascal_done";
@@ -3778,18 +4169,18 @@ else:
                         else if (adaSceneState === "boole_comparators") {
                             canProceed = false;
                             pressToProceed.style.display = "none";
-                            document.getElementById("boole-hint1").style.display = "none";
                             typeWriter(booleIfElseText, adaDialogTextElement, 30, () => {
-                                document.getElementById("boole-hint2").style.display = "block";
-                                pressToProceed.style.display = "block";
-                                canProceed = true;
-                                adaSceneState = "boole_ifelse";
+                                showScroll("boole2", () => {
+                                    pressToProceed.style.display = "block";
+                                    canProceed = true;
+                                    adaSceneState = "boole_ifelse";
+                                });
                             });
                         }
                         else if (adaSceneState === "boole_ifelse") {
                             canProceed = false;
                             pressToProceed.style.display = "none";
-                            document.getElementById("boole-hint2").style.display = "none";
+                            //document.getElementById("boole-hint2").style.display = "none";
                             typeWriter(booleFixText, adaDialogTextElement, 30, () => {
                                 document.getElementById("boole-fix-code").value = "";
                                 document.getElementById("boole-fix-feedback").innerHTML = "";
@@ -4018,6 +4409,16 @@ else:
             document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/ada_perfil.png";
             document.getElementById("npc-ada-photo").alt = "Ada Lovelace";
             document.getElementById("npc-name-label").textContent = "Ada Lovelace";
+            collectedScrolls = [];
+            bookFirstTime = true;
+            bookPage = 0;
+            document.getElementById("book-btn").style.display = "none";
+            document.getElementById("book-modal").style.display = "none";
+            document.getElementById("scroll-display").style.display = "none";
+            document.getElementById("book-spotlight").style.display = "none";
+            document.getElementById("book-spotlight-label").style.display = "none";
+            document.getElementById("pascal-sandbox-hint").style.display = "none";
+            document.getElementById("sys-config-line-hint").style.display = "none";
         }
         
 
@@ -4573,7 +4974,7 @@ else:
         <button onclick="devGoto('boole-final')"     style="font-size:11px; cursor:pointer;">14.9 Boole final</button>
 
     </div>
-    -->
+-->    
     <!-- FIM DEV TOOL -->
 </body>
 </html>
