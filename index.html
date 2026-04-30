@@ -1664,6 +1664,71 @@ else:
         let booleElseErrorCount = 0;
         let booleChallengeErrorCount = 0;
         let booleFinalErrorCount = 0;
+        // --- Sistema de música de cena ---
+        let sceneAudio = null;
+        let sceneFadeInterval = null;
+        let currentMusicUrl = null;
+
+        function playSceneMusic(url) {
+            if (url === currentMusicUrl && sceneAudio && !sceneAudio.paused) return;
+            currentMusicUrl = url;
+            const FADE_DURATION = 2000; // ms para fade out
+            const FADE_STEPS = 40;
+            const STEP_MS = FADE_DURATION / FADE_STEPS;
+
+            function startNew() {
+                sceneAudio = new Audio(url);
+                sceneAudio.loop = true;
+                sceneAudio.volume = 0.35;
+                sceneAudio.play().catch(() => {}); // ignora erros de autoplay
+            }
+
+            if (sceneAudio && !sceneAudio.paused) {
+                // Fade out da música atual
+                if (sceneFadeInterval) clearInterval(sceneFadeInterval);
+                const startVol = sceneAudio.volume;
+                const step = startVol / FADE_STEPS;
+                const old = sceneAudio;
+                sceneFadeInterval = setInterval(() => {
+                    old.volume = Math.max(0, old.volume - step);
+                    if (old.volume <= 0) {
+                        clearInterval(sceneFadeInterval);
+                        old.pause();
+                        old.src = "";
+                        startNew();
+                    }
+                }, STEP_MS);
+            } else {
+                if (sceneAudio) { sceneAudio.pause(); sceneAudio.src = ""; }
+                startNew();
+            }
+        }
+
+        function stopSceneMusic() {
+            if (!sceneAudio || sceneAudio.paused) return;
+            if (sceneFadeInterval) clearInterval(sceneFadeInterval);
+            const FADE_STEPS = 40;
+            const step = sceneAudio.volume / FADE_STEPS;
+            const old = sceneAudio;
+            sceneFadeInterval = setInterval(() => {
+                old.volume = Math.max(0, old.volume - step);
+                if (old.volume <= 0) {
+                    clearInterval(sceneFadeInterval);
+                    old.pause();
+                    old.src = "";
+                }
+            }, 50);
+        }
+
+        const MUSIC = {
+            maquina:  "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/maquinapadrao/J.S.%20Bach%20-%20Minuet%20and%20Badinerie%20from%20Orchestral%20Suite%20No.%202%20in%20B%20%5Bl4i51b8ZS-4%5D.opus",
+            ada:      "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/ada1/Violin%20Concerto%20in%20G%20Minor%2C%20BWV%201056R%EF%BC%9A%20II.%20Arioso%2C%20Largo%20%5BZYf7c9u7OKo%5D.opus",
+            babbage:  "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/babbage/Concerto%20for%20Strings%20and%20Continuo%20in%20G%20Major%2C%20RV%20780%EF%BC%9A%20I.%20Presto%20%5BdDqVJQN2spY%5D.opus",
+            turing:   "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/turing/Johann%20Strauss%20II%20-%20The%20Blue%20Danube%20%5Bsxok9-IMfvI%5D.opus",
+            pascal:   "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/pascal/Concerto%20for%20Strings%20and%20Continuo%20in%20G%20Major,%20RV%20780%EF%BC%9A%20III.%20Allegro%20%5BIp0QKQPP4xE%5D.opus",
+            quebrada: "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/maquinaquebrada/Prelude%20and%20Fugue%20in%20A%20Minor,%20BWV%20543%20%5BVUhWe88sgss%5D.opus",
+            boole:    "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/boole/Chopin%20-%20%E2%80%9CAeolian%20Harp%E2%80%9D%20Etude%20Op.25%20No.1%20%5B7MxFWmr8Wck%5D.opus"
+        };
         let brokenMachineState = ""; // controle interno da cena 13
         // Erros resolvidos na cena 13
         const solvedErrors = new Set(); // valores: "refrigeracao", "seletor", "configuracoes"
@@ -1784,6 +1849,8 @@ else:
                 }
             );
 
+            playSceneMusic(MUSIC.ada);
+
             setTimeout(() => {
                 isAtAdaScene = true; 
                 adaSceneState = "intro";
@@ -1800,6 +1867,7 @@ else:
         }
 
         function loadTuringScene() {
+            playSceneMusic(MUSIC.turing);
             travelScreen.style.display = "none";
             imageContainer.style.display = "none";
             npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
@@ -1853,6 +1921,8 @@ else:
                 }
             );
 
+            playSceneMusic(MUSIC.pascal);
+
             setTimeout(() => {
                 isAtAdaScene = true;
                 adaSceneState = "pascal_intro";
@@ -1868,6 +1938,7 @@ else:
         }
 
         function startTimeTravel() {
+            playSceneMusic(MUSIC.maquina);
             npcImage.classList.add("fadeOutScene");
             blackOverlay.classList.add("fadeOutScene");
             dialogBox.classList.add("fadeOutScene");
@@ -1899,6 +1970,7 @@ else:
         }
 
         function startTimeTravel2() {
+            playSceneMusic(MUSIC.maquina);
             // Escurece tudo
             npcImage.classList.add("fadeOutSlow");
             npcContainer.classList.add("fadeOutSlow");
@@ -1953,6 +2025,7 @@ else:
         }
 
         function startTimeTravel3() {
+            playSceneMusic(MUSIC.maquina);
             blackOverlay.style.display = "block";
             blackOverlay.style.transition = "opacity 0.5s ease";
             setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
@@ -1991,6 +2064,7 @@ else:
         }
 
         function startBrokenMachineScene() {
+            playSceneMusic(MUSIC.quebrada);
             // 13.3 — tela escurece
             blackOverlay.style.display = "block";
             blackOverlay.style.transition = "opacity 0.8s ease";
@@ -2036,6 +2110,7 @@ else:
         }
 
         function loadBooleScene() {
+            playSceneMusic(MUSIC.boole);
             travelScreen.style.display = "none";
             imageContainer.style.display = "none";
             npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
@@ -2076,6 +2151,7 @@ else:
         }
 
         function startTimeTravel4() {
+            playSceneMusic(MUSIC.maquina);
             blackOverlay.style.display = "block";
             blackOverlay.style.transition = "opacity 0.5s ease";
             setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
@@ -2123,6 +2199,7 @@ else:
             if (event.key === "Enter" && inputName.value === targetText) {
                 if (audioCtx.state === 'suspended') audioCtx.resume();
                 playSuccessSound();
+                playSceneMusic(MUSIC.maquina);
                 firstChain.style.animation = "startAnimation 1s forwards";
                 setTimeout(() => {
                     firstChain.style.display = "none";
@@ -2988,6 +3065,7 @@ else:
         // 13.6.3 — despedida
         function showBrokenMachineFarewell() {
             hideAllSystemPanels();
+            stopSceneMusic();
             document.getElementById("broken-machine-options").style.display = "none";
             document.getElementById("error-index-panel").style.display = "none";
             document.getElementById("error-detail-panel").style.display = "none";
@@ -3347,6 +3425,7 @@ else:
                                     () => {
                                         void npcImage.offsetWidth;
                                         npcImage.classList.add("sceneFadeIn");
+                                        playSceneMusic(MUSIC.babbage);
                                     }
                                 );
                                 
@@ -3474,6 +3553,7 @@ else:
                         else if (adaSceneState === "turing_farewell") {
                             canProceed = false;
                             pressToProceed.style.display = "none";
+                            playSceneMusic(MUSIC.maquina);
 
                             // Escurece a tela aos poucos
                             npcImage.classList.add("fadeOutSlow");
@@ -3585,6 +3665,7 @@ else:
                         else if (adaSceneState === "pascal_done_final") {
                             canProceed = false;
                             pressToProceed.style.display = "none";
+                            playSceneMusic(MUSIC.maquina);
 
                             // Fase 1: fade out de tudo (1s)
                             npcContainer.style.transition = "opacity 1s ease";
@@ -4046,6 +4127,7 @@ else:
                 document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_perfil.png";
                 document.getElementById("npc-name-label").textContent = "Charles Babbage";
                 adaDialogBox.style.display = "flex";
+                playSceneMusic(MUSIC.babbage);
                 typeWriter(babbageWelcomeText(), adaDialogTextElement, 30, () => {
                     pressToProceed.style.display = "block";
                     canProceed = true;
