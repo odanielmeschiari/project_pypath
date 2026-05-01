@@ -4928,53 +4928,41 @@ else:
                 });
         }
     }
+    // Atalho Ctrl+Alt+D para mostrar/ocultar a Dev Tool
+        document.addEventListener("keydown", (e) => {
+            if (e.ctrlKey && e.altKey && e.key === "d") {
+                const panel = document.getElementById("dev-panel");
+                panel.style.display = panel.style.display === "flex" ? "none" : "flex";
+            }
+        });
         // FIM DEV TOOL
     </script>
-    <!-- DEV TOOL: REMOVER ANTES DO LANÇAMENTO
+    <!-- DEV TOOL: REMOVER ANTES DO LANÇAMENTO -->
+    <!-- DEPOIS -->
     <div id="dev-panel" style="
         position: fixed; bottom: 10px; right: 10px;
         background: rgba(0,0,0,0.85); border: 1px solid #8acebd;
-        padding: 10px; z-index: 99999; display: flex;
+        padding: 10px; z-index: 99999; display: none;
         flex-direction: column; gap: 6px; font-family: monospace;
     ">
         <span style="color:#8acebd; font-size:11px; text-align:center;">⚙ DEV: pular para</span>
-        <button onclick="devGoto('inicio')"       style="font-size:11px; cursor:pointer;">1. Início</button>
-        <button onclick="devGoto('input')"        style="font-size:11px; cursor:pointer;">2. Input hello world</button>
-        <button onclick="devGoto('maquina')"      style="font-size:11px; cursor:pointer;">3.1 Máquina do tempo</button>
-        <button onclick="devGoto('viagem')"       style="font-size:11px; cursor:pointer;">4. Viagem no tempo</button>
-        <button onclick="devGoto('ada-intro')"    style="font-size:11px; cursor:pointer;">5.1 Chegada Ada</button>
-        <button onclick="devGoto('ada-meeting')"  style="font-size:11px; cursor:pointer;">5.2.1 Ada fala</button>
-        <button onclick="devGoto('ada-name')"     style="font-size:11px; cursor:pointer;">5.2.2 Nome inserido</button>
-        <button onclick="devGoto('ada-challenge')"style="font-size:11px; cursor:pointer;">5.2.3 Desafio</button>
-        <button onclick="devGoto('ada-thanks')"   style="font-size:11px; cursor:pointer;">5.2.4 Agradecimento Ada</button>
-        <button onclick="devGoto('babbage-intro')"style="font-size:11px; cursor:pointer;">6.0 Chegada Babbage</button>
-        <button onclick="devGoto('babbage-meeting')"style="font-size:11px; cursor:pointer;">6.2 Babbage fala</button>
-        <button onclick="devGoto('babbage-variable')"style="font-size:11px; cursor:pointer;">6.3 Babbage variável</button>
-        <button onclick="devGoto('babbage-map')"  style="font-size:11px; cursor:pointer;">6.4 Babbage mapa</button>
-        <button onclick="devGoto('babbage-quiz')" style="font-size:11px; cursor:pointer;">6.5 Babbage quiz</button>
-        <button onclick="devGoto('return-machine')" style="font-size:11px; cursor:pointer;">7.0 Retorno máquina</button>
-        <button onclick="devGoto('turing-intro')" style="font-size:11px; cursor:pointer;">8.0 Chegada Turing</button>
-        <button onclick="devGoto('turing-whisper')" style="font-size:11px; cursor:pointer;">8.1 Turing sussurro</button>
-        <button onclick="devGoto('turing-input')" style="font-size:11px; cursor:pointer;">8.2 Turing input quiz</button>
-        <button onclick="devGoto('turing-print')" style="font-size:11px; cursor:pointer;">8.3 Turing print</button>
-        <button onclick="devGoto('turing-sandbox')" style="font-size:11px; cursor:pointer;">8.4 Turing sandbox</button>
-        <button onclick="devGoto('turing-transition')" style="font-size:11px; cursor:pointer;">10.1 Transição Turing</button>
-        <button onclick="devGoto('viagem3')" style="font-size:11px; cursor:pointer;">11. Viagem Rouen 1642</button>
-        <button onclick="devGoto('pascal-intro')"   style="font-size:11px; cursor:pointer;">12.1 Chegada Pascal</button>
-        <button onclick="devGoto('pascal-meeting')" style="font-size:11px; cursor:pointer;">12.2 Pascal fala</button>
-        <button onclick="devGoto('pascal-pascalina')" style="font-size:11px; cursor:pointer;">12.3 Pascalina</button>
-        <button onclick="devGoto('pascal-challenge')"  style="font-size:11px; cursor:pointer;">12.4 Pascal quiz</button>
-        <button onclick="devGoto('pascal-sandbox')"    style="font-size:11px; cursor:pointer;">12.5 Pascal sandbox</button>
-        <button onclick="devGoto('pascal-farewell')"   style="font-size:11px; cursor:pointer;">12.6 Pascal despedida</button>
-        <button onclick="devGoto('broken-machine')" style="font-size:11px; cursor:pointer;">13. Máquina quebrada</button>
-        <button onclick="devGoto('boole-intro')"     style="font-size:11px; cursor:pointer;">14.1 Chegada Boole</button>
-        <button onclick="devGoto('boole-meeting')"   style="font-size:11px; cursor:pointer;">14.2 Boole fala</button>
-        <button onclick="devGoto('boole-fix')"       style="font-size:11px; cursor:pointer;">14.6 Boole fix</button>
-        <button onclick="devGoto('boole-challenge')" style="font-size:11px; cursor:pointer;">14.8 Boole desafio</button>
-        <button onclick="devGoto('boole-final')"     style="font-size:11px; cursor:pointer;">14.9 Boole final</button>
+        <button onclick="devGoto('inicio')"       style="font-size:11px; cursor:pointer;">Início</button>
+        <button onclick="devGoto('maquina')"      style="font-size:11px; cursor:pointer;">Máquina do tempo</button>
+        <button onclick="devGoto('ada-intro')"    style="font-size:11px; cursor:pointer;">Cena Ada</button>
+        <button onclick="devGoto('ada-thanks')"   style="font-size:11px; cursor:pointer;">Fim Ada</button>
+        <button onclick="devGoto('babbage-intro')"style="font-size:11px; cursor:pointer;">Cena Babbage</button>
+        <button onclick="devGoto('babbage-quiz')" style="font-size:11px; cursor:pointer;">Fim Babbage</button>
+        <button onclick="devGoto('return-machine')" style="font-size:11px; cursor:pointer;">Máquina do tempo</button>
+        <button onclick="devGoto('turing-intro')" style="font-size:11px; cursor:pointer;">Cena Turing</button>
+        <button onclick="devGoto('turing-transition')" style="font-size:11px; cursor:pointer;">Fim Turing, Máquina</button>
+        <button onclick="devGoto('pascal-intro')"   style="font-size:11px; cursor:pointer;">Cena Pascal</button>
+        <button onclick="devGoto('pascal-farewell')"   style="font-size:11px; cursor:pointer;">Fim Pascal</button>
+        <button onclick="devGoto('broken-machine')" style="font-size:11px; cursor:pointer;">Máquina quebrada</button>
+        <button onclick="devGoto('boole-intro')"     style="font-size:11px; cursor:pointer;">Cena Boole</button>
+        <button onclick="devGoto('boole-final')"     style="font-size:11px; cursor:pointer;">Fim Boole</button>
 
     </div>
--->    
+    
     <!-- FIM DEV TOOL -->
 </body>
 </html>
