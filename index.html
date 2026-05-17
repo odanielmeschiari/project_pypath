@@ -20,6 +20,7 @@
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica1-boole.png">
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica2-boole.png">
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/boole-perfil.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica-ada.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1705,6 +1706,75 @@ else:
         </div>
     </div>
 
+    <!-- ADA2: Quiz 17.4.1 -->
+    <div id="ada2-quiz1" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #bf9970; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:420px; animation:fadeIn 0.4s forwards;">
+        <div style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">O que você responde?</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <button class="quiz-option" data-id="a">Então podemos repetir o mesmo trecho de código sem ter que escrever tudo várias vezes?</button>
+            <button class="quiz-option" data-id="b">É como pedir para o computador ler uma parte do código várias vezes?</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; font-family:var(--ff-p); font-size:15px;">
+            <span id="ada2-quiz1-feedback"></span>
+        </div>
+    </div>
+
+    <!-- ADA2: Quiz 17.8.1 -->
+    <div id="ada2-quiz2" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #bf9970; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:460px; animation:fadeIn 0.4s forwards;">
+        <div style="background:#000; border:2px solid #bf9970; border-radius:6px; padding:10px 14px; font-family:'Courier New',monospace; font-size:14px; color:#bf9970; line-height:1.8; white-space:pre;">numero = 1
+while numero &lt;= x:
+    print(numero)
+    numero = numero + y</div>
+        <div style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">Quais valores para x e y preenchem as lacunas?</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <button class="quiz-option" data-id="a">a) x = 9 e y = 1</button>
+            <button class="quiz-option" data-id="b">b) x = 10 e y = 0</button>
+            <button class="quiz-option" data-id="c">c) x = 10 e y = 1</button>
+            <button class="quiz-option" data-id="d">d) x = 11 e y = 0</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; font-family:var(--ff-p); font-size:15px;">
+            <span id="ada2-quiz2-feedback"></span>
+            <span id="ada2-quiz2-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: c) x = 10 e y = 1</span>
+        </div>
+    </div>
+
+    <!-- ADA2: Quiz 17.9.1 -->
+    <div id="ada2-quiz3" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.92); border:2px solid #bf9970; border-radius:8px; padding:20px 28px; z-index:10003; flex-direction:column; gap:14px; min-width:460px; max-width:560px; animation:fadeIn 0.4s forwards;">
+        <div style="background:#000; border:2px solid #bf9970; border-radius:6px; padding:10px 14px; font-family:'Courier New',monospace; font-size:14px; color:#bf9970; line-height:1.8; white-space:pre;">soma = 0
+numero = int(input())
+while numero != 0:
+    soma = soma + numero
+    numero = int(input())
+print(soma)</div>
+        <div style="font-family:var(--ff-p); font-size:17px; color:white; line-height:1.5;">O que esse código faz?</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <button class="quiz-option" data-id="a">a) Recebe o valor de "numero" soma todos os números de 0 até "numero" e imprime esse valor.</button>
+            <button class="quiz-option" data-id="b">b) Recebe vários números digitados pelo usuário e então imprime os números de 0 a 10.</button>
+            <button class="quiz-option" data-id="c">c) Recebe números do usuário até que ele digite 0 e imprime a soma dos números digitados.</button>
+            <button class="quiz-option" data-id="d">d) Recebe o valor de "numero" enquanto o usuário digitar 0 e então imprime a palavra "numero".</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; font-family:var(--ff-p); font-size:15px;">
+            <span id="ada2-quiz3-feedback"></span>
+            <span id="ada2-quiz3-hint" style="display:none; color:#ffd700; font-family:'Courier New',monospace;">Resposta: c)</span>
+        </div>
+    </div>
+
+    <!-- ADA2: Terminal 17.11.1 — contagem regressiva -->
+    <div id="ada2-code2-monitor" style="display:none; position:fixed; bottom:40px; left:50%; transform:translateX(-50%); width:540px; z-index:10002; flex-direction:column; filter:drop-shadow(0 0 18px #bf997044); animation:fadeIn 0.4s forwards;">
+        <div style="background:#1a1a1a; border:2px solid #bf9970; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px; display:flex; align-items:center; gap:8px;">
+            <span style="font-family:var(--ff-p); font-size:13px; color:#bf9970; opacity:0.7; letter-spacing:1px;">ada_contagem.py</span>
+        </div>
+        <div id="ada2-code2-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #bf9970; border-bottom:none; white-space:pre;">n = 5
+while n > 0:
+    print(n)
+    n = n - 1
+print("Programa iniciado")</div>
+        <textarea id="ada2-code2-input" placeholder="Digite o código aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #bf9970; border-top:1px solid #bf997033; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#bf9970; resize:none; outline:none; width:100%; height:220px; box-sizing:border-box; caret-color:#bf9970; line-height:1.6;"></textarea>
+        <div style="background:#111; border:2px solid #bf9970; border-top:1px solid #bf997033; border-radius:0 0 8px 8px; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="sandbox-btn" id="ada2-code2-submit" style="color:#bf9970; border-color:#bf9970;">Concluir</button>
+            <span id="ada2-code2-feedback" style="font-family:var(--ff-p); font-size:15px;"></span>
+        </div>
+    </div>
+
     <div id="travel-screen">
         <div id="travel-text"></div>
         <div id="year-display" style="font-size: 60px; margin-top: 20px; color: var(--main-color);"></div>
@@ -1869,6 +1939,26 @@ else:
         const booleChallengeText = "Excelente! Agora quero te propor um desafio maior: faça um código que receba a variável \"cor\" do usuário. Se a cor for azul, então imprima \"Essa é minha cor favorita!\"";
         const booleFinalChallengeText = () => `Impressionante, ${playerNickname}! Você aprendeu rápido. Como você já está bom nisso, pode me ajudar com esse sistema lógico? Ele deve receber dois inteiros "num1" e "num2" do usuário. Se a soma for 10, deve retornar "A soma é 10". Caso contrário, deve retornar "A soma de (num1) e (num2) não é 10."`;
         const booleFarewellText = () => `Isso mesmo! Muito obrigado pela ajuda, ${playerNickname}! Bons estudos!`;
+        // --- Textos Cena 15 (máquina) e 17 (Ada - retorno) ---
+        const ada2MachineText1 = "Você está muito orgulhoso do progresso que está fazendo. Agora, você decide revisitar alguém que esteve presente no início da sua jornada, para entender uma das estruturas de programação mais importantes da computação.";
+        const ada2MachineText2 = "Ajustando as coordenadas temporais...";
+        const ada2IntroText = "Você sai da máquina e encontra Ada Lovelace em seu escritório novamente.";
+        const ada2MeetingText = () => `Que surpresa! É ótimo ver você novamente, ${playerNickname}! Acredito que depois dessa longa jornada você tenha aprendido bastante. A propósito, gostaria de te mostrar algo um pouco mais complexo que venho trabalhando no meu algoritmo: estruturas de repetição.`;
+        const ada2LoreText = "A primeira pessoa a descrever loops (laços de repetição) em um algoritmo foi a matemática britânica Ada Lovelace em 1843.";
+        const ada2QuestionText = "Suponha que você quer que um usuário digite 10 números e o programa realize a soma de todos eles. Imagine como seria desgastante declarar 10 variáveis, ler 10 variáveis e imprimir a soma de todas elas. Agora pegue esse exemplo e expanda para 100 ou 1000 números: é praticamente inviável escrever um código tão grande para realizar uma ação tão simples.";
+        const ada2ScrollText = () => `Exatamente! Se a lógica é a mesma, podemos ordenar que a máquina entre em um ciclo. Eu chamo isso de laço de repetição.`;
+        const ada2Code1Text = () => `Agora que você já entendeu como funcionam os loops, ${playerNickname}, que tal me ajudar a testar alguns projetos? Lembre-se que se você não prestar atenção a máquina pode ficar presa em um ciclo infinito!`;
+        const ada2Quiz1Text = () => `Começando com algo simples: quero criar um programa que imprima na tela os números de 0 a 10. Ele já está quase pronto, só preciso saber que valores devem entrar em cada lacuna para que o código seja executado corretamente:`;
+        const ada2Quiz2Text = "Muito bem! Agora, lembre-se que um bom programador não deve apenas escrever códigos: ele também precisa saber analisá-los. Dado o código a seguir, responda o que ele faz.";
+        const ada2AfterQuiz2Text = () => `Sensacional, ${playerNickname}! Esse código consegue condensar o que seriam centenas de linhas de código em uma estrutura de pouquíssimas linhas que roda quantas vezes forem necessárias. Ótima análise!`;
+        const ada2Code2Text = () => `Por fim, quero que você crie um código que mostre uma contagem regressiva para a execução de um programa. O código deve utilizar uma estrutura de repetição e imprimir os números de 5 até 1 (nessa ordem) e então imprimir "Programa iniciado".`;
+        const ada2FarewellText = () => `Fantástico, ${playerNickname}! É muito bom ver como você evoluiu ao longo dessa jornada. Estou orgulhosa!`;
+
+        let ada2Code1ErrorCount = 0;
+        let ada2Code2ErrorCount = 0;
+        let ada2Quiz1ErrorCount = 0;
+        let ada2Quiz2ErrorCount = 0;
+        let ada2Quiz3ErrorCount = 0;
 
         const targetCodes = [
             'for(i = 0; i < array; i++){}', 
@@ -1906,6 +1996,7 @@ else:
             pascal:  "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-pascal.png",
             boole1:  "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica1-boole.png",
             boole2:  "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica2-boole.png",
+            ada2:    "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica-ada.png",
         };
         let collectedScrolls = []; // URLs dos pergaminhos guardados
         let bookFirstTime = true;  // para o spotlight
@@ -2540,6 +2631,215 @@ else:
                 });
             }, 600);
         }
+
+        // --- Cena 15+16: Transição Boole → Ada (volta) ---
+        function startTimeTravel5() {
+            playSceneMusic(MUSIC.maquina);
+            blackOverlay.style.display = "block";
+            blackOverlay.style.transition = "opacity 0.5s ease";
+            setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
+            setTimeout(() => {
+                npcContainer.style.display = "none";
+                npcContainer.classList.remove("fadeOutSlow", "imageFadeIn");
+                adaDialogBox.style.display = "none";
+                adaDialogBox.classList.remove("fadeOutSlow", "centered-dialog");
+                npcImage.classList.remove("fadeOutSlow", "imageFadeIn", "sceneFadeIn");
+                npcImage.style.opacity = "1";
+                imageContainer.style.display = "none";
+                pressToProceed.style.display = "none";
+
+                swapBackground(
+                    "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png",
+                    () => {
+                        void npcImage.offsetWidth;
+                        npcImage.classList.remove("fadeOutSlow", "imageFadeIn", "sceneFadeIn");
+                        void npcImage.offsetWidth;
+                        npcImage.classList.add("sceneFadeIn");
+                        imageContainer.style.display = "flex";
+                    }
+                );
+
+                blackOverlay.style.transition = "opacity 0.5s ease";
+                setTimeout(() => {
+                    blackOverlay.style.backgroundColor = "rgba(0,0,0,0.21)";
+                    blackOverlay.style.opacity = "1";
+                }, 500);
+
+                setTimeout(() => {
+                    isAtAdaScene = true;
+                    adaSceneState = "ada2_transition_1";
+                    dialogBox.classList.remove("fadeOutScene");
+                    dialogBox.style.display = "flex";
+                    typeWriter(ada2MachineText1, dialogTextElement, 30, () => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                    });
+                }, 600);
+            }, 3500);
+        }
+
+        function loadAda2Scene() {
+            playSceneMusic(MUSIC.ada);
+            travelScreen.style.display = "none";
+            imageContainer.style.display = "none";
+            npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+            blackOverlay.className = "";
+            blackOverlay.style.display = "block";
+            blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+            blackOverlay.style.opacity = "1";
+            blackOverlay.style.transition = "none";
+            swapBackground(
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/ada_fundo.png",
+                () => {
+                    void npcImage.offsetWidth;
+                    npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+                    void npcImage.offsetWidth;
+                    npcImage.classList.add("sceneFadeIn");
+                    imageContainer.style.display = "flex";
+                }
+            );
+            setTimeout(() => {
+                isAtAdaScene = true;
+                adaSceneState = "ada2_intro";
+                adaDialogBox.classList.remove("error-dialog", "error-dialog-raised");
+                adaDialogBox.style.left = "";
+                adaDialogBox.style.top = "";
+                adaDialogBox.style.maxWidth = "";
+                adaDialogBox.style.border = "";
+                adaDialogTextElement.style.fontStyle = "normal";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(ada2IntroText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            }, 500);
+        }
+
+        // --- Validações dos terminais Ada2 ---
+
+        function validateAda2Code2(code) {
+            // Deve: while, imprimir 5,4,3,2,1 (em ordem decrescente), e depois imprimir "Programa iniciado"
+            if (!code.includes("while")) return false;
+            if (!/print\s*\(\s*["']Programa iniciado["']\s*\)/.test(code)) return false;
+            // precisa ter decremento
+            const hasDecrement = /\w+\s*=\s*\w+\s*-\s*1/.test(code) || /\w+\s*-=\s*1/.test(code);
+            if (!hasDecrement) return false;
+            // precisa ter print de variável (não só string)
+            if (!/print\s*\(\s*[a-zA-Z_]\w*\s*\)/.test(code)) return false;
+            return true;
+        }
+
+        document.getElementById("ada2-code2-submit").addEventListener("click", () => {
+            const code = document.getElementById("ada2-code2-input").value;
+            const feedback = document.getElementById("ada2-code2-feedback");
+            if (validateAda2Code2(code)) {
+                feedback.style.color = "lime";
+                feedback.innerHTML = "Correto!";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("ada2-code2-monitor").style.display = "none";
+                    typeWriter(ada2FarewellText(), adaDialogTextElement, 30, () => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                        adaSceneState = "ada2_farewell";
+                    });
+                }, 1000);
+            } else {
+                feedback.style.color = "red";
+                feedback.innerHTML = "Não é bem isso. Tente novamente.";
+                playErrorSound();
+                ada2Code2ErrorCount++;
+                if (ada2Code2ErrorCount >= 5) {
+                    document.getElementById("ada2-code2-hint").style.display = "block";
+                }
+            }
+        });
+
+        // --- Tab nos terminais Ada2 ---
+        ["ada2-code2-input"].forEach(id => {
+            document.getElementById(id).addEventListener("keydown", (e) => {
+                if (e.key !== "Tab") return;
+                e.preventDefault();
+                const el = e.target;
+                const start = el.selectionStart;
+                const end = el.selectionEnd;
+                el.value = el.value.substring(0, start) + "\t" + el.value.substring(end);
+                el.selectionStart = el.selectionEnd = start + 1;
+            });
+        });
+
+        // --- Quizzes Ada2 ---
+        document.getElementById("ada2-quiz1").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            // Ambas as opções estão corretas
+            e.target.style.background = "#00cc44";
+            e.target.style.color = "#000";
+            playSuccessSound();
+            document.getElementById("ada2-quiz1").style.display = "none";
+            setTimeout(() => {
+                typeWriter(ada2ScrollText(), adaDialogTextElement, 30, () => {
+                    showScroll("ada2", () => {
+                        adaSceneState = "ada2_pre_quiz2";
+                        typeWriter(ada2Code1Text(), adaDialogTextElement, 30, () => {
+                            pressToProceed.style.display = "block";
+                            canProceed = true;
+                        });
+                    });
+                });
+            }, 600);
+        });
+
+        document.getElementById("ada2-quiz2").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            if (e.target.dataset.id === "c") {
+                e.target.style.background = "#00cc44";
+                e.target.style.color = "#000";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("ada2-quiz2").style.display = "none";
+                    typeWriter(ada2Quiz2Text, adaDialogTextElement, 30, () => {
+                        ada2Quiz3ErrorCount = 0;
+                        document.getElementById("ada2-quiz3-feedback").innerHTML = "";
+                        document.getElementById("ada2-quiz3-hint").style.display = "none";
+                        document.getElementById("ada2-quiz3").style.display = "flex";
+                    });
+                }, 800);
+            } else {
+                playErrorSound();
+                ada2Quiz2ErrorCount++;
+                document.getElementById("ada2-quiz2-feedback").style.color = "red";
+                document.getElementById("ada2-quiz2-feedback").innerHTML = "Tente novamente.";
+                if (ada2Quiz2ErrorCount >= 5) {
+                    document.getElementById("ada2-quiz2-hint").style.display = "inline";
+                }
+            }
+        });
+
+        document.getElementById("ada2-quiz3").addEventListener("click", (e) => {
+            if (!e.target.classList.contains("quiz-option")) return;
+            if (e.target.dataset.id === "c") {
+                e.target.style.background = "#00cc44";
+                e.target.style.color = "#000";
+                playSuccessSound();
+                setTimeout(() => {
+                    document.getElementById("ada2-quiz3").style.display = "none";
+                    typeWriter(ada2AfterQuiz2Text(), adaDialogTextElement, 30, () => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                        adaSceneState = "ada2_after_quiz2";
+                    });
+                }, 800);
+            } else {
+                playErrorSound();
+                ada2Quiz3ErrorCount++;
+                document.getElementById("ada2-quiz3-feedback").style.color = "red";
+                document.getElementById("ada2-quiz3-feedback").innerHTML = "Tente novamente.";
+                if (ada2Quiz3ErrorCount >= 5) {
+                    document.getElementById("ada2-quiz3-hint").style.display = "inline";
+                }
+            }
+        });
 
         inputName.addEventListener("input", () => {
             const currentValue = inputName.value;
@@ -4195,11 +4495,124 @@ else:
                         else if (adaSceneState === "boole_farewell") {
                             canProceed = false;
                             pressToProceed.style.display = "none";
-                            // Fade out — fim da cena 14 (sem próxima cena ainda)
                             npcImage.classList.add("fadeOutSlow");
                             npcContainer.classList.add("fadeOutSlow");
                             adaDialogBox.classList.add("fadeOutSlow");
                             blackOverlay.classList.add("fadeOutSlow");
+                            setTimeout(() => { startTimeTravel5(); }, 2200);
+                        }
+                        else if (adaSceneState === "ada2_transition_1") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(ada2MachineText2, dialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "ada2_transition_2";
+                            });
+                        }
+                        else if (adaSceneState === "ada2_transition_2") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            dialogBox.style.display = "none";
+                            imageContainer.style.display = "none";
+                            blackOverlay.style.transition = "opacity 0.5s ease";
+                            blackOverlay.style.opacity = "1";
+                            blackOverlay.style.backgroundColor = "rgba(0,0,0,1)";
+                            setTimeout(() => {
+                                travelScreen.style.display = "flex";
+                                blackOverlay.className = "";
+                                blackOverlay.style.cssText = "";
+                                typeWriter("Viajando pelo tempo", travelTextElement, 50, () => {
+                                    animateDots();
+                                    let duration = 1000;
+                                    let startTime = Date.now();
+                                    let shuffleInterval = setInterval(() => {
+                                        let elapsed = Date.now() - startTime;
+                                        if (elapsed < duration) {
+                                            yearDisplay.innerHTML = Math.floor(1000 + Math.random() * 9000);
+                                        } else {
+                                            clearInterval(shuffleInterval);
+                                            yearDisplay.innerHTML = "Londres, 1843";
+                                        }
+                                    }, 50);
+                                    setTimeout(() => {
+                                        clearInterval(dotsInterval);
+                                        travelTextElement.innerHTML = "";
+                                        yearDisplay.innerHTML = "";
+                                        setTimeout(() => { loadAda2Scene(); }, 1000);
+                                    }, 3000);
+                                });
+                            }, 600);
+                        }
+                        else if (adaSceneState === "ada2_intro") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogBox.classList.remove("centered-dialog");
+                            document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/ada_perfil.png";
+                            document.getElementById("npc-ada-photo").alt = "Ada Lovelace";
+                            document.getElementById("npc-name-label").textContent = "Ada Lovelace";
+                            npcContainer.style.display = "flex";
+                            npcContainer.classList.add("imageFadeIn");
+                            setTimeout(() => {
+                                typeWriter(ada2MeetingText(), adaDialogTextElement, 30, () => {
+                                    pressToProceed.style.display = "block";
+                                    canProceed = true;
+                                    adaSceneState = "ada2_meeting";
+                                });
+                            }, 600);
+                        }
+                        else if (adaSceneState === "ada2_meeting") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogTextElement.style.fontStyle = "italic";
+                            typeWriter(ada2LoreText, adaDialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "ada2_lore";
+                            });
+                        }
+                        else if (adaSceneState === "ada2_lore") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogTextElement.style.fontStyle = "normal";
+                            typeWriter(ada2QuestionText, adaDialogTextElement, 30, () => {
+                                ada2Quiz1ErrorCount = 0;
+                                document.getElementById("ada2-quiz1-feedback").innerHTML = "";
+                                document.getElementById("ada2-quiz1").style.display = "flex";
+                                adaSceneState = "ada2_question";
+                            });
+                        }
+                        else if (adaSceneState === "ada2_pre_quiz2") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(ada2Quiz1Text(), adaDialogTextElement, 30, () => {
+                                ada2Quiz2ErrorCount = 0;
+                                document.getElementById("ada2-quiz2-feedback").innerHTML = "";
+                                document.getElementById("ada2-quiz2-hint").style.display = "none";
+                                document.getElementById("ada2-quiz2").style.display = "flex";
+                            });
+                        }
+                        else if (adaSceneState === "ada2_after_quiz2") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(ada2Code2Text(), adaDialogTextElement, 30, () => {
+                                ada2Code2ErrorCount = 0;
+                                document.getElementById("ada2-code2-feedback").innerHTML = "";
+                                document.getElementById("ada2-code2-hint").style.display = "none";
+                                document.getElementById("ada2-code2-input").value = "";
+                                document.getElementById("ada2-code2-monitor").style.display = "flex";
+                                document.getElementById("ada2-code2-input").focus();
+                                adaSceneState = "ada2_code2";
+                            });
+                        }
+                        else if (adaSceneState === "ada2_farewell") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            npcImage.classList.add("fadeOutSlow");
+                            npcContainer.classList.add("fadeOutSlow");
+                            adaDialogBox.classList.add("fadeOutSlow");
+                            blackOverlay.classList.add("fadeOutSlow");
+                            // fim do jogo — sem próxima cena ainda
                         }
                         else if (adaSceneState === "pascal_sandbox_intro") {
                             canProceed = false;
@@ -4317,6 +4730,7 @@ else:
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica1-boole.png",
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica2-boole.png",
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/boole-perfil.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica-ada.png",
             ];
             imagesToPreload.forEach(src => {
                 const img = new Image();
@@ -4419,6 +4833,16 @@ else:
             document.getElementById("book-spotlight-label").style.display = "none";
             document.getElementById("pascal-sandbox-hint").style.display = "none";
             document.getElementById("sys-config-line-hint").style.display = "none";
+            document.getElementById("ada2-quiz1").style.display = "none";
+            document.getElementById("ada2-quiz2").style.display = "none";
+            document.getElementById("ada2-quiz3").style.display = "none";
+            document.getElementById("ada2-code2-monitor").style.display = "none";
+            document.getElementById("ada2-code2-input").value = "";
+            document.getElementById("ada2-code2-feedback").innerHTML = "";
+            ada2Code2ErrorCount = 0;
+            ada2Quiz1ErrorCount = 0;
+            ada2Quiz2ErrorCount = 0;
+            ada2Quiz3ErrorCount = 0;
         }
         
 
@@ -4926,6 +5350,58 @@ else:
                     booleFinalErrorCount = 0;
                     document.getElementById("boole-final-monitor").style.display = "flex";
                 });
+            } else if (scene === 'ada2-intro') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "ada2_transition_1";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.21)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                dialogBox.style.display = "flex";
+                typeWriter(ada2MachineText1, dialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'ada2-meeting') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "ada2_intro";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/ada_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(ada2IntroText, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'ada2-code2') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "ada2_after_quiz2";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/ada_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.45)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                npcContainer.style.display = "flex";
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/ada_perfil.png";
+                document.getElementById("npc-name-label").textContent = "Ada Lovelace";
+                adaDialogBox.style.display = "flex";
+                typeWriter(ada2AfterQuiz2Text(), adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
         }
     }
     // Atalho Ctrl+Alt+D para mostrar/ocultar a Dev Tool
@@ -4960,6 +5436,9 @@ else:
         <button onclick="devGoto('broken-machine')" style="font-size:11px; cursor:pointer;">Máquina quebrada</button>
         <button onclick="devGoto('boole-intro')"     style="font-size:11px; cursor:pointer;">Cena Boole</button>
         <button onclick="devGoto('boole-final')"     style="font-size:11px; cursor:pointer;">Fim Boole</button>
+        <button onclick="devGoto('ada2-intro')"      style="font-size:11px; cursor:pointer;">Máquina → Ada (retorno)</button>
+        <button onclick="devGoto('ada2-meeting')"    style="font-size:11px; cursor:pointer;">Cena Ada retorno</button>
+        <button onclick="devGoto('ada2-code2')"      style="font-size:11px; cursor:pointer;">Fim Ada retorno</button>
 
     </div>
     
