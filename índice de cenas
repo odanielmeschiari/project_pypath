@@ -137,7 +137,41 @@
     14.9. ["Impressionante, <nome>! Como você já está..."]
         14.9.1. Código novo que o usuário deve digitar dois inteiros num1 e num2...
     14.10. ["Isso mesmo! Muito obrigado pela ajuda..."]
-...
+    14.11. Cena escurece
+15. Máquina do tempo
+    15.1. ["Você está muito orgulhoso..."]
+        15.1.1. Espaço para pular
+    15.2. ["Ajustando as coordenadas..."]
+16. Cena de viagem
+    16.1. ["Viajando pelo tempo..."]
+    16.2. ["Londres, 1843"]
+17. Conversa com Ada
+    17.1. ["Você sai da máquina e encontra..."]
+        17.1.1. Espaço para pular
+    17.2. ["Que surpresa!..."]
+        17.2.1. Espaço para pular
+    17.3. ["(itálico)A primeira pessoa a..."]
+        17.3.1. Espaço para pular
+    17.4. ["Pense que você quer que um usuário..."]
+        17.4.1. Quiz ("O que você responde?")
+            17.4.1.1. Selecionar qualquer opção que dá certo
+    17.5. ["Exatamente! Se a lógica é..."]
+        17.5.1. Novo pergaminho
+    17.6. ["Agora que você já entendeu..."]
+        17.6.1. Espaço para pular
+    17.7. ["Começando com algo simples..."]
+        17.7.1. Quiz ("Quais valores para x e y preenchem as lacunas?")
+            17.7.1.1. Se correto, continuar
+    17.8. ["Muito bem!..."]
+        17.8.1. Quiz ("O que esse código faz?")
+            17.8.1.1. Se correto, continuar
+    17.9. ["Sensacional, <nome>! Esse código..."]
+        17.9.1. Espaço para pular
+    17.10. ["Por fim, quero que você crie..."]
+        17.10.1. Pedir para escrever código
+            17.10.1.1. Se correto, continuar
+    17.11. ["Fantástico, <nome>! É muito bom ver..."]
+        17.11.1. Espaço para pular
 
 
 
