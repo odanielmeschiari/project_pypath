@@ -8,7 +8,7 @@
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/ada_perfil.png">
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage-fundo.png">
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_perfil.png">
-    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-babbage.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica_babbage.png">
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/turing_fundo.png">
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/turing_foto.png">
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-turing.png">
@@ -411,9 +411,10 @@
         #babbage-monitor {
             display: none;
             position: fixed;
-            right: 40px;
+            left: 50%;
             bottom: 40px;
-            width: 520px;
+            transform: translateX(-50%);
+            width: 420px;
             z-index: 10002;
             flex-direction: column;
             gap: 0;
@@ -459,7 +460,7 @@
             resize: none;
             outline: none;
             width: 100%;
-            height: 400px;
+            height: 240px;
             box-sizing: border-box;
             caret-color: #00ff66;
             line-height: 1.6;
@@ -1418,23 +1419,22 @@ print(cliques)</div>
         <button id="show-solution-btn">Mostrar solução</button>
     </div>
 
-    <div id="left-image-panel">
-        <div id="babbage-monitor">
-            <div id="babbage-monitor-header">
-                <div class="monitor-dot"></div>
-                <div class="monitor-dot"></div>
-                <div class="monitor-dot"></div>
-                <span>terminal_babbage.py</span>
-            </div>
-            <div id="babbage-hint" style="display:none; font-family:'Courier New',monospace; font-size:14px; color:#ffd700; padding: 6px 14px; background:#1a1a1a; border: 2px solid #00ff66; border-bottom:none; white-space:pre;">nome = "Babbage"
-ano = 1842</div>
-            <textarea id="babbage-monitor-screen" placeholder="Digite aqui..." autocomplete="off" spellcheck="false"></textarea>
-            <div id="babbage-monitor-footer">
-                <button id="babbage-submit">Concluir</button>
-                <span id="babbage-feedback"></span>
-            </div>
+    <div id="left-image-panel"></div>
+
+    <div id="babbage-monitor">
+        <div id="babbage-monitor-header">
+            <div class="monitor-dot"></div>
+            <div class="monitor-dot"></div>
+            <div class="monitor-dot"></div>
+            <span>terminal_babbage.py</span>
         </div>
-        <img src="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-babbage.png" alt="dica-babbage">
+        <div id="babbage-hint" style="display:none; font-family:'Courier New',monospace; font-size:14px; color:#ffd700; padding: 6px 14px; background:#1a1a1a; border: 2px solid #00ff66; border-bottom:none; white-space:pre;">nome = "Babbage"
+ano = 1842</div>
+        <textarea id="babbage-monitor-screen" placeholder="Digite aqui..." autocomplete="off" spellcheck="false"></textarea>
+        <div id="babbage-monitor-footer">
+            <button id="babbage-submit">Concluir</button>
+            <span id="babbage-feedback"></span>
+        </div>
     </div>
 
     <div id="babbage-quiz">
@@ -1886,7 +1886,7 @@ print("Programa iniciado")</div>
         
         const adaIntroText = "Você sai da máquina e percebe que está em um antigo escritório cheio de papéis e engrenagens. Uma mulher observa anotações ao lado de um projeto de máquina. Você se aproxima e ela se apresenta...";
         const adaWelcomeText = "Olá! Sou Ada Lovelace e trabalho com ideias para uma máquina criada por Charles Babbage chamada Máquina Analítica. Qual o seu nome?";
-        const adaHelpRequest = "Sabendo disso, seria de grande valia para mim se você me ajudasse organizando pequenas instruções para realizar uma operação matemática.";
+        const adaHelpRequest = "Sabendo disso, seria de grande valia para mim se você me ajudasse organizando pequenas instruções para realizar uma operação matemática. (Arraste os cartões abaixo para colocá-los na ordem correta).";
 
         const babbageIntroText = "Você entra em um galpão grande e barulhento. Ao fundo, um homem de cabelos brancos e muito focado mexe em engrenagens. É Charles Babbage. Ele nem olha para trás ao ouvir seus passos.";
 
@@ -1936,7 +1936,7 @@ print("Programa iniciado")</div>
         const booleIfElseText = "É possível expandir isso para avaliar se uma ação deve ser executada ou não. Por exemplo: \"Se a temperatura estiver acima de 25 graus, abrir a janela.\" Isso quer dizer que se a temperatura estiver menor que 25 graus, não abrimos a janela. Simples e direto.";
         const booleFixText = "Agora, usando a lógica, será que você consegue corrigir este código? O que está faltando nele?";
         const booleElseText = () => `Ótimo, ${playerNickname}! Agora, adicione também uma alternativa à condição que este código estipula, isto é, uma forma de imprimir "Maior de idade".`;
-        const booleChallengeText = "Excelente! Agora quero te propor um desafio maior: faça um código que receba a variável \"cor\" do usuário. Se a cor for azul, então imprima \"Essa é minha cor favorita!\"";
+        const booleChallengeText = "Excelente! Agora quero te propor um desafio maior: faça um código que receba a variável \"cor\" do usuário. Se a cor for \"azul\", então imprima \"Essa é minha cor favorita!\"";
         const booleFinalChallengeText = () => `Impressionante, ${playerNickname}! Você aprendeu rápido. Como você já está bom nisso, pode me ajudar com esse sistema lógico? Ele deve receber dois inteiros "num1" e "num2" do usuário. Se a soma for 10, deve retornar "A soma é 10". Caso contrário, deve retornar "A soma de (num1) e (num2) não é 10."`;
         const booleFarewellText = () => `Isso mesmo! Muito obrigado pela ajuda, ${playerNickname}! Bons estudos!`;
         // --- Textos Cena 15 (máquina) e 17 (Ada - retorno) ---
@@ -1991,7 +1991,7 @@ print("Programa iniciado")</div>
         let booleFinalErrorCount = 0;
         // --- Sistema de Pergaminhos ---
         const SCROLLS = {
-            babbage: "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-babbage.png",
+            babbage: "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica_babbage.png",
             turing:  "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-turing.png",
             pascal:  "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-pascal.png",
             boole1:  "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica1-boole.png",
@@ -2721,7 +2721,7 @@ print("Programa iniciado")</div>
         function validateAda2Code2(code) {
             // Deve: while, imprimir 5,4,3,2,1 (em ordem decrescente), e depois imprimir "Programa iniciado"
             if (!code.includes("while")) return false;
-            if (!/print\s*\(\s*["']Programa iniciado["']\s*\)/.test(code)) return false;
+            if (!/print\s*\(\s*["']Programa\s+iniciado["']\s*\)/.test(code)) return false;
             // precisa ter decremento
             const hasDecrement = /\w+\s*=\s*\w+\s*-\s*1/.test(code) || /\w+\s*-=\s*1/.test(code);
             if (!hasDecrement) return false;
@@ -2754,19 +2754,6 @@ print("Programa iniciado")</div>
                     document.getElementById("ada2-code2-hint").style.display = "block";
                 }
             }
-        });
-
-        // --- Tab nos terminais Ada2 ---
-        ["ada2-code2-input"].forEach(id => {
-            document.getElementById(id).addEventListener("keydown", (e) => {
-                if (e.key !== "Tab") return;
-                e.preventDefault();
-                const el = e.target;
-                const start = el.selectionStart;
-                const end = el.selectionEnd;
-                el.value = el.value.substring(0, start) + "\t" + el.value.substring(end);
-                el.selectionStart = el.selectionEnd = start + 1;
-            });
         });
 
         // --- Quizzes Ada2 ---
@@ -3109,6 +3096,11 @@ print("Programa iniciado")</div>
                             const printMatch = line.match(/^print\s*\((.+)\)$/);
                             if (printMatch) {
                                 let expr = printMatch[1].replace(/^["']|["']$/g, "");
+                                // Verifica variáveis não declaradas
+                                const tokensInExpr = expr.match(/\b[a-zA-Z_]\w*\b/g) || [];
+                                for (const tok of tokensInExpr) {
+                                    if (!(tok in vars)) { output += `Erro: variável não declarada: ${tok}\n`; continue; }
+                                }
                                 for (const [k, v] of Object.entries(vars)) {
                                     expr = expr.replace(new RegExp(`\\b${k}\\b`, 'g'), v);
                                 }
@@ -3141,10 +3133,18 @@ print("Programa iniciado")</div>
                         const printMatch = line.match(/^print\s*\((.+)\)$/);
                         if (printMatch) {
                             let expr = printMatch[1].replace(/^["']|["']$/g, "");
-                            for (const [k, v] of Object.entries(vars)) {
-                                expr = expr.replace(new RegExp(`\\b${k}\\b`, 'g'), v);
+                            // Verifica variáveis não declaradas
+                            const tokensInExpr = expr.match(/\b[a-zA-Z_]\w*\b/g) || [];
+                            let undeclaredFound = false;
+                            for (const tok of tokensInExpr) {
+                                if (!(tok in vars)) { output += `Erro: variável não declarada: ${tok}\n`; undeclaredFound = true; }
                             }
-                            try { output += eval(`\`${expr}\``) + "\n"; } catch(e) { output += expr + "\n"; }
+                            if (!undeclaredFound) {
+                                for (const [k, v] of Object.entries(vars)) {
+                                    expr = expr.replace(new RegExp(`\\b${k}\\b`, 'g'), v);
+                                }
+                                try { output += eval(`\`${expr}\``) + "\n"; } catch(e) { output += expr + "\n"; }
+                            }
                         }
                     }
                     resultArea.innerHTML = output || "<em style='color:#00ff6688'>sem output</em>";
@@ -3173,16 +3173,17 @@ print("Programa iniciado")</div>
             });
         });
 
-        // --- Interceptar Tab nos terminais Boole (indentação real) ---
-        ["boole-fix-code", "boole-else-code", "boole-challenge-code", "boole-final-code"].forEach(id => {
+        // --- Interceptar Tab nos terminais (indentação = 4 espaços) ---
+        ["boole-fix-code", "boole-else-code", "boole-challenge-code", "boole-final-code",
+         "ada2-code2-input", "sys-refrig-code", "sys-seletor-code"].forEach(id => {
             document.getElementById(id).addEventListener("keydown", (e) => {
                 if (e.key !== "Tab") return;
                 e.preventDefault();
                 const el = e.target;
                 const start = el.selectionStart;
                 const end = el.selectionEnd;
-                el.value = el.value.substring(0, start) + "\t" + el.value.substring(end);
-                el.selectionStart = el.selectionEnd = start + 1;
+                el.value = el.value.substring(0, start) + "    " + el.value.substring(end);
+                el.selectionStart = el.selectionEnd = start + 4;
             });
         });
 
@@ -3211,7 +3212,7 @@ print("Programa iniciado")</div>
             if (!m1) return false;
             const v1 = m1[1];
             // linha 2: if <v1> <op> <num>: — operador e número flexíveis
-            const m2 = nonEmpty[1].match(/^if\s+[a-zA-Z_\u00C0-\u024F]\w*\s*[<>=!]+\s*.+:\s*$/);
+            const m2 = nonEmpty[1].match(/^if\s*\(?\s*[a-zA-Z_\u00C0-\u024F]\w*\s*[<>=!]+\s*.+?\)?\s*:\s*$/);
             if (!m2) return false;
             // linha 3: indentada com print(...)
             const m3 = nonEmpty[2].match(/^(\s+)print\s*\(.+\)\s*$/);
@@ -3299,7 +3300,7 @@ print("Programa iniciado")</div>
             if (!m1) return false;
             const v1 = m1[1];
             // linha 2: if <v1> == "azul" (ou 'azul'):
-            const m2 = lines[1].match(new RegExp(`^if\\s+${v1}\\s*==\\s*["']azul["']\\s*:\\s*$`));
+            const m2 = lines[1].match(new RegExp(`^if\\s*\\(?\\s*${v1}\\s*==\\s*["']azul["']\\s*\\)?\\s*:\\s*$`));
             if (!m2) return false;
             // linha 3: indentada com print contendo algo
             const m3 = lines[2].match(/^(\s+)print\s*\(.+\)\s*$/);
@@ -3350,7 +3351,7 @@ print("Programa iniciado")</div>
             if (!m2) return false;
             const v2 = m2[1];
             // linha 3: if <expr envolvendo v1 e v2 e 10>:
-            const m3 = lines[2].match(/^if\s+.+:\s*$/);
+            const m3 = lines[2].match(/^if\s*\(?.+?\)?\s*:\s*$/);
             if (!m3) return false;
             // linha 3 deve mencionar v1, v2 e 10
             if (!lines[2].includes(v1) || !lines[2].includes(v2) || !lines[2].includes("10")) return false;
@@ -3525,27 +3526,25 @@ print("Programa iniciado")</div>
         }
 
         // --- Validação sistema A: Refrigeração ---
-        // Exige: var = int(input()) nas 2 primeiras linhas
         function validateRefrig(code) {
             const lines = code.trim().split("\n").map(l => l.trim()).filter(l => l);
-            if (lines.length < 4) return false;
-            // linha 1: var1 = int(input())
-            const m1 = lines[0].match(/^([a-zA-Z_]\w*)\s*=\s*int\s*\(\s*input\s*\(\s*\)\s*\)$/);
-            if (!m1) return false;
-            const v1 = m1[1];
-            // linha 2: var2 = int(input())
-            const m2 = lines[1].match(/^([a-zA-Z_]\w*)\s*=\s*int\s*\(\s*input\s*\(\s*\)\s*\)$/);
-            if (!m2) return false;
-            const v2 = m2[1];
-            // linha 3: var3 = v1 - v2
-            const m3 = lines[2].match(/^([a-zA-Z_]\w*)\s*=\s*([a-zA-Z_]\w*)\s*-\s*([a-zA-Z_]\w*)$/);
-            if (!m3) return false;
-            if (m3[2] !== v1 || m3[3] !== v2) return false;
-            const v3 = m3[1];
-            // linha 4: print(var3)
-            const m4 = lines[3].match(/^print\s*\(\s*([a-zA-Z_]\w*)\s*\)$/);
-            if (!m4 || m4[1] !== v3) return false;
-            return true;
+            if (lines.length < 3) return false;
+            // Precisa ter pelo menos 2 int(input()), uma subtração e um print
+            const inputLines = lines.filter(l => /^[a-zA-Z_]\w*\s*=\s*int\s*\(\s*input\s*\(\s*\)\s*\)/.test(l));
+            if (inputLines.length < 2) return false;
+            const vars = inputLines.map(l => l.match(/^([a-zA-Z_]\w*)/)[1]);
+            // Precisa ter uma linha com subtração usando ao menos duas das variáveis
+            const hasSub = lines.some(l => {
+                if (!/=/.test(l) || /int\s*\(\s*input/.test(l)) return false;
+                return vars.filter(v => l.includes(v)).length >= 2 && l.includes("-");
+            }) || lines.some(l => {
+                // aceita também inline: print(a - b)
+                return /print\s*\(.+-.+\)/.test(l) && vars.filter(v => l.includes(v)).length >= 2;
+            });
+            if (!hasSub) return false;
+            // Precisa ter print
+            const hasPrint = lines.some(l => /print\s*\(/.test(l));
+            return hasPrint;
         }
 
         // --- Validação sistema B: Seletor temporal ---
@@ -3597,6 +3596,7 @@ print("Programa iniciado")</div>
         // Validação configurações: cliques = cliques*4 (aceita espaços e ordem)
         function validateConfig(input) {
             const norm = input.replace(/\s+/g, "");
+            // aceita cliques*4, 4*cliques
             return norm === "cliques=cliques*4" || norm === "cliques=4*cliques";
         }
 
@@ -3781,7 +3781,6 @@ print("Programa iniciado")</div>
                 setTimeout(() => {
                     babbageMonitor.style.display = "none";
                     document.getElementById("babbage-hint").style.display = "none";
-                    document.getElementById("left-image-panel").style.display = "none";
                     adaDialogBox.style.display = "flex";
                     const babbageVariableSuccessText = `Excelente, ${playerNickname}! Os valores agora estão na memória. Mas agora precisamos imprimir o conteúdo dessas gavetas no visor!`;
                     typeWriter(babbageVariableSuccessText, adaDialogTextElement, 30, () => {
@@ -3895,9 +3894,16 @@ print("Programa iniciado")</div>
             const hint = document.getElementById("turing-print-hint");
 
             // aceita variações de espaço e aspas simples ou duplas
-            const correct = /^print\(["']Olá,?\s*["'],\s*nome\)$/.test(normalized) ||
-                            /^print\(["']Olá,?\s*["']\+nome\)$/.test(normalized) ||
-                            /^print\(["']Olá,?\s*["'],nome\)$/.test(raw.replace(/\s+/g, "").trim());
+            const n = raw.replace(/\s+/g, "");
+            const correct =
+                // print("Olá,", nome) ou print('Olá,', nome)
+                /^print\(["']Olá,?["'],\s*nome\)$/.test(n) ||
+                // print("Olá," + nome)
+                /^print\(["']Olá,?["']\+nome\)$/.test(n) ||
+                // print("Olá, " + nome)  — com espaço dentro da string
+                /^print\(["']Olá,?\s*["']\+nome\)$/.test(raw.replace(/\s/g, "")) ||
+                // f-string: print(f"Olá, {nome}") 
+                /^print\(f["']Olá,?\s*\{nome\}["']\)$/.test(n);
 
             if (correct) {
                 feedback.style.color = "lime";
@@ -4154,7 +4160,6 @@ print("Programa iniciado")</div>
                             // Mostra pergaminho primeiro
                             showScroll("babbage", () => {
                                 // Após "Guardar", abre o terminal
-                                document.getElementById("left-image-panel").style.display = "flex";
                                 babbageMonitor.style.display = "flex";
                                 babbageMonitorScreen.value = "";
                                 babbageFeedback.innerHTML = "";
@@ -4718,7 +4723,7 @@ print("Programa iniciado")</div>
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/ada_perfil.png",
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage-fundo.png",
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_perfil.png",
-                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-babbage.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica_babbage.png",
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/turing_fundo.png",
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/turing_foto.png",
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/dica-turing.png",
@@ -4982,7 +4987,6 @@ print("Programa iniciado")</div>
                 npcContainer.classList.add("imageFadeIn");
                 document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/babbage_perfil.png";
                 document.getElementById("npc-name-label").textContent = "Charles Babbage";
-                document.getElementById("left-image-panel").style.display = "flex";
                 babbageMonitor.style.display = "flex";
                 babbageMonitorScreen.value = "";
                 babbageFeedback.innerHTML = "";
