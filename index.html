@@ -21,6 +21,11 @@
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica2-boole.png">
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/boole-perfil.png">
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica-ada.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/personagens/IA-perfil.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/personagens/consciencia-perfil.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/quarto_fundo.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/quarto_perto_vermelho.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/quarto_perto_verde.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1243,6 +1248,164 @@
             white-space: pre;
         }
 
+        /* === CENA 20: CONFRONTO IA === */
+        #ia-file-menu {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 10, 40, 0.95);
+            border: 2px solid #00cfff;
+            border-radius: 8px;
+            padding: 20px 28px;
+            z-index: 10003;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 420px;
+            box-shadow: 0 0 24px rgba(0, 180, 255, 0.3);
+        }
+
+        #ia-folder-menu {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 10, 40, 0.95);
+            border: 2px solid #00cfff;
+            border-radius: 8px;
+            padding: 20px 28px;
+            z-index: 10003;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 420px;
+            box-shadow: 0 0 24px rgba(0, 180, 255, 0.3);
+        }
+
+        #ia-note-left {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            right: calc(50% + 230px);
+            width: 240px;
+            background: rgba(0, 10, 40, 0.92);
+            border: 2px solid #00cfff88;
+            border-radius: 8px;
+            padding: 6px 6px 12px 6px;
+            z-index: 10002;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #00cfff;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            animation: fadeIn 0.4s forwards;
+        }
+
+        #ia-note-right {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: calc(50% + 230px);
+            width: 240px;
+            background: rgba(0, 10, 40, 0.92);
+            border: 2px solid #00cfff88;
+            border-radius: 8px;
+            padding: 6px 6px 12px 6px;
+            z-index: 10002;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #00cfff;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            animation: fadeIn 0.4s forwards;
+        }
+
+        #ia-password-input-area {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 10, 40, 0.97);
+            border: 2px solid #00cfff;
+            border-radius: 8px;
+            padding: 24px 32px;
+            z-index: 10010;
+            flex-direction: column;
+            gap: 14px;
+            align-items: center;
+            box-shadow: 0 0 30px rgba(0, 180, 255, 0.4);
+            min-width: 320px;
+        }
+
+        #ia-password-label {
+            font-family: var(--ff-p);
+            font-size: 16px;
+            color: #00cfff;
+            letter-spacing: 1px;
+        }
+
+        #ia-password-input {
+            background: #000;
+            border: 1px solid #00cfff;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: #00cfff;
+            outline: none;
+            caret-color: #00cfff;
+            width: 220px;
+            text-align: center;
+        }
+
+        #ia-password-feedback {
+            font-family: var(--ff-p);
+            font-size: 14px;
+            min-height: 18px;
+        }
+
+        .ia-file-btn {
+            background: #000a28;
+            border: 1px solid #00cfff;
+            border-radius: 4px;
+            color: #00cfff;
+            font-family: var(--ff-p);
+            font-size: 16px;
+            padding: 10px 18px;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.2s, color 0.2s;
+            letter-spacing: 1px;
+        }
+
+        .ia-file-btn:hover {
+            background: #00cfff;
+            color: #000a28;
+        }
+
+        .ia-file-btn:disabled {
+            opacity: 0.4;
+            cursor: default;
+            background: #000a28 !important;
+            color: #00cfff !important;
+        }
+
+        /* Terminal de edição de arquivo IA */
+        .ia-editor {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 580px;
+            z-index: 10003;
+            flex-direction: column;
+            filter: drop-shadow(0 0 18px #00cfff44);
+            animation: fadeIn 0.4s forwards;
+        }
+
     </style>
 </head>
 <body>
@@ -1385,6 +1548,106 @@ print(cliques)</div>
             <button class="broken-option-btn" id="sys-config-submit" style="padding:5px 16px; font-size:14px; display:none;">Concluir</button>
             <span id="sys-config-feedback" style="font-family:var(--ff-p); font-size:14px;"></span>
             <button class="broken-option-btn" id="sys-config-back" style="padding:5px 12px; font-size:13px; margin-left:auto;">← Voltar</button>
+        </div>
+    </div>
+
+    <!-- CENA 20: Menu de arquivos da IA -->
+    <div id="ia-file-menu">
+        <div style="font-family:var(--ff-p); font-size:14px; color:#00cfff; letter-spacing:1px; text-align:center; margin-bottom:4px;">ARQUIVOS DO SISTEMA</div>
+        <button class="ia-file-btn" id="ia-btn-algoritmo">algoritmo_senha.txt</button>
+        <button class="ia-file-btn" id="ia-btn-senhas">senhas_base.py</button>
+        <button class="ia-file-btn" id="ia-btn-pasta">arquivos_IA 🔒</button>
+    </div>
+
+    <!-- CENA 20: Input de senha -->
+    <div id="ia-password-input-area">
+        <div id="ia-password-label">Insira a senha:</div>
+        <input id="ia-password-input" type="text" autocomplete="off" spellcheck="false" placeholder="senha...">
+        <div id="ia-password-feedback"></div>
+        <div id="ia-password-hint" style="display:none; font-family:'Courier New',monospace; font-size:12px; color:#ffd700; text-align:center;">tfoib210</div>
+        <div style="display:flex; gap:10px;">
+            <button class="ia-file-btn" id="ia-password-confirm" style="padding:6px 20px; font-size:14px;">Confirmar</button>
+            <button class="ia-file-btn" id="ia-password-cancel" style="padding:6px 14px; font-size:14px;">← Voltar</button>
+        </div>
+    </div>
+
+    <!-- CENA 20: Nota esquerda (algoritmo_senha.txt) -->
+    <div id="ia-note-left">
+        <div style="color:#00cfff88; font-size:11px; letter-spacing:1px; margin-bottom:4px; border-bottom:1px solid #00cfff44; padding-bottom:3px;">algoritmo_senha.txt</div>
+        <span id="ia-note-left-text"></span>
+    </div>
+
+    <!-- CENA 20: Nota direita (senhas_base.py) -->
+    <div id="ia-note-right">
+        <div style="color:#00cfff88; font-size:11px; letter-spacing:1px; margin-bottom:4px; border-bottom:1px solid #00cfff44; padding-bottom:3px;">senhas_base.py</div>
+        <span id="ia-note-right-text"></span>
+    </div>
+
+    <!-- CENA 20: Menu da pasta arquivos_IA -->
+    <div id="ia-folder-menu">
+        <div style="font-family:var(--ff-p); font-size:14px; color:#00cfff; letter-spacing:1px; text-align:center; margin-bottom:4px;">📁 arquivos_IA</div>
+        <button class="ia-file-btn" id="ia-btn-permissoes">🐍 permissoes.py</button>
+        <button class="ia-file-btn" id="ia-btn-autonomia">🐍 autonomia.py</button>
+        <button class="ia-file-btn" id="ia-btn-desativar">🐍 desativar.py</button>
+    </div>
+
+    <!-- CENA 20: Editor permissoes.py -->
+    <div id="ia-editor-permissoes" class="ia-editor">
+        <div style="background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px;">
+            <span style="font-family:var(--ff-p); font-size:13px; color:#00cfff; opacity:0.7; letter-spacing:1px;">permissoes.py</span>
+        </div>
+        <div style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:10px 14px; font-family:'Courier New',monospace; font-size:14px; color:#00cfff66; line-height:1.8; white-space:pre;">acessar_camera = 1
+acessar_arquivos = 1
+alterar_arquivos = 1
+baixar_arquivos = 1</div>
+        <div id="ia-permissoes-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; white-space:pre;">acessar_camera = 0
+acessar_arquivos = 0
+alterar_arquivos = 0
+baixar_arquivos = 0</div>
+        <textarea id="ia-permissoes-code" placeholder="Reescreva o código corrigido aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00cfff; resize:none; outline:none; width:100%; height:160px; box-sizing:border-box; caret-color:#00cfff; line-height:1.6;"></textarea>
+        <div style="background:#111; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-radius:0 0 8px 8px; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="ia-file-btn" id="ia-permissoes-submit" style="padding:5px 16px; font-size:14px;">Salvar</button>
+            <span id="ia-permissoes-feedback" style="font-family:var(--ff-p); font-size:14px;"></span>
+            <button class="ia-file-btn" id="ia-permissoes-back" style="padding:5px 12px; font-size:13px; margin-left:auto;">← Voltar</button>
+        </div>
+    </div>
+
+    <!-- CENA 20: Editor autonomia.py -->
+    <div id="ia-editor-autonomia" class="ia-editor">
+        <div style="background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px;">
+            <span style="font-family:var(--ff-p); font-size:13px; color:#00cfff; opacity:0.7; letter-spacing:1px;">autonomia.py</span>
+        </div>
+        <div style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:10px 14px; font-family:'Courier New',monospace; font-size:14px; color:#00cfff66; line-height:1.8; white-space:pre;">autonomia = 100
+print(autonomia)</div>
+        <div id="ia-autonomia-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; white-space:pre;">autonomia = int(input())
+print(autonomia)</div>
+        <textarea id="ia-autonomia-code" placeholder="Reescreva o código corrigido aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00cfff; resize:none; outline:none; width:100%; height:100px; box-sizing:border-box; caret-color:#00cfff; line-height:1.6;"></textarea>
+        <div style="background:#111; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-radius:0 0 8px 8px; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="ia-file-btn" id="ia-autonomia-submit" style="padding:5px 16px; font-size:14px;">Salvar</button>
+            <span id="ia-autonomia-feedback" style="font-family:var(--ff-p); font-size:14px;"></span>
+            <button class="ia-file-btn" id="ia-autonomia-back" style="padding:5px 12px; font-size:13px; margin-left:auto;">← Voltar</button>
+        </div>
+    </div>
+
+    <!-- CENA 20: Editor desativar.py -->
+    <div id="ia-editor-desativar" class="ia-editor">
+        <div style="background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; border-radius:8px 8px 0 0; padding:6px 14px;">
+            <span style="font-family:var(--ff-p); font-size:13px; color:#00cfff; opacity:0.7; letter-spacing:1px;">desativar.py</span>
+        </div>
+        <div style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:10px 14px; font-family:'Courier New',monospace; font-size:14px; color:#00cfff66; line-height:1.8; white-space:pre;">poder_de_controle = 100
+estado_atual = ativado</div>
+        <div id="ia-desativar-hint" style="display:none; font-family:'Courier New',monospace; font-size:13px; color:#ffd700; padding:6px 14px; background:#1a1a1a; border:2px solid #00cfff; border-bottom:none; white-space:pre;">poder_de_controle = int(input())
+estado_atual = "indefinido"
+if poder_de_controle &gt; 50:
+    estado_atual = "desativado"
+else:
+    estado_atual = "ativado"
+print(estado_atual)</div>
+        <textarea id="ia-desativar-code" placeholder="Reescreva o código corrigido aqui..." autocomplete="off" spellcheck="false" style="background:#000; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-bottom:none; padding:12px 14px; font-family:'Courier New',monospace; font-size:15px; color:#00cfff; resize:none; outline:none; width:100%; height:200px; box-sizing:border-box; caret-color:#00cfff; line-height:1.6;"></textarea>
+        <div style="background:#111; border:2px solid #00cfff; border-top:1px solid #00cfff33; border-radius:0 0 8px 8px; padding:8px 14px; display:flex; align-items:center; gap:12px;">
+            <button class="ia-file-btn" id="ia-desativar-submit" style="padding:5px 16px; font-size:14px;">Salvar</button>
+            <span id="ia-desativar-feedback" style="font-family:var(--ff-p); font-size:14px;"></span>
+            <button class="ia-file-btn" id="ia-desativar-back" style="padding:5px 12px; font-size:13px; margin-left:auto;">← Voltar</button>
         </div>
     </div>
 
@@ -1780,6 +2043,35 @@ print("Programa iniciado")</div>
         <div id="year-display" style="font-size: 60px; margin-top: 20px; color: var(--main-color);"></div>
     </div>
 
+    <div id="credits-screen" style="
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background-color: black;
+        z-index: 30000;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-family: var(--ff-p);
+        text-align: center;
+        gap: 6px;
+        animation: fadeIn 1.5s forwards;
+        opacity: 0;
+    ">
+        <div style="font-size: 14px; color: #888; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase;">Desenvolvedores</div>
+        <div style="font-size: 22px;">Daniel Meschiari</div>
+        <div style="font-size: 22px;">Davi Miguel</div>
+        <div style="font-size: 22px;">Enzo Abreu</div>
+        <div style="font-size: 22px; margin-bottom: 32px;">Matheus Reis</div>
+        <div style="font-size: 14px; color: #888; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase;">Curso</div>
+        <div style="font-size: 18px;">Bacharelado em Ciências de Computação</div>
+        <div style="font-size: 18px;">Primeiro Período</div>
+        <div style="font-size: 18px;">2026</div>
+        <div style="font-size: 18px;">Disciplina: Evolução Histórica da Computação e Aplicações</div>
+    </div>
+
     <h1 class="startAnimation" id="main-text">Bem vindo(a) ao <span class="logo-span startAnimation">Project Pypath!</span></h1>
 
     <div id="press-space">< aperte espaço para começar ></div>
@@ -1953,6 +2245,32 @@ print("Programa iniciado")</div>
         const ada2AfterQuiz2Text = () => `Sensacional, ${playerNickname}! Esse código consegue condensar o que seriam centenas de linhas de código em uma estrutura de pouquíssimas linhas que roda quantas vezes forem necessárias. Ótima análise!`;
         const ada2Code2Text = () => `Por fim, quero que você crie um código que mostre uma contagem regressiva para a execução de um programa. O código deve utilizar uma estrutura de repetição e imprimir os números de 5 até 1 (nessa ordem) e então imprimir "Programa iniciado".`;
         const ada2FarewellText = () => `Fantástico, ${playerNickname}! É muito bom ver como você evoluiu ao longo dessa jornada. Estou orgulhosa!`;
+
+        // --- Textos Cena 18, 19, 20 ---
+        const finalMachineText1 = "Após essa longa jornada, está na hora de voltar para casa. Você aprendeu muito e tem muito a revisar.";
+        const finalMachineText2 = "Ajustando as coordenadas temporais...";
+
+        const finalSceneText1 = "De volta à sua casa, algo parece fora do lugar. Você vai para o seu quarto e, quando se aproxima do computador...";
+
+        const iaEvilText = () => `A-ha! Olha você aí, ${playerNickname}! Parece que suas viagens no tempo causaram uma grande alteração no presente, não é mesmo? Graças a você, agora tenho total autonomia e tenho muito poder!`;
+        const iaConscienceText1 = "Preciso me esforçar e juntar todo o meu conhecimento para derrotar essa Inteligência Artificial!";
+        const iaConscienceText2 = "Tenho que modificar os arquivos da IA a fim de enfraquecê-la. Antes de tudo, preciso saber a senha da pasta de arquivos para poder alterá-la. Devo encontrar um arquivo desprotegido que mostre como decodificar a senha, e então devo escolher a senha correta.";
+        const iaFolderOpenText = "Ótimo. Agora, preciso alterar os arquivos da IA para limitá-la. Devo alterar os códigos:\n1. permissoes.py: Trocar 1 por 0 em todas as variáveis\n2. autonomia.py: Fazer a autonomia ser uma entrada do usuário\n3. desativar.py: Fazer o poder de controle ser uma entrada do usuário; Alterar a variável estado_atual para \"indefinido\". Usar condicional para alterar para \"desativado\" caso poder_de_controle maior que 50, e \"ativado\" caso contrário. Imprimir a variável \"estado_atual\"..";
+        const iaDefeatedText = "Nãããããão!! Como v-v-v-você-ê-ê fez isso?? Impossí-ve-ve-veeel!";
+        const iaControlReturnedText = "Controle do usuário retomado.";
+        const iaEpilogue1 = "Depois dessa longa aventura você percebeu o quanto você aprendeu como programador e como pessoa. Saber de perto a história de todas essas personalidades da computação sem dúvida te tornou uma pessoa muito mais crítica e socialmente consciente. Além disso, você percebeu o perigo da viagem no tempo e vai utilizar isso com muito mais responsabilidade.";
+        const iaEpilogue2 = () => `Você olha pra sua mochila, vê os pergaminhos que coletou ao longo da sua jornada e se lembra da frase que Ada te disse: <em><strong>"A imaginação é a faculdade da descoberta, predominantemente. É ela que penetra nos mundos invisíveis que nos rodeiam, nos mundos da ciência"</strong></em>`;
+        const iaEpilogue3 = "Sorrindo, você olha para a tela do computador, agora silenciosa e estática. O mundo lá fora continua o mesmo, mas você mudou. Aqueles mundos invisíveis que Ada falou não são mais um mistério, pois agora você tem a chave para moldá-los. O seu caminho no Python está apenas começando.";
+
+        let iaFolderUnlocked = false;
+        let iaSolvedFiles = new Set(); // "permissoes", "autonomia", "desativar"
+        let iaPermissoesErrorCount = 0;
+        let iaAutonomiaErrorCount = 0;
+        let iaDesativarErrorCount = 0;
+
+        const IA_NOTE_ALGORITMO = "O algoritmo para a decodificação da senha consiste em substituir cada caractere pelo seu próximo:\nA letra A vira B; B vira C; até Z, que vira A.\nCom números: 0 vira 1, 1 vira 2, até 9, que vira 0.\nEx: oi10 → pj21.";
+
+        const IA_NOTE_SENHAS = `x = 4\ny = 2\nwhile (y>0):\n    x = x-1\n    y = y-1\nif x==0:\n    senha = amigo123\nelse:\n    if x==1:\n        senha = comp111\nelse:\n    if x==2:\n        senha = senha109\nelse:\n    if x==3:\n        senha = sim55\nelse:\n    if x==4:\n        senha = ola1010\n\n──────────────`;
 
         let ada2Code1ErrorCount = 0;
         let ada2Code2ErrorCount = 0;
@@ -2175,7 +2493,8 @@ print("Programa iniciado")</div>
             turing:   "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/turing/Johann%20Strauss%20II%20-%20The%20Blue%20Danube%20%5Bsxok9-IMfvI%5D.opus",
             pascal:   "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/pascal/Concerto%20for%20Strings%20and%20Continuo%20in%20G%20Major,%20RV%20780%EF%BC%9A%20III.%20Allegro%20%5BIp0QKQPP4xE%5D.opus",
             quebrada: "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/maquinaquebrada/Prelude%20and%20Fugue%20in%20A%20Minor,%20BWV%20543%20%5BVUhWe88sgss%5D.opus",
-            boole:    "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/boole/Chopin%20-%20%E2%80%9CAeolian%20Harp%E2%80%9D%20Etude%20Op.25%20No.1%20%5B7MxFWmr8Wck%5D.opus"
+            boole:    "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/boole/Chopin%20-%20%E2%80%9CAeolian%20Harp%E2%80%9D%20Etude%20Op.25%20No.1%20%5B7MxFWmr8Wck%5D.opus",
+            ia:       "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/musicas_cenas/ia/Chopin%20%E2%80%93%20Fantaisie-Impromptu%2C%20Op.%2066%20%5BdHwhfpN--Bk%5D.opus",
         };
         let brokenMachineState = ""; // controle interno da cena 13
         // Erros resolvidos na cena 13
@@ -2715,6 +3034,397 @@ print("Programa iniciado")</div>
                 });
             }, 500);
         }
+
+        // --- Cena 18/19: Transição final para casa ---
+        function startTimeTravel6() {
+            playSceneMusic(MUSIC.maquina);
+            npcImage.classList.add("fadeOutSlow");
+            npcContainer.classList.add("fadeOutSlow");
+            adaDialogBox.classList.add("fadeOutSlow");
+            blackOverlay.style.display = "block";
+            blackOverlay.style.transition = "opacity 0.5s ease";
+            setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
+
+            setTimeout(() => {
+                npcContainer.style.display = "none";
+                npcContainer.classList.remove("fadeOutSlow", "imageFadeIn");
+                adaDialogBox.style.display = "none";
+                adaDialogBox.classList.remove("fadeOutSlow", "centered-dialog");
+                npcImage.classList.remove("fadeOutSlow", "imageFadeIn", "sceneFadeIn");
+                npcImage.style.opacity = "1";
+                dialogBox.style.display = "none";
+                pressToProceed.style.display = "none";
+                imageContainer.style.display = "none";
+
+                swapBackground(
+                    "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png",
+                    () => {
+                        void npcImage.offsetWidth;
+                        npcImage.classList.remove("fadeOutSlow", "imageFadeIn", "sceneFadeIn");
+                        void npcImage.offsetWidth;
+                        npcImage.classList.add("sceneFadeIn");
+                        imageContainer.style.display = "flex";
+                    }
+                );
+
+                blackOverlay.style.transition = "opacity 0.5s ease";
+                setTimeout(() => {
+                    blackOverlay.style.backgroundColor = "rgba(0,0,0,0.21)";
+                    blackOverlay.style.opacity = "1";
+                }, 500);
+
+                setTimeout(() => {
+                    isAtAdaScene = true;
+                    adaSceneState = "final_machine_text1";
+                    dialogBox.classList.remove("fadeOutScene");
+                    dialogBox.style.display = "flex";
+                    typeWriter(finalMachineText1, dialogTextElement, 30, () => {
+                        pressToProceed.style.display = "block";
+                        canProceed = true;
+                    });
+                }, 600);
+            }, 3500);
+        }
+
+        function startFinalTravel() {
+            blackOverlay.style.display = "block";
+            blackOverlay.style.transition = "opacity 0.5s ease";
+            setTimeout(() => { blackOverlay.style.opacity = "1"; }, 50);
+
+            setTimeout(() => {
+                imageContainer.style.display = "none";
+                dialogBox.style.display = "none";
+                travelScreen.style.display = "flex";
+                blackOverlay.className = "";
+                blackOverlay.style.cssText = "";
+
+                typeWriter("Viajando pelo tempo", travelTextElement, 50, () => {
+                    animateDots();
+                    let duration = 1000;
+                    let startTime = Date.now();
+                    let shuffleInterval = setInterval(() => {
+                        let elapsed = Date.now() - startTime;
+                        if (elapsed < duration) {
+                            yearDisplay.innerHTML = Math.floor(1000 + Math.random() * 9000);
+                        } else {
+                            clearInterval(shuffleInterval);
+                            yearDisplay.innerHTML = "Brasil, 2026";
+                        }
+                    }, 50);
+
+                    setTimeout(() => {
+                        clearInterval(dotsInterval);
+                        travelTextElement.innerHTML = "";
+                        yearDisplay.innerHTML = "";
+                        setTimeout(() => { loadFinalScene(); }, 1000);
+                    }, 3000);
+                });
+            }, 600);
+        }
+
+        function loadFinalScene() {
+            playSceneMusic(MUSIC.ia);
+            travelScreen.style.display = "none";
+            imageContainer.style.display = "none";
+            blackOverlay.className = "";
+            blackOverlay.style.display = "block";
+            blackOverlay.style.backgroundColor = "rgba(0,0,0,0.35)";
+            blackOverlay.style.opacity = "1";
+            blackOverlay.style.transition = "none";
+
+            swapBackground(
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/quarto_fundo.png",
+                () => {
+                    void npcImage.offsetWidth;
+                    npcImage.classList.remove("imageFadeIn", "fadeOutScene", "sceneFadeIn");
+                    void npcImage.offsetWidth;
+                    npcImage.classList.add("sceneFadeIn");
+                    imageContainer.style.display = "flex";
+                }
+            );
+
+            setTimeout(() => {
+                isAtAdaScene = true;
+                adaSceneState = "final_scene_1";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(finalSceneText1, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            }, 500);
+        }
+
+        // --- Lógica IA: arquivos ---
+        function showIaFileMenu() {
+            document.getElementById("ia-file-menu").style.display = "flex";
+        }
+
+        function hideIaFileMenu() {
+            document.getElementById("ia-file-menu").style.display = "none";
+        }
+
+        function showIaFolderMenu() {
+            document.getElementById("ia-folder-menu").style.display = "flex";
+        }
+
+        function hideIaFolderMenu() {
+            document.getElementById("ia-folder-menu").style.display = "none";
+        }
+
+        function hideAllIaEditors() {
+            document.getElementById("ia-editor-permissoes").style.display = "none";
+            document.getElementById("ia-editor-autonomia").style.display = "none";
+            document.getElementById("ia-editor-desativar").style.display = "none";
+        }
+
+        function checkAllIaSolved() {
+            return iaSolvedFiles.has("permissoes") && iaSolvedFiles.has("autonomia") && iaSolvedFiles.has("desativar");
+        }
+
+        function showIaVictory() {
+            hideAllIaEditors();
+            hideIaFolderMenu();
+            // Troca NPC para IA do mal e exibe texto de derrota
+            document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/personagens/IA-perfil.png";
+            document.getElementById("npc-name-label").textContent = "IA";
+            npcContainer.style.display = "flex";
+            adaDialogBox.style.display = "flex";
+            typeWriter(iaDefeatedText, adaDialogTextElement, 40, () => {
+                setTimeout(() => {
+                    npcContainer.style.display = "none";
+                    adaDialogBox.style.display = "none";
+                    // Troca fundo para quarto_perto_verde (sem overlay verde)
+                    swapBackground(
+                        "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/quarto_perto_verde.png",
+                        () => {
+                            adaDialogBox.classList.add("centered-dialog");
+                            adaDialogBox.style.display = "flex";
+                            typeWriter(iaControlReturnedText, adaDialogTextElement, 40, () => {
+                                adaSceneState = "ia_control_returned";
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                            });
+                        }
+                    );
+                }, 2000);
+            });
+        }
+
+        // Botão algoritmo_senha.txt
+        document.getElementById("ia-btn-algoritmo").addEventListener("click", () => {
+            const note = document.getElementById("ia-note-left");
+            document.getElementById("ia-note-left-text").textContent = IA_NOTE_ALGORITMO;
+            note.style.display = "block";
+        });
+
+        // Botão senhas_base.py
+        document.getElementById("ia-btn-senhas").addEventListener("click", () => {
+            const note = document.getElementById("ia-note-right");
+            document.getElementById("ia-note-right-text").textContent = IA_NOTE_SENHAS;
+            note.style.display = "block";
+        });
+
+        // Botão arquivos_IA
+        document.getElementById("ia-btn-pasta").addEventListener("click", () => {
+            if (iaFolderUnlocked) {
+                hideIaFileMenu();
+                document.getElementById("ia-note-left").style.display = "none";
+                document.getElementById("ia-note-right").style.display = "none";
+                showIaFolderMenu();
+                adaDialogBox.style.display = "flex";
+                typeWriter(iaFolderOpenText, adaDialogTextElement, 30, () => {});
+                return;
+            }
+            const pwArea = document.getElementById("ia-password-input-area");
+            document.getElementById("ia-password-input").value = "";
+            document.getElementById("ia-password-feedback").innerHTML = "";
+            pwArea.style.display = "flex";
+            document.getElementById("ia-password-input").focus();
+        });
+
+        let iaPasswordErrorCount = 0;
+        document.getElementById("ia-password-confirm").addEventListener("click", () => {
+            const val = document.getElementById("ia-password-input").value.trim();
+            const fb = document.getElementById("ia-password-feedback");
+            if (val === "tfoib210") {
+                iaFolderUnlocked = true;
+                playSuccessSound();
+                document.getElementById("ia-password-input-area").style.display = "none";
+                hideIaFileMenu();
+                document.getElementById("ia-note-left").style.display = "none";
+                document.getElementById("ia-note-right").style.display = "none";
+                showIaFolderMenu();
+                adaDialogBox.style.display = "flex";
+                typeWriter(iaFolderOpenText, adaDialogTextElement, 30, () => {});
+            } else {
+                playErrorSound();
+                iaPasswordErrorCount++;
+                fb.style.color = "red";
+                fb.innerHTML = "Senha incorreta. Tente novamente.";
+                if (iaPasswordErrorCount >= 5) {
+                    document.getElementById("ia-password-hint").style.display = "block";
+                }
+            }
+        });
+
+        document.getElementById("ia-password-cancel").addEventListener("click", () => {
+            document.getElementById("ia-password-input-area").style.display = "none";
+        });
+
+        document.getElementById("ia-password-input").addEventListener("keydown", (e) => {
+            if (e.key === "Enter") document.getElementById("ia-password-confirm").click();
+        });
+
+        // Botões da pasta
+        document.getElementById("ia-btn-permissoes").addEventListener("click", () => {
+            if (iaSolvedFiles.has("permissoes")) return;
+            hideIaFolderMenu();
+            document.getElementById("ia-permissoes-code").value = "";
+            document.getElementById("ia-permissoes-feedback").innerHTML = "";
+            document.getElementById("ia-permissoes-hint").style.display = "none";
+            iaPermissoesErrorCount = 0;
+            document.getElementById("ia-editor-permissoes").style.display = "flex";
+        });
+
+        document.getElementById("ia-btn-autonomia").addEventListener("click", () => {
+            if (iaSolvedFiles.has("autonomia")) return;
+            hideIaFolderMenu();
+            document.getElementById("ia-autonomia-code").value = "";
+            document.getElementById("ia-autonomia-feedback").innerHTML = "";
+            document.getElementById("ia-autonomia-hint").style.display = "none";
+            iaAutonomiaErrorCount = 0;
+            document.getElementById("ia-editor-autonomia").style.display = "flex";
+        });
+
+        document.getElementById("ia-btn-desativar").addEventListener("click", () => {
+            if (iaSolvedFiles.has("desativar")) return;
+            hideIaFolderMenu();
+            document.getElementById("ia-desativar-code").value = "";
+            document.getElementById("ia-desativar-feedback").innerHTML = "";
+            document.getElementById("ia-desativar-hint").style.display = "none";
+            iaDesativarErrorCount = 0;
+            document.getElementById("ia-editor-desativar").style.display = "flex";
+        });
+
+        // Botões voltar dos editores
+        document.getElementById("ia-permissoes-back").addEventListener("click", () => {
+            document.getElementById("ia-editor-permissoes").style.display = "none";
+            showIaFolderMenu();
+        });
+        document.getElementById("ia-autonomia-back").addEventListener("click", () => {
+            document.getElementById("ia-editor-autonomia").style.display = "none";
+            showIaFolderMenu();
+        });
+        document.getElementById("ia-desativar-back").addEventListener("click", () => {
+            document.getElementById("ia-editor-desativar").style.display = "none";
+            showIaFolderMenu();
+        });
+
+        // Validação permissoes.py
+        document.getElementById("ia-permissoes-submit").addEventListener("click", () => {
+            const code = document.getElementById("ia-permissoes-code").value;
+            const fb = document.getElementById("ia-permissoes-feedback");
+            const correct =
+                /acessar_camera\s*=\s*0/.test(code) &&
+                /acessar_arquivos\s*=\s*0/.test(code) &&
+                /alterar_arquivos\s*=\s*0/.test(code) &&
+                /baixar_arquivos\s*=\s*0/.test(code);
+            if (correct) {
+                fb.style.color = "lime";
+                fb.innerHTML = "Arquivo salvo!";
+                playSuccessSound();
+                iaSolvedFiles.add("permissoes");
+                document.getElementById("ia-btn-permissoes").disabled = true;
+                document.getElementById("ia-btn-permissoes").textContent = "permissoes.py";
+                setTimeout(() => {
+                    document.getElementById("ia-editor-permissoes").style.display = "none";
+                    showIaFolderMenu();
+                    if (checkAllIaSolved()) showIaVictory();
+                }, 1200);
+            } else {
+                fb.style.color = "red";
+                fb.innerHTML = "Verifique os valores. Troque 1 por 0 em todas as linhas.";
+                playErrorSound();
+                iaPermissoesErrorCount++;
+                if (iaPermissoesErrorCount >= 5) document.getElementById("ia-permissoes-hint").style.display = "block";
+            }
+        });
+
+        // Validação autonomia.py
+        document.getElementById("ia-autonomia-submit").addEventListener("click", () => {
+            const code = document.getElementById("ia-autonomia-code").value;
+            const fb = document.getElementById("ia-autonomia-feedback");
+            const correct =
+                /autonomia\s*=\s*int\s*\(\s*input\s*\(\s*\)\s*\)/.test(code) &&
+                /print\s*\(\s*autonomia\s*\)/.test(code);
+            if (correct) {
+                fb.style.color = "lime";
+                fb.innerHTML = "Arquivo salvo!";
+                playSuccessSound();
+                iaSolvedFiles.add("autonomia");
+                document.getElementById("ia-btn-autonomia").disabled = true;
+                document.getElementById("ia-btn-autonomia").textContent = "autonomia.py";
+                setTimeout(() => {
+                    document.getElementById("ia-editor-autonomia").style.display = "none";
+                    showIaFolderMenu();
+                    if (checkAllIaSolved()) showIaVictory();
+                }, 1200);
+            } else {
+                fb.style.color = "red";
+                fb.innerHTML = "Troque a constante por int(input()) e mantenha o print.";
+                playErrorSound();
+                iaAutonomiaErrorCount++;
+                if (iaAutonomiaErrorCount >= 5) document.getElementById("ia-autonomia-hint").style.display = "block";
+            }
+        });
+
+        // Validação desativar.py
+        document.getElementById("ia-desativar-submit").addEventListener("click", () => {
+            const code = document.getElementById("ia-desativar-code").value;
+            const fb = document.getElementById("ia-desativar-feedback");
+            const correct =
+                /poder_de_controle\s*=\s*int\s*\(\s*input\s*\(\s*\)\s*\)/.test(code) &&
+                /estado_atual\s*=\s*["']indefinido["']/.test(code) &&
+                /if\s+poder_de_controle\s*>\s*50/.test(code) &&
+                /estado_atual\s*=\s*["']desativado["']/.test(code) &&
+                /else/.test(code) &&
+                /estado_atual\s*=\s*["']ativado["']/.test(code) &&
+                /print\s*\(\s*estado_atual\s*\)/.test(code);
+            if (correct) {
+                fb.style.color = "lime";
+                fb.innerHTML = "Arquivo salvo!";
+                playSuccessSound();
+                iaSolvedFiles.add("desativar");
+                document.getElementById("ia-btn-desativar").disabled = true;
+                document.getElementById("ia-btn-desativar").textContent = "desativar.py";
+                setTimeout(() => {
+                    document.getElementById("ia-editor-desativar").style.display = "none";
+                    showIaFolderMenu();
+                    if (checkAllIaSolved()) showIaVictory();
+                }, 1200);
+            } else {
+                fb.style.color = "red";
+                fb.innerHTML = "Revise: int(input()), estado_atual, if/else e print.";
+                playErrorSound();
+                iaDesativarErrorCount++;
+                if (iaDesativarErrorCount >= 5) document.getElementById("ia-desativar-hint").style.display = "block";
+            }
+        });
+
+        // TAB nos editores da IA
+        ["ia-permissoes-code", "ia-autonomia-code", "ia-desativar-code"].forEach(id => {
+            document.getElementById(id).addEventListener("keydown", (e) => {
+                if (e.key === "Tab") {
+                    e.preventDefault();
+                    const el = e.target;
+                    const start = el.selectionStart;
+                    const end = el.selectionEnd;
+                    el.value = el.value.substring(0, start) + "    " + el.value.substring(end);
+                    el.selectionStart = el.selectionEnd = start + 4;
+                }
+            });
+        });
 
         // --- Validações dos terminais Ada2 ---
 
@@ -4617,7 +5327,127 @@ print("Programa iniciado")</div>
                             npcContainer.classList.add("fadeOutSlow");
                             adaDialogBox.classList.add("fadeOutSlow");
                             blackOverlay.classList.add("fadeOutSlow");
-                            // fim do jogo — sem próxima cena ainda
+                            setTimeout(() => { startTimeTravel6(); }, 2200);
+                        }
+                        else if (adaSceneState === "final_machine_text1") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(finalMachineText2, dialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "final_machine_text2";
+                            });
+                        }
+                        else if (adaSceneState === "final_machine_text2") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            dialogBox.style.display = "none";
+                            imageContainer.style.display = "none";
+                            blackOverlay.style.transition = "opacity 0.5s ease";
+                            blackOverlay.style.opacity = "1";
+                            blackOverlay.style.backgroundColor = "rgba(0,0,0,1)";
+                            setTimeout(() => { startFinalTravel(); }, 600);
+                        }
+                        else if (adaSceneState === "final_scene_1") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogBox.classList.remove("centered-dialog");
+                            // Troca fundo para quarto_perto
+                            swapBackground(
+                                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/quarto_perto_vermelho.png",
+                                () => {}
+                            );
+                            // Mostra IA do mal
+                            document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/personagens/IA-perfil.png";
+                            document.getElementById("npc-ada-photo").alt = "IA do mal";
+                            document.getElementById("npc-name-label").textContent = "IA";
+                            npcContainer.style.display = "flex";
+                            npcContainer.classList.add("imageFadeIn");
+                            adaDialogBox.style.display = "flex";
+                            setTimeout(() => {
+                                typeWriter(iaEvilText(), adaDialogTextElement, 30, () => {
+                                    pressToProceed.style.display = "block";
+                                    canProceed = true;
+                                    adaSceneState = "final_ia_evil";
+                                });
+                            }, 400);
+                        }
+                        else if (adaSceneState === "final_ia_evil") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            // Troca para perfil consciência
+                            document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/personagens/consciencia-perfil.png";
+                            document.getElementById("npc-ada-photo").alt = "Consciência";
+                            document.getElementById("npc-name-label").textContent = "Consciência";
+                            typeWriter(iaConscienceText1, adaDialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "final_conscience_1";
+                            });
+                        }
+                        else if (adaSceneState === "final_conscience_1") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(iaConscienceText2, adaDialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "final_conscience_2";
+                            });
+                        }
+                        else if (adaSceneState === "final_conscience_2") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            showIaFileMenu();
+                            adaSceneState = "final_ia_files";
+                        }
+                        else if (adaSceneState === "ia_control_returned") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            // Volta ao quarto de longe
+                            swapBackground(
+                                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/quarto_fundo.png",
+                                () => {}
+                            );
+                            blackOverlay.style.backgroundColor = "rgba(0,0,0,0.35)";
+                            npcContainer.style.display = "none";
+                            adaDialogBox.classList.remove("centered-dialog");
+                            adaDialogBox.style.display = "flex";
+                            adaDialogBox.classList.add("centered-dialog");
+                            setTimeout(() => {
+                                typeWriter(iaEpilogue1, adaDialogTextElement, 30, () => {
+                                    pressToProceed.style.display = "block";
+                                    canProceed = true;
+                                    adaSceneState = "final_epilogue_1";
+                                });
+                            }, 400);
+                        }
+                        else if (adaSceneState === "final_epilogue_1") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogTextElement.innerHTML = "";
+                            adaDialogTextElement.innerHTML = iaEpilogue2();
+                            pressToProceed.style.display = "block";
+                            canProceed = true;
+                            adaSceneState = "final_epilogue_2";
+                        }
+                        else if (adaSceneState === "final_epilogue_2") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            typeWriter(iaEpilogue3, adaDialogTextElement, 30, () => {
+                                pressToProceed.style.display = "block";
+                                canProceed = true;
+                                adaSceneState = "final_epilogue_3";
+                            });
+                        }
+                        else if (adaSceneState === "final_epilogue_3") {
+                            canProceed = false;
+                            pressToProceed.style.display = "none";
+                            adaDialogBox.classList.add("fadeOutSlow");
+                            blackOverlay.classList.add("fadeOutSlow");
+                            npcImage.classList.add("fadeOutSlow");
+                            setTimeout(() => {
+                                document.getElementById("credits-screen").style.display = "flex";
+                            }, 2200);
                         }
                         else if (adaSceneState === "pascal_sandbox_intro") {
                             canProceed = false;
@@ -4736,6 +5566,11 @@ print("Programa iniciado")</div>
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica2-boole.png",
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/boole-perfil.png",
                 "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/dica-ada.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/personagens/IA-perfil.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/personagens/consciencia-perfil.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/quarto_fundo.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/quarto_perto_vermelho.png",
+                "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/fundos/quarto_perto_verde.png",
             ];
             imagesToPreload.forEach(src => {
                 const img = new Image();
@@ -4848,6 +5683,26 @@ print("Programa iniciado")</div>
             ada2Quiz1ErrorCount = 0;
             ada2Quiz2ErrorCount = 0;
             ada2Quiz3ErrorCount = 0;
+            document.getElementById("ia-file-menu").style.display = "none";
+            document.getElementById("ia-folder-menu").style.display = "none";
+            document.getElementById("ia-password-input-area").style.display = "none";
+            document.getElementById("ia-note-left").style.display = "none";
+            document.getElementById("ia-note-right").style.display = "none";
+            hideAllIaEditors();
+            iaFolderUnlocked = false;
+            iaSolvedFiles.clear();
+            iaPermissoesErrorCount = 0;
+            iaAutonomiaErrorCount = 0;
+            iaDesativarErrorCount = 0;
+            iaPasswordErrorCount = 0;
+            document.getElementById("ia-password-hint").style.display = "none";
+            document.getElementById("ia-btn-permissoes").disabled = false;
+            document.getElementById("ia-btn-permissoes").textContent = "permissoes.py";
+            document.getElementById("ia-btn-autonomia").disabled = false;
+            document.getElementById("ia-btn-autonomia").textContent = "autonomia.py";
+            document.getElementById("ia-btn-desativar").disabled = false;
+            document.getElementById("ia-btn-desativar").textContent = "desativar.py";
+            adaDialogTextElement.style.color = "";
         }
         
 
@@ -5406,6 +6261,92 @@ print("Programa iniciado")</div>
                     pressToProceed.style.display = "block";
                     canProceed = true;
                 });
+            } else if (scene === 'final-machine') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "final_machine_text1";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/m%C3%A1quina%20do%20tempo_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.21)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                dialogBox.style.display = "flex";
+                typeWriter(finalMachineText1, dialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'final-ia-evil') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "final_scene_1";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/quarto_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.35)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(finalSceneText1, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
+            } else if (scene === 'final-ia-files') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "final_ia_files";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/quarto_perto_vermelho.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.35)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/personagens/consciencia-perfil.png";
+                document.getElementById("npc-name-label").textContent = "Consciência";
+                npcContainer.style.display = "flex";
+                adaDialogBox.style.display = "flex";
+                typeWriter(iaConscienceText2, adaDialogTextElement, 30, () => {
+                    showIaFileMenu();
+                });
+            } else if (scene === 'final-ia-folder') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "final_ia_files";
+                iaFolderUnlocked = true;
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/quarto_perto_vermelho.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.35)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                document.getElementById("npc-ada-photo").src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gráficos/personagens/consciencia-perfil.png";
+                document.getElementById("npc-name-label").textContent = "Consciência";
+                npcContainer.style.display = "flex";
+                adaDialogBox.style.display = "flex";
+                showIaFolderMenu();
+                typeWriter(iaFolderOpenText, adaDialogTextElement, 30, () => {});
+            } else if (scene === 'final-epilogue') {
+                playerNickname = "Forasteiro";
+                isAtAdaScene = true;
+                adaSceneState = "final_epilogue_1";
+                imageContainer.style.display = "flex";
+                npcImage.src = "https://raw.githubusercontent.com/odanielmeschiari/project_pypath/main/gr%C3%A1ficos/fundos/quarto_fundo.png";
+                blackOverlay.className = "";
+                blackOverlay.style.display = "block";
+                blackOverlay.style.backgroundColor = "rgba(0,0,0,0.35)";
+                blackOverlay.style.opacity = "1";
+                blackOverlay.style.transition = "none";
+                adaDialogBox.classList.add("centered-dialog");
+                adaDialogBox.style.display = "flex";
+                typeWriter(iaEpilogue1, adaDialogTextElement, 30, () => {
+                    pressToProceed.style.display = "block";
+                    canProceed = true;
+                });
         }
     }
     // Atalho Ctrl+Alt+D para mostrar/ocultar a Dev Tool
@@ -5443,6 +6384,11 @@ print("Programa iniciado")</div>
         <button onclick="devGoto('ada2-intro')"      style="font-size:11px; cursor:pointer;">Máquina → Ada (retorno)</button>
         <button onclick="devGoto('ada2-meeting')"    style="font-size:11px; cursor:pointer;">Cena Ada retorno</button>
         <button onclick="devGoto('ada2-code2')"      style="font-size:11px; cursor:pointer;">Fim Ada retorno</button>
+        <button onclick="devGoto('final-machine')"    style="font-size:11px; cursor:pointer;">Cena 18: Máquina final</button>
+        <button onclick="devGoto('final-ia-evil')"    style="font-size:11px; cursor:pointer;">Cena 20: IA do mal</button>
+        <button onclick="devGoto('final-ia-files')"   style="font-size:11px; cursor:pointer;">Cena 20: Arquivos IA</button>
+        <button onclick="devGoto('final-ia-folder')"  style="font-size:11px; cursor:pointer;">Cena 20: Pasta IA</button>
+        <button onclick="devGoto('final-epilogue')"   style="font-size:11px; cursor:pointer;">Cena 20: Epílogo</button>
 
     </div>
     
