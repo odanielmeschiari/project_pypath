@@ -172,12 +172,42 @@
             17.10.1.1. Se correto, continuar
     17.11. ["Fantástico, <nome>! É muito bom ver..."]
         17.11.1. Espaço para pular
-
-
-
-------------------- MINHAS IDEIAS PARA CONTINUAÇÃO ---------------------
-X. Máquina danificada
-    X.1. Tela piscando em vermelho + alarme soando
-    X.2. Resolver problema para parar de piscar
-        X.2.1. Se problema envolver código, usar background de computador azul e futurista (que encaixa com o cenário)
-            X.2.1.1. (Talvez animar as teclas digitando ao mesmo tempo que digita no computador real?)
+    17.12. Tela escurece
+18. Máquina do tempo
+    18.1. ["Após essa longa jornada..."]
+        18.1.1. Espaço para pular
+    18.2. ["Ajustando as coordenadas..."]
+19. Cena de viagem
+    19.1. ["Viajando pelo tempo..."]
+    19.2. ["Brasil, 2026"]
+20. Cena final: confronto com IA do mal
+    20.1. ["De volta à sua casa..."]
+        20.1.1. Espaço para pular
+    20.2. (Tela do monitor se aproxima)
+    20.3. ["Olha você aí, <nome>..."]
+        20.3.1. Espaço para pular
+    20.4. ["Preciso me esforçar..."]
+        20.4.1. Espaço para pular
+    20.5. ["(acima do monitor, centralizado): Tenho que modificar os arquivos..."]
+        20.5.1. Após texto:
+        20.5.2. Surgem arquivos txt da IA
+            20.5.2.1. Usuário deve escolher "algoritmo_senha.txt"
+                20.5.2.1.1. Entender algoritmo e voltar
+            20.5.2.2. Usuário deve escolher "senhas_base.py"
+                20.5.2.2.1. Entender algoritmo e registrar senha em um subterminal
+            20.5.2.3. Voltar e abrir a pasta "arquivos_ia" com a senha descoberta
+        20.5.3. Abriu pasta: ["Ótimo. Agora preciso..."]
+    20.6. Dentro da pasta, selecionar "permissoes.py"
+        20.6.1. Mudar cada "permitido" para "negado"
+    20.7. No arquivo "autonomia.py", fazer ser alterável
+    20.8. No arquivo "desativar.py", fazer as alterações
+    20.9. ["Nãããããão!! Como v-v-v-você-ê-ê fez isso?? Impossí-ve-ve-veeel!"]
+    20.10. Tela verde: ["Controle do usuário retomado."]
+    20.11. Afasta do monitor
+        20.11.1. ["Depois dessa longa aventura..."]
+            20.11.1.1. Espaço para pular
+        20.11.2. ["Você olha para sua mochila, vê..."]
+            20.11.1.1. Espaço para pular
+        20.11.3. ["Sorrindo, você olha..."]
+            20.11.3.1. Espaço para pular
+21. Cena de créditos
