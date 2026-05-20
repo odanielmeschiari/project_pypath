@@ -4143,6 +4143,7 @@ print("Programa iniciado")</div>
 
             document.getElementById("error-index-panel").style.display = "none";
             document.getElementById("error-detail-text").textContent = entry.text;
+            document.getElementById("error-log-terminal").style.display = "none";
             document.getElementById("error-detail-panel").style.display = "flex";
         }
 
@@ -4450,6 +4451,7 @@ print("Programa iniciado")</div>
             document.getElementById("broken-machine-options").style.display = "none";
             document.getElementById("error-index-panel").style.display = "none";
             document.getElementById("error-detail-panel").style.display = "none";
+            document.getElementById("error-log-terminal").style.display = "none";
             // Remove o estilo de erro do balão e restaura posição
             adaDialogBox.classList.remove("error-dialog", "error-dialog-raised", "centered-dialog");
             adaDialogBox.classList.add("centered-dialog");
